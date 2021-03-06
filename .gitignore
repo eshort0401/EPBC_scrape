@@ -1,2 +1,7 @@
 files
+tmp
+*.csv
+*.pdf
+*.xlsx
+
 
