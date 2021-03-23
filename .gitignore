@@ -1,7 +1,10 @@
 files
 tmp
+proposal
 *.csv
 *.pdf
 *.xlsx
-
+*.gz
+*.log
+*.aux
 

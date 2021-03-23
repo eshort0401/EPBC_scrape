@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+    <Placemark>
+        <name>Yangibana Rare Earths Project</name>
+                <LinearRing>
+                    <coordinates>
+                        116.097800,-23.912389,1
+                        116.103400,-23.902711,1
+                        116.128800,-23.868069,1
+                        116.097800,-23.912389,1
+                    </coordinates>
+                </LinearRing>
+    </Placemark>
+</kml>
