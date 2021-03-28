@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <kml xmlns="http://www.opengis.net/kml/2.2">
     <Document>
-        <name>KML Samples</name>
+        <name>Yangibana Rare Earths Project Disturbance Envelope</name>
         <open>1</open>
-        <description>Unleash your creativity with the help of these examples!</description>
+        <description>Disturbance Envelope for the Yangibana Rare Earths Project.</description>
         <Style id="transYellowPoly">
             <LineStyle>
                 <width>1.5</width>
@@ -13,7 +13,7 @@
             </PolyStyle>
         </Style>
         <Placemark>
-            <name>Yangibana Rare Earths Project</name>
+            <name>Disturbance Envelope</name>
              <styleUrl>#transYellowPoly</styleUrl>
                 <Polygon>
                     <extrude>1</extrude>
