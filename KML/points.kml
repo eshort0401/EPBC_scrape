@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="12">
+        <name>labelled_points</name>
+        <Folder id="13">
+            <name>f</name>
+            <Placemark id="15">
+                <name>f</name>
+                <description>f</description>
+                <Point id="14">
+                    <coordinates>134.32228100890208,-24.79097574485942,0.0</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Folder id="16">
+            <name>d</name>
+            <Placemark id="18">
+                <name>d</name>
+                <description>d</description>
+                <Point id="17">
+                    <coordinates>134.11456587537094,-24.158159966428872,0.0</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+        <Folder id="19">
+            <name>a</name>
+            <Placemark id="21">
+                <name>a</name>
+                <description>a</description>
+                <Point id="20">
+                    <coordinates>133.87717715133533,-24.968902727654218,0.0</coordinates>
+                </Point>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>
