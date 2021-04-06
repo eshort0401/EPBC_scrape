@@ -1,0 +1,14 @@
+{
+    "geometry": {
+        "coordinates": [
+            152.90598866,
+            -27.67323888
+        ],
+        "properties": {
+            "Name": "lr"
+        },
+        "type": "Point"
+    },
+    "properties": {},
+    "type": "Feature"
+}
