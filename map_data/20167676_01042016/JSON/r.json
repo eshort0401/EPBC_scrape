@@ -1,14 +1,1 @@
-{
-    "geometry": {
-        "coordinates": [
-            152.9009857,
-            -27.67351596
-        ],
-        "properties": {
-            "Name": "r"
-        },
-        "type": "Point"
-    },
-    "properties": {},
-    "type": "Feature"
-}
+{ "type": "Feature", "id": 0, "properties": { }, "geometry": { "type": "Point", "coordinates": [ 152.891089646582429, -27.664364718398243 ], "properties": { "Name": "r" } } }
