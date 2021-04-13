@@ -14,58 +14,31 @@
   </layer-tree-group>
   <relations/>
   <mapcanvas>
-    <units>meters</units>
+    <units>degrees</units>
     <extent>
-      <xmin>12768397.12484892830252647</xmin>
-      <ymin>-5708146.42744100466370583</ymin>
-      <xmax>18028243.06479033455252647</xmax>
-      <ymax>-448300.4874690817669034</ymax>
+      <xmin>152.92309838145837375</xmin>
+      <ymin>-27.55434411060194932</ymin>
+      <xmax>153.14933882361214046</xmax>
+      <ymax>-27.3905980343453983</ymax>
     </extent>
     <rotation>0</rotation>
     <projections>1</projections>
     <destinationsrs>
       <spatialrefsys>
-        <proj4>+proj=merc +a=6378137 +b=6378137 +lat_ts=0.0 +lon_0=0.0 +x_0=0.0 +y_0=0 +k=1.0 +units=m +nadgrids=@null +wktext +no_defs</proj4>
-        <srsid>3857</srsid>
-        <srid>3857</srid>
-        <authid>EPSG:3857</authid>
-        <description>WGS 84 / Pseudo Mercator</description>
-        <projectionacronym>merc</projectionacronym>
+        <proj4>+proj=longlat +datum=WGS84 +no_defs</proj4>
+        <srsid>3452</srsid>
+        <srid>4326</srid>
+        <authid>EPSG:4326</authid>
+        <description>WGS 84</description>
+        <projectionacronym>longlat</projectionacronym>
         <ellipsoidacronym>WGS84</ellipsoidacronym>
-        <geographicflag>false</geographicflag>
+        <geographicflag>true</geographicflag>
       </spatialrefsys>
     </destinationsrs>
     <rendermaptile>0</rendermaptile>
     <layer_coordinate_transform_info>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="a20210405094633942"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="milya_rd_int20210405110205969"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="rd_int_near_tom_price20210405113853559"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="major_int_near_lake20210405113853016"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="int_near_newman20210405110205679"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:3857" srcDatumTransform="-1" destDatumTransform="-1" layerid="Google_Maps20210404121358574"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="roundabout20210406162348128"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="Points20210404121707304"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="onslow_rd_int20210405113853378"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:3857" srcDatumTransform="-1" destDatumTransform="-1" layerid="Google_Satellite20210405121632238"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="intersection20210406162348126"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="d20210405094634006"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="intersection_again20210406162348125"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="dirt_rd_int20210406162348129"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="f20210405094634020"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="tip_island_west_of_denham20210405113853741"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="onslow_rd_int20210405110206322"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="silo_thing20210406162348119"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="silo20210406162348127"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="bridge20210406162348129"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="milya_rd_int20210405113853198"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="ashburton_river_fork20210405113852569"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="tip_island_west_of_denham20210405110206690"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="murchison_river_int20210405110206142"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="peak_lake_island20210406162348127"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="rd_int_near_tom_price20210405110206509"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="ashburton_river_fork20210405110205405"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="int_near_newman20210405113852837"/>
-      <layer_coordinate_transform destAuthId="EPSG:3857" srcAuthId="EPSG:4326" srcDatumTransform="-1" destDatumTransform="-1" layerid="major_int_near_lake20210405110205805"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:3857" srcDatumTransform="-1" destDatumTransform="-1" layerid="Google_Maps20210404121358574"/>
+      <layer_coordinate_transform destAuthId="EPSG:4326" srcAuthId="EPSG:3857" srcDatumTransform="-1" destDatumTransform="-1" layerid="Google_Satellite20210405121632238"/>
     </layer_coordinate_transform_info>
   </mapcanvas>
   <layer-tree-canvas>
@@ -203,13 +176,13 @@
       <DegreeFormat type="QString">MU</DegreeFormat>
     </PositionPrecision>
     <WCSUrl type="QString"></WCSUrl>
-    <WMSContactPhone type="QString"></WMSContactPhone>
     <WMSServiceCapabilities type="bool">false</WMSServiceCapabilities>
+    <WMSContactPhone type="QString"></WMSContactPhone>
     <WMSServiceAbstract type="QString"></WMSServiceAbstract>
     <WMSContactPosition type="QString"></WMSContactPosition>
     <WMSAddWktGeometry type="bool">false</WMSAddWktGeometry>
     <Measure>
-      <Ellipsoid type="QString">NONE</Ellipsoid>
+      <Ellipsoid type="QString">WGS84</Ellipsoid>
     </Measure>
     <WMSPrecision type="QString">8</WMSPrecision>
     <WMSSegmentizeFeatureInfoGeometry type="bool">false</WMSSegmentizeFeatureInfoGeometry>
