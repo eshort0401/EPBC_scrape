@@ -290,7 +290,7 @@ class Define_Training_Regions(ttk.Frame):
         self.master.title(
             'Choose training regions for {}'.format(self.names[self.label])
         )
-        self.text_list = text_list
+        self.text_list = text_list + ['Map background']
 
         self.canvas = tk.Canvas(
             self.master, width=100, height=100, cursor='tcross'
@@ -505,3 +505,34 @@ class Get_Legend_Box(ttk.Frame):
                 width=1, fill='red', outline='red'
             )
             self.p2 = None
+
+class Choose_Kept_Categories():
+    def __init__(
+        self, master, text_list,
+        title='Choose the recovered polygon classes to keep.'
+    ):
+        self.master = master
+        self.frame = tk.Frame(self.master)
+        self.master.title(title)
+        self.v = [tk.IntVar() for i in range(len(text_list))]
+
+        button = tk.Button(
+            self.frame, text="Done", state=tk.DISABLED, command=self.master.destroy
+        )
+
+        def activate_button():
+            button['state'] = tk.NORMAL
+
+        for i in range(len(text_list)):
+            tk.Checkbutton(
+                self.frame,
+                text=text_list[i],
+                padx = 20,
+                variable=self.v[i],
+                justify = tk.LEFT,
+                command = activate_button
+            ).grid(row=i)
+
+        button.grid(row=len(text_list))
+
+        self.frame.pack()
