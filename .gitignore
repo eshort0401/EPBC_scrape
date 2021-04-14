@@ -8,3 +8,5 @@ proposal
 *.log
 *.aux
 *.pb
+*.png
+*.qgs
