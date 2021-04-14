@@ -25,9 +25,9 @@ class AutoScrollbar(ttk.Scrollbar):
     def place(self, **kw):
         raise tk.TclError('Cannot use place with this widget')
 
-class Zoom_Advanced(ttk.Frame):
+class Choose_Points(ttk.Frame):
     ''' Advanced zoom of the image '''
-    def __init__(self, mainframe, path):
+    def __init__(self, mainframe, path, text_list):
         ''' Initialize the main Frame '''
         ttk.Frame.__init__(self, master=mainframe)
         self.master.title('Right click to choose points.')
@@ -38,6 +38,7 @@ class Zoom_Advanced(ttk.Frame):
         hbar.grid(row=1, column=0, sticky='we')
         self.points = []
         self.names = []
+        self.text_list = copy.deepcopy(text_list)
         # Create canvas and put image on it
         self.canvas = tk.Canvas(self.master, highlightthickness=0,
                                 xscrollcommand=hbar.set, yscrollcommand=vbar.set)
@@ -121,7 +122,18 @@ class Zoom_Advanced(ttk.Frame):
                 x_plot+2*self.imscale, y_plot+2*self.imscale,
                 width=1, fill='red', outline='red'
             )
-            name = askstring('Name', self.master).replace(' ', '_')
+
+            self.new_window = tk.Toplevel(self.master)
+            self.app = Name_Polygons_Popup(
+                self.new_window, self.text_list
+            )
+            self.master.wait_window(self.new_window)
+
+            if 0 <= self.app.v.get() < len(self.text_list):
+                name = self.text_list[self.app.v.get()]
+            elif self.app.v.get() == -1:
+                name = self.app.n.get()
+
             self.canvas.create_text(
                 x_plot+10*self.imscale, y_plot, anchor='w',
                 text='(' + str(x) + ', ' + str(y) + ') ' + name,
@@ -296,7 +308,6 @@ class Define_Training_Regions(ttk.Frame):
             self.master, width=100, height=100, cursor='tcross'
         )
         self.canvas.update()  # wait till canvas is created
-
 
         self.canvas.pack(expand = 'yes', fill = 'both')
 
