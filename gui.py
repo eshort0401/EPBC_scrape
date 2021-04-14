@@ -175,7 +175,10 @@ class Choose_Points(ttk.Frame):
             self.canvas.imagetk = imagetk  # keep an extra reference to prevent garbage-collection
 
 class Name_Polygons(ttk.Frame):
-    def __init__(self, mainframe, image, coords, text_list):
+    def __init__(
+        self, mainframe, image, coords, text_list,
+        names = None
+        ):
         ttk.Frame.__init__(self, master=mainframe)
         self.master.title('Click to choose polygons.')
         self.text_list = copy.deepcopy(text_list)
@@ -187,8 +190,19 @@ class Name_Polygons(ttk.Frame):
         self.canvas.pack(expand = 'yes', fill = 'both')
         self.canvas.update()
 
+        self.com = []
+        for i in range(len(self.coords)):
+            M = cv.moments(self.coords[i])
+            try:
+                self.com.append([int(M['m10']/M['m00']), int(M['m01']/M['m00'])])
+            except:
+                self.com.append([])
+
         self.highlighted = np.array([False]*len(self.coords))
-        self.names = ['No label']*len(self.coords)
+        if not names:
+            names = ['No label']*len(self.coords)
+        self.names = names
+        self.names_r = [None]*len(self.coords)
         self.label_objects = np.zeros(image.shape[:2])
         for i in range(len(self.coords)):
             self.label_objects = cv.drawContours(
@@ -207,6 +221,14 @@ class Name_Polygons(ttk.Frame):
 
         self.canvas.create_image(0, 0, image = ph, anchor = 'nw')
         self.canvas.ph = ph
+
+        for i in range(len(self.coords)):
+            if self.com[i]:
+                self.names_r[i] = self.canvas.create_text(
+                    self.com[i][0], self.com[i][1], anchor='w',
+                    text=self.names[i],
+                    fill='red', font=('Times New Roman', 12)
+                )
 
         self.canvas.bind("<Button 1>", self.highlight_poly)
 
@@ -248,6 +270,15 @@ class Name_Polygons(ttk.Frame):
                 elif self.app.v.get() == -1:
                     self.names[ind-1] = self.app.n.get()
                     self.text_list.append(self.app.n.get())
+
+            for i in range(len(self.coords)):
+                if self.com[i]:
+                    self.canvas.delete(self.names_r[i])
+                    self.names_r[i] = self.canvas.create_text(
+                        self.com[i][0], self.com[i][1], anchor='w',
+                        text=self.names[i],
+                        fill='red', font=('Times New Roman', 12)
+                    )
 
 class Name_Polygons_Popup():
     def __init__(
@@ -455,11 +486,9 @@ class Define_Training_Regions(ttk.Frame):
             )
 
 class Get_Legend_Box(ttk.Frame):
-    def __init__(self, mainframe, image):
+    def __init__(self, mainframe, image, title):
         ttk.Frame.__init__(self, master=mainframe)
-        self.master.title(
-            'Click to select top left and bottom right corners of legend box.'
-        )
+        self.master.title(title)
 
         self.canvas = tk.Canvas(
             self.master, width=100, height=100, cursor='tcross'

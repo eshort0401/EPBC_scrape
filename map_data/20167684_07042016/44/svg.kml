@@ -1,0 +1,787 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="3391">
+        <name>44_svg_extracted</name>
+        <Folder id="3485">
+            <Style id="3392">
+                <LineStyle id="3393">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3394">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3395">
+                <LineStyle id="3396">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3397">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3398">
+                <LineStyle id="3399">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3400">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3401">
+                <LineStyle id="3402">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3403">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3404">
+                <LineStyle id="3405">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3406">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3407">
+                <LineStyle id="3408">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3409">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3410">
+                <LineStyle id="3411">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3412">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3413">
+                <LineStyle id="3414">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3415">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3416">
+                <LineStyle id="3417">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3418">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3419">
+                <LineStyle id="3420">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3421">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Development site</name>
+            <Placemark id="3487">
+                <name>Development site 1</name>
+                <styleUrl>#3392</styleUrl>
+                <Polygon id="3486">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3488">
+                            <coordinates>150.60547771313796,-33.902623354724476,1.0 150.60536803926527,-33.90338922493323,1.0 150.6016863832761,-33.903278348176485,1.0 150.60155349998215,-33.90312534174931,1.0 150.5998553476162,-33.90114898896576,1.0 150.60038256561936,-33.89506069398581,1.0 150.60047031798752,-33.89507336150476,1.0 150.60054346487752,-33.8950860448364,1.0 150.60241499756856,-33.89530098152837,1.0 150.60267825467307,-33.89533898408521,1.0 150.60267837417226,-33.89535174648033,1.0 150.60266436619017,-33.89541557426862,1.0 150.602664844187,-33.8954666238491,1.0 150.60547771313796,-33.902623354724476,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3491">
+                <name>Development site 2</name>
+                <styleUrl>#3395</styleUrl>
+                <Polygon id="3490">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3492">
+                            <coordinates>150.602664844187,-33.8954666238491,1.0 150.6026649636862,-33.89547938624422,1.0 150.6026649636862,-33.89547938624422,1.0 150.6026649636862,-33.89547938624422,1.0 150.60266508318543,-33.89549214863934,1.0 150.60266508318543,-33.89549214863934,1.0 150.60266508318543,-33.89549214863934,1.0 150.60266508318543,-33.89549214863934,1.0 150.60266520268462,-33.89550491103446,1.0 150.60266520268462,-33.89550491103446,1.0 150.60266520268462,-33.89550491103446,1.0 150.60266532218384,-33.89551767342958,1.0 150.60265071670568,-33.895517689242276,1.0 150.60265071670568,-33.895517689242276,1.0 150.60265071670568,-33.895517689242276,1.0 150.6026508362049,-33.89553045163739,1.0 150.6026508362049,-33.89553045163739,1.0 150.6026508362049,-33.89553045163739,1.0 150.6026509557041,-33.895543214032514,1.0 150.6026509557041,-33.895543214032514,1.0 150.6026509557041,-33.895543214032514,1.0 150.6026509557041,-33.895543214032514,1.0 150.6026510752033,-33.89555597642763,1.0 150.6026510752033,-33.89555597642763,1.0 150.6026510752033,-33.89555597642763,1.0 150.60265119470253,-33.89556873882275,1.0 150.60265119470253,-33.89556873882275,1.0 150.60265119470253,-33.89556873882275,1.0 150.60263670872357,-33.89558151703057,1.0 150.60263670872357,-33.89558151703057,1.0 150.602664844187,-33.8954666238491,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3495">
+                <name>Development site 3</name>
+                <styleUrl>#3398</styleUrl>
+                <Polygon id="3494">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3496">
+                            <coordinates>150.60263670872357,-33.89558151703057,1.0 150.60271093110646,-33.89570906191829,1.0 150.60271093110646,-33.89570906191829,1.0 150.6027852729886,-33.89584936920113,1.0 150.6028447703941,-33.89596416750642,1.0 150.6028448898933,-33.89597692990154,1.0 150.6028448898933,-33.89597692990154,1.0 150.6028597343699,-33.89600243887909,1.0 150.60287445934728,-33.89601518546151,1.0 150.6029490402278,-33.89618101753459,1.0 150.60297860968174,-33.89621927309455,1.0 150.60297872918096,-33.896232035489675,1.0 150.60297884868018,-33.89624479788479,1.0 150.60300853763334,-33.89629581583988,1.0 150.60300853763334,-33.89629581583988,1.0 150.6030381070873,-33.89633407139985,1.0 150.6030531905623,-33.89638510516763,1.0 150.60306803503886,-33.896410614145175,1.0 150.60308287951545,-33.896436123122726,1.0 150.6031125684686,-33.89648714107781,1.0 150.603142376921,-33.89655092142801,1.0 150.60315710189835,-33.89656366801044,1.0 150.60317206587413,-33.8966019393831,1.0 150.6032017548273,-33.89665295733819,1.0 150.6032017548273,-33.89665295733819,1.0 150.60320187432652,-33.896665719733306,1.0 150.60320187432652,-33.896665719733306,1.0 150.60321659930386,-33.896678466315734,1.0 150.60321659930386,-33.896678466315734,1.0 150.60324640775625,-33.896742246665944,1.0 150.60324652725544,-33.89675500906106,1.0 150.60326137173203,-33.896780518038604,1.0 150.60326137173203,-33.896780518038604,1.0 150.60326137173203,-33.896780518038604,1.0 150.60327609670944,-33.89679326462103,1.0 150.60327621620863,-33.896806027016154,1.0 150.60329106068522,-33.8968315359937,1.0 150.60330566616338,-33.896831520181,1.0 150.60334972159626,-33.89685699753315,1.0 150.60336432707442,-33.896856981720454,1.0 150.60348164889655,-33.89690790479936,1.0 150.60356964026315,-33.896946097108554,1.0 150.60356964026315,-33.896946097108554,1.0 150.60359897071865,-33.89695882787828,1.0 150.6036135761968,-33.896958812065584,1.0 150.6036135761968,-33.896958812065584,1.0 150.60362830117418,-33.89697155864801,1.0 150.60365763162972,-33.89698428941773,1.0 150.60365763162972,-33.89698428941773,1.0 150.6036722371079,-33.896984273605035,1.0 150.60370168706262,-33.897009766769884,1.0 150.60370168706262,-33.897009766769884,1.0 150.60370168706262,-33.897009766769884,1.0 150.60371641204,-33.89702251335231,1.0 150.6037605869721,-33.89706075309959,1.0 150.60263670872357,-33.89558151703057,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3499">
+                <name>Development site 4</name>
+                <styleUrl>#3401</styleUrl>
+                <Polygon id="3498">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3500">
+                            <coordinates>150.60380476190423,-33.89709899284686,1.0 150.60380476190423,-33.89709899284686,1.0 150.60380476190423,-33.89709899284686,1.0 150.60381948688158,-33.89711173942928,1.0 150.60381948688158,-33.89711173942928,1.0 150.60381948688158,-33.89711173942928,1.0 150.60381948688158,-33.89711173942928,1.0 150.6038196063808,-33.89712450182439,1.0 150.60383421185895,-33.8971244860117,1.0 150.60383421185895,-33.8971244860117,1.0 150.60383433135817,-33.89713724840682,1.0 150.60384893683633,-33.897137232594126,1.0 150.60384893683633,-33.897137232594126,1.0 150.60384893683633,-33.897137232594126,1.0 150.60384905633552,-33.89714999498924,1.0 150.60384905633552,-33.89714999498924,1.0 150.60386366181368,-33.89714997917655,1.0 150.6038637813129,-33.89716274157167,1.0 150.6038637813129,-33.89716274157167,1.0 150.60387838679105,-33.897162725758974,1.0 150.60387850629027,-33.8971754881541,1.0 150.60387850629027,-33.8971754881541,1.0 150.60389311176843,-33.8971754723414,1.0 150.60389311176843,-33.8971754723414,1.0 150.60389323126762,-33.89718823473652,1.0 150.60389323126762,-33.89718823473652,1.0 150.60389323126762,-33.89718823473652,1.0 150.60380476190423,-33.89709899284686,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3503">
+                <name>Development site 5</name>
+                <styleUrl>#3404</styleUrl>
+                <Polygon id="3502">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3504">
+                            <coordinates>150.6039669756537,-33.89726473004376,1.0 150.6039669756537,-33.89726473004376,1.0 150.60398170063107,-33.897277476626186,1.0 150.60398170063107,-33.897277476626186,1.0 150.60398170063107,-33.897277476626186,1.0 150.60398170063107,-33.897277476626186,1.0 150.6039818201303,-33.8972902390213,1.0 150.6039818201303,-33.8972902390213,1.0 150.60399642560844,-33.8972902232086,1.0 150.60399654510766,-33.89730298560372,1.0 150.60399654510766,-33.89730298560372,1.0 150.60399654510766,-33.89730298560372,1.0 150.60401115058582,-33.89730296979103,1.0 150.604011270085,-33.89731573218615,1.0 150.604011270085,-33.89731573218615,1.0 150.604011270085,-33.89731573218615,1.0 150.60401138958423,-33.89732849458127,1.0 150.6040259950624,-33.89732847876857,1.0 150.6040259950624,-33.89732847876857,1.0 150.6040259950624,-33.89732847876857,1.0 150.6040261145616,-33.897341241163694,1.0 150.60404072003976,-33.897341225351,1.0 150.60404072003976,-33.897341225351,1.0 150.60404083953895,-33.897353987746115,1.0 150.60404083953895,-33.897353987746115,1.0 150.60404083953895,-33.897353987746115,1.0 150.60404083953895,-33.897353987746115,1.0 150.60405556451633,-33.89736673432854,1.0 150.60405556451633,-33.89736673432854,1.0 150.60405556451633,-33.89736673432854,1.0 150.60405568401555,-33.89737949672366,1.0 150.60407028949373,-33.89737948091096,1.0 150.60407028949373,-33.89737948091096,1.0 150.6039669756537,-33.89726473004376,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3507">
+                <name>Development site 6</name>
+                <styleUrl>#3407</styleUrl>
+                <Polygon id="3506">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3508">
+                            <coordinates>150.6041295479008,-33.89746875442602,1.0 150.60412966740003,-33.897481516821145,1.0 150.60412966740003,-33.897481516821145,1.0 150.6041443923774,-33.897494263403566,1.0 150.6041443923774,-33.897494263403566,1.0 150.6041443923774,-33.897494263403566,1.0 150.60415899785556,-33.89749424759086,1.0 150.60415911735475,-33.897507009985986,1.0 150.60415923685397,-33.8975197723811,1.0 150.6041295479008,-33.89746875442602,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3511">
+                <name>Development site 7</name>
+                <styleUrl>#3410</styleUrl>
+                <Polygon id="3510">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3512">
+                            <coordinates>150.60417408133054,-33.89754528135865,1.0 150.6041886868087,-33.89754526554596,1.0 150.6041886868087,-33.89754526554596,1.0 150.60418880630792,-33.89755802794107,1.0 150.60418880630792,-33.89755802794107,1.0 150.60418880630792,-33.89755802794107,1.0 150.60418892580714,-33.8975707903362,1.0 150.60420353128532,-33.8975707745235,1.0 150.60420353128532,-33.8975707745235,1.0 150.60420353128532,-33.8975707745235,1.0 150.6042036507845,-33.89758353691862,1.0 150.6042036507845,-33.89758353691862,1.0 150.6042036507845,-33.89758353691862,1.0 150.60420377028373,-33.89759629931374,1.0 150.6042183757619,-33.897596283501045,1.0 150.6042183757619,-33.897596283501045,1.0 150.6042183757619,-33.897596283501045,1.0 150.6042184952611,-33.89760904589616,1.0 150.6042184952611,-33.89760904589616,1.0 150.6042184952611,-33.89760904589616,1.0 150.60423322023846,-33.89762179247859,1.0 150.60423322023846,-33.89762179247859,1.0 150.60423322023846,-33.89762179247859,1.0 150.60423333973768,-33.897634554873704,1.0 150.60423333973768,-33.897634554873704,1.0 150.60423333973768,-33.897634554873704,1.0 150.60423333973768,-33.897634554873704,1.0 150.6042334592369,-33.89764731726883,1.0 150.60424806471505,-33.89764730145613,1.0 150.60424806471505,-33.89764730145613,1.0 150.60424818421424,-33.89766006385125,1.0 150.60424818421424,-33.89766006385125,1.0 150.60424818421424,-33.89766006385125,1.0 150.60424818421424,-33.89766006385125,1.0 150.60426290919162,-33.897672810433676,1.0 150.60426290919162,-33.897672810433676,1.0 150.60426290919162,-33.897672810433676,1.0 150.60426302869084,-33.8976855728288,1.0 150.60417408133054,-33.89754528135865,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3515">
+                <name>Development site 8</name>
+                <styleUrl>#3413</styleUrl>
+                <Polygon id="3514">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3516">
+                            <coordinates>150.6043376095714,-33.89785140490187,1.0 150.60436741802374,-33.897915185252074,1.0 150.60436741802374,-33.897915185252074,1.0 150.6044125489495,-33.89805552416031,1.0 150.60442715442767,-33.89805550834762,1.0 150.6044724048527,-33.898208609650965,1.0 150.60453226075586,-33.89836169514162,1.0 150.60457751118085,-33.898514796444964,1.0 150.6045922361582,-33.89852754302739,1.0 150.6045922361582,-33.89852754302739,1.0 150.6046523310598,-33.89870615330829,1.0 150.60475707889034,-33.89897405291693,1.0 150.6048022098161,-33.89911439182516,1.0 150.60484710174347,-33.89922920594314,1.0 150.6048472212427,-33.899241968338266,1.0 150.60486194622007,-33.89925471492069,1.0 150.60489187417167,-33.89933125766602,1.0 150.60490695764665,-33.8993822914338,1.0 150.6049071966451,-33.89940781622404,1.0 150.6049073161443,-33.899420578619164,1.0 150.6049074356435,-33.89943334101428,1.0 150.60490827213798,-33.89952267778012,1.0 150.60490898913324,-33.899599252150836,1.0 150.60490946713008,-33.89965030173132,1.0 150.60491006462613,-33.899714113706914,1.0 150.60491006462613,-33.899714113706914,1.0 150.60489653464086,-33.89982899107569,1.0 150.6048971321369,-33.89989280305129,1.0 150.60489725163612,-33.89990556544641,1.0 150.60489737113534,-33.899918327841526,1.0 150.60489796863138,-33.899982139817126,1.0 150.60489844662823,-33.900033189397604,1.0 150.60489856612745,-33.90004595179273,1.0 150.60489868562664,-33.90005871418784,1.0 150.6043376095714,-33.89785140490187,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3519">
+                <name>Development site 9</name>
+                <styleUrl>#3416</styleUrl>
+                <Polygon id="3518">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3520">
+                            <coordinates>150.60489868562664,-33.90005871418784,1.0 150.6049132911048,-33.90005869837515,1.0 150.6049132911048,-33.90005869837515,1.0 150.6049132911048,-33.90005869837515,1.0 150.60492789658295,-33.90005868256245,1.0 150.60492789658295,-33.90005868256245,1.0 150.60492789658295,-33.90005868256245,1.0 150.60492789658295,-33.90005868256245,1.0 150.6049425020611,-33.90005866674976,1.0 150.6049425020611,-33.90005866674976,1.0 150.6049425020611,-33.90005866674976,1.0 150.60495710753926,-33.90005865093706,1.0 150.60495710753926,-33.90005865093706,1.0 150.60495710753926,-33.90005865093706,1.0 150.60497171301742,-33.90005863512437,1.0 150.60497171301742,-33.90005863512437,1.0 150.60497171301742,-33.90005863512437,1.0 150.60497171301742,-33.90005863512437,1.0 150.60498631849558,-33.90005861931167,1.0 150.60498631849558,-33.90005861931167,1.0 150.60498631849558,-33.90005861931167,1.0 150.60500092397373,-33.90005860349898,1.0 150.60500092397373,-33.90005860349898,1.0 150.60500092397373,-33.90005860349898,1.0 150.60500092397373,-33.90005860349898,1.0 150.6050155294519,-33.900058587686274,1.0 150.6050155294519,-33.900058587686274,1.0 150.6050155294519,-33.900058587686274,1.0 150.60503013493008,-33.90005857187358,1.0 150.60503013493008,-33.90005857187358,1.0 150.60503013493008,-33.90005857187358,1.0 150.60503013493008,-33.90005857187358,1.0 150.60489868562664,-33.90005871418784,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3523">
+                <name>Development site 10</name>
+                <styleUrl>#3419</styleUrl>
+                <Polygon id="3522">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3524">
+                            <coordinates>150.60503013493008,-33.90005857187358,1.0 150.60524957560008,-33.90009662186851,1.0 150.60526418107824,-33.90009660605581,1.0 150.60529339203458,-33.90009657443042,1.0 150.60586372267807,-33.900172532106,1.0 150.60582169873175,-33.900364015470885,1.0 150.60551878109058,-33.902329772198634,1.0 150.60547771313796,-33.902623354724476,1.0 150.60503013493008,-33.90005857187358,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="3526">
+            <Style id="3422">
+                <LineStyle id="3423">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3424">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3425">
+                <LineStyle id="3426">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3427">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3428">
+                <LineStyle id="3429">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3430">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3431">
+                <LineStyle id="3432">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3433">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3434">
+                <LineStyle id="3435">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3436">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3437">
+                <LineStyle id="3438">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3439">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3440">
+                <LineStyle id="3441">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3442">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3443">
+                <LineStyle id="3444">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3445">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3446">
+                <LineStyle id="3447">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3448">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3449">
+                <LineStyle id="3450">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3451">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3452">
+                <LineStyle id="3453">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3454">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3455">
+                <LineStyle id="3456">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3457">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3458">
+                <LineStyle id="3459">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3460">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3461">
+                <LineStyle id="3462">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3463">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3464">
+                <LineStyle id="3465">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3466">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3467">
+                <LineStyle id="3468">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3469">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3470">
+                <LineStyle id="3471">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3472">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3473">
+                <LineStyle id="3474">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3475">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3476">
+                <LineStyle id="3477">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3478">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3479">
+                <LineStyle id="3480">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3481">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3482">
+                <LineStyle id="3483">
+                    <color>ff6e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3484">
+                    <color>806e6e6e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Current Survey (Biosis 2015) &quot; )</name>
+            <Placemark id="3528">
+                <name>Current Survey (Biosis 2015) &quot; ) 1</name>
+                <styleUrl>#3422</styleUrl>
+                <Polygon id="3527">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3529">
+                            <coordinates>150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0 150.6036218879925,-33.900966235758574,1.0 150.6035050441672,-33.90096636226014,1.0 150.60350408817354,-33.90086426309919,1.0 150.6035186936517,-33.900864247286485,1.0 150.6035186936517,-33.900864247286485,1.0 150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3532">
+                <name>Current Survey (Biosis 2015) &quot; ) 2</name>
+                <styleUrl>#3425</styleUrl>
+                <Polygon id="3531">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3533">
+                            <coordinates>150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0 150.6036218879925,-33.900966235758574,1.0 150.6035050441672,-33.90096636226014,1.0 150.60350408817354,-33.90086426309919,1.0 150.6035186936517,-33.900864247286485,1.0 150.6035186936517,-33.900864247286485,1.0 150.60362093199882,-33.90086413659762,1.0 150.60362093199882,-33.90086413659762,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3536">
+                <name>Current Survey (Biosis 2015) &quot; ) 3</name>
+                <styleUrl>#3428</styleUrl>
+                <Polygon id="3535">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3537">
+                            <coordinates>150.6007249577755,-33.90199037409461,1.0 150.6007249577755,-33.90199037409461,1.0 150.6007249577755,-33.90199037409461,1.0 150.6007259137692,-33.90209247325557,1.0 150.6006090699439,-33.90209259975714,1.0 150.60060811395022,-33.90199050059618,1.0 150.60060811395022,-33.90199050059618,1.0 150.60060811395022,-33.90199050059618,1.0 150.6007249577755,-33.90199037409461,1.0 150.6007249577755,-33.90199037409461,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3540">
+                <name>Current Survey (Biosis 2015) &quot; ) 4</name>
+                <styleUrl>#3431</styleUrl>
+                <Polygon id="3539">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3541">
+                            <coordinates>150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025340000203,-33.901544196271686,1.0 150.60013655617678,-33.901544322773255,1.0 150.60013655617678,-33.901544322773255,1.0 150.60013560018308,-33.9014422236123,1.0 150.60013560018308,-33.9014422236123,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3544">
+                <name>Current Survey (Biosis 2015) &quot; ) 5</name>
+                <styleUrl>#3434</styleUrl>
+                <Polygon id="3543">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3545">
+                            <coordinates>150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025340000203,-33.901544196271686,1.0 150.60013655617678,-33.901544322773255,1.0 150.60013655617678,-33.901544322773255,1.0 150.60013560018308,-33.9014422236123,1.0 150.60013560018308,-33.9014422236123,1.0 150.60025244400833,-33.90144209711073,1.0 150.60025244400833,-33.90144209711073,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3548">
+                <name>Current Survey (Biosis 2015) &quot; ) 6</name>
+                <styleUrl>#3437</styleUrl>
+                <Polygon id="3547">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3549">
+                            <coordinates>150.6001786996223,-33.901365601803484,1.0 150.600061855797,-33.90136572830505,1.0 150.60006089980334,-33.9012636291441,1.0 150.60006089980334,-33.9012636291441,1.0 150.60017774362862,-33.90126350264253,1.0 150.60017774362862,-33.90126350264253,1.0 150.6001786996223,-33.901365601803484,1.0 150.6001786996223,-33.901365601803484,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3552">
+                <name>Current Survey (Biosis 2015) &quot; ) 7</name>
+                <styleUrl>#3440</styleUrl>
+                <Polygon id="3551">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3553">
+                            <coordinates>150.6001786996223,-33.901365601803484,1.0 150.600061855797,-33.90136572830505,1.0 150.60006089980334,-33.9012636291441,1.0 150.60006089980334,-33.9012636291441,1.0 150.60017774362862,-33.90126350264253,1.0 150.60017774362862,-33.90126350264253,1.0 150.6001786996223,-33.901365601803484,1.0 150.6001786996223,-33.901365601803484,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3556">
+                <name>Current Survey (Biosis 2015) &quot; ) 8</name>
+                <styleUrl>#3443</styleUrl>
+                <Polygon id="3555">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3557">
+                            <coordinates>150.60035557199896,-33.898417267153086,1.0 150.6002387281737,-33.898417393654654,1.0 150.6002387281737,-33.898417393654654,1.0 150.60023777218004,-33.8983152944937,1.0 150.6003546160053,-33.89831516799213,1.0 150.6003546160053,-33.89831516799213,1.0 150.60035557199896,-33.898417267153086,1.0 150.60035557199896,-33.898417267153086,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3560">
+                <name>Current Survey (Biosis 2015) &quot; ) 9</name>
+                <styleUrl>#3446</styleUrl>
+                <Polygon id="3559">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3561">
+                            <coordinates>150.60035557199896,-33.898417267153086,1.0 150.6002387281737,-33.898417393654654,1.0 150.6002387281737,-33.898417393654654,1.0 150.60023777218004,-33.8983152944937,1.0 150.6003546160053,-33.89831516799213,1.0 150.6003546160053,-33.89831516799213,1.0 150.60035557199896,-33.898417267153086,1.0 150.60035557199896,-33.898417267153086,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3564">
+                <name>Current Survey (Biosis 2015) &quot; ) 10</name>
+                <styleUrl>#3449</styleUrl>
+                <Polygon id="3563">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3565">
+                            <coordinates>150.60047770036402,-33.89742165801948,1.0 150.60036085653877,-33.89742178452105,1.0 150.60035990054507,-33.897319685360095,1.0 150.60035990054507,-33.897319685360095,1.0 150.60047674437033,-33.89731955885853,1.0 150.60047674437033,-33.89731955885853,1.0 150.60047770036402,-33.89742165801948,1.0 150.60047770036402,-33.89742165801948,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3568">
+                <name>Current Survey (Biosis 2015) &quot; ) 11</name>
+                <styleUrl>#3452</styleUrl>
+                <Polygon id="3567">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3569">
+                            <coordinates>150.6007786794433,-33.89680873098713,1.0 150.600661835618,-33.89680885748869,1.0 150.60066087962434,-33.89670675832773,1.0 150.60066087962434,-33.89670675832773,1.0 150.60077772344962,-33.89670663182617,1.0 150.60077772344962,-33.89670663182617,1.0 150.6007786794433,-33.89680873098713,1.0 150.6007786794433,-33.89680873098713,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3572">
+                <name>Current Survey (Biosis 2015) &quot; ) 12</name>
+                <styleUrl>#3455</styleUrl>
+                <Polygon id="3571">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3573">
+                            <coordinates>150.6013653151284,-33.89550631836438,1.0 150.6013653151284,-33.89550631836438,1.0 150.6013653151284,-33.89550631836438,1.0 150.6013662711221,-33.895608417525345,1.0 150.6012494272968,-33.89560854402691,1.0 150.6012484713031,-33.89550644486595,1.0 150.60126307678127,-33.895506429053256,1.0 150.60126307678127,-33.895506429053256,1.0 150.6013653151284,-33.89550631836438,1.0 150.6013653151284,-33.89550631836438,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3576">
+                <name>Current Survey (Biosis 2015) &quot; ) 13</name>
+                <styleUrl>#3458</styleUrl>
+                <Polygon id="3575">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3577">
+                            <coordinates>150.60228086613344,-33.898134407184614,1.0 150.60228098563266,-33.89814716957973,1.0 150.60228098563266,-33.89814716957973,1.0 150.60228182212714,-33.89823650634557,1.0 150.60216497830186,-33.89823663284713,1.0 150.60216414180738,-33.89814729608129,1.0 150.60217874728554,-33.898147280268596,1.0 150.60217862778632,-33.89813451787348,1.0 150.60228086613344,-33.898134407184614,1.0 150.60228086613344,-33.898134407184614,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3580">
+                <name>Current Survey (Biosis 2015) &quot; ) 14</name>
+                <styleUrl>#3461</styleUrl>
+                <Polygon id="3579">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3581">
+                            <coordinates>150.60383071980735,-33.898311404570535,1.0 150.60371387598207,-33.8983115310721,1.0 150.60371291998837,-33.89820943191114,1.0 150.60371291998837,-33.89820943191114,1.0 150.60382976381365,-33.89820930540957,1.0 150.60382976381365,-33.89820930540957,1.0 150.60383071980735,-33.898311404570535,1.0 150.60383071980735,-33.898311404570535,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3584">
+                <name>Current Survey (Biosis 2015) &quot; ) 15</name>
+                <styleUrl>#3464</styleUrl>
+                <Polygon id="3583">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3585">
+                            <coordinates>150.60321092969195,-33.89919268977972,1.0 150.60309408586667,-33.899192816281285,1.0 150.603093129873,-33.89909071712032,1.0 150.603093129873,-33.89909071712032,1.0 150.60319536822013,-33.89909060643145,1.0 150.60320997369828,-33.899090590618755,1.0 150.60321092969195,-33.89919268977972,1.0 150.60321092969195,-33.89919268977972,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3588">
+                <name>Current Survey (Biosis 2015) &quot; ) 16</name>
+                <styleUrl>#3467</styleUrl>
+                <Polygon id="3587">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3589">
+                            <coordinates>150.60220819724026,-33.89817277343345,1.0 150.602091353415,-33.89817289993502,1.0 150.60209039742134,-33.89807080077406,1.0 150.6021050028995,-33.89807078496136,1.0 150.6022072412466,-33.89807067427249,1.0 150.6022072412466,-33.89807067427249,1.0 150.60220819724026,-33.89817277343345,1.0 150.60220819724026,-33.89817277343345,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3592">
+                <name>Current Survey (Biosis 2015) &quot; ) 17</name>
+                <styleUrl>#3470</styleUrl>
+                <Polygon id="3591">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3593">
+                            <coordinates>150.60291774463587,-33.899078144477556,1.0 150.6028009008106,-33.899078270979125,1.0 150.6028007813114,-33.899065508584,1.0 150.60279994481692,-33.89897617181816,1.0 150.6029167886422,-33.898976045316594,1.0 150.6029167886422,-33.898976045316594,1.0 150.60291774463587,-33.899078144477556,1.0 150.60291774463587,-33.899078144477556,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3596">
+                <name>Current Survey (Biosis 2015) &quot; ) 18</name>
+                <styleUrl>#3473</styleUrl>
+                <Polygon id="3595">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3597">
+                            <coordinates>150.6052578210456,-33.90097722713177,1.0 150.60512637174216,-33.90097736944603,1.0 150.60512541574846,-33.90087527028507,1.0 150.60514002122662,-33.900875254472375,1.0 150.60524225957374,-33.9008751437835,1.0 150.6052568650519,-33.90087512797081,1.0 150.6052578210456,-33.90097722713177,1.0 150.6052578210456,-33.90097722713177,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3600">
+                <name>Current Survey (Biosis 2015) &quot; ) 19</name>
+                <styleUrl>#3476</styleUrl>
+                <Polygon id="3599">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3601">
+                            <coordinates>150.6052578210456,-33.90097722713177,1.0 150.60512637174216,-33.90097736944603,1.0 150.60512541574846,-33.90087527028507,1.0 150.60514002122662,-33.900875254472375,1.0 150.60524225957374,-33.9008751437835,1.0 150.6052568650519,-33.90087512797081,1.0 150.6052578210456,-33.90097722713177,1.0 150.6052578210456,-33.90097722713177,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3604">
+                <name>Current Survey (Biosis 2015) &quot; ) 20</name>
+                <styleUrl>#3479</styleUrl>
+                <Polygon id="3603">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3605">
+                            <coordinates>150.6024331614485,-33.897240865586575,1.0 150.6023163176232,-33.897240992088136,1.0 150.60231536162954,-33.89713889292718,1.0 150.60231536162954,-33.89713889292718,1.0 150.60243220545482,-33.89713876642562,1.0 150.60243220545482,-33.89713876642562,1.0 150.6024331614485,-33.897240865586575,1.0 150.6024331614485,-33.897240865586575,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3608">
+                <name>Current Survey (Biosis 2015) &quot; ) 21</name>
+                <styleUrl>#3482</styleUrl>
+                <Polygon id="3607">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3609">
+                            <coordinates>150.60342908244522,-33.89753332541102,1.0 150.60331223861994,-33.89753345191259,1.0 150.60331128262624,-33.89743135275163,1.0 150.60331128262624,-33.89743135275163,1.0 150.60342812645152,-33.89743122625006,1.0 150.60342812645152,-33.89743122625006,1.0 150.60342908244522,-33.89753332541102,1.0 150.60342908244522,-33.89753332541102,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>
