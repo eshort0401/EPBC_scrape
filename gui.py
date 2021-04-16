@@ -57,6 +57,9 @@ class Choose_Points(ttk.Frame):
         self.canvas.bind('<Button-5>',   self.wheel)  # only with Linux, wheel scroll down
         self.canvas.bind('<Button-4>',   self.wheel)  # only with Linux, wheel scroll up
         self.canvas.bind('<ButtonPress-3>', self.record_point)
+        self.canvas.bind('<d>', self.quit)
+        self.canvas.focus_set()
+
         self.image = Image.open(path)  # open image
         self.width, self.height = self.image.size
         self.imscale = 1.0  # scale for the canvaas image
@@ -64,6 +67,9 @@ class Choose_Points(ttk.Frame):
         # Put image into container rectangle and use it to set proper coordinates to the image
         self.container = self.canvas.create_rectangle(0, 0, self.width, self.height, width=0)
         self.show_image()
+
+    def quit(self, event):
+        self.master.destroy()
 
     def scroll_y(self, *args, **kwargs):
         ''' Scroll canvas vertically and redraw the image '''
@@ -128,6 +134,7 @@ class Choose_Points(ttk.Frame):
                 self.new_window, self.text_list
             )
             self.master.wait_window(self.new_window)
+            self.canvas.focus_set()
 
             if 0 <= self.app.v.get() < len(self.text_list):
                 name = self.text_list[self.app.v.get()]
@@ -137,7 +144,7 @@ class Choose_Points(ttk.Frame):
             self.canvas.create_text(
                 x_plot+10*self.imscale, y_plot, anchor='w',
                 text='(' + str(x) + ', ' + str(y) + ') ' + name,
-                fill='red', font=('Times New Roman', 12)
+                fill='red', font=('Arial', 14, 'bold')
             )
             self.points.append((x, y))
             self.names.append(name)
@@ -196,7 +203,7 @@ class Name_Polygons(ttk.Frame):
             try:
                 self.com.append([int(M['m10']/M['m00']), int(M['m01']/M['m00'])])
             except:
-                self.com.append([])
+                self.com.append(self.coords[i][0].flatten().tolist())
 
         self.highlighted = np.array([False]*len(self.coords))
         if not names:
@@ -227,12 +234,16 @@ class Name_Polygons(ttk.Frame):
                 self.names_r[i] = self.canvas.create_text(
                     self.com[i][0], self.com[i][1], anchor='w',
                     text=self.names[i],
-                    fill='red', font=('Times New Roman', 12)
+                    fill='red', font=('Arial', 14, 'bold')
                 )
 
         self.canvas.bind("<Button 1>", self.highlight_poly)
+        self.canvas.bind('<d>', self.quit)
+        self.canvas.focus_set()
 
-    #function to be called when mouse is clicked
+    def quit(self, event):
+        self.master.destroy()
+
     def highlight_poly(self, event):
 
         x, y = [event.x, event.y]
@@ -264,6 +275,7 @@ class Name_Polygons(ttk.Frame):
                 )
 
                 self.master.wait_window(self.new_window)
+                self.canvas.focus_set()
 
                 if 0 <= self.app.v.get() < len(self.text_list):
                     self.names[ind-1] = self.text_list[self.app.v.get()]
@@ -277,7 +289,7 @@ class Name_Polygons(ttk.Frame):
                     self.names_r[i] = self.canvas.create_text(
                         self.com[i][0], self.com[i][1], anchor='w',
                         text=self.names[i],
-                        fill='red', font=('Times New Roman', 12)
+                        fill='red', font=('Arial', 14, 'bold')
                     )
 
 class Name_Polygons_Popup():
@@ -326,7 +338,7 @@ class Name_Polygons_Popup():
         self.frame.pack()
 
 class Define_Training_Regions(ttk.Frame):
-    def __init__(self, mainframe, image, text_list):
+    def __init__(self, mainframe, image, text_list, legend=None):
         ttk.Frame.__init__(self, master=mainframe)
         self.label = 0
         self.names = ['Backgound']
@@ -336,7 +348,7 @@ class Define_Training_Regions(ttk.Frame):
         self.text_list = text_list + ['Map background']
 
         self.canvas = tk.Canvas(
-            self.master, width=100, height=100, cursor='tcross'
+            self.master, width=image.shape[1], height=image.shape[0], cursor='tcross'
         )
         self.canvas.update()  # wait till canvas is created
 
@@ -360,7 +372,34 @@ class Define_Training_Regions(ttk.Frame):
         self.canvas.bind('<p>', self.previous_label)
         self.canvas.bind('<Right>', self.next_label)
         self.canvas.bind('<n>', self.next_label)
+        self.canvas.bind('<d>', self.quit)
         self.canvas.focus_set()
+
+        try:
+            shape = legend.shape
+        except:
+            shape = [0]
+
+        if len(shape) in [2,3]:
+            self.new_window = tk.Toplevel(self.master)
+            self.new_window.canvas = tk.Canvas(
+                self.new_window, width=legend.shape[1], height=legend.shape[0], cursor='tcross'
+            )
+            self.new_window.canvas.update()  # wait till canvas is created
+
+            self.new_window.canvas.pack(expand = 'yes', fill = 'both')
+
+            im = Image.fromarray(legend)
+            ph = ImageTk.PhotoImage(image=im)
+            self.new_window.canvas.ph = ph
+
+            self.new_window.canvas.create_image(0, 0, image = ph, anchor = 'nw')
+            self.new_window.canvas.ph = ph
+
+        self.canvas.focus_set()
+
+    def quit(self, event):
+        self.master.destroy()
 
     def draw_box(self, event):
         boxes = self.boxes[self.label]
@@ -428,11 +467,15 @@ class Define_Training_Regions(ttk.Frame):
                 self.p2 = None
 
     def next_label(self, event):
-        if len(self.boxes) < 10:
+        if len(self.boxes) < 20:
             self.canvas.delete(self.p1_r)
             self.canvas.delete(self.p2_r)
             self.p1 = None
             self.p2 = None
+
+            for box in self.boxes[self.label]:
+                self.canvas.delete(box[4])
+
             if self.label == len(self.boxes)-1:
 
                 self.boxes.append(np.array([[]]).reshape([0,5]).astype(int))
@@ -443,15 +486,13 @@ class Define_Training_Regions(ttk.Frame):
                     'Select name for new group of training boxes.'
                 )
                 self.master.wait_window(self.new_window)
+                self.canvas.focus_set()
 
                 if 0 <= self.app.v.get() < len(self.text_list):
                     self.names.append(self.text_list[self.app.v.get()])
                 elif self.app.v.get() == -1:
                     self.names.append(self.app.n.get())
                     self.text_list.append(self.app.n.get())
-
-            for box in self.boxes[self.label]:
-                self.canvas.delete(box[4])
 
             self.label += 1
 
@@ -494,8 +535,6 @@ class Get_Legend_Box(ttk.Frame):
             self.master, width=100, height=100, cursor='tcross'
         )
         self.canvas.update()  # wait till canvas is created
-
-
         self.canvas.pack(expand = 'yes', fill = 'both')
 
         im = Image.fromarray(image)
@@ -512,7 +551,11 @@ class Get_Legend_Box(ttk.Frame):
         self.p2_r = None
 
         self.canvas.bind("<Button 1>", self.draw_box)
+        self.canvas.bind('<d>', self.quit)
         self.canvas.focus_set()
+
+    def quit(self, event):
+        self.master.destroy()
 
     def draw_box(self, event):
 
