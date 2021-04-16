@@ -28,30 +28,35 @@ class AutoScrollbar(ttk.Scrollbar):
     def place(self, **kw):
         raise tk.TclError('Cannot use place with this widget')
 
-class Choose_Points(ttk.Frame):
+class Zoom_Scroll(ttk.Frame):
     ''' Advanced zoom of the image '''
-    def __init__(self, mainframe, path, text_list):
+    def __init__(self, mainframe, image, title='Zoom and Scroll'):
         ''' Initialize the main Frame '''
         ttk.Frame.__init__(self, master=mainframe)
-        self.master.title('Right click to choose points.')
+        self.master.title(title)
+        # Buttons
+        b_done = tk.Button(
+            self.master, text="Done (q)", command=self.quit
+        )
+        b_done.grid(row=0, column=0, sticky='w')
+        c = 10
         # Vertical and horizontal scrollbars for canvas
         vbar = AutoScrollbar(self.master, orient='vertical')
         hbar = AutoScrollbar(self.master, orient='horizontal')
-        vbar.grid(row=0, column=1, sticky='ns')
-        hbar.grid(row=1, column=0, sticky='we')
-        self.points = []
-        self.names = []
-        self.text_list = copy.deepcopy(text_list)
+        vbar.grid(row=1, column=c, sticky='ns')
+        hbar.grid(row=2, column=0, columnspan=c, sticky='we')
         # Create canvas and put image on it
-        self.canvas = tk.Canvas(self.master, highlightthickness=0,
-                                xscrollcommand=hbar.set, yscrollcommand=vbar.set)
-        self.canvas.grid(row=0, column=0, sticky='nswe')
+        self.canvas = tk.Canvas(
+            self.master, highlightthickness=0,
+            xscrollcommand=hbar.set, yscrollcommand=vbar.set
+        )
+        self.canvas.grid(row=1, column=0, columnspan=c, sticky='nswe')
         self.canvas.update()  # wait till canvas is created
         vbar.configure(command=self.scroll_y)  # bind scrollbars to the canvas
         hbar.configure(command=self.scroll_x)
         # Make the canvas expandable
-        self.master.rowconfigure(0, weight=1)
-        self.master.columnconfigure(0, weight=1)
+        self.master.rowconfigure(1, weight=1)
+        [self.master.columnconfigure(i, weight=1) for i in range(c)]
         # Bind events to the Canvas
         self.canvas.bind('<Configure>', self.show_image)  # canvas is resized
         self.canvas.bind('<ButtonPress-1>', self.move_from)
@@ -59,11 +64,10 @@ class Choose_Points(ttk.Frame):
         self.canvas.bind('<MouseWheel>', self.wheel)  # with Windows and MacOS, but not Linux
         self.canvas.bind('<Button-5>',   self.wheel)  # only with Linux, wheel scroll down
         self.canvas.bind('<Button-4>',   self.wheel)  # only with Linux, wheel scroll up
-        self.canvas.bind('<ButtonPress-3>', self.record_point)
-        self.canvas.bind('<d>', self.quit)
+        self.canvas.bind('<q>', self.quit)
         self.canvas.focus_set()
 
-        self.image = Image.open(path)  # open image
+        self.image = Image.fromarray(image)
         self.width, self.height = self.image.size
         self.imscale = 1.0  # scale for the canvaas image
         self.delta = 1.3  # zoom magnitude
@@ -71,7 +75,7 @@ class Choose_Points(ttk.Frame):
         self.container = self.canvas.create_rectangle(0, 0, self.width, self.height, width=0)
         self.show_image()
 
-    def quit(self, event):
+    def quit(self, event=None):
         self.master.destroy()
 
     def scroll_y(self, *args, **kwargs):
@@ -115,42 +119,13 @@ class Choose_Points(ttk.Frame):
         self.canvas.scale('all', x, y, scale, scale)  # rescale all canvas objects
         self.show_image()
 
-    def record_point(self, event):
-
-        ''' Show image on the Canvas '''
+    def get_coords(self, x, y):
         bbox = self.canvas.bbox(self.container)  # get image area
-        x_plot = self.canvas.canvasx(0) + event.x
-        y_plot = self.canvas.canvasy(0) + event.y
-        x = (x_plot - bbox[0])/self.imscale
-        y = (y_plot - bbox[1])/self.imscale
-        on_image = (0<=x<=self.image.size[0])*(0<=y<=self.image.size[1])
-
-        if on_image:
-            self.canvas.create_rectangle(
-                x_plot-2*self.imscale, y_plot-2*self.imscale,
-                x_plot+2*self.imscale, y_plot+2*self.imscale,
-                width=1, fill='red', outline='red'
-            )
-
-            self.new_window = tk.Toplevel(self.master)
-            self.app = Name_Polygons_Popup(
-                self.new_window, self.text_list
-            )
-            self.master.wait_window(self.new_window)
-            self.canvas.focus_set()
-
-            if 0 <= self.app.v.get() < len(self.text_list):
-                name = self.text_list[self.app.v.get()]
-            elif self.app.v.get() == -1:
-                name = self.app.n.get()
-
-            self.canvas.create_text(
-                x_plot+10*self.imscale, y_plot, anchor='w',
-                text='(' + str(x) + ', ' + str(y) + ') ' + name,
-                fill='red', font=('Arial', 14, 'bold')
-            )
-            self.points.append((x, y))
-            self.names.append(name)
+        x_plot = self.canvas.canvasx(0) + x
+        y_plot = self.canvas.canvasy(0) + y
+        x_true = (x_plot - bbox[0])/self.imscale
+        y_true = (y_plot - bbox[1])/self.imscale
+        return x_true, y_true, x_plot, y_plot
 
     def show_image(self, event=None):
         ''' Show image on the Canvas '''
@@ -183,6 +158,68 @@ class Choose_Points(ttk.Frame):
                                                anchor='nw', image=imagetk)
             self.canvas.lower(imageid)  # set image into background
             self.canvas.imagetk = imagetk  # keep an extra reference to prevent garbage-collection
+
+class Choose_Points(Zoom_Scroll):
+    def __init__(self, mainframe, image, text_list, title='Right click to record point.'):
+        Zoom_Scroll.__init__(self, mainframe, image, title=title)
+        self.points = []
+        self.names = []
+        self.points_r = []
+        self.names_r = []
+        self.text_list = copy.deepcopy(text_list)
+
+        b_delete = tk.Button(
+            self.master, text="Delete Last Point (d)", command=self.delete_last_point
+        )
+        b_delete.grid(row=0, column=1)
+
+        self.canvas.bind('<ButtonPress-3>', self.record_point)
+        self.canvas.bind('<d>', self.delete_last_point)
+        self.canvas.focus_set()
+
+    def delete_last_point(self, event=None):
+        if len(self.points) > 0:
+            self.points.pop()
+            self.names.pop()
+            self.canvas.delete(self.names_r[-1])
+            self.canvas.delete(self.points_r[-1])
+            self.names_r.pop()
+            self.points_r.pop()
+
+    def record_point(self, event):
+
+        ''' Show image on the Canvas '''
+        x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
+        on_image = (0<=x<=self.image.size[0])*(0<=y<=self.image.size[1])
+
+        if on_image:
+            r = self.canvas.create_rectangle(
+                x_plot-2*self.imscale, y_plot-2*self.imscale,
+                x_plot+2*self.imscale, y_plot+2*self.imscale,
+                width=1, fill='red', outline='red'
+            )
+            self.points_r.append(r)
+
+            self.new_window = tk.Toplevel(self.master)
+            self.app = Name_Polygons_Popup(
+                self.new_window, self.text_list
+            )
+            self.master.wait_window(self.new_window)
+            self.canvas.focus_set()
+
+            if 0 <= self.app.v.get() < len(self.text_list):
+                name = self.text_list[self.app.v.get()]
+            elif self.app.v.get() == -1:
+                name = self.app.n.get()
+
+            r = self.canvas.create_text(
+                x_plot+10*self.imscale, y_plot, anchor='w',
+                text='({}, {}) '.format(round(x,4), round(y,4)) + name,
+                fill='red', font=('Arial', 14, 'bold')
+            )
+            self.names_r.append(r)
+            self.points.append((x, y))
+            self.names.append(name)
 
 class Name_Polygons(ttk.Frame):
     def __init__(
@@ -327,7 +364,7 @@ class Name_Polygons_Popup():
 
         tk.Radiobutton(
             self.frame,
-            text="None of these.",
+            text="Add New",
             padx = 20,
             variable=self.v,
             value=-1,
