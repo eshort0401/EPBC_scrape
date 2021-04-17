@@ -127,6 +127,12 @@ class Zoom_Scroll(ttk.Frame):
         y_true = (y_plot - bbox[1])/self.imscale
         return x_true, y_true, x_plot, y_plot
 
+    def get_plot_coords(self, x_true, y_true):
+        bbox = self.canvas.bbox(self.container)
+        x_plot = self.imscale*x_true + bbox[0]
+        y_plot = self.imscale*y_true + bbox[1]
+        return x_plot, y_plot
+
     def show_image(self, event=None):
         ''' Show image on the Canvas '''
         bbox1 = self.canvas.bbox(self.container)  # get image area
@@ -159,8 +165,74 @@ class Zoom_Scroll(ttk.Frame):
             self.canvas.lower(imageid)  # set image into background
             self.canvas.imagetk = imagetk  # keep an extra reference to prevent garbage-collection
 
+class Get_Legend_Box(Zoom_Scroll):
+    def __init__(
+        self, mainframe, image,
+        title='Right click to select top left and botton '
+        + 'right corners of legend box.'
+    ):
+        Zoom_Scroll.__init__(self, mainframe, image, title=title)
+
+        b_delete = tk.Button(
+            self.master, text="Delete Box (d)", command=self.delete_box
+        )
+        b_delete.grid(row=0, column=1)
+
+        for obj in [self.p1, self.p2, self.box_r, self.p1_r, self.p2_r]:
+            obj = None
+
+        self.canvas.bind("<Button 3>", self.draw_box)
+        self.canvas.bind('<q>', self.quit)
+        self.canvas.bind('<d>', self.delete_box)
+        self.canvas.focus_set()
+
+    def delete_box(self, event=None):
+        [
+            self.canvas.delete(obj)
+            for obj in [self.box_r, self.p1_r, self.p2_r]
+        ]
+        self.p1 = None
+        self.p2 = None
+        self.box_r = None
+
+    def draw_box(self, event):
+
+        if not self.p1:
+            self.canvas.delete(self.p1_r)
+            x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
+            self.p1 = [x, y]
+            self.p1_r = self.canvas.create_rectangle(
+                x_plot-2*self.imscale, y_plot-2*self.imscale,
+                x_plot+2*self.imscale, y_plot+2*self.imscale,
+                width=1, fill='red', outline='red'
+            )
+        elif not self.p2:
+            self.canvas.delete(self.p2_r)
+            x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
+            self.p2 = [x, y]
+            self.p2_r = self.canvas.create_rectangle(
+                x_plot-2*self.imscale, y_plot-2*self.imscale,
+                x_plot+2*self.imscale, y_plot+2*self.imscale,
+                width=1, fill='red', outline='red'
+            )
+            p1_plot = self.get_plot_coords(self.p1[0], self.p1[1])
+            self.box_r = self.canvas.create_rectangle(
+                p1_plot[0], p1_plot[1], x_plot, y_plot,
+                width=1, outline='red'
+            )
+        else:
+            [
+                self.canvas.delete(obj)
+                for obj in [self.box_r, self.p1_r, self.p2_r]
+            ]
+            self.p1 = None
+            self.p2 = None
+            self.box_r = None
+
 class Choose_Points(Zoom_Scroll):
-    def __init__(self, mainframe, image, text_list, title='Right click to record point.'):
+    def __init__(
+        self, mainframe, image, text_list, title='Right click to record point.'
+    ):
         Zoom_Scroll.__init__(self, mainframe, image, title=title)
         self.points = []
         self.names = []
@@ -221,22 +293,14 @@ class Choose_Points(Zoom_Scroll):
             self.points.append((x, y))
             self.names.append(name)
 
-class Name_Polygons(ttk.Frame):
+class Name_Polygons(Zoom_Scroll):
     def __init__(
         self, mainframe, image, coords, text_list,
-        names = None
-        ):
-        ttk.Frame.__init__(self, master=mainframe)
-        self.master.title('Click to choose polygons.')
+        names = None, title='Confirm Object Names'
+    ):
+        Zoom_Scroll.__init__(self, mainframe, image, title=title)
         self.text_list = copy.deepcopy(text_list)
         self.coords = copy.deepcopy(coords)
-        self.image = image
-        self.canvas = tk.Canvas(
-            self.master, width=100, height=100, cursor='tcross'
-        )
-        self.canvas.pack(expand = 'yes', fill = 'both')
-        self.canvas.update()
-
         self.com = []
         for i in range(len(self.coords)):
             M = cv.moments(self.coords[i])
@@ -566,68 +630,7 @@ class Define_Training_Regions(ttk.Frame):
                 'Choose training regions for {}'.format(self.names[self.label])
             )
 
-class Get_Legend_Box(ttk.Frame):
-    def __init__(self, mainframe, image, title):
-        ttk.Frame.__init__(self, master=mainframe)
-        self.master.title(title)
 
-        self.canvas = tk.Canvas(
-            self.master, width=100, height=100, cursor='tcross'
-        )
-        self.canvas.update()  # wait till canvas is created
-        self.canvas.pack(expand = 'yes', fill = 'both')
-
-        im = Image.fromarray(image)
-        ph = ImageTk.PhotoImage(image=im)
-        self.canvas.ph = ph
-
-        self.canvas.create_image(0, 0, image = ph, anchor = 'nw')
-        self.canvas.ph = ph
-
-        self.p1 = None
-        self.p2 = None
-        self.rect = None
-        self.p1_r = None
-        self.p2_r = None
-
-        self.canvas.bind("<Button 1>", self.draw_box)
-        self.canvas.bind('<d>', self.quit)
-        self.canvas.focus_set()
-
-    def quit(self, event):
-        self.master.destroy()
-
-    def draw_box(self, event):
-
-        if not self.p1:
-            self.canvas.delete(self.p1_r)
-            self.p1 = [event.x, event.y]
-            self.p1_r = self.canvas.create_rectangle(
-                event.x-2, event.y-2, event.x+2, event.y+2,
-                width=1, fill='red', outline='red'
-            )
-        elif not self.p2:
-            self.canvas.delete(self.p2_r)
-            self.p2 = [event.x, event.y]
-            self.p2_r = self.canvas.create_rectangle(
-                event.x-2, event.y-2, event.x+2, event.y+2,
-                width=1, fill='red', outline='red'
-            )
-            self.rect = self.canvas.create_rectangle(
-                self.p1[0], self.p1[1], self.p2[0], self.p2[1],
-                width=1, outline='red'
-            )
-        else:
-            self.canvas.delete(self.p1_r)
-            self.canvas.delete(self.p2_r)
-            self.canvas.delete(self.rect)
-
-            self.p1 = [event.x, event.y]
-            self.p1_r = self.canvas.create_rectangle(
-                event.x-2, event.y-2, event.x+2, event.y+2,
-                width=1, fill='red', outline='red'
-            )
-            self.p2 = None
 
 class Choose_Kept_Categories():
     def __init__(
