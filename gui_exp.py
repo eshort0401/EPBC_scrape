@@ -8,6 +8,7 @@ from PIL import Image, ImageTk
 
 import numpy as np
 import cv2 as cv
+import random
 
 
 # Base tkinter scroll/zoom class based on
@@ -178,8 +179,11 @@ class Get_Legend_Box(Zoom_Scroll):
         )
         b_delete.grid(row=0, column=1)
 
-        for obj in [self.p1, self.p2, self.box_r, self.p1_r, self.p2_r]:
-            obj = None
+        self.p1 = None
+        self.p2 = None
+        self.box_r = None
+        self.p1_r = None
+        self.p2_r = None
 
         self.canvas.bind("<Button 3>", self.draw_box)
         self.canvas.bind('<q>', self.quit)
@@ -197,9 +201,9 @@ class Get_Legend_Box(Zoom_Scroll):
 
     def draw_box(self, event):
 
+        x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
         if not self.p1:
             self.canvas.delete(self.p1_r)
-            x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
             self.p1 = [x, y]
             self.p1_r = self.canvas.create_rectangle(
                 x_plot-2*self.imscale, y_plot-2*self.imscale,
@@ -207,19 +211,19 @@ class Get_Legend_Box(Zoom_Scroll):
                 width=1, fill='red', outline='red'
             )
         elif not self.p2:
-            self.canvas.delete(self.p2_r)
-            x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
-            self.p2 = [x, y]
-            self.p2_r = self.canvas.create_rectangle(
-                x_plot-2*self.imscale, y_plot-2*self.imscale,
-                x_plot+2*self.imscale, y_plot+2*self.imscale,
-                width=1, fill='red', outline='red'
-            )
-            p1_plot = self.get_plot_coords(self.p1[0], self.p1[1])
-            self.box_r = self.canvas.create_rectangle(
-                p1_plot[0], p1_plot[1], x_plot, y_plot,
-                width=1, outline='red'
-            )
+            if (x > self.p1[0]) and (y > self.p1[1]):
+                self.canvas.delete(self.p2_r)
+                self.p2 = [x, y]
+                self.p2_r = self.canvas.create_rectangle(
+                    x_plot-2*self.imscale, y_plot-2*self.imscale,
+                    x_plot+2*self.imscale, y_plot+2*self.imscale,
+                    width=1, fill='red', outline='red'
+                )
+                p1_plot = self.get_plot_coords(self.p1[0], self.p1[1])
+                self.box_r = self.canvas.create_rectangle(
+                    p1_plot[0], p1_plot[1], x_plot, y_plot,
+                    width=1, outline='red'
+                )
         else:
             [
                 self.canvas.delete(obj)
@@ -302,98 +306,126 @@ class Name_Polygons(Zoom_Scroll):
         self.text_list = copy.deepcopy(text_list)
         self.coords = copy.deepcopy(coords)
         self.com = []
+        self.raw_image = copy.deepcopy(image)
         for i in range(len(self.coords)):
             M = cv.moments(self.coords[i])
             try:
-                self.com.append([int(M['m10']/M['m00']), int(M['m01']/M['m00'])])
+                self.com.append(
+                    [int(M['m10']/M['m00']), int(M['m01']/M['m00'])]
+                )
             except:
                 self.com.append(self.coords[i][0].flatten().tolist())
 
-        self.highlighted = np.array([False]*len(self.coords))
+        self.highlighted = np.array([True]*len(self.coords))
         if not names:
             names = ['No label']*len(self.coords)
         self.names = names
+        self.names_offset = [
+            random.uniform(0,2*np.pi) for i in range(len(self.names))
+        ]
         self.names_r = [None]*len(self.coords)
-        self.label_objects = np.zeros(image.shape[:2])
+        self.label_set = np.array([[set([])]*image.shape[1]]*image.shape[0])
+
         for i in range(len(self.coords)):
-            self.label_objects = cv.drawContours(
-                self.label_objects, self.coords, i, i+1, -1
+            contour = cv.drawContours(
+                np.zeros(image.shape[:2]), self.coords, i, 1, -1
             )
-        self.label_objects = self.label_objects.astype(int)
-        self.contour_image = copy.deepcopy(self.image)
-        for i in np.argwhere(self.highlighted == False).flatten():
+            sets = self.label_set[contour>0]
+            sets = [s.union({i}) for s in sets]
+            self.label_set[contour>0] = sets
+
+        self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
+        for i in np.argwhere(self.highlighted == True).flatten():
             self.contour_image = cv.drawContours(
-                self.contour_image, self.coords, i, (0,255,0), 2
+                self.contour_image, self.coords, i, (255,0,0), 2
             )
 
-        im = Image.fromarray(self.contour_image.astype(np.uint8))
-        ph = ImageTk.PhotoImage(image=im)
-        self.canvas.ph = ph
-
-        self.canvas.create_image(0, 0, image = ph, anchor = 'nw')
-        self.canvas.ph = ph
+        self.image = Image.fromarray(self.contour_image)
 
         for i in range(len(self.coords)):
             if self.com[i]:
                 self.names_r[i] = self.canvas.create_text(
-                    self.com[i][0], self.com[i][1], anchor='w',
-                    text=self.names[i],
-                    fill='red', font=('Arial', 14, 'bold')
+                    self.com[i][0]+20*np.cos(self.names_offset[i]),
+                    self.com[i][1]+20*np.sin(self.names_offset[i]),
+                    anchor='w', text=self.names[i], fill='red',
+                    font=('Arial', 14, 'bold')
                 )
 
-        self.canvas.bind("<Button 1>", self.highlight_poly)
-        self.canvas.bind('<d>', self.quit)
+        self.canvas.bind("<Button 3>", self.highlight_poly)
+        self.canvas.bind('<q>', self.quit)
         self.canvas.focus_set()
-
-    def quit(self, event):
-        self.master.destroy()
+        self.show_image()
 
     def highlight_poly(self, event):
 
-        x, y = [event.x, event.y]
-        ind = self.label_objects[y,x]
-        if ind > 0:
-            self.highlighted[ind-1] = not self.highlighted[ind-1]
+        x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
+        inds = self.label_set[round(y),round(x)]
 
-            self.contour_image = copy.deepcopy(self.image)
+        if len(inds) > 0:
+            if len(inds) == 1:
+                ind = list(inds)[0]
+            else:
+                self.new_window = tk.Toplevel(self.master)
+                self.app = Name_Polygons_Popup(
+                    self.new_window,
+                    [
+                        str(i+1) + ' ' + self.names[i]
+                        + ' (' + (not self.highlighted[i])*'Not '
+                        + 'Highlighted)' for i in inds
+                    ],
+                    title = 'Choose object.'
+                )
+                self.app.e.destroy()
+                self.app.rb[-1].destroy()
+                self.master.wait_window(self.new_window)
+                self.canvas.focus_set()
+                ind = list(inds)[self.app.v.get()]
 
+            self.highlighted[ind] = not self.highlighted[ind]
+            self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
             for i in np.argwhere(self.highlighted == False).flatten():
                 self.contour_image = cv.drawContours(
-                    self.contour_image, self.coords, i, (0,255,0), 2
+                    self.contour_image, self.coords, i, (0,255,0), 1
                 )
             for i in np.argwhere(self.highlighted == True).flatten():
                 self.contour_image = cv.drawContours(
-                    self.contour_image, self.coords, i, (0,255,0), -1
+                    self.contour_image, self.coords, i, (255,0,0), 2
                 )
 
-            im = Image.fromarray(self.contour_image.astype(np.uint8))
-            ph = ImageTk.PhotoImage(image=im)
-            self.canvas.ph = ph
-            self.canvas.create_image(0, 0, image = ph, anchor = 'nw')
+            self.image = Image.fromarray(self.contour_image.astype(np.uint8))
+            self.show_image()
 
-            if self.highlighted[ind-1]:
+            if self.highlighted[ind]:
                 self.new_window = tk.Toplevel(self.master)
-
                 self.app = Name_Polygons_Popup(
                     self.new_window, self.text_list
                 )
-
                 self.master.wait_window(self.new_window)
                 self.canvas.focus_set()
 
                 if 0 <= self.app.v.get() < len(self.text_list):
-                    self.names[ind-1] = self.text_list[self.app.v.get()]
+                    self.names[ind] = self.text_list[self.app.v.get()]
                 elif self.app.v.get() == -1:
-                    self.names[ind-1] = self.app.n.get()
+                    self.names[ind] = self.app.n.get()
                     self.text_list.append(self.app.n.get())
 
             for i in range(len(self.coords)):
                 if self.com[i]:
                     self.canvas.delete(self.names_r[i])
+                    com_x_plot, com_y_plot = self.get_plot_coords(
+                        self.com[i][0], self.com[i][1]
+                    )
+                    if self.highlighted[i]:
+                        fill = 'red'
+                        font = ('Arial', 14, 'bold')
+                    else:
+                        fill = '#0f0'
+                        font = ('Arial', 14)
                     self.names_r[i] = self.canvas.create_text(
-                        self.com[i][0], self.com[i][1], anchor='w',
-                        text=self.names[i],
-                        fill='red', font=('Arial', 14, 'bold')
+                        com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
+                        com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                        anchor='w', text=self.names[i],
+                        fill=fill, font=font
                     )
 
 class Name_Polygons_Popup():
@@ -407,43 +439,91 @@ class Name_Polygons_Popup():
         self.v = tk.IntVar()
         self.v.set(999)
         self.n = tk.StringVar()
+        self.rb = []
 
         button = tk.Button(
-            self.frame, text="Done", state=tk.DISABLED, command=self.master.destroy
+            self.frame, text="Done (Enter)", state=tk.DISABLED, command=self.master.destroy
         )
 
         def activate_button():
             button['state'] = tk.NORMAL
 
         for i in range(len(text_list)):
-            tk.Radiobutton(
+            rb = tk.Radiobutton(
                 self.frame,
-                text=text_list[i],
+                text=str(i+1) + '. ' + text_list[i],
                 padx = 20,
                 variable=self.v,
                 value=i,
                 justify = tk.LEFT,
                 command = activate_button
-            ).grid(row=i)
+            )
+            self.rb.append(rb)
+            rb.grid(row=i)
 
-        tk.Radiobutton(
+        rb = tk.Radiobutton(
             self.frame,
-            text="Add New",
+            text=str(len(text_list)+1) + '. Add New',
             padx = 20,
             variable=self.v,
             value=-1,
             justify = tk.LEFT,
             command = activate_button
-        ).grid(row=len(text_list))
+        )
+        self.rb.append(rb)
+        rb.grid(row=len(text_list))
 
-        tk.Entry(self.frame, textvariable = self.n).grid(row=len(text_list)+1)
+        for i in range(len(self.rb)):
+            if (i+1) < 10:
+                self.master.bind(
+                    str(i+1), lambda e, bn=i: self.rb[bn].invoke()
+                )
+
+        self.master.bind('<Return>', lambda e: button.invoke())
+
+        e = tk.Entry(
+            self.frame, textvariable = self.n
+        )
+        self.e = e
+        e.grid(row=len(text_list)+1)
         button.grid(row=len(text_list)+2)
-
         self.frame.pack()
 
+class Confirm_Names(ttk.Frame):
+    def __init__(
+        self, master, text_list,
+        title='Confirm Legend Entries'
+    ):
+        self.master = master
+        self.master.title(title)
+        self.frame = tk.Frame(self.master)
+        self.text_list = copy.deepcopy(text_list)
+        self.n = [tk.StringVar() for i in range(len(self.text_list))]
+        for i in range(len(self.n)):
+            self.n[i].set(self.text_list[i])
+        self.e = []
+        for i in range(len(text_list)):
+            label_text = tk.StringVar()
+            label_text.set(str(i+1) + '.')
+            label = tk.Label(self.master, textvariable=label_text)
+            label.grid(row=i, column=0)
+            e = tk.Entry(self.master, textvariable = self.n[i], width=50)
+            self.e.append(e)
+            e.grid(row=i, column=1)
+
+        button = tk.Button(
+            self.master, text="Done (Enter)", command=self.master.destroy
+        )
+        button.grid(row=len(text_list), column=1, columnspan=2)
+
+        self.master.bind('<Return>', lambda e: button.invoke())
+
 class Define_Training_Regions(ttk.Frame):
-    def __init__(self, mainframe, image, text_list, legend=None):
-        ttk.Frame.__init__(self, master=mainframe)
+    def __init__(
+        self, mainframe, image, text_list,
+        legend=None, title='Choose training regions.'
+    ):
+        Zoom_Scroll.__init__(self, mainframe, image, title=title)
         self.label = 0
         self.names = ['Backgound']
         self.master.title(
@@ -451,32 +531,17 @@ class Define_Training_Regions(ttk.Frame):
         )
         self.text_list = text_list + ['Map background']
 
-        self.canvas = tk.Canvas(
-            self.master, width=image.shape[1], height=image.shape[0], cursor='tcross'
-        )
-        self.canvas.update()  # wait till canvas is created
-
-        self.canvas.pack(expand = 'yes', fill = 'both')
-
-        im = Image.fromarray(image)
-        ph = ImageTk.PhotoImage(image=im)
-        self.canvas.ph = ph
-
-        self.canvas.create_image(0, 0, image = ph, anchor = 'nw')
-        self.canvas.ph = ph
-
         self.p1 = None
         self.p2 = None
         self.boxes = [np.array([[]]).reshape([0,5]).astype(int)]
         self.p1_r = None
         self.p2_r = None
 
-        self.canvas.bind("<Button 1>", self.draw_box)
+        self.canvas.bind("<Button 3>", self.draw_box)
         self.canvas.bind('<Left>', self.previous_label)
         self.canvas.bind('<p>', self.previous_label)
         self.canvas.bind('<Right>', self.next_label)
         self.canvas.bind('<n>', self.next_label)
-        self.canvas.bind('<d>', self.quit)
         self.canvas.focus_set()
 
         try:
@@ -490,32 +555,21 @@ class Define_Training_Regions(ttk.Frame):
                 self.new_window, width=legend.shape[1], height=legend.shape[0], cursor='tcross'
             )
             self.new_window.canvas.update()  # wait till canvas is created
-
             self.new_window.canvas.pack(expand = 'yes', fill = 'both')
-
             im = Image.fromarray(legend)
             ph = ImageTk.PhotoImage(image=im)
             self.new_window.canvas.ph = ph
-
             self.new_window.canvas.create_image(0, 0, image = ph, anchor = 'nw')
             self.new_window.canvas.ph = ph
 
         self.canvas.focus_set()
 
-    def quit(self, event):
-        self.master.destroy()
-
     def draw_box(self, event):
         boxes = self.boxes[self.label]
+        x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
         if boxes.size > 0:
-            x_cond = np.logical_and(
-                boxes[:,0]<=event.x,
-                event.x<=boxes[:,2]
-            )
-            y_cond = np.logical_and(
-                boxes[:,1]<=event.y,
-                event.y<=boxes[:,3]
-            )
+            x_cond = np.logical_and(boxes[:,0]<=x, x<=boxes[:,2])
+            y_cond = np.logical_and(boxes[:,1]<=y, y<=boxes[:,3])
             in_boxes = np.argwhere(
                 np.logical_and(x_cond, y_cond)
             ).flatten()
@@ -536,21 +590,24 @@ class Define_Training_Regions(ttk.Frame):
         else:
             if not self.p1:
                 self.canvas.delete(self.p1_r)
-                self.p1 = [event.x, event.y]
+                self.p1 = [x, y]
                 self.p1_r = self.canvas.create_rectangle(
-                    event.x-2, event.y-2, event.x+2, event.y+2,
+                    x_plot-2*self.imscale, y_plot-2*self.imscale,
+                    x_plot+2*self.imscale, y_plot+2*self.imscale,
                     width=1, fill='red', outline='red'
                 )
             elif not self.p2:
                 if (event.x > self.p1[0]) and (event.y > self.p1[1]):
                     self.canvas.delete(self.p2_r)
-                    self.p2 = [event.x, event.y]
+                    self.p2 = [x, y]
                     self.p2_r = self.canvas.create_rectangle(
-                        event.x-2, event.y-2, event.x+2, event.y+2,
+                        x_plot-2*self.imscale, y_plot-2*self.imscale,
+                        x_plot+2*self.imscale, y_plot+2*self.imscale,
                         width=1, fill='red', outline='red'
                     )
+                    p1_x_plot, p1_y_plot = self.get_plot_coords(x, y)
                     r = self.canvas.create_rectangle(
-                        self.p1[0], self.p1[1], self.p2[0], self.p2[1],
+                        p1_x_plot, p1_y_plot, x, y,
                         width=2, outline='red'
                     )
                     self.boxes[self.label] = np.append(
@@ -563,9 +620,10 @@ class Define_Training_Regions(ttk.Frame):
                 self.canvas.delete(self.p1_r)
                 self.canvas.delete(self.p2_r)
 
-                self.p1 = [event.x, event.y]
+                self.p1 = [x, y]
                 self.p1_r = self.canvas.create_rectangle(
-                    event.x-2, event.y-2, event.x+2, event.y+2,
+                    x_plot-2*self.imscale, y_plot-2*self.imscale,
+                    x_plot+2*self.imscale, y_plot+2*self.imscale,
                     width=2, outline='red'
                 )
                 self.p2 = None
@@ -605,8 +663,10 @@ class Define_Training_Regions(ttk.Frame):
             )
 
             for box in self.boxes[self.label]:
+                p1_x_plot, p1_y_plot = self.get_plot_coords(box[0], box[1])
+                p2_x_plot, p2_y_plot = self.get_plot_coords(box[2], box[3])
                 r = self.canvas.create_rectangle(
-                    box[0], box[1], box[2], box[3],
+                    p1_x_plot, p1_y_plot, p2_x_plot, p2_y_plot,
                     width=2, outline='red'
                 )
                 box[4] = r
@@ -621,16 +681,16 @@ class Define_Training_Regions(ttk.Frame):
                 self.canvas.delete(box[4])
             self.label -= 1
             for box in self.boxes[self.label]:
+                p1_x_plot, p1_y_plot = self.get_plot_coords(box[0], box[1])
+                p2_x_plot, p2_y_plot = self.get_plot_coords(box[2], box[3])
                 r = self.canvas.create_rectangle(
-                    box[0], box[1], box[2], box[3],
+                    p1_x_plot, p1_y_plot, p2_x_plot, p2_y_plot,
                     width=2, outline='red'
                 )
                 box[4] = r
             self.master.title(
                 'Choose training regions for {}'.format(self.names[self.label])
             )
-
-
 
 class Choose_Kept_Categories():
     def __init__(
