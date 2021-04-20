@@ -351,9 +351,72 @@ class Name_Polygons(Zoom_Scroll):
                     font=('Arial', 14, 'bold')
                 )
 
+        b_all = tk.Button(
+            self.master, text="Highlight All (a)",
+            command=self.highlight_all
+        )
+        b_all.grid(row=0, column=2)
+        b_none = tk.Button(
+            self.master, text="Highlight None (n)",
+            command=self.highlight_none
+        )
+        b_none.grid(row=0, column=1)
+
         self.canvas.bind("<Button 3>", self.highlight_poly)
         self.canvas.bind('<q>', self.quit)
+        self.canvas.bind('<a>', self.highlight_all)
+        self.canvas.bind('<n>', self.highlight_none)
         self.canvas.focus_set()
+        self.show_image()
+
+    def highlight_all(self, event=None):
+        self.highlighted = np.array([True]*len(self.coords))
+        self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
+        for i in np.argwhere(self.highlighted == True).flatten():
+            self.contour_image = cv.drawContours(
+                self.contour_image, self.coords, i, (255,0,0), 2
+            )
+            self.canvas.delete(self.names_r[i])
+            com_x_plot, com_y_plot = self.get_plot_coords(
+                self.com[i][0], self.com[i][1]
+            )
+            fill = 'red'
+            font = ('Arial', 14, 'bold')
+            self.names_r[i] = self.canvas.create_text(
+                com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
+                com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                anchor='w', text=self.names[i],
+                fill=fill, font=font
+            )
+
+
+        self.image = Image.fromarray(self.contour_image.astype(np.uint8))
+        self.show_image()
+
+    def highlight_none(self, event=None):
+        self.highlighted = np.array([False]*len(self.coords))
+        self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
+        for i in np.argwhere(self.highlighted == False).flatten():
+            self.contour_image = cv.drawContours(
+                self.contour_image, self.coords, i, (0,255,0), 1
+            )
+            self.canvas.delete(self.names_r[i])
+            com_x_plot, com_y_plot = self.get_plot_coords(
+                self.com[i][0], self.com[i][1]
+            )
+
+            fill = '#0f0'
+            font = ('Arial', 14)
+            self.names_r[i] = self.canvas.create_text(
+                com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
+                com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                anchor='w', text=self.names[i],
+                fill=fill, font=font
+            )
+
+
+
+        self.image = Image.fromarray(self.contour_image.astype(np.uint8))
         self.show_image()
 
     def highlight_poly(self, event):
@@ -518,7 +581,7 @@ class Confirm_Names(ttk.Frame):
 
         self.master.bind('<Return>', lambda e: button.invoke())
 
-class Define_Training_Regions(ttk.Frame):
+class Define_Training_Regions(Zoom_Scroll):
     def __init__(
         self, mainframe, image, text_list,
         legend=None, title='Choose training regions.'
@@ -562,9 +625,20 @@ class Define_Training_Regions(ttk.Frame):
             self.new_window.canvas.create_image(0, 0, image = ph, anchor = 'nw')
             self.new_window.canvas.ph = ph
 
+        b_next = tk.Button(
+            self.master, text="Next Category (Right Arrow)",
+            command=self.next_label
+        )
+        b_next.grid(row=0, column=2)
+        b_previous = tk.Button(
+            self.master, text="Previous Category (Left Arrow)",
+            command=self.previous_label
+        )
+        b_previous.grid(row=0, column=1)
         self.canvas.focus_set()
 
     def draw_box(self, event):
+        # import pdb; pdb.set_trace()
         boxes = self.boxes[self.label]
         x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
         if boxes.size > 0:
@@ -597,7 +671,7 @@ class Define_Training_Regions(ttk.Frame):
                     width=1, fill='red', outline='red'
                 )
             elif not self.p2:
-                if (event.x > self.p1[0]) and (event.y > self.p1[1]):
+                if (x > self.p1[0]) and (y > self.p1[1]):
                     self.canvas.delete(self.p2_r)
                     self.p2 = [x, y]
                     self.p2_r = self.canvas.create_rectangle(
@@ -605,9 +679,11 @@ class Define_Training_Regions(ttk.Frame):
                         x_plot+2*self.imscale, y_plot+2*self.imscale,
                         width=1, fill='red', outline='red'
                     )
-                    p1_x_plot, p1_y_plot = self.get_plot_coords(x, y)
+                    p1_x_plot, p1_y_plot = self.get_plot_coords(
+                        self.p1[0], self.p1[1]
+                    )
                     r = self.canvas.create_rectangle(
-                        p1_x_plot, p1_y_plot, x, y,
+                        p1_x_plot, p1_y_plot, x_plot, y_plot,
                         width=2, outline='red'
                     )
                     self.boxes[self.label] = np.append(
@@ -619,16 +695,15 @@ class Define_Training_Regions(ttk.Frame):
             else:
                 self.canvas.delete(self.p1_r)
                 self.canvas.delete(self.p2_r)
-
                 self.p1 = [x, y]
                 self.p1_r = self.canvas.create_rectangle(
                     x_plot-2*self.imscale, y_plot-2*self.imscale,
                     x_plot+2*self.imscale, y_plot+2*self.imscale,
-                    width=2, outline='red'
+                    width=2, outline='red', fill='red'
                 )
                 self.p2 = None
 
-    def next_label(self, event):
+    def next_label(self, event=None):
         if len(self.boxes) < 20:
             self.canvas.delete(self.p1_r)
             self.canvas.delete(self.p2_r)
@@ -671,7 +746,7 @@ class Define_Training_Regions(ttk.Frame):
                 )
                 box[4] = r
 
-    def previous_label(self, event):
+    def previous_label(self, event=None):
         if self.label > 0:
             self.canvas.delete(self.p1_r)
             self.canvas.delete(self.p2_r)
@@ -703,7 +778,8 @@ class Choose_Kept_Categories():
         self.v = [tk.IntVar() for i in range(len(text_list))]
 
         button = tk.Button(
-            self.frame, text="Done", state=tk.DISABLED, command=self.master.destroy
+            self.frame, text="Done", state=tk.DISABLED,
+            command=self.master.destroy
         )
 
         def activate_button():
@@ -722,3 +798,125 @@ class Choose_Kept_Categories():
         button.grid(row=len(text_list))
 
         self.frame.pack()
+
+class Choose_Map():
+    def __init__(
+        self, master, page_nums, dir,
+        title='Choose a legend entry for this polygon.'
+    ):
+        self.master = master
+        self.master.title(title)
+
+        self.container = ttk.Frame(self.master)
+        self.canvas = tk.Canvas(self.container)
+        scrollbar = ttk.Scrollbar(self.container, orient="vertical", command=self.canvas.yview)
+        self.scrollable_frame = ttk.Frame(self.canvas)
+
+        self.scrollable_frame.bind(
+            "<Configure>",
+            lambda e: self.canvas.configure(
+                scrollregion=self.canvas.bbox("all")
+            )
+        )
+
+        self.canvas.create_window(
+            (0, 0), window=self.scrollable_frame, anchor="nw"
+        )
+        self.canvas.configure(yscrollcommand=scrollbar.set)
+
+        self.rb = []
+        self.v = tk.IntVar()
+        self.v.set(-999)
+        self.ph = []
+        self.fn = []
+        self.n = [tk.StringVar() for i in range(len(page_nums))]
+
+        self.button = tk.Button(
+            self.container, text="Done (Enter)", state=tk.DISABLED, command=self.master.destroy
+        )
+
+        def activate_button():
+            self.button['state'] = tk.NORMAL
+
+        for i in range(len(page_nums)):
+            file_name = 'page-' + str(page_nums[i]) + '.png'
+            self.fn.append(file_name)
+            img = Image.open(dir + file_name)
+            img.thumbnail([256,256],Image.ANTIALIAS)
+            self.ph.append(ImageTk.PhotoImage(img))
+        for i in range(len(page_nums)):
+            self.n[i].set('Page ' + str(page_nums[i]))
+            l = tk.Label(
+                self.scrollable_frame, textvariable=self.n[i],
+            )
+            row = i // 3
+            col = i-3*row
+            l.grid(row=row, column=2*col+1)
+
+            rb = tk.Radiobutton(
+                self.scrollable_frame,
+                variable=self.v,
+                value=i,
+                image=self.ph[i],
+                command=activate_button,
+                height=220,
+            )
+            self.rb.append(rb)
+            rb.grid(row=row, column=2*col)
+        self.button.pack()
+        self.canvas.bind_all('<MouseWheel>', self.on_mousewheel)
+        self.canvas.bind_all('<Button-5>',   self.scroll_up)
+        self.canvas.bind_all('<Button-4>',   self.scroll_down)
+        self.master.bind('<Return>', lambda e: self.button.invoke())
+
+        self.container.pack(fill='both', expand=True)
+        self.canvas.pack(side="left", fill="both", expand=True)
+        scrollbar.pack(side="right", fill="y")
+
+    def scroll_up(self, event):
+        self.canvas.yview_scroll(1, "units")
+
+    def scroll_down(self, event):
+        self.canvas.yview_scroll(-1, "units")
+
+    def on_mousewheel(self, event):
+        self.canvas.yview_scroll(event.delta, "units")
+
+class Choose_Map_Template(Choose_Map):
+    def __init__(
+        self, master, page_nums, current_page, dir,
+        title='Choose a map template.'
+    ):
+        Choose_Map.__init__(self, master, page_nums, dir, title=title)
+
+        def activate_button():
+            self.button['state'] = tk.NORMAL
+
+        self.n_new = tk.StringVar()
+        self.n_new.set(
+            'Create new template from current map (page ' + str(current_page)
+            + ')'
+        )
+        l = tk.Label(
+            self.scrollable_frame, textvariable=self.n_new,
+        )
+        row = (len(page_nums )+1)//3
+        col = len(page_nums )+1-3*row
+        l.grid(row=row, column=2*col+1)
+
+        file_name = 'page-' + str(current_page) + '.png'
+        self.fn.append(file_name)
+        img = Image.open(dir + file_name)
+        img.thumbnail([256,256],Image.ANTIALIAS)
+        self.ph_new = ImageTk.PhotoImage(img)
+
+        rb = tk.Radiobutton(
+            self.scrollable_frame,
+            variable=self.v,
+            value=-1,
+            image=self.ph_new,
+            command=activate_button,
+            height=220,
+        )
+        self.rb.append(rb)
+        rb.grid(row=row, column=2*col)

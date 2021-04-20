@@ -10,3 +10,5 @@ proposal
 *.pb
 *.png
 *.qgs
+*.json
+
