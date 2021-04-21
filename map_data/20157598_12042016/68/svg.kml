@@ -1,0 +1,1470 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="3885">
+        <name>68_svg</name>
+        <Folder id="4066">
+            <Style id="3952">
+                <LineStyle id="3953">
+                    <color>ff1f82f5</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3954">
+                    <color>801f82f5</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Category A or B areas containing of concern RE</name>
+            <Placemark id="4068">
+                <name>Category A or B areas containing of concern RE 1</name>
+                <styleUrl>#3952</styleUrl>
+                <Polygon id="4067">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4069">
+                            <coordinates>153.074552,-26.50042,1.0 153.074511,-26.50069,1.0 153.074454,-26.500864,1.0 153.074554,-26.501071,1.0 153.074669,-26.501342,1.0 153.074761,-26.501168,1.0 153.074695,-26.500977,1.0 153.07463,-26.500786,1.0 153.074599,-26.500626,1.0 153.074585,-26.500483,1.0 153.074552,-26.50042,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="4071">
+            <Style id="3898">
+                <LineStyle id="3899">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3900">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3901">
+                <LineStyle id="3902">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3903">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3904">
+                <LineStyle id="3905">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3906">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3907">
+                <LineStyle id="3908">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3909">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3910">
+                <LineStyle id="3911">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3912">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3913">
+                <LineStyle id="3914">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3915">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3916">
+                <LineStyle id="3917">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3918">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3919">
+                <LineStyle id="3920">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3921">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3922">
+                <LineStyle id="3923">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3924">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3925">
+                <LineStyle id="3926">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3927">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3928">
+                <LineStyle id="3929">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3930">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3931">
+                <LineStyle id="3932">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3933">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3934">
+                <LineStyle id="3935">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3936">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3937">
+                <LineStyle id="3938">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3939">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3940">
+                <LineStyle id="3941">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3942">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3943">
+                <LineStyle id="3944">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3945">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3946">
+                <LineStyle id="3947">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3948">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3949">
+                <LineStyle id="3950">
+                    <color>ff50a600</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3951">
+                    <color>8050a600</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Category A or B areas that is a least concern </name>
+            <Placemark id="4073">
+                <name>Category A or B areas that is a least concern  1</name>
+                <styleUrl>#3898</styleUrl>
+                <Polygon id="4072">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4074">
+                            <coordinates>153.06761,-26.504688,1.0 153.06773,-26.504784,1.0 153.067988,-26.504928,1.0 153.06761,-26.504688,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4077">
+                <name>Category A or B areas that is a least concern  2</name>
+                <styleUrl>#3901</styleUrl>
+                <Polygon id="4076">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4078">
+                            <coordinates>153.070823,-26.503132,1.0 153.070686,-26.50302,1.0 153.070533,-26.502845,1.0 153.070823,-26.503132,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4081">
+                <name>Category A or B areas that is a least concern  3</name>
+                <styleUrl>#3904</styleUrl>
+                <Polygon id="4080">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4082">
+                            <coordinates>153.072427,-26.503873,1.0 153.072564,-26.503953,1.0 153.072805,-26.504113,1.0 153.072664,-26.504176,1.0 153.072523,-26.504207,1.0 153.072441,-26.504016,1.0 153.072389,-26.504,1.0 153.072427,-26.503873,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4085">
+                <name>Category A or B areas that is a least concern  4</name>
+                <styleUrl>#3907</styleUrl>
+                <Polygon id="4084">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4086">
+                            <coordinates>153.072181,-26.503951,1.0 153.071951,-26.504077,1.0 153.071742,-26.504044,1.0 153.071626,-26.503805,1.0 153.071696,-26.503789,1.0 153.071756,-26.503503,1.0 153.071618,-26.503407,1.0 153.07169,-26.503344,1.0 153.071793,-26.503392,1.0 153.07188,-26.503409,1.0 153.071984,-26.503441,1.0 153.072034,-26.503537,1.0 153.072101,-26.503632,1.0 153.072152,-26.503712,1.0 153.072149,-26.503808,1.0 153.072181,-26.503951,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4089">
+                <name>Category A or B areas that is a least concern  5</name>
+                <styleUrl>#3910</styleUrl>
+                <Polygon id="4088">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4090">
+                            <coordinates>153.069425,-26.508911,1.0 153.069323,-26.508815,1.0 153.069255,-26.508766,1.0 153.068924,-26.508717,1.0 153.068594,-26.508667,1.0 153.068316,-26.508634,1.0 153.06816,-26.508585,1.0 153.068022,-26.508521,1.0 153.067989,-26.508473,1.0 153.067939,-26.508377,1.0 153.067853,-26.508297,1.0 153.067784,-26.508265,1.0 153.067698,-26.508233,1.0 153.067575,-26.508264,1.0 153.069425,-26.508911,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4093">
+                <name>Category A or B areas that is a least concern  6</name>
+                <styleUrl>#3913</styleUrl>
+                <Polygon id="4092">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4094">
+                            <coordinates>153.075309,-26.50869,1.0 153.074963,-26.508561,1.0 153.07486,-26.508512,1.0 153.074986,-26.508354,1.0 153.075128,-26.508244,1.0 153.075198,-26.508244,1.0 153.075578,-26.508389,1.0 153.075595,-26.508405,1.0 153.075309,-26.50869,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4097">
+                <name>Category A or B areas that is a least concern  7</name>
+                <styleUrl>#3916</styleUrl>
+                <Polygon id="4096">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4098">
+                            <coordinates>153.074761,-26.501168,1.0 153.07494,-26.500962,1.0 153.075174,-26.500677,1.0 153.075371,-26.500456,1.0 153.075622,-26.500187,1.0 153.075818,-26.499998,1.0 153.075997,-26.49984,1.0 153.076068,-26.499777,1.0 153.076106,-26.499665,1.0 153.074257,-26.499655,1.0 153.074359,-26.499767,1.0 153.074392,-26.499846,1.0 153.07439,-26.499926,1.0 153.074544,-26.500054,1.0 153.074573,-26.500293,1.0 153.074552,-26.50042,1.0 153.074585,-26.500483,1.0 153.074599,-26.500626,1.0 153.07463,-26.500786,1.0 153.074695,-26.500977,1.0 153.074761,-26.501168,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4101">
+                <name>Category A or B areas that is a least concern  8</name>
+                <styleUrl>#3919</styleUrl>
+                <Polygon id="4100">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4102">
+                            <coordinates>153.078109,-26.502602,1.0 153.077743,-26.5026,1.0 153.077788,-26.502187,1.0 153.077684,-26.502138,1.0 153.077544,-26.502169,1.0 153.078109,-26.502602,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4105">
+                <name>Category A or B areas that is a least concern  9</name>
+                <styleUrl>#3922</styleUrl>
+                <Polygon id="4104">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4106">
+                            <coordinates>153.077743,-26.5026,1.0 153.077377,-26.502582,1.0 153.07689,-26.502531,1.0 153.076352,-26.502401,1.0 153.076197,-26.502352,1.0 153.076131,-26.502193,1.0 153.076513,-26.502259,1.0 153.07669,-26.502164,1.0 153.076761,-26.502117,1.0 153.076916,-26.502166,1.0 153.077055,-26.502182,1.0 153.077743,-26.5026,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4109">
+                <name>Category A or B areas that is a least concern  10</name>
+                <styleUrl>#3925</styleUrl>
+                <Polygon id="4108">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4110">
+                            <coordinates>153.078656,-26.506611,1.0 153.07871,-26.506547,1.0 153.078151,-26.506576,1.0 153.077841,-26.506431,1.0 153.077951,-26.506209,1.0 153.078023,-26.506098,1.0 153.078148,-26.505988,1.0 153.078378,-26.505862,1.0 153.078519,-26.505799,1.0 153.07871,-26.505816,1.0 153.078741,-26.505975,1.0 153.07895,-26.505993,1.0 153.079057,-26.50593,1.0 153.079196,-26.505914,1.0 153.079253,-26.50574,1.0 153.079444,-26.505789,1.0 153.079534,-26.505678,1.0 153.079747,-26.50552,1.0 153.079752,-26.505298,1.0 153.079808,-26.505171,1.0 153.079968,-26.505045,1.0 153.080232,-26.504919,1.0 153.080427,-26.504793,1.0 153.080605,-26.504651,1.0 153.078656,-26.506611,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4113">
+                <name>Category A or B areas that is a least concern  11</name>
+                <styleUrl>#3928</styleUrl>
+                <Polygon id="4112">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4114">
+                            <coordinates>153.078501,-26.502254,1.0 153.078392,-26.50246,1.0 153.078703,-26.502573,1.0 153.078703,-26.502573,1.0 153.078424,-26.502572,1.0 153.078109,-26.502602,1.0 153.078239,-26.502269,1.0 153.078261,-26.502078,1.0 153.078335,-26.501935,1.0 153.078516,-26.50165,1.0 153.078816,-26.501525,1.0 153.078938,-26.501526,1.0 153.078501,-26.502254,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4117">
+                <name>Category A or B areas that is a least concern  12</name>
+                <styleUrl>#3931</styleUrl>
+                <Polygon id="4116">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4118">
+                            <coordinates>153.078822,-26.502685,1.0 153.078814,-26.503035,1.0 153.078725,-26.503098,1.0 153.07848,-26.503113,1.0 153.0781,-26.503683,1.0 153.077943,-26.503698,1.0 153.077844,-26.503459,1.0 153.077706,-26.503394,1.0 153.077523,-26.503044,1.0 153.077493,-26.502837,1.0 153.078016,-26.502824,1.0 153.078054,-26.502713,1.0 153.078822,-26.502685,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4121">
+                <name>Category A or B areas that is a least concern  13</name>
+                <styleUrl>#3934</styleUrl>
+                <Polygon id="4120">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4122">
+                            <coordinates>153.078791,-26.507502,1.0 153.078391,-26.507452,1.0 153.078148,-26.507434,1.0 153.077957,-26.507386,1.0 153.077801,-26.507321,1.0 153.077807,-26.507115,1.0 153.077915,-26.506956,1.0 153.078022,-26.506877,1.0 153.078791,-26.507502,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4125">
+                <name>Category A or B areas that is a least concern  14</name>
+                <styleUrl>#3937</styleUrl>
+                <Polygon id="4124">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4126">
+                            <coordinates>153.07009,-26.503128,1.0 153.070035,-26.503239,1.0 153.070016,-26.503318,1.0 153.070029,-26.503493,1.0 153.07009,-26.503128,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4129">
+                <name>Category A or B areas that is a least concern  15</name>
+                <styleUrl>#3940</styleUrl>
+                <Polygon id="4128">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4130">
+                            <coordinates>153.066381,-26.508575,1.0 153.06597,-26.50684,1.0 153.06761,-26.504688,1.0 153.06773,-26.504784,1.0 153.067988,-26.504928,1.0 153.066381,-26.508575,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4133">
+                <name>Category A or B areas that is a least concern  16</name>
+                <styleUrl>#3943</styleUrl>
+                <Polygon id="4132">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4134">
+                            <coordinates>153.069409,-26.508879,1.0 153.069844,-26.508913,1.0 153.070175,-26.508947,1.0 153.070329,-26.509059,1.0 153.070557,-26.508981,1.0 153.070853,-26.509014,1.0 153.070955,-26.509142,1.0 153.071163,-26.509191,1.0 153.071356,-26.508413,1.0 153.070751,-26.507503,1.0 153.070945,-26.507409,1.0 153.071354,-26.507793,1.0 153.072201,-26.5081,1.0 153.072217,-26.508163,1.0 153.072267,-26.508243,1.0 153.072196,-26.508306,1.0 153.072125,-26.508354,1.0 153.07212,-26.508576,1.0 153.072134,-26.508688,1.0 153.0722,-26.508863,1.0 153.072265,-26.509038,1.0 153.069409,-26.508879,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4137">
+                <name>Category A or B areas that is a least concern  17</name>
+                <styleUrl>#3946</styleUrl>
+                <Polygon id="4136">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4138">
+                            <coordinates>153.068369,-26.504342,1.0 153.068232,-26.504214,1.0 153.068165,-26.504134,1.0 153.068151,-26.503975,1.0 153.068151,-26.503975,1.0 153.068367,-26.503691,1.0 153.068414,-26.503929,1.0 153.068324,-26.504024,1.0 153.068369,-26.504342,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4141">
+                <name>Category A or B areas that is a least concern  18</name>
+                <styleUrl>#3949</styleUrl>
+                <Polygon id="4140">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4142">
+                            <coordinates>153.071828,-26.505538,1.0 153.071845,-26.505538,1.0 153.071949,-26.505587,1.0 153.072123,-26.505604,1.0 153.07209,-26.505508,1.0 153.072024,-26.505381,1.0 153.072308,-26.50516,1.0 153.072584,-26.505273,1.0 153.072722,-26.505353,1.0 153.071335,-26.506442,1.0 153.071251,-26.507013,1.0 153.070914,-26.507234,1.0 153.070611,-26.506787,1.0 153.070637,-26.506438,1.0 153.071828,-26.505538,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="4144">
+            <Style id="3886">
+                <LineStyle id="3887">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3888">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3889">
+                <LineStyle id="3890">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3891">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3892">
+                <LineStyle id="3893">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3894">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3895">
+                <LineStyle id="3896">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3897">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3955">
+                <LineStyle id="3956">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3957">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3958">
+                <LineStyle id="3959">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3960">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3961">
+                <LineStyle id="3962">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3963">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3964">
+                <LineStyle id="3965">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3966">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3967">
+                <LineStyle id="3968">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3969">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3970">
+                <LineStyle id="3971">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3972">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3973">
+                <LineStyle id="3974">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3975">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3976">
+                <LineStyle id="3977">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3978">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3979">
+                <LineStyle id="3980">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3981">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3982">
+                <LineStyle id="3983">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3984">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3985">
+                <LineStyle id="3986">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3987">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3988">
+                <LineStyle id="3989">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3990">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3991">
+                <LineStyle id="3992">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3993">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3994">
+                <LineStyle id="3995">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3996">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3997">
+                <LineStyle id="3998">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3999">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4000">
+                <LineStyle id="4001">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4002">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4003">
+                <LineStyle id="4004">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4005">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4006">
+                <LineStyle id="4007">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4008">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4009">
+                <LineStyle id="4010">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4011">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4012">
+                <LineStyle id="4013">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4014">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4015">
+                <LineStyle id="4016">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4017">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4018">
+                <LineStyle id="4019">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4020">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4021">
+                <LineStyle id="4022">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4023">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4024">
+                <LineStyle id="4025">
+                    <color>ff8c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4026">
+                    <color>808c00ec</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Survey Areas</name>
+            <Placemark id="4146">
+                <name>Survey Areas 1</name>
+                <styleUrl>#3886</styleUrl>
+                <Polygon id="4145">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4147">
+                            <coordinates>153.067945,-26.508807,1.0 153.068231,-26.508554,1.0 153.067655,-26.507136,1.0 153.068096,-26.506948,1.0 153.068288,-26.506917,1.0 153.069876,-26.507625,1.0 153.070241,-26.507659,1.0 153.070773,-26.507313,1.0 153.07052,-26.506946,1.0 153.070397,-26.506977,1.0 153.070271,-26.507135,1.0 153.069992,-26.507133,1.0 153.067389,-26.50591,1.0 153.067415,-26.505561,1.0 153.067755,-26.505213,1.0 153.067837,-26.505404,1.0 153.068416,-26.50528,1.0 153.068598,-26.504948,1.0 153.068367,-26.503691,1.0 153.06597,-26.50684,1.0 153.066381,-26.508575,1.0 153.067945,-26.508807,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4150">
+                <name>Survey Areas 2</name>
+                <styleUrl>#3889</styleUrl>
+                <Polygon id="4149">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4151">
+                            <coordinates>153.071126,-26.509286,1.0 153.071356,-26.508413,1.0 153.070751,-26.507503,1.0 153.070945,-26.507409,1.0 153.071354,-26.507793,1.0 153.072305,-26.508148,1.0 153.072463,-26.508801,1.0 153.072359,-26.509468,1.0 153.071126,-26.509286,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4154">
+                <name>Survey Areas 3</name>
+                <styleUrl>#3892</styleUrl>
+                <Polygon id="4153">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4155">
+                            <coordinates>153.070914,-26.507234,1.0 153.070611,-26.506787,1.0 153.070637,-26.506438,1.0 153.072628,-26.504923,1.0 153.072878,-26.504686,1.0 153.072918,-26.50448,1.0 153.072315,-26.504174,1.0 153.072463,-26.503825,1.0 153.073566,-26.504356,1.0 153.073397,-26.504832,1.0 153.071335,-26.506442,1.0 153.071251,-26.507013,1.0 153.070914,-26.507234,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4158">
+                <name>Survey Areas 4</name>
+                <styleUrl>#3895</styleUrl>
+                <Polygon id="4157">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4159">
+                            <coordinates>153.072463,-26.503825,1.0 153.07236,-26.503745,1.0 153.072401,-26.503507,1.0 153.073848,-26.501401,1.0 153.07521,-26.502045,1.0 153.075346,-26.502173,1.0 153.075396,-26.502268,1.0 153.075411,-26.50238,1.0 153.075274,-26.502983,1.0 153.074273,-26.504694,1.0 153.073566,-26.504356,1.0 153.072463,-26.503825,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4162">
+                <name>Survey Areas 5</name>
+                <styleUrl>#3955</styleUrl>
+                <Polygon id="4161">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4163">
+                            <coordinates>153.080253,-26.506207,1.0 153.080219,-26.506191,1.0 153.080202,-26.506175,1.0 153.080219,-26.506191,1.0 153.080254,-26.506191,1.0 153.080254,-26.506175,1.0 153.080237,-26.506175,1.0 153.080254,-26.506175,1.0 153.080254,-26.506159,1.0 153.080255,-26.506143,1.0 153.080237,-26.506159,1.0 153.080237,-26.506143,1.0 153.08022,-26.506127,1.0 153.080203,-26.506111,1.0 153.080203,-26.506127,1.0 153.080202,-26.506159,1.0 153.080203,-26.506127,1.0 153.080203,-26.506111,1.0 153.080168,-26.506111,1.0 153.080151,-26.506127,1.0 153.080151,-26.506127,1.0 153.080151,-26.506127,1.0 153.080133,-26.506142,1.0 153.080114,-26.506174,1.0 153.080149,-26.506174,1.0 153.080149,-26.506174,1.0 153.080149,-26.50619,1.0 153.080114,-26.50619,1.0 153.080131,-26.506206,1.0 153.080148,-26.506222,1.0 153.080149,-26.506206,1.0 153.080148,-26.506222,1.0 153.080165,-26.506238,1.0 153.080183,-26.506206,1.0 153.080183,-26.506238,1.0 153.0802,-26.506238,1.0 153.080235,-26.506222,1.0 153.080253,-26.506207,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4166">
+                <name>Survey Areas 6</name>
+                <styleUrl>#3958</styleUrl>
+                <Polygon id="4165">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4167">
+                            <coordinates>153.080311,-26.505984,1.0 153.080276,-26.505968,1.0 153.080259,-26.505952,1.0 153.080276,-26.505968,1.0 153.080311,-26.505969,1.0 153.080312,-26.505953,1.0 153.080294,-26.505953,1.0 153.080312,-26.505953,1.0 153.080312,-26.505937,1.0 153.080295,-26.505921,1.0 153.080277,-26.505937,1.0 153.080295,-26.505921,1.0 153.080278,-26.505889,1.0 153.080261,-26.505889,1.0 153.080261,-26.505905,1.0 153.08026,-26.505921,1.0 153.080243,-26.505905,1.0 153.080244,-26.505889,1.0 153.080226,-26.505889,1.0 153.080208,-26.505904,1.0 153.080208,-26.505904,1.0 153.080191,-26.505904,1.0 153.08019,-26.50592,1.0 153.080172,-26.505952,1.0 153.08019,-26.505952,1.0 153.080208,-26.505936,1.0 153.080189,-26.505968,1.0 153.080172,-26.505952,1.0 153.080189,-26.505984,1.0 153.080206,-26.506,1.0 153.080206,-26.505984,1.0 153.080206,-26.506,1.0 153.080223,-26.506016,1.0 153.080241,-26.505984,1.0 153.080223,-26.506016,1.0 153.080258,-26.506016,1.0 153.080293,-26.506,1.0 153.080311,-26.505984,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4170">
+                <name>Survey Areas 7</name>
+                <styleUrl>#3961</styleUrl>
+                <Polygon id="4169">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4171">
+                            <coordinates>153.080258,-26.506016,1.0 153.080223,-26.506,1.0 153.080206,-26.506,1.0 153.080223,-26.506,1.0 153.080258,-26.506016,1.0 153.080259,-26.505984,1.0 153.080241,-26.505984,1.0 153.080259,-26.505984,1.0 153.080259,-26.505968,1.0 153.080242,-26.505952,1.0 153.080242,-26.505968,1.0 153.080242,-26.505952,1.0 153.080225,-26.505936,1.0 153.080208,-26.50592,1.0 153.080208,-26.505936,1.0 153.080207,-26.505968,1.0 153.08019,-26.505936,1.0 153.08019,-26.50592,1.0 153.080173,-26.50592,1.0 153.080155,-26.505936,1.0 153.080155,-26.505952,1.0 153.080138,-26.505936,1.0 153.080137,-26.505952,1.0 153.080119,-26.505983,1.0 153.080136,-26.505999,1.0 153.080154,-26.505984,1.0 153.080136,-26.505999,1.0 153.080119,-26.505999,1.0 153.080136,-26.506015,1.0 153.080152,-26.506047,1.0 153.080153,-26.506031,1.0 153.080152,-26.506047,1.0 153.08017,-26.506047,1.0 153.080188,-26.506015,1.0 153.08017,-26.506047,1.0 153.080205,-26.506047,1.0 153.08024,-26.506032,1.0 153.080258,-26.506016,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4174">
+                <name>Survey Areas 8</name>
+                <styleUrl>#3964</styleUrl>
+                <Polygon id="4173">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4175">
+                            <coordinates>153.080173,-26.505936,1.0 153.080138,-26.50592,1.0 153.080121,-26.50592,1.0 153.080138,-26.50592,1.0 153.080173,-26.505936,1.0 153.080191,-26.505904,1.0 153.080156,-26.505904,1.0 153.080191,-26.505904,1.0 153.080191,-26.505888,1.0 153.080174,-26.505872,1.0 153.080156,-26.505888,1.0 153.080174,-26.505872,1.0 153.080157,-26.505856,1.0 153.080123,-26.50584,1.0 153.080122,-26.505856,1.0 153.080121,-26.505888,1.0 153.080122,-26.505856,1.0 153.080123,-26.50584,1.0 153.080105,-26.50584,1.0 153.080087,-26.505856,1.0 153.080087,-26.505872,1.0 153.08007,-26.505856,1.0 153.080052,-26.505872,1.0 153.080051,-26.505919,1.0 153.080068,-26.505919,1.0 153.080086,-26.505904,1.0 153.080068,-26.505919,1.0 153.080051,-26.505919,1.0 153.080051,-26.505935,1.0 153.080085,-26.505967,1.0 153.080085,-26.505951,1.0 153.080085,-26.505967,1.0 153.080102,-26.505967,1.0 153.08012,-26.505936,1.0 153.080102,-26.505967,1.0 153.080137,-26.505968,1.0 153.080172,-26.505952,1.0 153.080173,-26.505936,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4178">
+                <name>Survey Areas 9</name>
+                <styleUrl>#3967</styleUrl>
+                <Polygon id="4177">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4179">
+                            <coordinates>153.080225,-26.505936,1.0 153.08019,-26.505936,1.0 153.080173,-26.50592,1.0 153.08019,-26.50592,1.0 153.080225,-26.505936,1.0 153.080225,-26.50592,1.0 153.080208,-26.505904,1.0 153.080226,-26.505904,1.0 153.080226,-26.505889,1.0 153.080209,-26.505873,1.0 153.080191,-26.505888,1.0 153.080209,-26.505873,1.0 153.080192,-26.505857,1.0 153.080175,-26.505841,1.0 153.080174,-26.505872,1.0 153.080174,-26.505888,1.0 153.080157,-26.505872,1.0 153.080158,-26.50584,1.0 153.08014,-26.505856,1.0 153.080122,-26.505856,1.0 153.080122,-26.505872,1.0 153.080104,-26.505872,1.0 153.080104,-26.505872,1.0 153.080086,-26.50592,1.0 153.080103,-26.50592,1.0 153.080121,-26.505904,1.0 153.080103,-26.50592,1.0 153.080086,-26.50592,1.0 153.080103,-26.505936,1.0 153.08012,-26.505967,1.0 153.08012,-26.505952,1.0 153.08012,-26.505967,1.0 153.080137,-26.505968,1.0 153.080155,-26.505936,1.0 153.080137,-26.505968,1.0 153.080172,-26.505968,1.0 153.080207,-26.505952,1.0 153.080225,-26.505936,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4182">
+                <name>Survey Areas 10</name>
+                <styleUrl>#3970</styleUrl>
+                <Polygon id="4181">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4183">
+                            <coordinates>153.080128,-26.506317,1.0 153.080094,-26.506301,1.0 153.080077,-26.506285,1.0 153.080094,-26.506301,1.0 153.080129,-26.506301,1.0 153.080147,-26.506285,1.0 153.080112,-26.506285,1.0 153.080129,-26.506285,1.0 153.08013,-26.506269,1.0 153.08013,-26.506254,1.0 153.080112,-26.506269,1.0 153.08013,-26.506254,1.0 153.080096,-26.506222,1.0 153.080078,-26.506222,1.0 153.080078,-26.506237,1.0 153.080078,-26.506253,1.0 153.080078,-26.506237,1.0 153.080078,-26.506222,1.0 153.080061,-26.506221,1.0 153.080043,-26.506237,1.0 153.080043,-26.506237,1.0 153.080026,-26.506237,1.0 153.080008,-26.506253,1.0 153.07999,-26.506285,1.0 153.080025,-26.506285,1.0 153.080042,-26.506269,1.0 153.080024,-26.506301,1.0 153.080007,-26.506285,1.0 153.080006,-26.506316,1.0 153.080023,-26.506332,1.0 153.080041,-26.506317,1.0 153.080041,-26.506333,1.0 153.08004,-26.506348,1.0 153.080076,-26.506317,1.0 153.080058,-26.506349,1.0 153.080093,-26.506349,1.0 153.080111,-26.506333,1.0 153.080128,-26.506317,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4186">
+                <name>Survey Areas 11</name>
+                <styleUrl>#3973</styleUrl>
+                <Polygon id="4185">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4187">
+                            <coordinates>153.0802,-26.506238,1.0 153.080166,-26.506222,1.0 153.080149,-26.506206,1.0 153.080166,-26.506222,1.0 153.0802,-26.506222,1.0 153.080201,-26.506206,1.0 153.080183,-26.506206,1.0 153.080201,-26.506206,1.0 153.080201,-26.50619,1.0 153.080202,-26.506175,1.0 153.080184,-26.50619,1.0 153.080184,-26.506174,1.0 153.080167,-26.506158,1.0 153.08015,-26.506142,1.0 153.08015,-26.506158,1.0 153.080149,-26.50619,1.0 153.08015,-26.506158,1.0 153.08015,-26.506142,1.0 153.080115,-26.506142,1.0 153.080097,-26.506158,1.0 153.080097,-26.506158,1.0 153.080097,-26.506158,1.0 153.08008,-26.506174,1.0 153.080061,-26.506206,1.0 153.080079,-26.506206,1.0 153.080096,-26.506206,1.0 153.080078,-26.506222,1.0 153.080061,-26.506221,1.0 153.080078,-26.506237,1.0 153.080095,-26.506253,1.0 153.080095,-26.506238,1.0 153.080095,-26.506269,1.0 153.080112,-26.506269,1.0 153.08013,-26.506238,1.0 153.08013,-26.506269,1.0 153.080147,-26.50627,1.0 153.080182,-26.506254,1.0 153.0802,-26.506238,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4190">
+                <name>Survey Areas 12</name>
+                <styleUrl>#3976</styleUrl>
+                <Polygon id="4189">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4191">
+                            <coordinates>153.08005,-26.505967,1.0 153.080015,-26.505967,1.0 153.079998,-26.505951,1.0 153.080015,-26.505967,1.0 153.08005,-26.505967,1.0 153.08005,-26.505951,1.0 153.080033,-26.505935,1.0 153.080051,-26.505935,1.0 153.080051,-26.505935,1.0 153.080034,-26.505919,1.0 153.080016,-26.505919,1.0 153.080034,-26.505903,1.0 153.080017,-26.505887,1.0 153.079999,-26.505887,1.0 153.079999,-26.505903,1.0 153.079999,-26.505919,1.0 153.079982,-26.505903,1.0 153.079982,-26.505887,1.0 153.079965,-26.505887,1.0 153.079947,-26.505887,1.0 153.079947,-26.505903,1.0 153.079929,-26.505903,1.0 153.079929,-26.505919,1.0 153.079911,-26.50595,1.0 153.079928,-26.50595,1.0 153.079946,-26.505935,1.0 153.079928,-26.50595,1.0 153.079911,-26.50595,1.0 153.079928,-26.505966,1.0 153.079944,-26.505998,1.0 153.079945,-26.505982,1.0 153.079944,-26.505998,1.0 153.079962,-26.505998,1.0 153.07998,-26.505983,1.0 153.079962,-26.505998,1.0 153.079997,-26.505999,1.0 153.080032,-26.505983,1.0 153.08005,-26.505967,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4194">
+                <name>Survey Areas 13</name>
+                <styleUrl>#3979</styleUrl>
+                <Polygon id="4193">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4195">
+                            <coordinates>153.080047,-26.506094,1.0 153.080012,-26.506094,1.0 153.079995,-26.506078,1.0 153.080012,-26.506078,1.0 153.080047,-26.506094,1.0 153.080047,-26.506062,1.0 153.08003,-26.506062,1.0 153.080047,-26.506062,1.0 153.080048,-26.506046,1.0 153.080031,-26.50603,1.0 153.080013,-26.506046,1.0 153.080031,-26.50603,1.0 153.080014,-26.506014,1.0 153.079997,-26.505999,1.0 153.079979,-26.506014,1.0 153.079996,-26.506046,1.0 153.079979,-26.506014,1.0 153.079979,-26.505998,1.0 153.079962,-26.505998,1.0 153.079944,-26.506014,1.0 153.079944,-26.50603,1.0 153.079927,-26.506014,1.0 153.079926,-26.50603,1.0 153.079908,-26.506077,1.0 153.079925,-26.506078,1.0 153.079943,-26.506062,1.0 153.079925,-26.506078,1.0 153.079908,-26.506077,1.0 153.079925,-26.506093,1.0 153.079941,-26.506125,1.0 153.079942,-26.506109,1.0 153.079941,-26.506125,1.0 153.079959,-26.506125,1.0 153.079977,-26.506094,1.0 153.079959,-26.506125,1.0 153.079994,-26.506126,1.0 153.080029,-26.50611,1.0 153.080047,-26.506094,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4198">
+                <name>Survey Areas 14</name>
+                <styleUrl>#3982</styleUrl>
+                <Polygon id="4197">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4199">
+                            <coordinates>153.079959,-26.50611,1.0 153.079925,-26.506093,1.0 153.079908,-26.506077,1.0 153.079925,-26.506093,1.0 153.079959,-26.506094,1.0 153.07996,-26.506078,1.0 153.079942,-26.506078,1.0 153.07996,-26.506078,1.0 153.07996,-26.506062,1.0 153.079961,-26.506046,1.0 153.079943,-26.506062,1.0 153.079943,-26.506046,1.0 153.079927,-26.506014,1.0 153.079909,-26.506014,1.0 153.079909,-26.50603,1.0 153.079908,-26.506046,1.0 153.079909,-26.50603,1.0 153.079909,-26.506014,1.0 153.079874,-26.506014,1.0 153.079856,-26.506029,1.0 153.079856,-26.506029,1.0 153.079856,-26.506029,1.0 153.079839,-26.506045,1.0 153.07982,-26.506077,1.0 153.079855,-26.506077,1.0 153.079856,-26.506061,1.0 153.079855,-26.506093,1.0 153.07982,-26.506093,1.0 153.079837,-26.506109,1.0 153.079854,-26.506125,1.0 153.079854,-26.506109,1.0 153.079854,-26.506125,1.0 153.079871,-26.506141,1.0 153.079889,-26.506109,1.0 153.079889,-26.506141,1.0 153.079906,-26.506141,1.0 153.079941,-26.506125,1.0 153.079959,-26.50611,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4202">
+                <name>Survey Areas 15</name>
+                <styleUrl>#3985</styleUrl>
+                <Polygon id="4201">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4203">
+                            <coordinates>153.079906,-26.506125,1.0 153.079872,-26.506109,1.0 153.079854,-26.506109,1.0 153.079872,-26.506109,1.0 153.079906,-26.506125,1.0 153.079907,-26.506093,1.0 153.07989,-26.506093,1.0 153.079907,-26.506093,1.0 153.079908,-26.506077,1.0 153.079908,-26.506062,1.0 153.07989,-26.506077,1.0 153.07989,-26.506061,1.0 153.079873,-26.506045,1.0 153.079856,-26.506029,1.0 153.079856,-26.506045,1.0 153.079855,-26.506077,1.0 153.079856,-26.506045,1.0 153.079856,-26.506029,1.0 153.079822,-26.506029,1.0 153.079804,-26.506045,1.0 153.079803,-26.506061,1.0 153.079804,-26.506045,1.0 153.079786,-26.506061,1.0 153.079768,-26.506093,1.0 153.079802,-26.506109,1.0 153.079803,-26.506093,1.0 153.079802,-26.506109,1.0 153.079767,-26.506108,1.0 153.079784,-26.506124,1.0 153.079801,-26.506156,1.0 153.079801,-26.50614,1.0 153.079801,-26.506156,1.0 153.079818,-26.506156,1.0 153.079837,-26.506125,1.0 153.079836,-26.506157,1.0 153.079853,-26.506157,1.0 153.079889,-26.506141,1.0 153.079906,-26.506125,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4206">
+                <name>Survey Areas 16</name>
+                <styleUrl>#3988</styleUrl>
+                <Polygon id="4205">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4207">
+                            <coordinates>153.079887,-26.506189,1.0 153.079852,-26.506188,1.0 153.079853,-26.506173,1.0 153.07987,-26.506189,1.0 153.079887,-26.506189,1.0 153.079905,-26.506173,1.0 153.07987,-26.506173,1.0 153.079905,-26.506173,1.0 153.079906,-26.506157,1.0 153.079889,-26.506141,1.0 153.079871,-26.506141,1.0 153.079889,-26.506125,1.0 153.079872,-26.506109,1.0 153.079837,-26.506109,1.0 153.079837,-26.506125,1.0 153.079854,-26.506141,1.0 153.079837,-26.506125,1.0 153.079837,-26.506109,1.0 153.07982,-26.506109,1.0 153.079802,-26.506109,1.0 153.079802,-26.506125,1.0 153.079784,-26.506124,1.0 153.079784,-26.50614,1.0 153.079766,-26.506172,1.0 153.079783,-26.506172,1.0 153.079801,-26.506156,1.0 153.079783,-26.506172,1.0 153.079766,-26.506172,1.0 153.079765,-26.506204,1.0 153.079799,-26.50622,1.0 153.0798,-26.506204,1.0 153.079799,-26.50622,1.0 153.079817,-26.50622,1.0 153.079835,-26.506204,1.0 153.079816,-26.506236,1.0 153.079852,-26.50622,1.0 153.079887,-26.506205,1.0 153.079887,-26.506189,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4210">
+                <name>Survey Areas 17</name>
+                <styleUrl>#3991</styleUrl>
+                <Polygon id="4209">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4211">
+                            <coordinates>153.079727,-26.506315,1.0 153.079692,-26.506315,1.0 153.079675,-26.506299,1.0 153.079693,-26.506299,1.0 153.079727,-26.506315,1.0 153.079728,-26.506283,1.0 153.079711,-26.506283,1.0 153.079728,-26.506283,1.0 153.079728,-26.506267,1.0 153.079729,-26.506251,1.0 153.079711,-26.506267,1.0 153.079729,-26.506251,1.0 153.079694,-26.506235,1.0 153.079677,-26.506219,1.0 153.079677,-26.506235,1.0 153.079676,-26.506267,1.0 153.079677,-26.506251,1.0 153.079677,-26.506219,1.0 153.079659,-26.506235,1.0 153.079642,-26.506235,1.0 153.079642,-26.506251,1.0 153.079624,-26.506251,1.0 153.079607,-26.506251,1.0 153.079588,-26.506298,1.0 153.079623,-26.506298,1.0 153.079641,-26.506283,1.0 153.079623,-26.506298,1.0 153.079606,-26.506298,1.0 153.079605,-26.506314,1.0 153.079622,-26.506346,1.0 153.07964,-26.50633,1.0 153.079639,-26.506346,1.0 153.079639,-26.506346,1.0 153.079675,-26.506315,1.0 153.079657,-26.506346,1.0 153.079692,-26.506346,1.0 153.079709,-26.506331,1.0 153.079727,-26.506315,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4214">
+                <name>Survey Areas 18</name>
+                <styleUrl>#3994</styleUrl>
+                <Polygon id="4213">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4215">
+                            <coordinates>153.079882,-26.506411,1.0 153.079847,-26.506395,1.0 153.079847,-26.506395,1.0 153.079847,-26.506395,1.0 153.079882,-26.506411,1.0 153.0799,-26.506379,1.0 153.079865,-26.506379,1.0 153.0799,-26.506379,1.0 153.079901,-26.506364,1.0 153.079883,-26.506348,1.0 153.079866,-26.506363,1.0 153.079883,-26.506348,1.0 153.079866,-26.506332,1.0 153.079832,-26.506315,1.0 153.079832,-26.506331,1.0 153.079848,-26.506363,1.0 153.079832,-26.506331,1.0 153.079832,-26.506315,1.0 153.079814,-26.506315,1.0 153.079797,-26.506331,1.0 153.079796,-26.506347,1.0 153.079779,-26.506331,1.0 153.079761,-26.506347,1.0 153.07976,-26.506395,1.0 153.079778,-26.506395,1.0 153.079795,-26.506379,1.0 153.079778,-26.506395,1.0 153.07976,-26.506395,1.0 153.07976,-26.50641,1.0 153.079794,-26.506442,1.0 153.079794,-26.506427,1.0 153.079794,-26.506442,1.0 153.079811,-26.506443,1.0 153.07983,-26.506411,1.0 153.079811,-26.506443,1.0 153.079846,-26.506443,1.0 153.079882,-26.506427,1.0 153.079882,-26.506411,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4218">
+                <name>Survey Areas 19</name>
+                <styleUrl>#3997</styleUrl>
+                <Polygon id="4217">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4219">
+                            <coordinates>153.080092,-26.506381,1.0 153.080057,-26.50638,1.0 153.08004,-26.506364,1.0 153.080057,-26.506364,1.0 153.080092,-26.506381,1.0 153.080093,-26.506349,1.0 153.080075,-26.506349,1.0 153.080093,-26.506349,1.0 153.080093,-26.506333,1.0 153.080076,-26.506317,1.0 153.080076,-26.506333,1.0 153.080076,-26.506317,1.0 153.080059,-26.506301,1.0 153.080042,-26.506285,1.0 153.080042,-26.506301,1.0 153.080041,-26.506333,1.0 153.080024,-26.506301,1.0 153.080025,-26.506285,1.0 153.080007,-26.506285,1.0 153.079989,-26.5063,1.0 153.079989,-26.506316,1.0 153.079972,-26.5063,1.0 153.079971,-26.506316,1.0 153.079953,-26.506364,1.0 153.07997,-26.506364,1.0 153.079988,-26.506348,1.0 153.07997,-26.506364,1.0 153.079953,-26.506364,1.0 153.07997,-26.50638,1.0 153.079987,-26.506412,1.0 153.079987,-26.506396,1.0 153.079987,-26.506412,1.0 153.080004,-26.506412,1.0 153.080022,-26.50638,1.0 153.080004,-26.506412,1.0 153.080039,-26.506412,1.0 153.080074,-26.506396,1.0 153.080092,-26.506381,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4222">
+                <name>Survey Areas 20</name>
+                <styleUrl>#4000</styleUrl>
+                <Polygon id="4221">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4223">
+                            <coordinates>153.080072,-26.506492,1.0 153.080037,-26.506492,1.0 153.08002,-26.506476,1.0 153.080037,-26.506492,1.0 153.080072,-26.506492,1.0 153.080072,-26.506476,1.0 153.080055,-26.506476,1.0 153.080072,-26.506476,1.0 153.080073,-26.50646,1.0 153.080056,-26.506444,1.0 153.080038,-26.506444,1.0 153.080056,-26.506444,1.0 153.080039,-26.506412,1.0 153.080021,-26.506412,1.0 153.080021,-26.506428,1.0 153.080021,-26.506444,1.0 153.080004,-26.506428,1.0 153.080004,-26.506412,1.0 153.079987,-26.506412,1.0 153.079969,-26.506412,1.0 153.079969,-26.506428,1.0 153.079951,-26.506427,1.0 153.079951,-26.506443,1.0 153.079933,-26.506475,1.0 153.07995,-26.506475,1.0 153.079968,-26.506459,1.0 153.07995,-26.506475,1.0 153.079933,-26.506475,1.0 153.079949,-26.506507,1.0 153.079966,-26.506523,1.0 153.079967,-26.506507,1.0 153.079966,-26.506523,1.0 153.079983,-26.506539,1.0 153.080002,-26.506507,1.0 153.079983,-26.506539,1.0 153.080018,-26.506539,1.0 153.080054,-26.506508,1.0 153.080072,-26.506492,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4226">
+                <name>Survey Areas 21</name>
+                <styleUrl>#4003</styleUrl>
+                <Polygon id="4225">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4227">
+                            <coordinates>153.079931,-26.506554,1.0 153.079896,-26.506554,1.0 153.079879,-26.506538,1.0 153.079896,-26.506538,1.0 153.079931,-26.506554,1.0 153.079932,-26.506523,1.0 153.079914,-26.506523,1.0 153.079932,-26.506523,1.0 153.079932,-26.506507,1.0 153.079915,-26.506491,1.0 153.079914,-26.506507,1.0 153.079915,-26.506491,1.0 153.079898,-26.506475,1.0 153.079881,-26.506459,1.0 153.07988,-26.506475,1.0 153.07988,-26.506507,1.0 153.079863,-26.506475,1.0 153.079863,-26.506459,1.0 153.079846,-26.506459,1.0 153.079828,-26.506474,1.0 153.079828,-26.50649,1.0 153.079811,-26.506474,1.0 153.07981,-26.50649,1.0 153.079792,-26.506538,1.0 153.079809,-26.506538,1.0 153.079827,-26.506522,1.0 153.079809,-26.506538,1.0 153.079792,-26.506538,1.0 153.079809,-26.506554,1.0 153.079825,-26.506586,1.0 153.079826,-26.50657,1.0 153.079825,-26.506586,1.0 153.079843,-26.506586,1.0 153.079861,-26.506554,1.0 153.079843,-26.506586,1.0 153.079878,-26.506586,1.0 153.079913,-26.50657,1.0 153.079931,-26.506554,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4230">
+                <name>Survey Areas 22</name>
+                <styleUrl>#4006</styleUrl>
+                <Polygon id="4229">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4231">
+                            <coordinates>153.079878,-26.50657,1.0 153.079843,-26.50657,1.0 153.079826,-26.506554,1.0 153.079843,-26.50657,1.0 153.079878,-26.50657,1.0 153.079878,-26.506554,1.0 153.079861,-26.506538,1.0 153.079878,-26.506554,1.0 153.079879,-26.506538,1.0 153.079862,-26.506522,1.0 153.079844,-26.506522,1.0 153.079862,-26.506506,1.0 153.079845,-26.50649,1.0 153.079828,-26.50649,1.0 153.07981,-26.506506,1.0 153.079827,-26.506522,1.0 153.07981,-26.506506,1.0 153.07981,-26.50649,1.0 153.079793,-26.50649,1.0 153.079775,-26.50649,1.0 153.079775,-26.506506,1.0 153.079758,-26.506506,1.0 153.079757,-26.506522,1.0 153.079739,-26.506553,1.0 153.079756,-26.506553,1.0 153.079774,-26.506538,1.0 153.079756,-26.506553,1.0 153.079739,-26.506553,1.0 153.079756,-26.506585,1.0 153.079773,-26.506601,1.0 153.079773,-26.506585,1.0 153.079773,-26.506601,1.0 153.07979,-26.506601,1.0 153.079808,-26.506586,1.0 153.07979,-26.506601,1.0 153.079825,-26.506602,1.0 153.07986,-26.506586,1.0 153.079878,-26.50657,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4234">
+                <name>Survey Areas 23</name>
+                <styleUrl>#4009</styleUrl>
+                <Polygon id="4233">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4235">
+                            <coordinates>153.08062,-26.505493,1.0 153.080585,-26.505493,1.0 153.080568,-26.505477,1.0 153.080585,-26.505493,1.0 153.08062,-26.505493,1.0 153.08062,-26.505478,1.0 153.080602,-26.505477,1.0 153.08062,-26.505478,1.0 153.08062,-26.505462,1.0 153.080603,-26.505446,1.0 153.080586,-26.505446,1.0 153.080603,-26.505446,1.0 153.080587,-26.505414,1.0 153.080569,-26.505414,1.0 153.080569,-26.50543,1.0 153.080568,-26.505445,1.0 153.080551,-26.505429,1.0 153.080552,-26.505414,1.0 153.080534,-26.505413,1.0 153.080517,-26.505413,1.0 153.080516,-26.505429,1.0 153.080499,-26.505429,1.0 153.080499,-26.505445,1.0 153.08048,-26.505477,1.0 153.080498,-26.505477,1.0 153.080516,-26.505461,1.0 153.080498,-26.505477,1.0 153.08048,-26.505477,1.0 153.080497,-26.505509,1.0 153.080514,-26.505525,1.0 153.080514,-26.505509,1.0 153.080514,-26.505525,1.0 153.080531,-26.505541,1.0 153.080549,-26.505509,1.0 153.080531,-26.505541,1.0 153.080566,-26.505541,1.0 153.080602,-26.505509,1.0 153.08062,-26.505493,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4238">
+                <name>Survey Areas 24</name>
+                <styleUrl>#4012</styleUrl>
+                <Polygon id="4237">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4239">
+                            <coordinates>153.080544,-26.505747,1.0 153.080509,-26.505731,1.0 153.080492,-26.505715,1.0 153.080509,-26.505731,1.0 153.080544,-26.505731,1.0 153.080544,-26.505716,1.0 153.080527,-26.505715,1.0 153.080544,-26.505716,1.0 153.080545,-26.5057,1.0 153.080545,-26.505684,1.0 153.080527,-26.5057,1.0 153.080528,-26.505684,1.0 153.080511,-26.505652,1.0 153.080494,-26.505652,1.0 153.080493,-26.505668,1.0 153.080493,-26.505683,1.0 153.080493,-26.505668,1.0 153.080494,-26.505652,1.0 153.080459,-26.505651,1.0 153.080441,-26.505667,1.0 153.080441,-26.505667,1.0 153.080441,-26.505667,1.0 153.080423,-26.505683,1.0 153.080405,-26.505715,1.0 153.08044,-26.505715,1.0 153.08044,-26.505699,1.0 153.080439,-26.505731,1.0 153.080404,-26.505731,1.0 153.080421,-26.505747,1.0 153.080439,-26.505763,1.0 153.080439,-26.505747,1.0 153.080439,-26.505763,1.0 153.080456,-26.505779,1.0 153.080474,-26.505747,1.0 153.080473,-26.505779,1.0 153.08049,-26.505779,1.0 153.080526,-26.505763,1.0 153.080544,-26.505747,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4242">
+                <name>Survey Areas 25</name>
+                <styleUrl>#4015</styleUrl>
+                <Polygon id="4241">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4243">
+                            <coordinates>153.08045,-26.506001,1.0 153.080416,-26.505985,1.0 153.080399,-26.505969,1.0 153.080416,-26.505985,1.0 153.08045,-26.505985,1.0 153.080451,-26.505969,1.0 153.080433,-26.505969,1.0 153.080451,-26.505969,1.0 153.080451,-26.505953,1.0 153.080452,-26.505938,1.0 153.080434,-26.505953,1.0 153.080434,-26.505937,1.0 153.080417,-26.505921,1.0 153.0804,-26.505905,1.0 153.0804,-26.505921,1.0 153.080399,-26.505937,1.0 153.0804,-26.505921,1.0 153.0804,-26.505905,1.0 153.080365,-26.505905,1.0 153.080347,-26.505921,1.0 153.080347,-26.505921,1.0 153.080347,-26.505921,1.0 153.08033,-26.505937,1.0 153.080311,-26.505969,1.0 153.080346,-26.505969,1.0 153.080346,-26.505969,1.0 153.080346,-26.505985,1.0 153.080311,-26.505984,1.0 153.080328,-26.506,1.0 153.080345,-26.506016,1.0 153.080345,-26.506,1.0 153.080345,-26.506016,1.0 153.080362,-26.506032,1.0 153.08038,-26.506001,1.0 153.08038,-26.506032,1.0 153.080397,-26.506033,1.0 153.080432,-26.506017,1.0 153.08045,-26.506001,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4246">
+                <name>Survey Areas 26</name>
+                <styleUrl>#4018</styleUrl>
+                <Polygon id="4245">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4247">
+                            <coordinates>153.080336,-26.506382,1.0 153.080302,-26.506366,1.0 153.080285,-26.50635,1.0 153.080302,-26.506366,1.0 153.080337,-26.506366,1.0 153.080337,-26.50635,1.0 153.080319,-26.50635,1.0 153.080337,-26.50635,1.0 153.080337,-26.506334,1.0 153.080338,-26.506318,1.0 153.08032,-26.506334,1.0 153.080338,-26.506318,1.0 153.080304,-26.506286,1.0 153.080286,-26.506286,1.0 153.080286,-26.506302,1.0 153.080285,-26.506318,1.0 153.080286,-26.506302,1.0 153.080286,-26.506286,1.0 153.080269,-26.506286,1.0 153.080234,-26.506286,1.0 153.080233,-26.506302,1.0 153.080233,-26.506302,1.0 153.080216,-26.506318,1.0 153.080197,-26.506349,1.0 153.080232,-26.50635,1.0 153.08025,-26.506334,1.0 153.080232,-26.506365,1.0 153.080215,-26.506349,1.0 153.080214,-26.506381,1.0 153.080231,-26.506397,1.0 153.080249,-26.506381,1.0 153.080249,-26.506397,1.0 153.080248,-26.506413,1.0 153.080284,-26.506382,1.0 153.080266,-26.506413,1.0 153.0803,-26.506414,1.0 153.080318,-26.506398,1.0 153.080336,-26.506382,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4250">
+                <name>Survey Areas 27</name>
+                <styleUrl>#4021</styleUrl>
+                <Polygon id="4249">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4251">
+                            <coordinates>153.080272,-26.505444,1.0 153.080237,-26.505428,1.0 153.08022,-26.505428,1.0 153.080237,-26.505428,1.0 153.080272,-26.505444,1.0 153.080273,-26.505412,1.0 153.080255,-26.505412,1.0 153.080273,-26.505412,1.0 153.080273,-26.505396,1.0 153.080273,-26.50538,1.0 153.080256,-26.505396,1.0 153.080273,-26.50538,1.0 153.080239,-26.505364,1.0 153.080222,-26.505348,1.0 153.080222,-26.505364,1.0 153.080221,-26.505396,1.0 153.080222,-26.505364,1.0 153.080222,-26.505348,1.0 153.080204,-26.505348,1.0 153.080187,-26.505364,1.0 153.080186,-26.50538,1.0 153.080169,-26.505364,1.0 153.080151,-26.505379,1.0 153.080133,-26.505411,1.0 153.080168,-26.505427,1.0 153.080185,-26.505411,1.0 153.080168,-26.505427,1.0 153.08015,-26.505427,1.0 153.08015,-26.505443,1.0 153.080167,-26.505459,1.0 153.080185,-26.505443,1.0 153.080184,-26.505475,1.0 153.080184,-26.505475,1.0 153.08022,-26.505443,1.0 153.080201,-26.505475,1.0 153.080236,-26.505475,1.0 153.080254,-26.50546,1.0 153.080272,-26.505444,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4254">
+                <name>Survey Areas 28</name>
+                <styleUrl>#4024</styleUrl>
+                <Polygon id="4253">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4255">
+                            <coordinates>153.080106,-26.505792,1.0 153.080072,-26.505776,1.0 153.080072,-26.50576,1.0 153.080072,-26.505776,1.0 153.080107,-26.505777,1.0 153.080125,-26.505761,1.0 153.08009,-26.505761,1.0 153.080125,-26.505761,1.0 153.080125,-26.505745,1.0 153.080108,-26.505729,1.0 153.08009,-26.505745,1.0 153.080108,-26.505729,1.0 153.080091,-26.505713,1.0 153.080056,-26.505697,1.0 153.080056,-26.505713,1.0 153.080073,-26.505745,1.0 153.080056,-26.505713,1.0 153.080056,-26.505697,1.0 153.080039,-26.505697,1.0 153.080021,-26.505713,1.0 153.080021,-26.505713,1.0 153.080004,-26.505712,1.0 153.079986,-26.505728,1.0 153.079985,-26.50576,1.0 153.080003,-26.50576,1.0 153.08002,-26.50576,1.0 153.080002,-26.505776,1.0 153.079985,-26.505776,1.0 153.079984,-26.505792,1.0 153.080019,-26.505808,1.0 153.080019,-26.505792,1.0 153.080019,-26.505808,1.0 153.080036,-26.505824,1.0 153.080054,-26.505792,1.0 153.080036,-26.505824,1.0 153.080071,-26.505824,1.0 153.080106,-26.505808,1.0 153.080106,-26.505792,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="4257">
+            <Style id="4027">
+                <LineStyle id="4028">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4029">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4030">
+                <LineStyle id="4031">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4032">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4033">
+                <LineStyle id="4034">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4035">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4036">
+                <LineStyle id="4037">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4038">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4039">
+                <LineStyle id="4040">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4041">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4042">
+                <LineStyle id="4043">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4044">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4045">
+                <LineStyle id="4046">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4047">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4048">
+                <LineStyle id="4049">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4050">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4051">
+                <LineStyle id="4052">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4053">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4054">
+                <LineStyle id="4055">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4056">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4057">
+                <LineStyle id="4058">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4059">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4060">
+                <LineStyle id="4061">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4062">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="4063">
+                <LineStyle id="4064">
+                    <color>ffffffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4065">
+                    <color>80ffffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>LEGEND</name>
+            <Placemark id="4259">
+                <name>LEGEND 1</name>
+                <styleUrl>#4027</styleUrl>
+                <Polygon id="4258">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="4260">
+                            <coordinates>153.072422,-26.505478,1.0 153.072421,-26.505526,1.0 153.072247,-26.505525,1.0 153.072422,-26.505478,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="4263">
+                <name>LEGEND 2</name>
+                <styleUrl>#4030</styleUrl>
+                <LineString id="4262">
+                    <coordinates>153.071853,-26.508781,1.0 153.071854,-26.508734,1.0 153.07175,-26.508733,1.0 153.07175,-26.508701,1.0 153.071858,-26.508559,1.0 153.071911,-26.508559,1.0 153.071907,-26.508702,1.0 153.071925,-26.508702,1.0 153.071924,-26.508734,1.0 153.071906,-26.508734,1.0 153.071905,-26.508782,1.0 153.071853,-26.508781,1.0 153.071855,-26.508702,1.0 153.071857,-26.508622,1.0 153.071803,-26.508702,1.0 153.071855,-26.508702,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4265">
+                <name>LEGEND 3</name>
+                <styleUrl>#4033</styleUrl>
+                <LineString id="4264">
+                    <coordinates>153.078891,-26.506278,1.0 153.078892,-26.506247,1.0 153.078857,-26.506246,1.0 153.078857,-26.50623,1.0 153.078912,-26.506151,1.0 153.078929,-26.506151,1.0 153.078927,-26.506231,1.0 153.078944,-26.506231,1.0 153.078944,-26.506247,1.0 153.078927,-26.506247,1.0 153.078926,-26.506278,1.0 153.078891,-26.506278,1.0 153.078892,-26.506231,1.0 153.078893,-26.506199,1.0 153.078875,-26.506231,1.0 153.078892,-26.506231,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4267">
+                <name>LEGEND 4</name>
+                <styleUrl>#4036</styleUrl>
+                <LineString id="4266">
+                    <coordinates>153.078976,-26.502114,1.0 153.078976,-26.502098,1.0 153.078924,-26.502098,1.0 153.078924,-26.502082,1.0 153.078978,-26.502003,1.0 153.078996,-26.502003,1.0 153.078994,-26.502082,1.0 153.079011,-26.502082,1.0 153.079011,-26.502098,1.0 153.078993,-26.502098,1.0 153.078993,-26.502114,1.0 153.078976,-26.502114,1.0 153.078976,-26.502082,1.0 153.078978,-26.502035,1.0 153.078942,-26.502082,1.0 153.078976,-26.502082,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4269">
+                <name>LEGEND 5</name>
+                <styleUrl>#4039</styleUrl>
+                <LineString id="4268">
+                    <coordinates>153.077468,-26.502439,1.0 153.077468,-26.502407,1.0 153.077416,-26.502407,1.0 153.077417,-26.502391,1.0 153.077488,-26.502312,1.0 153.077506,-26.502312,1.0 153.077504,-26.502392,1.0 153.077521,-26.502392,1.0 153.077521,-26.502408,1.0 153.077503,-26.502408,1.0 153.077503,-26.502439,1.0 153.077468,-26.502439,1.0 153.077469,-26.502392,1.0 153.07747,-26.50236,1.0 153.077451,-26.502391,1.0 153.077469,-26.502392,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4271">
+                <name>LEGEND 6</name>
+                <styleUrl>#4042</styleUrl>
+                <LineString id="4270">
+                    <coordinates>153.068448,-26.506791,1.0 153.068449,-26.506775,1.0 153.068396,-26.506775,1.0 153.068397,-26.506743,1.0 153.068451,-26.506679,1.0 153.068469,-26.50668,1.0 153.068467,-26.506743,1.0 153.068484,-26.506743,1.0 153.068484,-26.506775,1.0 153.068466,-26.506775,1.0 153.068466,-26.506791,1.0 153.068448,-26.506791,1.0 153.06845,-26.506743,1.0 153.06845,-26.506711,1.0 153.068415,-26.506743,1.0 153.06845,-26.506743,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4273">
+                <name>LEGEND 7</name>
+                <styleUrl>#4045</styleUrl>
+                <LineString id="4272">
+                    <coordinates>153.075557,-26.508532,1.0 153.075557,-26.508501,1.0 153.075505,-26.5085,1.0 153.075506,-26.508484,1.0 153.075559,-26.508421,1.0 153.075577,-26.508421,1.0 153.075575,-26.508485,1.0 153.075593,-26.508485,1.0 153.075592,-26.508501,1.0 153.075575,-26.508501,1.0 153.075574,-26.508532,1.0 153.075557,-26.508532,1.0 153.075558,-26.508485,1.0 153.075559,-26.508453,1.0 153.075523,-26.508484,1.0 153.075558,-26.508485,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4275">
+                <name>LEGEND 8</name>
+                <styleUrl>#4048</styleUrl>
+                <LineString id="4274">
+                    <coordinates>153.072068,-26.502869,1.0 153.072068,-26.502837,1.0 153.072016,-26.502837,1.0 153.072017,-26.502821,1.0 153.07207,-26.502758,1.0 153.072088,-26.502758,1.0 153.072086,-26.502822,1.0 153.072104,-26.502822,1.0 153.072103,-26.502838,1.0 153.072086,-26.502838,1.0 153.072085,-26.502869,1.0 153.072068,-26.502869,1.0 153.072069,-26.502822,1.0 153.07207,-26.50279,1.0 153.072034,-26.502821,1.0 153.072069,-26.502822,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4277">
+                <name>LEGEND 9</name>
+                <styleUrl>#4051</styleUrl>
+                <LineString id="4276">
+                    <coordinates>153.078393,-26.503128,1.0 153.078393,-26.503112,1.0 153.078341,-26.503112,1.0 153.078341,-26.503096,1.0 153.078395,-26.503017,1.0 153.078413,-26.503017,1.0 153.078411,-26.503096,1.0 153.078428,-26.503096,1.0 153.078428,-26.503112,1.0 153.07841,-26.503112,1.0 153.07841,-26.503128,1.0 153.078393,-26.503128,1.0 153.078393,-26.503096,1.0 153.078395,-26.503049,1.0 153.078359,-26.503096,1.0 153.078393,-26.503096,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4279">
+                <name>LEGEND 10</name>
+                <styleUrl>#4054</styleUrl>
+                <LineString id="4278">
+                    <coordinates>153.08182,-26.504197,1.0 153.081821,-26.504165,1.0 153.081768,-26.504165,1.0 153.081769,-26.504149,1.0 153.08184,-26.504086,1.0 153.081858,-26.504086,1.0 153.081856,-26.504149,1.0 153.081873,-26.504149,1.0 153.081873,-26.504165,1.0 153.081856,-26.504165,1.0 153.081855,-26.504197,1.0 153.08182,-26.504197,1.0 153.081821,-26.504149,1.0 153.081822,-26.504117,1.0 153.081804,-26.504149,1.0 153.081821,-26.504149,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4281">
+                <name>LEGEND 11</name>
+                <styleUrl>#4057</styleUrl>
+                <LineString id="4280">
+                    <coordinates>153.067859,-26.503799,1.0 153.067859,-26.503783,1.0 153.067807,-26.503783,1.0 153.067807,-26.503767,1.0 153.067862,-26.503688,1.0 153.067879,-26.503688,1.0 153.067877,-26.503767,1.0 153.067895,-26.503767,1.0 153.067894,-26.503783,1.0 153.067877,-26.503783,1.0 153.067876,-26.503799,1.0 153.067859,-26.503799,1.0 153.06786,-26.503767,1.0 153.067861,-26.503719,1.0 153.067825,-26.503767,1.0 153.06786,-26.503767,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4283">
+                <name>LEGEND 12</name>
+                <styleUrl>#4060</styleUrl>
+                <LineString id="4282">
+                    <coordinates>153.071761,-26.506142,1.0 153.071762,-26.50611,1.0 153.071709,-26.50611,1.0 153.07171,-26.506094,1.0 153.071763,-26.506031,1.0 153.071781,-26.506031,1.0 153.071779,-26.506094,1.0 153.071797,-26.506095,1.0 153.071796,-26.50611,1.0 153.071779,-26.50611,1.0 153.071778,-26.506142,1.0 153.071761,-26.506142,1.0 153.071762,-26.506094,1.0 153.071763,-26.506063,1.0 153.071727,-26.506094,1.0 153.071762,-26.506094,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="4285">
+                <name>LEGEND 13</name>
+                <styleUrl>#4063</styleUrl>
+                <LineString id="4284">
+                    <coordinates>153.07207,-26.509164,1.0 153.072071,-26.509148,1.0 153.072018,-26.509148,1.0 153.072019,-26.509132,1.0 153.072091,-26.509053,1.0 153.072108,-26.509053,1.0 153.072106,-26.509133,1.0 153.072123,-26.509133,1.0 153.072123,-26.509149,1.0 153.072106,-26.509148,1.0 153.072105,-26.509164,1.0 153.07207,-26.509164,1.0 153.072071,-26.509132,1.0 153.072072,-26.509085,1.0 153.072054,-26.509132,1.0 153.072071,-26.509132,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

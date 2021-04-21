@@ -9,10 +9,10 @@ def convert_path_coords(path_list, shape, thresh):
     fill = []
     obj_list = []
     for p in path_list:
-
         coords = re.sub(
-            'c (-*.*[0-9]+) (-*.*[0-9]+) (-*.*[0-9]+) (-*.*[0-9]+) '
-            + '(-*.*[0-9]+) (-*.*[0-9]+)',
+            'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+)',
             r'l \5 \6', p['d'].lower()
         )
         has_z = re.search('(Z\s*)$', coords)
@@ -110,8 +110,9 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
 
         transform = convert_transform(use_list[i]['transform'])
         coords = re.sub(
-            'c (-*.*[0-9]+) (-*.*[0-9]+) (-*.*[0-9]+) (-*.*[0-9]+) '
-            + '(-*.*[0-9]+) (-*.*[0-9]+)',
+            'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+)',
             r'l \5 \6', p['d'].lower()
         )
         coords = re.split('[a-zA-Z]', coords)
@@ -132,7 +133,6 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
         new_coords = new_coords.reshape(
             [new_coords.shape[0],1,new_coords.shape[1]]
         )
-
         area = cv.contourArea(new_coords)
         if area >= thresh*shape[0]*shape[1]:
             use_coords.append(new_coords)
@@ -140,11 +140,17 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
             try:
                 stroke.append(p['stroke'])
             except:
-                stroke.append('none')
+                try:
+                    stroke.append(use_list[i]['stroke'])
+                except:
+                    stroke.append('none')
             try:
                 fill.append(p['fill'])
             except:
-                fill.append('none')
+                try:
+                    fill.append(use_list[i]['fill'])
+                except:
+                    fill.append('none')
 
     return use_coords, stroke, fill, obj_list
 

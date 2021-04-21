@@ -536,11 +536,11 @@ class Name_Polygons_Popup():
         self.rb.append(rb)
         rb.grid(row=len(text_list))
 
-        for i in range(len(self.rb)):
-            if (i+1) < 10:
-                self.master.bind(
-                    str(i+1), lambda e, bn=i: self.rb[bn].invoke()
-                )
+        # for i in range(len(self.rb)):
+        #     if (i+1) < 10:
+        #         self.master.bind(
+        #             str(i+1), lambda e, bn=i: self.rb[bn].invoke()
+        #         )
 
         self.master.bind('<Return>', lambda e: button.invoke())
 
