@@ -46,7 +46,7 @@ def convert_path_coords(path_list, shape, thresh):
             [new_coords.shape[0],1,new_coords.shape[1]]
         )
         area = cv.contourArea(new_coords)
-        if .75*shape[0]*shape[1] >= area >= thresh*shape[0]*shape[1]:
+        if .85*shape[0]*shape[1] >= area >= thresh*shape[0]*shape[1]:
             path_coords.append(new_coords)
             obj_list.append(p)
             try:
@@ -170,6 +170,7 @@ def convert_transform(transform_string):
 def get_nearest_text(leg_coords, lt_coords):
     closest_t = []
     for lc in leg_coords:
+        # import pdb; pdb.set_trace()
         distances=[]
         for tc in lt_coords:
         # Assume text likely beside icon, so penalise vertical distances
