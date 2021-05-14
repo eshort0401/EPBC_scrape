@@ -2,12 +2,12 @@ import re
 import numpy as np
 from scipy.spatial.distance import cdist
 import cv2 as cv
+import copy
 
 def convert_path_coords(path_list, shape, thresh):
     path_coords = []
     stroke = []
     fill = []
-    obj_list = []
     for p in path_list:
         coords = re.sub(
             'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
@@ -27,8 +27,6 @@ def convert_path_coords(path_list, shape, thresh):
         if has_z:
             coords += coords[0]
         coords = np.array(coords).astype(float)
-        if 0 < np.linalg.norm(coords[-1]-coords[0]) <= 5:
-            coords = np.append(coords, [coords[0]], axis=0)
 
         coords = np.append(
             coords, values=np.ones([len(coords),1]), axis=1
@@ -45,20 +43,44 @@ def convert_path_coords(path_list, shape, thresh):
         new_coords = new_coords.reshape(
             [new_coords.shape[0],1,new_coords.shape[1]]
         )
-        area = cv.contourArea(new_coords)
-        if .85*shape[0]*shape[1] >= area >= thresh*shape[0]*shape[1]:
-            path_coords.append(new_coords)
-            obj_list.append(p)
-            try:
-                stroke.append(p['stroke'])
-            except:
-                stroke.append('none')
-            try:
-                fill.append(p['fill'])
-            except:
-                fill.append('none')
+        # Remove duplicate points
+        new_coords = np.array(
+            [
+                v for i, v in enumerate(new_coords)
+                if i == 0 or np.all(v != new_coords[i-1])
+            ]
+        )
+        # Split coords into seperate coords if repeated point
+        split_coords = []
+        start = 0
+        for i in range(1,len(new_coords)):
+            previous = new_coords[start:i]
+            m = np.argwhere(
+                np.all(previous == new_coords[i], axis=2).flatten()
+            ).flatten()
+            if m.size > 0:
+                split_coords.append(new_coords[start+m[0]:i+1])
+                start = copy.deepcopy(i)
+        if len(split_coords) == 0:
+            split_coords = [new_coords]
 
-    return path_coords, stroke, fill, obj_list
+        for c in split_coords:
+            area = cv.contourArea(c)
+            if not area:
+                area = 0
+            if .85*shape[0]*shape[1] >= area:
+
+                path_coords.append(c)
+                try:
+                    stroke.append(p['stroke'])
+                except:
+                    stroke.append('none')
+                try:
+                    fill.append(p['fill'])
+                except:
+                    fill.append('none')
+
+    return path_coords, stroke, fill
 
 def crop_coords(coords, shape):
     coords[:,0][coords[:,0] >= shape[1]] = shape[1]-1
@@ -134,23 +156,23 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
             [new_coords.shape[0],1,new_coords.shape[1]]
         )
         area = cv.contourArea(new_coords)
-        if area >= thresh*shape[0]*shape[1]:
-            use_coords.append(new_coords)
-            obj_list.append(use_list[i])
+
+        use_coords.append(new_coords)
+        obj_list.append(use_list[i])
+        try:
+            stroke.append(p['stroke'])
+        except:
             try:
-                stroke.append(p['stroke'])
+                stroke.append(use_list[i]['stroke'])
             except:
-                try:
-                    stroke.append(use_list[i]['stroke'])
-                except:
-                    stroke.append('none')
+                stroke.append('none')
+        try:
+            fill.append(p['fill'])
+        except:
             try:
-                fill.append(p['fill'])
+                fill.append(use_list[i]['fill'])
             except:
-                try:
-                    fill.append(use_list[i]['fill'])
-                except:
-                    fill.append('none')
+                fill.append('none')
 
     return use_coords, stroke, fill, obj_list
 
@@ -199,3 +221,63 @@ def get_leg_text(closest_t, svg_leg_text):
     leg_text = [re.sub('[ ]{2,}', ' ', t) for t in leg_text]
     leg_text = [re.sub('(^[ ]+)|([ ]+$)', '', t) for t in leg_text]
     return leg_text
+
+def remove_duplicates(coords, stroke, fill):
+    i = 0
+    f_i = len(coords)
+    while i < f_i:
+        j = i+1
+        f_j = len(coords)
+        while j < f_j:
+            if np.array_equal(coords[i], coords[j]):
+                for obj in [coords, stroke, fill]:
+                    del obj[j]
+                f_j -= 1
+                f_i -= 1
+                continue
+            j += 1
+        i += 1
+    return coords, stroke, fill
+
+def join_coords(coords, stroke, fill):
+    i = 0
+    f  = len(coords)
+    while i < f:
+        match = False
+        j = i+1
+        while j < f:
+            if (stroke[i] == stroke[j]) and (fill[i] == fill[j]):
+                if np.all(coords[i][0][0] == coords[j][-1][0]):
+#                     import pdb; pdb.set_trace()
+                    coords[i] = np.concatenate([coords[j], coords[i]])
+                    for obj in [coords, stroke, fill]:
+                        del obj[j]
+                    f -= 1
+                    match = True
+                    break
+                elif np.all(coords[i][-1][0] == coords[j][0][0]):
+#                     import pdb; pdb.set_trace()
+                    coords[i] = np.concatenate([coords[i], coords[j]])
+                    for obj in [coords, stroke, fill]:
+                        del obj[j]
+                    f -= 1
+                    match = True
+                    break
+                else:
+                    j += 1
+            else:
+                j += 1
+        if not match:
+            i += 1
+
+    return coords, stroke, fill
+
+def check_areas(coords, stroke, fill, thresh=1):
+    areas = [
+        cv.contourArea(c) for c in svg_coords
+    ]
+    [coords, stroke, fill] = [
+        [obj[i] for i in range(len(coords)) if areas[i] > thresh]
+        for obj in [coords, stroke, fill]
+    ]
+    return coords, stroke, fill
