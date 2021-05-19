@@ -3,29 +3,35 @@ import numpy as np
 from scipy.spatial.distance import cdist
 import cv2 as cv
 import copy
+import bezier
 
 def convert_path_coords(path_list, shape, thresh):
     path_coords = []
     stroke = []
     fill = []
     for p in path_list:
-        coords = re.sub(
-            'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
-            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
-            + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+)',
-            r'l \5 \6', p['d'].lower()
-        )
-        has_z = re.search('(Z\s*)$', coords)
+        # if 'L 2.149' in p['d']:
+        #     import pdb; pdb.set_trace()
+        # coords = re.sub(
+        #     'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+        #     + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+        #    + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+)',
+        #     r'l \5 \6', p['d'].lower()
+        # )
+        coords = interp_bezier(p['d'])
+        has_z = re.search('(z\s*)$', coords.lower())
         coords = re.split('[a-zA-Z]', coords)
         coords.remove('')
         regex = re.compile(' +')
         coords = [c for c in coords if not regex.fullmatch(c)]
         coords = [
-            re.sub('([0-9|.])( )(-|.|[0-9])', r'\1,\3', t).split(',')
+            re.sub(
+                '(-*[0-9]*\.*[0-9]+)( )(-*[0-9]*\.*[0-9]+)', r'\1,\3', t
+            ).split(',')
             for t in coords
         ]
         if has_z:
-            coords += coords[0]
+            coords += [coords[0]]
         coords = np.array(coords).astype(float)
 
         coords = np.append(
@@ -47,7 +53,7 @@ def convert_path_coords(path_list, shape, thresh):
         new_coords = np.array(
             [
                 v for i, v in enumerate(new_coords)
-                if i == 0 or np.all(v != new_coords[i-1])
+                if i == 0 or np.any(v != new_coords[i-1])
             ]
         )
         # Split coords into seperate coords if repeated point
@@ -59,8 +65,15 @@ def convert_path_coords(path_list, shape, thresh):
                 np.all(previous == new_coords[i], axis=2).flatten()
             ).flatten()
             if m.size > 0:
+                if m[0] != 0:
+                    # Add leading non-closed path
+                    split_coords.append(new_coords[start:start+m[0]+1])
+                # Add closed path
                 split_coords.append(new_coords[start+m[0]:i+1])
                 start = copy.deepcopy(i)
+            if i == len(new_coords)-1:
+                # Add trailing path
+                split_coords.append(new_coords[start:])
         if len(split_coords) == 0:
             split_coords = [new_coords]
 
@@ -81,6 +94,38 @@ def convert_path_coords(path_list, shape, thresh):
                     fill.append('none')
 
     return path_coords, stroke, fill
+
+def match_bezier(d):
+    c_matches = re.finditer(
+        '([a-zA-Z] +)*(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) +'
+        + 'c +(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+        + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
+        + '((-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+))*',
+        d.lower()
+    )
+    match_list = []
+    for c in c_matches:
+        match_list.append(c)
+    match_list = match_list[::-1]
+    return match_list
+
+def interp_bezier(d):
+    match_list = match_bezier(d)
+    while len(match_list)>0:
+        for c in match_list:
+            n = c.group(0).replace(' c', '').replace('l', '')
+            n = np.array(n.replace('m', '').split())
+            n = n.astype(float)
+            n = n.reshape([len(n)//2,2]).T
+            curve = bezier.curve.Curve.from_nodes(n)
+            interp = np.round(curve.evaluate_multi(np.linspace(0,1,9)),4)
+            interp = interp.astype(str).T
+            repl = ['l {} {} '.format(coord[0], coord[1]) for coord in interp]
+            repl = ''.join(repl)
+            d = d[0:c.span(0)[0]] + repl + d[c.span(0)[1]:]
+
+        match_list = match_bezier(d)
+    return d
 
 def crop_coords(coords, shape):
     coords[:,0][coords[:,0] >= shape[1]] = shape[1]-1
@@ -245,8 +290,10 @@ def join_coords(coords, stroke, fill):
     while i < f:
         match = False
         j = i+1
-        while j < f:
-            if (stroke[i] == stroke[j]) and (fill[i] == fill[j]):
+        i_closed = np.all(coords[i][0][0] == coords[i][-1][0])
+        while j < f and not i_closed:
+            j_closed = np.all(coords[j][0][0] == coords[j][-1][0])
+            if (stroke[i] == stroke[j]) and (fill[i] == fill[j]) and not j_closed:
                 if np.all(coords[i][0][0] == coords[j][-1][0]):
 #                     import pdb; pdb.set_trace()
                     coords[i] = np.concatenate([coords[j], coords[i]])
@@ -272,12 +319,15 @@ def join_coords(coords, stroke, fill):
 
     return coords, stroke, fill
 
-def check_areas(coords, stroke, fill, thresh=1):
+def check_areas(coords, stroke, fill, thresh=1, node_thresh=2):
     areas = [
-        cv.contourArea(c) for c in svg_coords
+        cv.contourArea(c) for c in coords
     ]
     [coords, stroke, fill] = [
-        [obj[i] for i in range(len(coords)) if areas[i] > thresh]
+        [
+            obj[i] for i in range(len(coords))
+            if areas[i] > thresh and len(obj[i]) > node_thresh
+        ]
         for obj in [coords, stroke, fill]
     ]
     return coords, stroke, fill

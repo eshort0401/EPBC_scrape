@@ -37,7 +37,7 @@ class Zoom_Scroll(ttk.Frame):
         self.master.title(title)
         # Buttons
         b_done = tk.Button(
-            self.master, text="Done (q)", command=self.quit
+            self.master, text="Done (Enter)", command=self.quit
         )
         b_done.grid(row=0, column=0, sticky='w')
         c = 10
@@ -65,7 +65,7 @@ class Zoom_Scroll(ttk.Frame):
         self.canvas.bind('<MouseWheel>', self.wheel)  # with Windows and MacOS, but not Linux
         self.canvas.bind('<Button-5>',   self.wheel)  # only with Linux, wheel scroll down
         self.canvas.bind('<Button-4>',   self.wheel)  # only with Linux, wheel scroll up
-        self.canvas.bind('<q>', self.quit)
+        self.canvas.bind('<Return>', self.quit)
         self.canvas.focus_set()
 
         self.image = Image.fromarray(image)
@@ -186,7 +186,7 @@ class Get_Legend_Box(Zoom_Scroll):
         self.p2_r = None
 
         self.canvas.bind("<Button 3>", self.draw_box)
-        self.canvas.bind('<q>', self.quit)
+        self.canvas.bind('<Return>', self.quit)
         self.canvas.bind('<d>', self.delete_box)
         self.canvas.focus_set()
 
@@ -345,8 +345,8 @@ class Name_Polygons(Zoom_Scroll):
         for i in range(len(self.coords)):
             if self.com[i]:
                 self.names_r[i] = self.canvas.create_text(
-                    self.com[i][0]+20*np.cos(self.names_offset[i]),
-                    self.com[i][1]+20*np.sin(self.names_offset[i]),
+                    self.com[i][0]+5*np.cos(self.names_offset[i]),
+                    self.com[i][1]+5*np.sin(self.names_offset[i]),
                     anchor='w', text=self.names[i], fill='red',
                     font=('Arial', 14, 'bold')
                 )
@@ -383,8 +383,8 @@ class Name_Polygons(Zoom_Scroll):
             fill = 'red'
             font = ('Arial', 14, 'bold')
             self.names_r[i] = self.canvas.create_text(
-                com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
-                com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                com_x_plot+5*np.cos(self.names_offset[i])*self.imscale,
+                com_y_plot+5*np.sin(self.names_offset[i])*self.imscale,
                 anchor='w', text=self.names[i],
                 fill=fill, font=font
             )
@@ -408,8 +408,8 @@ class Name_Polygons(Zoom_Scroll):
             fill = '#0f0'
             font = ('Arial', 14)
             self.names_r[i] = self.canvas.create_text(
-                com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
-                com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                com_x_plot+5*np.cos(self.names_offset[i])*self.imscale,
+                com_y_plot+5*np.sin(self.names_offset[i])*self.imscale,
                 anchor='w', text=self.names[i],
                 fill=fill, font=font
             )
@@ -485,8 +485,8 @@ class Name_Polygons(Zoom_Scroll):
                         fill = '#0f0'
                         font = ('Arial', 14)
                     self.names_r[i] = self.canvas.create_text(
-                        com_x_plot+20*np.cos(self.names_offset[i])*self.imscale,
-                        com_y_plot+20*np.sin(self.names_offset[i])*self.imscale,
+                        com_x_plot+5*np.cos(self.names_offset[i])*self.imscale,
+                        com_y_plot+5*np.sin(self.names_offset[i])*self.imscale,
                         anchor='w', text=self.names[i],
                         fill=fill, font=font
                     )
