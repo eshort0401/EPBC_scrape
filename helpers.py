@@ -295,7 +295,6 @@ def join_coords(coords, stroke, fill):
             j_closed = np.all(coords[j][0][0] == coords[j][-1][0])
             if (stroke[i] == stroke[j]) and (fill[i] == fill[j]) and not j_closed:
                 if np.all(coords[i][0][0] == coords[j][-1][0]):
-#                     import pdb; pdb.set_trace()
                     coords[i] = np.concatenate([coords[j], coords[i]])
                     for obj in [coords, stroke, fill]:
                         del obj[j]
@@ -303,7 +302,6 @@ def join_coords(coords, stroke, fill):
                     match = True
                     break
                 elif np.all(coords[i][-1][0] == coords[j][0][0]):
-#                     import pdb; pdb.set_trace()
                     coords[i] = np.concatenate([coords[i], coords[j]])
                     for obj in [coords, stroke, fill]:
                         del obj[j]
