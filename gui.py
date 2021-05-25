@@ -10,7 +10,6 @@ import numpy as np
 import cv2 as cv
 import random
 
-
 # Base tkinter scroll/zoom class based on
 # https://stackoverflow.com/questions/41656176/tkinter-canvas-zoom-move-pan
 class AutoScrollbar(ttk.Scrollbar):
@@ -802,7 +801,7 @@ class Choose_Kept_Categories():
 class Choose_Map():
     def __init__(
         self, master, page_nums, dir,
-        title='Choose a legend entry for this polygon.'
+        title='Choose a map to scrape.'
     ):
         self.master = master
         self.master.title(title)
@@ -832,7 +831,8 @@ class Choose_Map():
         self.n = [tk.StringVar() for i in range(len(page_nums))]
 
         self.button = tk.Button(
-            self.container, text="Done (Enter)", state=tk.DISABLED, command=self.master.destroy
+            self.container, text="Done (Enter)", state=tk.DISABLED,
+            command=self.master.destroy
         )
 
         def activate_button():
@@ -864,9 +864,9 @@ class Choose_Map():
             self.rb.append(rb)
             rb.grid(row=row, column=2*col)
         self.button.pack()
-        self.canvas.bind_all('<MouseWheel>', self.on_mousewheel)
-        self.canvas.bind_all('<Button-5>',   self.scroll_up)
-        self.canvas.bind_all('<Button-4>',   self.scroll_down)
+        self.master.bind('<MouseWheel>', self.on_mousewheel)
+        self.master.bind('<Button-5>',   self.scroll_up)
+        self.master.bind('<Button-4>',   self.scroll_down)
         self.master.bind('<Return>', lambda e: self.button.invoke())
 
         self.container.pack(fill='both', expand=True)
