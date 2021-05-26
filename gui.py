@@ -805,22 +805,19 @@ class Choose_Map():
     ):
         self.master = master
         self.master.title(title)
-
         self.container = ttk.Frame(self.master)
         self.canvas = tk.Canvas(self.container)
-        scrollbar = ttk.Scrollbar(self.container, orient="vertical", command=self.canvas.yview)
+        scrollbar = ttk.Scrollbar(
+            self.container, orient="vertical", command=self.canvas.yview)
         self.scrollable_frame = ttk.Frame(self.canvas)
 
         self.scrollable_frame.bind(
             "<Configure>",
             lambda e: self.canvas.configure(
-                scrollregion=self.canvas.bbox("all")
-            )
-        )
+                scrollregion=self.canvas.bbox("all")))
 
         self.canvas.create_window(
-            (0, 0), window=self.scrollable_frame, anchor="nw"
-        )
+            (0, 0), window=self.scrollable_frame, anchor="nw")
         self.canvas.configure(yscrollcommand=scrollbar.set)
 
         self.rb = []
@@ -832,8 +829,7 @@ class Choose_Map():
 
         self.button = tk.Button(
             self.container, text="Done (Enter)", state=tk.DISABLED,
-            command=self.master.destroy
-        )
+            command=self.master.destroy)
 
         def activate_button():
             self.button['state'] = tk.NORMAL
@@ -895,14 +891,12 @@ class Choose_Map_Template(Choose_Map):
         self.n_new = tk.StringVar()
         self.n_new.set(
             'Create new template from current map (page ' + str(current_page)
-            + ')'
-        )
-        l = tk.Label(
-            self.scrollable_frame, textvariable=self.n_new,
-        )
-        row = (len(page_nums )+1)//3
-        col = len(page_nums )+1-3*row
-        l.grid(row=row, column=2*col+1)
+            + ')')
+        label = tk.Label(
+            self.scrollable_frame, textvariable=self.n_new)
+        row = (len(page_nums)+1)//3
+        col = len(page_nums)+1-3*row
+        label.grid(row=row, column=2*col+1)
 
         file_name = 'page-' + str(current_page) + '.png'
         self.fn.append(file_name)
@@ -911,12 +905,7 @@ class Choose_Map_Template(Choose_Map):
         self.ph_new = ImageTk.PhotoImage(img)
 
         rb = tk.Radiobutton(
-            self.scrollable_frame,
-            variable=self.v,
-            value=-1,
-            image=self.ph_new,
-            command=activate_button,
-            height=220,
-        )
+            self.scrollable_frame, variable=self.v, value=-1, image=self.ph_new,
+            command=activate_button, height=220)
         self.rb.append(rb)
         rb.grid(row=row, column=2*col)

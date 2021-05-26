@@ -10,14 +10,6 @@ def convert_path_coords(path_list, shape, thresh):
     stroke = []
     fill = []
     for p in path_list:
-        # if 'L 2.149' in p['d']:
-        #     import pdb; pdb.set_trace()
-        # coords = re.sub(
-        #     'c (-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
-        #     + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) '
-        #    + '(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+)',
-        #     r'l \5 \6', p['d'].lower()
-        # )
         coords = interp_bezier(p['d'])
         has_z = re.search('(z\s*)$', coords.lower())
         coords = re.split('[a-zA-Z]', coords)
@@ -136,9 +128,7 @@ def crop_coords(coords, shape):
 
 def convert_tspan_coords(tspan_list, shape):
     tspan_coords = []
-    [x, y] = [
-        [t[c].split(' ') for t in tspan_list] for c in ['x', 'y']
-    ]
+    [x, y] = [[t[c].split(' ') for t in tspan_list] for c in ['x', 'y']]
     for i in range(len(x)):
         if len(x[i])==1:
             x[i] = x[i]*len(y[i])
@@ -147,10 +137,8 @@ def convert_tspan_coords(tspan_list, shape):
 
     coords = [
         np.array(
-            [x[i], y[i], np.ones(len(x[i]))]
-        ).astype(float)
-        for i in range(len(x))
-    ]
+            [x[i], y[i], np.ones(len(x[i]))]).astype(float)
+        for i in range(len(x))]
 
     for i in range(len(tspan_list)):
         p = tspan_list[i].parent
@@ -159,8 +147,7 @@ def convert_tspan_coords(tspan_list, shape):
         new_coords = np.around(new_coords).astype(int)
         new_coords = crop_coords(new_coords, shape)
         tspan_coords.append(
-            new_coords.reshape([new_coords.shape[0],1,new_coords.shape[1]])
-        )
+            new_coords.reshape([new_coords.shape[0],1,new_coords.shape[1]]))
     return tspan_coords
 
 def convert_use_coords(use_list, soup_tap, shape, thresh):
