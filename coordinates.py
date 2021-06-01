@@ -20,22 +20,22 @@ def scale_points(im1, points):
     approx_lon = float(approx_lon)
 
     approx_lat = tk.simpledialog.askstring(
-        'Enter Approx. Lat.'
+        'Enter Approx. Lat.',
         'Enter approx. lat. of top left map corner in signed dec. degrees '
         + '(e.g. -25.12345678): ')
     approx_lat = float(approx_lat)
 
     approx_spread = tk.simpledialog.askstring(
-        'Enter Approx. Width'
+        'Enter Approx. Width',
         'Enter approx. width of map in dec. degrees (e.g. 0.05): ')
     approx_spread = float(approx_spread)
 
     scaled_points = [
         (
-            approx_spread*x[0]/self.im1.shape[0] + approx_lon,
-            -approx_spread*x[1]/self.im1.shape[1] + approx_lat)
+            approx_spread*x[0]/im1.shape[0] + approx_lon,
+            -approx_spread*x[1]/im1.shape[1] + approx_lat)
         for x in points]
-    return scaled_points
+    return scaled_points, approx_lon, approx_lat, approx_spread
 
 def save_reference_image(path, im1, points, names):
     fig, ax = plt.subplots(1, figsize=(20,20))
