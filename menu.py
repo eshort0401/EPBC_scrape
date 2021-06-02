@@ -350,9 +350,9 @@ class Menu(ttk.Frame):
                 y = np.arange(self.im1.shape[0])/self.im1.shape[0]
                 XX, YY = np.meshgrid(x, y)
                 self.LON = np.round(
-                    coordinates.evaluate_paraboloid(XX, YY, c_lon), 6)
+                    coordinates.evaluate_paraboloid(XX, YY, A, c_lon), 6)
                 self.LAT = np.round(
-                    coordinates.evaluate_paraboloid(XX, YY, c_lat), 6)
+                    coordinates.evaluate_paraboloid(XX, YY, A, c_lat), 6)
             else:
                 self.LON = np.array(coord_dict[str(t_page_num)][0])
                 self.LAT = np.array(coord_dict[str(t_page_num)][1])

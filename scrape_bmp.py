@@ -5,19 +5,20 @@ import numpy as np
 from skimage import data, segmentation, feature, future
 from skimage.io import imread
 from skimage.morphology import remove_small_objects
-from scipy import ndimage as ndi
 from skimage import feature
 from skimage.filters import median
 from sklearn.ensemble import RandomForestClassifier
+from scipy import ndimage as ndi
 import simplekml
 from functools import partial
 import fitz
 from bs4 import BeautifulSoup
 import subprocess
 import matplotlib.pyplot as plt
+from matplotlib.colors import to_hex
 import cv2 as cv
-
 import tkinter as tk
+import copy
 
 def scrape_bmp(
         master, file_path, page_num, base_dir, sub_dir, leg_names, im_leg,
