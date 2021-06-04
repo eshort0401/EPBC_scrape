@@ -1,0 +1,690 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1783">
+        <name>46_svg</name>
+        <Folder id="1865">
+            <Style id="1829">
+                <LineStyle id="1830">
+                    <color>ffc500ff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1831">
+                    <color>80c500ff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>7752 - Epacris purpurascens var. purpurascens</name>
+            <Placemark id="1867">
+                <name>7752 - Epacris purpurascens var. purpurascens 1</name>
+                <styleUrl>#1829</styleUrl>
+                <Polygon id="1866">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1868">
+                            <coordinates>150.567144,-33.915586,1.0 150.567863,-33.914547,1.0 150.568513,-33.915546,1.0 150.567144,-33.915586,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="1870">
+            <Style id="1784">
+                <LineStyle id="1785">
+                    <color>ff044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1786">
+                    <color>80044ddd</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Study area</name>
+            <Placemark id="1872">
+                <name>Study area 1</name>
+                <styleUrl>#1784</styleUrl>
+                <Polygon id="1871">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1873">
+                            <coordinates>150.6053,-33.9025,1.0 150.605289,-33.902246,1.0 150.605668,-33.900326,1.0 150.60581,-33.900068,1.0 150.605201,-33.900086,1.0 150.605049,-33.90009,1.0 150.604892,-33.899968,1.0 150.60474,-33.899972,1.0 150.60474,-33.899972,1.0 150.60474,-33.899972,1.0 150.604734,-33.899845,1.0 150.604734,-33.899845,1.0 150.604734,-33.899845,1.0 150.604724,-33.899591,1.0 150.604724,-33.899591,1.0 150.604724,-33.899591,1.0 150.604719,-33.899464,1.0 150.604714,-33.899337,1.0 150.604714,-33.899337,1.0 150.604714,-33.899337,1.0 150.604708,-33.89921,1.0 150.604708,-33.89921,1.0 150.604703,-33.899083,1.0 150.604698,-33.898956,1.0 150.604536,-33.898706,1.0 150.604525,-33.898452,1.0 150.604525,-33.898452,1.0 150.604368,-33.89833,1.0 150.604363,-33.898202,1.0 150.604352,-33.897948,1.0 150.604347,-33.897821,1.0 150.604195,-33.897826,1.0 150.60419,-33.897699,1.0 150.60419,-33.897699,1.0 150.60419,-33.897699,1.0 150.604185,-33.897572,1.0 150.604027,-33.897449,1.0 150.604027,-33.897449,1.0 150.604027,-33.897449,1.0 150.604022,-33.897322,1.0 150.604022,-33.897322,1.0 150.603865,-33.8972,1.0 150.603865,-33.8972,1.0 150.603865,-33.8972,1.0 150.603859,-33.897073,1.0 150.603707,-33.897077,1.0 150.603702,-33.89695,1.0 150.603702,-33.89695,1.0 150.603702,-33.89695,1.0 150.60355,-33.896954,1.0 150.60355,-33.896954,1.0 150.60355,-33.896954,1.0 150.60355,-33.896954,1.0 150.603545,-33.896827,1.0 150.603393,-33.896832,1.0 150.603241,-33.896836,1.0 150.603235,-33.896709,1.0 150.603235,-33.896709,1.0 150.603235,-33.896709,1.0 150.603235,-33.896709,1.0 150.603083,-33.896714,1.0 150.603078,-33.896587,1.0 150.603078,-33.896587,1.0 150.603078,-33.896587,1.0 150.603078,-33.896587,1.0 150.603073,-33.89646,1.0 150.603073,-33.89646,1.0 150.603073,-33.89646,1.0 150.603068,-33.896333,1.0 150.603068,-33.896333,1.0 150.603068,-33.896333,1.0 150.603068,-33.896333,1.0 150.60291,-33.89621,1.0 150.60291,-33.89621,1.0 150.60291,-33.89621,1.0 150.602905,-33.896083,1.0 150.602905,-33.896083,1.0 150.602748,-33.895961,1.0 150.602743,-33.895834,1.0 150.602743,-33.895834,1.0 150.60258,-33.895584,1.0 150.602575,-33.895457,1.0 150.60257,-33.89533,1.0 150.60257,-33.89533,1.0 150.60257,-33.89533,1.0 150.602564,-33.895203,1.0 150.60226,-33.895212,1.0 150.600419,-33.894885,1.0 150.600267,-33.894889,1.0 150.600267,-33.894889,1.0 150.599451,-33.901019,1.0 150.601208,-33.903002,1.0 150.601213,-33.90313,1.0 150.605179,-33.903267,1.0 150.6053,-33.9025,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="1875">
+            <Style id="1787">
+                <LineStyle id="1788">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1789">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1790">
+                <LineStyle id="1791">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1792">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1793">
+                <LineStyle id="1794">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1795">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1796">
+                <LineStyle id="1797">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1798">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1799">
+                <LineStyle id="1800">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1801">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1802">
+                <LineStyle id="1803">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1804">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1805">
+                <LineStyle id="1806">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1807">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1808">
+                <LineStyle id="1809">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1810">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1811">
+                <LineStyle id="1812">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1813">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1814">
+                <LineStyle id="1815">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1816">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1817">
+                <LineStyle id="1818">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1819">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1820">
+                <LineStyle id="1821">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1822">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1823">
+                <LineStyle id="1824">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1825">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1826">
+                <LineStyle id="1827">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1828">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1832">
+                <LineStyle id="1833">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1834">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1835">
+                <LineStyle id="1836">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1837">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1838">
+                <LineStyle id="1839">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1840">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1841">
+                <LineStyle id="1842">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1843">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1844">
+                <LineStyle id="1845">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1846">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1847">
+                <LineStyle id="1848">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1849">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1850">
+                <LineStyle id="1851">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1852">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1853">
+                <LineStyle id="1854">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1855">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1856">
+                <LineStyle id="1857">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1858">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1859">
+                <LineStyle id="1860">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1861">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1862">
+                <LineStyle id="1863">
+                    <color>ff00ffff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1864">
+                    <color>8000ffff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>4055 - Eucalyptus benthamii</name>
+            <Placemark id="1877">
+                <name>4055 - Eucalyptus benthamii 1</name>
+                <styleUrl>#1787</styleUrl>
+                <Polygon id="1876">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1878">
+                            <coordinates>150.624912,-33.93512,1.0 150.625626,-33.933954,1.0 150.626433,-33.935075,1.0 150.624912,-33.93512,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1881">
+                <name>4055 - Eucalyptus benthamii 2</name>
+                <styleUrl>#1790</styleUrl>
+                <Polygon id="1880">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1882">
+                            <coordinates>150.633633,-33.932318,1.0 150.634347,-33.931152,1.0 150.635154,-33.932273,1.0 150.633633,-33.932318,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1885">
+                <name>4055 - Eucalyptus benthamii 3</name>
+                <styleUrl>#1793</styleUrl>
+                <Polygon id="1884">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1886">
+                            <coordinates>150.633633,-33.932318,1.0 150.634347,-33.931152,1.0 150.635154,-33.932273,1.0 150.633633,-33.932318,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1889">
+                <name>4055 - Eucalyptus benthamii 4</name>
+                <styleUrl>#1796</styleUrl>
+                <Polygon id="1888">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1890">
+                            <coordinates>150.625406,-33.932307,1.0 150.625968,-33.931145,1.0 150.626776,-33.932266,1.0 150.625406,-33.932307,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1893">
+                <name>4055 - Eucalyptus benthamii 5</name>
+                <styleUrl>#1799</styleUrl>
+                <Polygon id="1892">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1894">
+                            <coordinates>150.636445,-33.930326,1.0 150.637012,-33.929292,1.0 150.637815,-33.930286,1.0 150.636445,-33.930326,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1897">
+                <name>4055 - Eucalyptus benthamii 6</name>
+                <styleUrl>#1802</styleUrl>
+                <Polygon id="1896">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1898">
+                            <coordinates>150.636445,-33.930326,1.0 150.637012,-33.929292,1.0 150.637815,-33.930286,1.0 150.636445,-33.930326,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1901">
+                <name>4055 - Eucalyptus benthamii 7</name>
+                <styleUrl>#1805</styleUrl>
+                <Polygon id="1900">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1902">
+                            <coordinates>150.637784,-33.929524,1.0 150.638497,-33.928358,1.0 150.639305,-33.929479,1.0 150.637784,-33.929524,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1905">
+                <name>4055 - Eucalyptus benthamii 8</name>
+                <styleUrl>#1808</styleUrl>
+                <Polygon id="1904">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1906">
+                            <coordinates>150.637784,-33.929524,1.0 150.638497,-33.928358,1.0 150.639305,-33.929479,1.0 150.637784,-33.929524,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1909">
+                <name>4055 - Eucalyptus benthamii 9</name>
+                <styleUrl>#1811</styleUrl>
+                <Polygon id="1908">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1910">
+                            <coordinates>150.642024,-33.9252,1.0 150.642591,-33.924166,1.0 150.643394,-33.92516,1.0 150.642024,-33.9252,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1913">
+                <name>4055 - Eucalyptus benthamii 10</name>
+                <styleUrl>#1814</styleUrl>
+                <Polygon id="1912">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1914">
+                            <coordinates>150.633713,-33.915651,1.0 150.634427,-33.914485,1.0 150.635082,-33.915611,1.0 150.633713,-33.915651,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1917">
+                <name>4055 - Eucalyptus benthamii 11</name>
+                <styleUrl>#1817</styleUrl>
+                <Polygon id="1916">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1918">
+                            <coordinates>150.633713,-33.915651,1.0 150.634427,-33.914485,1.0 150.635082,-33.915611,1.0 150.633713,-33.915651,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1921">
+                <name>4055 - Eucalyptus benthamii 12</name>
+                <styleUrl>#1820</styleUrl>
+                <Polygon id="1920">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1922">
+                            <coordinates>150.633713,-33.915651,1.0 150.634427,-33.914485,1.0 150.635082,-33.915611,1.0 150.633713,-33.915651,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1925">
+                <name>4055 - Eucalyptus benthamii 13</name>
+                <styleUrl>#1823</styleUrl>
+                <Polygon id="1924">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1926">
+                            <coordinates>150.617109,-33.915634,1.0 150.617823,-33.914468,1.0 150.618478,-33.915593,1.0 150.617109,-33.915634,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1929">
+                <name>4055 - Eucalyptus benthamii 14</name>
+                <styleUrl>#1826</styleUrl>
+                <Polygon id="1928">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1930">
+                            <coordinates>150.617109,-33.915634,1.0 150.617823,-33.914468,1.0 150.618478,-33.915593,1.0 150.617109,-33.915634,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1933">
+                <name>4055 - Eucalyptus benthamii 15</name>
+                <styleUrl>#1832</styleUrl>
+                <Polygon id="1932">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1934">
+                            <coordinates>150.637437,-33.868857,1.0 150.638156,-33.867818,1.0 150.638806,-33.868816,1.0 150.637437,-33.868857,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1937">
+                <name>4055 - Eucalyptus benthamii 16</name>
+                <styleUrl>#1835</styleUrl>
+                <Polygon id="1936">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1938">
+                            <coordinates>150.637437,-33.868857,1.0 150.637999,-33.867696,1.0 150.638806,-33.868816,1.0 150.637437,-33.868857,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1941">
+                <name>4055 - Eucalyptus benthamii 17</name>
+                <styleUrl>#1838</styleUrl>
+                <Polygon id="1940">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1942">
+                            <coordinates>150.63728,-33.868734,1.0 150.637999,-33.867696,1.0 150.638649,-33.868694,1.0 150.63728,-33.868734,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1945">
+                <name>4055 - Eucalyptus benthamii 18</name>
+                <styleUrl>#1841</styleUrl>
+                <Polygon id="1944">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1946">
+                            <coordinates>150.636483,-33.867868,1.0 150.637197,-33.866702,1.0 150.638004,-33.867823,1.0 150.636483,-33.867868,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1949">
+                <name>4055 - Eucalyptus benthamii 19</name>
+                <styleUrl>#1844</styleUrl>
+                <Polygon id="1948">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1950">
+                            <coordinates>150.638089,-33.866166,1.0 150.638808,-33.865127,1.0 150.639458,-33.866126,1.0 150.638089,-33.866166,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1953">
+                <name>4055 - Eucalyptus benthamii 20</name>
+                <styleUrl>#1847</styleUrl>
+                <Polygon id="1952">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1954">
+                            <coordinates>150.636541,-33.865576,1.0 150.637108,-33.864542,1.0 150.637911,-33.865536,1.0 150.636541,-33.865576,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1957">
+                <name>4055 - Eucalyptus benthamii 21</name>
+                <styleUrl>#1850</styleUrl>
+                <Polygon id="1956">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1958">
+                            <coordinates>150.636541,-33.865576,1.0 150.637108,-33.864542,1.0 150.637911,-33.865536,1.0 150.636541,-33.865576,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1961">
+                <name>4055 - Eucalyptus benthamii 22</name>
+                <styleUrl>#1853</styleUrl>
+                <Polygon id="1960">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1962">
+                            <coordinates>150.633798,-33.86553,1.0 150.634365,-33.864496,1.0 150.635167,-33.86549,1.0 150.633798,-33.86553,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1965">
+                <name>4055 - Eucalyptus benthamii 23</name>
+                <styleUrl>#1856</styleUrl>
+                <Polygon id="1964">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1966">
+                            <coordinates>150.638599,-33.863734,1.0 150.639166,-33.8627,1.0 150.639968,-33.863694,1.0 150.638599,-33.863734,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1969">
+                <name>4055 - Eucalyptus benthamii 24</name>
+                <styleUrl>#1859</styleUrl>
+                <Polygon id="1968">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1970">
+                            <coordinates>150.638447,-33.863739,1.0 150.639161,-33.862573,1.0 150.639968,-33.863694,1.0 150.638447,-33.863739,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1973">
+                <name>4055 - Eucalyptus benthamii 25</name>
+                <styleUrl>#1862</styleUrl>
+                <Polygon id="1972">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1974">
+                            <coordinates>150.638447,-33.863739,1.0 150.639008,-33.862577,1.0 150.639816,-33.863698,1.0 150.638447,-33.863739,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

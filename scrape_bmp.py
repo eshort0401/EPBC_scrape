@@ -38,14 +38,23 @@ def scrape_bmp(
     [s.decompose() for s in small_soup('text')]
 
     for s in small_soup('image'):
-        transform = convert_transform(s.parent.parent['transform'])
-        img_width = abs(float(s['width'])*transform[0,0])
-        img_height = abs(float(s['height'])*transform[1,1])
-        if img_width > 0.6*p_width:
-            continue
-        elif img_height > 0.6*p_height:
-            continue
-        s.decompose()
+        try:
+            transform = convert_transform(s.parent.parent['transform'])
+            img_width = abs(float(s['width'])*transform[0,0])
+            img_height = abs(float(s['height'])*transform[1,1])
+            if img_width > 0.6*p_width:
+                continue
+            elif img_height > 0.6*p_height:
+                continue
+            s.decompose()
+        except:
+            img_width = abs(float(s['width']))
+            img_height = abs(float(s['height']))
+            if img_width > 0.6*p_width:
+                continue
+            elif img_height > 0.6*p_height:
+                continue
+            s.decompose()
 
     fname = dir + '/' + str(page_num) + '/no_overlays.svg'
     f = open(fname, 'w')

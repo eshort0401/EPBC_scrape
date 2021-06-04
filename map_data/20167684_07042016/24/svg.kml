@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="1">
+        <name>24_svg</name>
+        <Folder id="53">
+            <Style id="2">
+                <LineStyle id="3">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="4">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="5">
+                <LineStyle id="6">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="7">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="8">
+                <LineStyle id="9">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="10">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="11">
+                <LineStyle id="12">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="13">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="14">
+                <LineStyle id="15">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="16">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="17">
+                <LineStyle id="18">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="19">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="20">
+                <LineStyle id="21">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="22">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="23">
+                <LineStyle id="24">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="25">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="26">
+                <LineStyle id="27">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="28">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="29">
+                <LineStyle id="30">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="31">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="32">
+                <LineStyle id="33">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="34">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="35">
+                <LineStyle id="36">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="37">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="38">
+                <LineStyle id="39">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="40">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="41">
+                <LineStyle id="42">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="43">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="44">
+                <LineStyle id="45">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="46">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="47">
+                <LineStyle id="48">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="49">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="50">
+                <LineStyle id="51">
+                    <color>ff00aaff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="52">
+                    <color>8000aaff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Quadrats</name>
+            <Placemark id="55">
+                <name>Quadrats 1</name>
+                <styleUrl>#2</styleUrl>
+                <Polygon id="54">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="56">
+                            <coordinates>150.600969,-33.900634,1.0 150.600815,-33.900631,1.0 150.600818,-33.900517,1.0 150.600972,-33.90052,1.0 150.600969,-33.900634,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="59">
+                <name>Quadrats 2</name>
+                <styleUrl>#5</styleUrl>
+                <Polygon id="58">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="60">
+                            <coordinates>150.60337,-33.901006,1.0 150.603231,-33.901004,1.0 150.603235,-33.900876,1.0 150.603374,-33.900879,1.0 150.60337,-33.901006,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="63">
+                <name>Quadrats 3</name>
+                <styleUrl>#8</styleUrl>
+                <Polygon id="62">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="64">
+                            <coordinates>150.603437,-33.900269,1.0 150.603283,-33.900266,1.0 150.603286,-33.900139,1.0 150.603441,-33.900142,1.0 150.603437,-33.900269,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="67">
+                <name>Quadrats 4</name>
+                <styleUrl>#11</styleUrl>
+                <Polygon id="66">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="68">
+                            <coordinates>150.599985,-33.898212,1.0 150.599831,-33.898209,1.0 150.599834,-33.898095,1.0 150.599988,-33.898097,1.0 150.599985,-33.898212,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="71">
+                <name>Quadrats 5</name>
+                <styleUrl>#14</styleUrl>
+                <Polygon id="70">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="72">
+                            <coordinates>150.601625,-33.900391,1.0 150.601486,-33.900388,1.0 150.60149,-33.900261,1.0 150.601629,-33.900264,1.0 150.601625,-33.900391,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="75">
+                <name>Quadrats 6</name>
+                <styleUrl>#17</styleUrl>
+                <Polygon id="74">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="76">
+                            <coordinates>150.602801,-33.900907,1.0 150.602646,-33.900905,1.0 150.60265,-33.90079,1.0 150.602804,-33.900793,1.0 150.602801,-33.900907,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="79">
+                <name>Quadrats 7</name>
+                <styleUrl>#20</styleUrl>
+                <Polygon id="78">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="80">
+                            <coordinates>150.604506,-33.9024,1.0 150.604352,-33.902397,1.0 150.604355,-33.902283,1.0 150.604509,-33.902286,1.0 150.604506,-33.9024,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="83">
+                <name>Quadrats 8</name>
+                <styleUrl>#23</styleUrl>
+                <Polygon id="82">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="84">
+                            <coordinates>150.605015,-33.90302,1.0 150.604876,-33.903017,1.0 150.604879,-33.90289,1.0 150.605018,-33.902893,1.0 150.605015,-33.90302,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="87">
+                <name>Quadrats 9</name>
+                <styleUrl>#26</styleUrl>
+                <Polygon id="86">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="88">
+                            <coordinates>150.601143,-33.902152,1.0 150.601004,-33.902149,1.0 150.601008,-33.902022,1.0 150.601147,-33.902024,1.0 150.601143,-33.902152,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="91">
+                <name>Quadrats 10</name>
+                <styleUrl>#29</styleUrl>
+                <Polygon id="90">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="92">
+                            <coordinates>150.605405,-33.902326,1.0 150.60525,-33.902324,1.0 150.605254,-33.902197,1.0 150.605408,-33.902199,1.0 150.605405,-33.902326,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="95">
+                <name>Quadrats 11</name>
+                <styleUrl>#32</styleUrl>
+                <Polygon id="94">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="96">
+                            <coordinates>150.600231,-33.897147,1.0 150.600077,-33.897144,1.0 150.60008,-33.897017,1.0 150.600235,-33.89702,1.0 150.600231,-33.897147,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="99">
+                <name>Quadrats 12</name>
+                <styleUrl>#35</styleUrl>
+                <Polygon id="98">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="100">
+                            <coordinates>150.602265,-33.897945,1.0 150.602111,-33.897943,1.0 150.602114,-33.897828,1.0 150.602268,-33.897831,1.0 150.602265,-33.897945,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="103">
+                <name>Quadrats 13</name>
+                <styleUrl>#38</styleUrl>
+                <Polygon id="102">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="104">
+                            <coordinates>150.604162,-33.898105,1.0 150.604007,-33.898102,1.0 150.604011,-33.897975,1.0 150.604165,-33.897978,1.0 150.604162,-33.898105,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="107">
+                <name>Quadrats 14</name>
+                <styleUrl>#41</styleUrl>
+                <Polygon id="106">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="108">
+                            <coordinates>150.600939,-33.897833,1.0 150.6008,-33.897831,1.0 150.600803,-33.897704,1.0 150.600942,-33.897706,1.0 150.600939,-33.897833,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="111">
+                <name>Quadrats 15</name>
+                <styleUrl>#44</styleUrl>
+                <Polygon id="110">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="112">
+                            <coordinates>150.603095,-33.898125,1.0 150.60294,-33.898122,1.0 150.602943,-33.898008,1.0 150.603098,-33.89801,1.0 150.603095,-33.898125,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="115">
+                <name>Quadrats 16</name>
+                <styleUrl>#47</styleUrl>
+                <Polygon id="114">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="116">
+                            <coordinates>150.601514,-33.895501,1.0 150.601359,-33.895499,1.0 150.601362,-33.895384,1.0 150.601517,-33.895387,1.0 150.601514,-33.895501,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="119">
+                <name>Quadrats 17</name>
+                <styleUrl>#50</styleUrl>
+                <Polygon id="118">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="120">
+                            <coordinates>150.602195,-33.896022,1.0 150.60204,-33.896019,1.0 150.602044,-33.895905,1.0 150.602198,-33.895908,1.0 150.602195,-33.896022,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="125">
+            <Style id="122">
+                <LineStyle id="123">
+                    <color>bf1c1ae4</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="124">
+                    <color>bf1615b6</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Development site</name>
+            <Placemark id="127">
+                <name>Development site 1</name>
+                <styleUrl>#122</styleUrl>
+                <Polygon id="126">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="128">
+                            <coordinates>150.600168,-33.894982,1.0 150.599932,-33.896798,1.0 150.599729,-33.898551,1.0 150.599668,-33.899046,1.0 150.59959,-33.899656,1.0 150.599428,-33.901028,1.0 150.601285,-33.903185,1.0 150.605159,-33.903379,1.0 150.605319,-33.902618,1.0 150.605356,-33.902402,1.0 150.605373,-33.902364,1.0 150.605373,-33.902364,1.0 150.605393,-33.902199,1.0 150.605609,-33.901083,1.0 150.605626,-33.901057,1.0 150.605769,-33.900334,1.0 150.605789,-33.900182,1.0 150.605142,-33.900095,1.0 150.604912,-33.900052,1.0 150.604896,-33.900052,1.0 150.604881,-33.900052,1.0 150.604773,-33.90005,1.0 150.60479,-33.899974,1.0 150.604794,-33.899847,1.0 150.604794,-33.899847,1.0 150.604794,-33.899821,1.0 150.604806,-33.899389,1.0 150.604792,-33.89935,1.0 150.604793,-33.899325,1.0 150.60475,-33.89921,1.0 150.604649,-33.898928,1.0 150.604635,-33.898864,1.0 150.604534,-33.89862,1.0 150.604534,-33.898608,1.0 150.604392,-33.898172,1.0 150.604392,-33.898172,1.0 150.604262,-33.897839,1.0 150.604248,-33.897801,1.0 150.604234,-33.89775,1.0 150.604204,-33.897698,1.0 150.604115,-33.897557,1.0 150.604027,-33.897403,1.0 150.603907,-33.897273,1.0 150.603817,-33.89717,1.0 150.603727,-33.897079,1.0 150.603727,-33.897067,1.0 150.603606,-33.896975,1.0 150.603224,-33.896816,1.0 150.603193,-33.896803,1.0 150.603047,-33.896508,1.0 150.602856,-33.896148,1.0 150.602783,-33.895981,1.0 150.602564,-33.895545,1.0 150.602565,-33.895481,1.0 150.602582,-33.895431,1.0 150.602601,-33.895329,1.0 150.602601,-33.895316,1.0 150.601615,-33.895185,1.0 150.601123,-33.895113,1.0 150.600999,-33.895098,1.0 150.600168,-33.894982,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

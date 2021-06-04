@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="3093">
+        <name>159_svg</name>
+        <Folder id="3127">
+            <Style id="3094">
+                <LineStyle id="3095">
+                    <color>ff88e2d2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3096">
+                    <color>8088e2d2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3097">
+                <LineStyle id="3098">
+                    <color>ff88e2d2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3099">
+                    <color>8088e2d2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3121">
+                <LineStyle id="3122">
+                    <color>ff241ced</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3123">
+                    <color>80241ced</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3124">
+                <LineStyle id="3125">
+                    <color>ff241ced</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3126">
+                    <color>80241ced</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Conservation Area</name>
+            <Placemark id="3129">
+                <name>Conservation Area 1</name>
+                <styleUrl>#3094</styleUrl>
+                <Polygon id="3128">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3130">
+                            <coordinates>153.071132,-26.509313,1.0 153.071339,-26.50844,1.0 153.070702,-26.507549,1.0 153.070903,-26.507459,1.0 153.071315,-26.507835,1.0 153.0723,-26.508155,1.0 153.072466,-26.508823,1.0 153.07239,-26.509479,1.0 153.071132,-26.509313,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3133">
+                <name>Conservation Area 2</name>
+                <styleUrl>#3097</styleUrl>
+                <Polygon id="3132">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3134">
+                            <coordinates>153.068197,-26.503796,1.0 153.065799,-26.506945,1.0 153.066244,-26.50867,1.0 153.067859,-26.508884,1.0 153.068147,-26.508617,1.0 153.067514,-26.507221,1.0 153.067973,-26.507028,1.0 153.068159,-26.507002,1.0 153.0698,-26.50767,1.0 153.070171,-26.507705,1.0 153.070718,-26.507347,1.0 153.070448,-26.506996,1.0 153.070334,-26.507035,1.0 153.070218,-26.507187,1.0 153.069917,-26.507202,1.0 153.067222,-26.506012,1.0 153.067254,-26.505659,1.0 153.067585,-26.505315,1.0 153.067669,-26.505517,1.0 153.068271,-26.505373,1.0 153.068445,-26.505043,1.0 153.068197,-26.503796,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="3144">
+            <Style id="3109">
+                <LineStyle id="3110">
+                    <color>ff201f23</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3111">
+                    <color>80201f23</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3112">
+                <LineStyle id="3113">
+                    <color>ff201f23</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3114">
+                    <color>80201f23</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Proposed Replanting Area</name>
+            <Placemark id="3146">
+                <name>Proposed Replanting Area 1</name>
+                <styleUrl>#3109</styleUrl>
+                <Polygon id="3145">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3147">
+                            <coordinates>153.071739,-26.5085,1.0 153.071853,-26.508625,1.0 153.071966,-26.508789,1.0 153.072066,-26.508838,1.0 153.072035,-26.509066,1.0 153.07202,-26.509179,1.0 153.071964,-26.509054,1.0 153.07168,-26.50874,1.0 153.071739,-26.5085,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3150">
+                <name>Proposed Replanting Area 2</name>
+                <styleUrl>#3112</styleUrl>
+                <Polygon id="3149">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3151">
+                            <coordinates>153.067605,-26.508407,1.0 153.067464,-26.508168,1.0 153.067336,-26.508005,1.0 153.066984,-26.507238,1.0 153.066972,-26.506935,1.0 153.06676,-26.506634,1.0 153.066406,-26.506145,1.0 153.066507,-26.506018,1.0 153.066807,-26.506041,1.0 153.066792,-26.506218,1.0 153.067847,-26.506689,1.0 153.067,-26.507049,1.0 153.067605,-26.508407,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="3153">
+            <Style id="3115">
+                <LineStyle id="3116">
+                    <color>ff201f23</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3117">
+                    <color>80201f23</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Proposed Offset Areas</name>
+            <Placemark id="3137">
+                <name>Proposed Offset Areas 1</name>
+                <styleUrl>#3121</styleUrl>
+                <Polygon id="3136">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3138">
+                            <coordinates>153.071382,-26.508415,1.0 153.071569,-26.508325,1.0 153.071853,-26.508625,1.0 153.071966,-26.508789,1.0 153.072195,-26.508774,1.0 153.072309,-26.508748,1.0 153.072466,-26.508923,1.0 153.072362,-26.509328,1.0 153.07239,-26.509441,1.0 153.072061,-26.509419,1.0 153.072077,-26.509293,1.0 153.071964,-26.509054,1.0 153.071382,-26.508415,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3141">
+                <name>Proposed Offset Areas 2</name>
+                <styleUrl>#3124</styleUrl>
+                <Polygon id="3140">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3142">
+                            <coordinates>153.068147,-26.508617,1.0 153.067961,-26.508631,1.0 153.067761,-26.508645,1.0 153.067464,-26.508168,1.0 153.067336,-26.508005,1.0 153.066984,-26.507238,1.0 153.066972,-26.506935,1.0 153.06676,-26.506634,1.0 153.066406,-26.506145,1.0 153.066507,-26.506018,1.0 153.067107,-26.506064,1.0 153.067949,-26.506461,1.0 153.067973,-26.507028,1.0 153.067514,-26.507221,1.0 153.068147,-26.508617,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="3158">
+            <Style id="3100">
+                <LineStyle id="3101">
+                    <color>ff9ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3102">
+                    <color>809ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3103">
+                <LineStyle id="3104">
+                    <color>ff9ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3105">
+                    <color>809ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="3106">
+                <LineStyle id="3107">
+                    <color>ff9ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3108">
+                    <color>809ed0fe</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Conservation Area - Buffer to Replanting Area (40m wide)</name>
+            <Placemark id="3160">
+                <name>Conservation Area - Buffer to Replanting Area (40m wide) 1</name>
+                <styleUrl>#3100</styleUrl>
+                <Polygon id="3159">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3161">
+                            <coordinates>153.070861,-26.507271,1.0 153.070535,-26.506831,1.0 153.070566,-26.50649,1.0 153.072581,-26.50496,1.0 153.072826,-26.504719,1.0 153.072884,-26.504516,1.0 153.072243,-26.504218,1.0 153.072388,-26.503877,1.0 153.073529,-26.504372,1.0 153.073368,-26.504853,1.0 153.071267,-26.506485,1.0 153.071206,-26.507053,1.0 153.070861,-26.507271,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3164">
+                <name>Conservation Area - Buffer to Replanting Area (40m wide) 2</name>
+                <styleUrl>#3103</styleUrl>
+                <Polygon id="3163">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3165">
+                            <coordinates>153.071607,-26.509006,1.0 153.071532,-26.50936,1.0 153.07199,-26.509419,1.0 153.072035,-26.509066,1.0 153.072066,-26.508838,1.0 153.071954,-26.508423,1.0 153.071769,-26.508361,1.0 153.071607,-26.509006,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="3168">
+                <name>Conservation Area - Buffer to Replanting Area (40m wide) 3</name>
+                <styleUrl>#3106</styleUrl>
+                <Polygon id="3167">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3169">
+                            <coordinates>153.066854,-26.505548,1.0 153.066998,-26.50537,1.0 153.067719,-26.50462,1.0 153.067916,-26.505086,1.0 153.067987,-26.505072,1.0 153.068031,-26.505009,1.0 153.067865,-26.504228,1.0 153.068197,-26.503796,1.0 153.068445,-26.505043,1.0 153.068271,-26.505373,1.0 153.067669,-26.505517,1.0 153.067585,-26.505315,1.0 153.067254,-26.505659,1.0 153.067222,-26.506012,1.0 153.069917,-26.507202,1.0 153.070218,-26.507187,1.0 153.070334,-26.507035,1.0 153.070448,-26.506996,1.0 153.070718,-26.507347,1.0 153.070171,-26.507705,1.0 153.0698,-26.50767,1.0 153.068159,-26.507002,1.0 153.067973,-26.507028,1.0 153.067514,-26.507221,1.0 153.068147,-26.508617,1.0 153.067859,-26.508884,1.0 153.067359,-26.508825,1.0 153.067676,-26.508545,1.0 153.067,-26.507049,1.0 153.067847,-26.506689,1.0 153.066792,-26.506218,1.0 153.066854,-26.505548,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="3171">
+            <Style id="3118">
+                <LineStyle id="3119">
+                    <color>ff92302e</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="3120">
+                    <color>8092302e</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>The Ridge and South-West Village</name>
+            <Placemark id="3173">
+                <name>The Ridge and South-West Village 1</name>
+                <styleUrl>#3118</styleUrl>
+                <Polygon id="3172">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="3174">
+                            <coordinates>153.074204,-26.507951,1.0 153.074377,-26.507773,1.0 153.074597,-26.507064,1.0 153.074068,-26.505024,1.0 153.075256,-26.502996,1.0 153.075375,-26.502402,1.0 153.075319,-26.502188,1.0 153.075163,-26.502063,1.0 153.073494,-26.501319,1.0 153.07087,-26.500166,1.0 153.070234,-26.501143,1.0 153.068515,-26.503377,1.0 153.065799,-26.506945,1.0 153.066244,-26.50867,1.0 153.073033,-26.509563,1.0 153.073719,-26.509658,1.0 153.073793,-26.509367,1.0 153.073943,-26.508457,1.0 153.074204,-26.507951,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>

@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 import tkinter as tk
 import subprocess
 import fitz
+import pylab
 
 import gui
 

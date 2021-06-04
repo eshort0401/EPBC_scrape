@@ -1,0 +1,605 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="947">
+        <name>70_svg</name>
+        <Folder id="1029">
+            <Style id="960">
+                <LineStyle id="961">
+                    <color>ff2922ee</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="962">
+                    <color>802922ee</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Subject Site</name>
+            <Placemark id="1031">
+                <name>Subject Site 1</name>
+                <styleUrl>#960</styleUrl>
+                <Polygon id="1030">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1032">
+                            <coordinates>153.074158,-26.507968,1.0 153.074337,-26.507778,1.0 153.074546,-26.507064,1.0 153.074091,-26.505011,1.0 153.075274,-26.502983,1.0 153.075411,-26.50238,1.0 153.075396,-26.502268,1.0 153.075346,-26.502173,1.0 153.07521,-26.502045,1.0 153.073572,-26.501272,1.0 153.071055,-26.500066,1.0 153.070403,-26.501048,1.0 153.068691,-26.503279,1.0 153.06597,-26.50684,1.0 153.066381,-26.508575,1.0 153.072985,-26.509567,1.0 153.073662,-26.509682,1.0 153.073722,-26.50938,1.0 153.073884,-26.508459,1.0 153.074158,-26.507968,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+        <Folder id="1034">
+            <Style id="1005">
+                <LineStyle id="1006">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1007">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1008">
+                <LineStyle id="1009">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1010">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1011">
+                <LineStyle id="1012">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1013">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1014">
+                <LineStyle id="1015">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1016">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1017">
+                <LineStyle id="1018">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1019">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1020">
+                <LineStyle id="1021">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1022">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1023">
+                <LineStyle id="1024">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1025">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1026">
+                <LineStyle id="1027">
+                    <color>ffe6d495</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1028">
+                    <color>80e6d495</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Approximate Test Pit Location</name>
+            <Placemark id="1036">
+                <name>Approximate Test Pit Location 1</name>
+                <styleUrl>#1005</styleUrl>
+                <LineString id="1035">
+                    <coordinates>153.070029,-26.507754,1.0 153.070045,-26.507817,1.0 153.070114,-26.507849,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1038">
+                <name>Approximate Test Pit Location 2</name>
+                <styleUrl>#1008</styleUrl>
+                <LineString id="1037">
+                    <coordinates>153.070132,-26.50785,1.0 153.070202,-26.507818,1.0 153.070239,-26.507755,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1040">
+                <name>Approximate Test Pit Location 3</name>
+                <styleUrl>#1011</styleUrl>
+                <LineString id="1039">
+                    <coordinates>153.067141,-26.505321,1.0 153.067175,-26.505385,1.0 153.067244,-26.505417,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1042">
+                <name>Approximate Test Pit Location 4</name>
+                <styleUrl>#1014</styleUrl>
+                <LineString id="1041">
+                    <coordinates>153.067261,-26.505417,1.0 153.067332,-26.505385,1.0 153.067368,-26.505322,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1044">
+                <name>Approximate Test Pit Location 5</name>
+                <styleUrl>#1017</styleUrl>
+                <LineString id="1043">
+                    <coordinates>153.073352,-26.505992,1.0 153.073385,-26.506056,1.0 153.073454,-26.506088,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1046">
+                <name>Approximate Test Pit Location 6</name>
+                <styleUrl>#1020</styleUrl>
+                <LineString id="1045">
+                    <coordinates>153.073471,-26.506088,1.0 153.073542,-26.506057,1.0 153.073561,-26.505993,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1048">
+                <name>Approximate Test Pit Location 7</name>
+                <styleUrl>#1023</styleUrl>
+                <LineString id="1047">
+                    <coordinates>153.074077,-26.502006,1.0 153.074111,-26.50207,1.0 153.07418,-26.502102,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1050">
+                <name>Approximate Test Pit Location 8</name>
+                <styleUrl>#1026</styleUrl>
+                <LineString id="1049">
+                    <coordinates>153.074197,-26.502103,1.0 153.074267,-26.502071,1.0 153.074304,-26.502008,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+        </Folder>
+        <Folder id="1051">
+            <Style id="963">
+                <LineStyle id="964">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="965">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="966">
+                <LineStyle id="967">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="968">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="969">
+                <LineStyle id="970">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="971">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="972">
+                <LineStyle id="973">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="974">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="975">
+                <LineStyle id="976">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="977">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="978">
+                <LineStyle id="979">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="980">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="981">
+                <LineStyle id="982">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="983">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="984">
+                <LineStyle id="985">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="986">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="987">
+                <LineStyle id="988">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="989">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="990">
+                <LineStyle id="991">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="992">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="993">
+                <LineStyle id="994">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="995">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="996">
+                <LineStyle id="997">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="998">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="999">
+                <LineStyle id="1000">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1001">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="1002">
+                <LineStyle id="1003">
+                    <color>ff8ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="1004">
+                    <color>808ce1e2</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Approximate Borehole Location</name>
+            <Placemark id="1053">
+                <name>Approximate Borehole Location 1</name>
+                <styleUrl>#963</styleUrl>
+                <LineString id="1052">
+                    <coordinates>153.071638,-26.508303,1.0 153.071671,-26.508367,1.0 153.07174,-26.508399,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1055">
+                <name>Approximate Borehole Location 2</name>
+                <styleUrl>#966</styleUrl>
+                <LineString id="1054">
+                    <coordinates>153.071758,-26.508399,1.0 153.071828,-26.508368,1.0 153.071847,-26.508304,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1057">
+                <name>Approximate Borehole Location 3</name>
+                <styleUrl>#969</styleUrl>
+                <LineString id="1056">
+                    <coordinates>153.071672,-26.509051,1.0 153.071705,-26.509114,1.0 153.071774,-26.509147,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1059">
+                <name>Approximate Borehole Location 4</name>
+                <styleUrl>#972</styleUrl>
+                <LineString id="1058">
+                    <coordinates>153.071792,-26.509147,1.0 153.071862,-26.509115,1.0 153.071881,-26.509052,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1061">
+                <name>Approximate Borehole Location 5</name>
+                <styleUrl>#975</styleUrl>
+                <LineString id="1060">
+                    <coordinates>153.078985,-26.506009,1.0 153.079018,-26.506072,1.0 153.079087,-26.506105,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1063">
+                <name>Approximate Borehole Location 6</name>
+                <styleUrl>#978</styleUrl>
+                <LineString id="1062">
+                    <coordinates>153.079105,-26.506105,1.0 153.079175,-26.506073,1.0 153.079212,-26.50601,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1065">
+                <name>Approximate Borehole Location 7</name>
+                <styleUrl>#981</styleUrl>
+                <LineString id="1064">
+                    <coordinates>153.07849,-26.506292,1.0 153.078523,-26.50634,1.0 153.078592,-26.506372,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1067">
+                <name>Approximate Borehole Location 8</name>
+                <styleUrl>#984</styleUrl>
+                <LineString id="1066">
+                    <coordinates>153.07861,-26.506372,1.0 153.07868,-26.506341,1.0 153.078716,-26.506293,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1069">
+                <name>Approximate Borehole Location 9</name>
+                <styleUrl>#987</styleUrl>
+                <LineString id="1068">
+                    <coordinates>153.07475,-26.502296,1.0 153.074766,-26.50236,1.0 153.074835,-26.502392,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1071">
+                <name>Approximate Borehole Location 10</name>
+                <styleUrl>#990</styleUrl>
+                <LineString id="1070">
+                    <coordinates>153.074853,-26.502392,1.0 153.074923,-26.502361,1.0 153.07496,-26.502298,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1073">
+                <name>Approximate Borehole Location 11</name>
+                <styleUrl>#993</styleUrl>
+                <LineString id="1072">
+                    <coordinates>153.074894,-26.502822,1.0 153.07491,-26.502886,1.0 153.074979,-26.502918,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1075">
+                <name>Approximate Borehole Location 12</name>
+                <styleUrl>#996</styleUrl>
+                <LineString id="1074">
+                    <coordinates>153.074997,-26.502918,1.0 153.075067,-26.502886,1.0 153.075104,-26.502823,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1077">
+                <name>Approximate Borehole Location 13</name>
+                <styleUrl>#999</styleUrl>
+                <LineString id="1076">
+                    <coordinates>153.069076,-26.50894,1.0 153.069092,-26.509004,1.0 153.069161,-26.509036,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+            <Placemark id="1079">
+                <name>Approximate Borehole Location 14</name>
+                <styleUrl>#1002</styleUrl>
+                <LineString id="1078">
+                    <coordinates>153.069178,-26.509036,1.0 153.069249,-26.509005,1.0 153.069285,-26.508941,1.0</coordinates>
+                    <altitudeMode>relativetoground</altitudeMode>
+                </LineString>
+            </Placemark>
+        </Folder>
+        <Folder id="1080">
+            <Style id="948">
+                <LineStyle id="949">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="950">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="951">
+                <LineStyle id="952">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="953">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="954">
+                <LineStyle id="955">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="956">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <Style id="957">
+                <LineStyle id="958">
+                    <color>ff04cbff</color>
+                    <colorMode>normal</colorMode>
+                    <width>2</width>
+                </LineStyle>
+                <PolyStyle id="959">
+                    <color>8004cbff</color>
+                    <colorMode>normal</colorMode>
+                    <fill>1</fill>
+                    <outline>1</outline>
+                </PolyStyle>
+            </Style>
+            <name>Survey Areas</name>
+            <Placemark id="1082">
+                <name>Survey Areas 1</name>
+                <styleUrl>#948</styleUrl>
+                <Polygon id="1081">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1083">
+                            <coordinates>153.067945,-26.508807,1.0 153.068231,-26.508554,1.0 153.067655,-26.507136,1.0 153.068096,-26.506948,1.0 153.068288,-26.506917,1.0 153.069876,-26.507625,1.0 153.070241,-26.507659,1.0 153.070773,-26.507313,1.0 153.07052,-26.506946,1.0 153.070397,-26.506977,1.0 153.070271,-26.507135,1.0 153.067389,-26.50591,1.0 153.067415,-26.505561,1.0 153.067755,-26.505213,1.0 153.067837,-26.505404,1.0 153.068416,-26.50528,1.0 153.068598,-26.504948,1.0 153.068367,-26.503691,1.0 153.06597,-26.50684,1.0 153.066381,-26.508575,1.0 153.067945,-26.508807,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1086">
+                <name>Survey Areas 2</name>
+                <styleUrl>#951</styleUrl>
+                <Polygon id="1085">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1087">
+                            <coordinates>153.071126,-26.509286,1.0 153.071356,-26.508413,1.0 153.070751,-26.507503,1.0 153.070945,-26.507409,1.0 153.071354,-26.507793,1.0 153.072305,-26.508148,1.0 153.072463,-26.508801,1.0 153.072359,-26.509468,1.0 153.071126,-26.509286,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1090">
+                <name>Survey Areas 3</name>
+                <styleUrl>#954</styleUrl>
+                <Polygon id="1089">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1091">
+                            <coordinates>153.070914,-26.507234,1.0 153.070611,-26.506787,1.0 153.070637,-26.506438,1.0 153.072628,-26.504923,1.0 153.072878,-26.504686,1.0 153.072918,-26.50448,1.0 153.072315,-26.504174,1.0 153.072463,-26.503825,1.0 153.073566,-26.504356,1.0 153.073397,-26.504832,1.0 153.071335,-26.506442,1.0 153.071251,-26.507013,1.0 153.070914,-26.507234,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+            <Placemark id="1094">
+                <name>Survey Areas 4</name>
+                <styleUrl>#957</styleUrl>
+                <Polygon id="1093">
+                    <altitudeMode>relativetoground</altitudeMode>
+                    <outerBoundaryIs>
+                        <LinearRing id="1095">
+                            <coordinates>153.072463,-26.503825,1.0 153.07236,-26.503745,1.0 153.072401,-26.503507,1.0 153.073848,-26.501401,1.0 153.07521,-26.502045,1.0 153.075346,-26.502173,1.0 153.075396,-26.502268,1.0 153.075411,-26.50238,1.0 153.075274,-26.502983,1.0 153.074273,-26.504694,1.0 153.073566,-26.504356,1.0 153.072463,-26.503825,1.0</coordinates>
+                        </LinearRing>
+                    </outerBoundaryIs>
+                </Polygon>
+            </Placemark>
+        </Folder>
+    </Document>
+</kml>
