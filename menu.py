@@ -6,26 +6,25 @@ import subprocess
 import numpy as np
 import copy
 from skimage.io import imread
-import json, geojson
+import json
+import geojson
 import glob
-import copy
 
 import gui
 import coordinates
 import scrape_svg
 import scrape_bmp
 
+
 class Menu(ttk.Frame):
     def __init__(
             self, mainframe, filename=None,
             title='pymscrape version 0.1',
-            base_dir = ('/home/student.unimelb.edu.au/shorte1/'
-                + 'Documents/ACF_consulting'),
-            search_terms = ['legend'],
-            page_num = -1,
-            map_template = -1,
-            leg_names = -1,
-            im_leg = -1,):
+            base_dir=('/home/student.unimelb.edu.au/shorte1/'
+                      + 'Documents/ACF_consulting'),
+            search_terms=['legend'], page_num=None, map_page_num=None,
+            leg_names=None, im_leg=None, LON=None, LAT=None,
+            pb_tl=None, pb_br=None, im1=None):
 
         ttk.Frame.__init__(self, master=mainframe)
         self.master.title(title)
@@ -43,18 +42,22 @@ class Menu(ttk.Frame):
         hbar.grid(row=11, column=0, columnspan=4, sticky='we')
 
         self.console = tk.Listbox(
-            self.master, width=87, xscrollcommand = hbar.set,
-            yscrollcommand = vbar.set)
+            self.master, width=87, xscrollcommand=hbar.set,
+            yscrollcommand=vbar.set)
         self.console.grid(row=10, column=0, columnspan=4, sticky='w')
         self.linenumber = 1
         self.console.insert(self.linenumber, 'Welcome to mscrape version 0.1.')
         self.linenumber += 1
 
-        self.page_num = -1
+        [
+            self.page_num, self.map_page_num, self.leg_names, self.im_leg,
+            self.im1, self.LAT, self.LON, self.pb_tl, self.pb_br] = [
+            page_num, map_page_num, leg_names, im_leg, im1, LAT, LON,
+            pb_tl, pb_br]
 
-        if not filename:
+        if filename is None:
             self.filename.set('Click button to choose filename.')
-            self.saved_pages = -1
+            self.saved_pages = None
         else:
             self.filename.set(filename.split('/')[-1])
             self.console.insert(
@@ -63,7 +66,7 @@ class Menu(ttk.Frame):
             self.linenumber += 1
             self.check_saved_pages()
 
-        padding=10
+        padding = 10
         self.b_file = tk.Button(
             self.master, text="1. Choose File (f)", command=self.choose_file,
             padx=padding, pady=padding)
@@ -78,7 +81,7 @@ class Menu(ttk.Frame):
         self.b_search.grid(row=1, column=0, sticky='w')
 
         self.search_label_var = tk.StringVar()
-        if self.saved_pages == -1:
+        if self.saved_pages is None:
             self.search_label_var.set('Click to search for maps.')
         else:
             self.search_label_var.set(
@@ -88,7 +91,7 @@ class Menu(ttk.Frame):
             self.master, textvariable=self.search_label_var)
         self.search_label.grid(row=1, column=1)
 
-        if not filename:
+        if filename is None:
             self.b_search['state'] = tk.DISABLED
             self.search_label.config(fg='#AAAAAA')
 
@@ -103,14 +106,13 @@ class Menu(ttk.Frame):
             self.master, textvariable=self.page_label_text)
         self.page_label.grid(row=2, column=1)
 
-        if self.saved_pages == -1:
+        if self.saved_pages is None:
             self.b_page['state'] = tk.DISABLED
             self.page_label.config(fg='#AAAAAA')
 
         self.b_coords = tk.Button(
             self.master, text="4. Get Map Coordinates (m)",
-            command=self.get_coords, padx=padding, pady=padding,
-            state=tk.DISABLED)
+            command=self.get_coords, padx=padding, pady=padding)
         self.b_coords.grid(row=3, column=0, sticky='w')
 
         self.coords_label_text = tk.StringVar()
@@ -119,34 +121,47 @@ class Menu(ttk.Frame):
         self.coords_label = tk.Label(
             self.master, textvariable=self.coords_label_text)
         self.coords_label.grid(row=3, column=1)
-        if self.page_num == -1:
+        if self.page_num is None:
             self.b_coords['state'] = tk.DISABLED
             self.coords_label.config(fg='#AAAAAA')
 
         self.b_svg = tk.Button(
             self.master, text="5. Scrape SVG Data (s)", command=self.get_svg,
-            padx=padding, pady=padding, state=tk.DISABLED)
+            padx=padding, pady=padding)
         self.b_svg.grid(row=4, column=0, sticky='w')
 
         self.svg_label_text = tk.StringVar()
         self.svg_label_text.set(
             'Click button to scrape SVG data.')
         self.svg_label = tk.Label(
-            self.master, textvariable=self.svg_label_text, fg='#AAAAAA')
+            self.master, textvariable=self.svg_label_text)
         self.svg_label.grid(row=4, column=1)
+
+        svg_dis_cond = (
+            (self.page_num is None) or (self.im1 is None) or (self.LON is None)
+            or (self.LAT is None) or (self.map_page_num is None))
+        if svg_dis_cond:
+            self.b_svg['state'] = tk.DISABLED
+            self.svg_label.config(fg='#AAAAAA')
 
         self.b_bmp = tk.Button(
             self.master, text="6. Scrape Bitmap Image (b)",
-            command=self.get_bmp, padx=padding, pady=padding,
-            state=tk.DISABLED)
+            command=self.get_bmp, padx=padding, pady=padding)
         self.b_bmp.grid(row=5, column=0, sticky='w')
 
         self.bmp_label_text = tk.StringVar()
         self.bmp_label_text.set(
             'Click button to scrape BMP data.')
         self.bmp_label = tk.Label(
-            self.master, textvariable=self.bmp_label_text, fg='#AAAAAA')
+            self.master, textvariable=self.bmp_label_text)
         self.bmp_label.grid(row=5, column=1)
+
+        bmp_dis_cond = (
+            svg_dis_cond or (self.im_leg is None)
+            or (self.pb_tl is None) or (self.pb_br is None))
+        if bmp_dis_cond:
+            self.b_bmp['state'] = tk.DISABLED
+            self.bmp_label.config(fg='#AAAAAA')
 
         self.buttons = [
             self.b_file, self.b_search, self.b_page,
@@ -164,10 +179,10 @@ class Menu(ttk.Frame):
         self.master.destroy()
 
     def choose_file(self, event=None):
-        self.file_path =  filedialog.askopenfilename(
-            initialdir = self.base_dir,
-            title = "Select PDF File",
-            filetypes = (("PDF Files", "*.pdf"), ("All Files", "*.*")))
+        self.file_path = filedialog.askopenfilename(
+            initialdir=self.base_dir,
+            title="Select PDF File",
+            filetypes=(("PDF Files", "*.pdf"), ("All Files", "*.*")))
         self.filename.set(self.file_path.split('/')[-1])
         self.console.insert(
             self.linenumber,
@@ -176,7 +191,7 @@ class Menu(ttk.Frame):
         self.b_search['state'] = tk.NORMAL
         self.search_label.config(fg='#000000')
         self.check_saved_pages()
-        if self.saved_pages == -1:
+        if not self.saved_pages:
             self.search_label_var.set('Click to search for maps.')
             self.b_page['state'] = tk.DISABLED
             self.page_label.config(fg='#AAAAAA')
@@ -213,7 +228,7 @@ class Menu(ttk.Frame):
                 self.dir + '/saved_pages.csv')
             self.saved_pages = self.saved_pages.astype(int).tolist()
         except:
-            self.saved_pages = -1
+            self.saved_pages = None
 
         try:
             self.remaining_pages = np.genfromtxt(
@@ -234,12 +249,8 @@ class Menu(ttk.Frame):
             # Can seperate this as a function
             self.saved_pages = []
             pdf_file = fitz.open(self.file_path)
-            zoom_factor = 1
             for page_index in range(len(pdf_file)):
                 page = pdf_file[page_index]
-                page_size = page.mediabox_size[0]*page.mediabox_size[1]
-                image_list = page.getImageList()
-                image_sizes = np.array([im[2]*im[3] for im in image_list])
                 save_page_image = [
                     t.strip() in page.getText().lower()
                     for t in self.search_terms]
@@ -268,7 +279,8 @@ class Menu(ttk.Frame):
             try:
                 self.remaining_pages = np.genfromtxt(
                     self.dir + '/remaining_pages.csv')
-                self.remaining_pages = self.remaining_pages.astype(int).tolist()
+                self.remaining_pages = self.remaining_pages.astype(int)
+                self.remaining_pages = self.remaining_pages.tolist()
             except:
                 self.remaining_pages = copy.deepcopy(self.saved_pages)
 
@@ -282,7 +294,7 @@ class Menu(ttk.Frame):
         choose_page_app = gui.Choose_Map(
             choose_page_win, self.remaining_pages,
             self.dir + '/pages/',
-            title = 'Choose Map to Scrape')
+            title='Choose Map to Scrape')
         self.master.wait_window(choose_page_win)
         self.master.focus_set()
         self.page_num = self.remaining_pages[choose_page_app.v.get()]
@@ -315,9 +327,7 @@ class Menu(ttk.Frame):
     def get_coords(self, event=None):
 
         try:
-            with open(
-                self.dir
-                + '/coord_dict.json', 'r') as f:
+            with open(self.dir + '/coord_dict.json', 'r') as f:
                 coord_dict = json.load(f)
         except:
             coord_dict = {}
@@ -327,22 +337,22 @@ class Menu(ttk.Frame):
         get_coords_win.attributes('-zoomed', True)
         get_coords_app = gui.Choose_Map_Template(
             get_coords_win, map_templates, self.page_num,
-            self.dir + '/pages/', title = 'Choose a map template')
+            self.dir + '/pages/', title='Choose a map template')
         self.master.wait_window(get_coords_win)
         self.master.focus_set()
 
         if get_coords_app.v.get() >= 0:
-            t_page_num = map_templates[get_coords_app.v.get()]
+            self.map_page_num = map_templates[get_coords_app.v.get()]
 
             # Backward compatibility for old way of saving coordinates
-            if len(np.array(coord_dict[str(t_page_num)][0])) <= 7:
-                c_lon = np.array(coord_dict[str(t_page_num)][0])
-                c_lat = np.array(coord_dict[str(t_page_num)][1])
+            if len(np.array(coord_dict[str(self.map_page_num)][0])) <= 7:
+                c_lon = np.array(coord_dict[str(self.map_page_num)][0])
+                c_lat = np.array(coord_dict[str(self.map_page_num)][1])
 
                 if len(c_lon) == 3:
-                    A = lambda x,y: np.array([x*0+1, x, y])
+                    A = lambda x, y: np.array([x*0+1, x, y])
                 elif len(c_lon) == 6:
-                    A = lambda x,y: np.array([x*0+1, x, y, x**2, x*y, y**2])
+                    A = lambda x, y: np.array([x*0+1, x, y, x**2, x*y, y**2])
                 else:
                     A = None
 
@@ -354,13 +364,14 @@ class Menu(ttk.Frame):
                 self.LAT = np.round(
                     coordinates.evaluate_paraboloid(XX, YY, A, c_lat), 6)
             else:
-                self.LON = np.array(coord_dict[str(t_page_num)][0])
-                self.LAT = np.array(coord_dict[str(t_page_num)][1])
+                self.LON = np.array(coord_dict[str(self.map_page_num)][0])
+                self.LAT = np.array(coord_dict[str(self.map_page_num)][1])
 
             self.coords_label_text.set(
-                'Map Template {} Chosen'.format(t_page_num))
+                'Map Template {} Chosen'.format(self.map_page_num))
 
         elif get_coords_app.v.get() == -1:
+            self.map_page_num = self.page_num
             json_files = glob.glob(
                 self.dir + '/JSON/edited/*.json')
             json_names = [j.split('/')[-1].split('.')[0] for j in json_files]
@@ -369,7 +380,7 @@ class Menu(ttk.Frame):
             choose_points_win = tk.Toplevel(self.master)
             choose_points_win.attributes('-zoomed', True)
             choose_points_app = gui.Choose_Points(
-                choose_points_win, self.im1, text_list = json_names)
+                choose_points_win, self.im1, text_list=json_names)
             self.master.wait_window(choose_points_win)
             self.master.focus_set()
 
@@ -387,7 +398,10 @@ class Menu(ttk.Frame):
             self.linenumber += 1
 
             if np.any([n not in json_names for n in names]):
-                scaled_points, approx_lon, approx_lat, approx_spread = coordinates.scale_points(self.im1, points)
+                (
+                    scaled_points, approx_lon,
+                    approx_lat, approx_spread) = coordinates.scale_points(
+                        self.im1, points)
             coordinates.create_JSON_dirs(self.base_dir, self.sub_dir)
 
             if np.any([n not in json_names for n in names]) or not json_names:
@@ -413,7 +427,7 @@ class Menu(ttk.Frame):
                     'cp ' + self.base_dir + '/reference.qgs ' + self.base_dir
                     + self.sub_dir + '/reference.qgs', shell=True)
 
-                cmd=(
+                cmd = (
                     'qgis --project ' + self.dir
                     + '/reference.qgs ' + self.dir
                     + '/JSON/raw/*.json ' + '--extent {},{},{},{}')
@@ -454,9 +468,9 @@ class Menu(ttk.Frame):
                 A = lambda x,y: np.array([x*0+1, x, y, x**2, x*y, y**2])
 
             c_lon, residuals, rank, s = np.linalg.lstsq(
-                A(X,Y).T, lons, rcond=1e-8)
+                A(X, Y).T, lons, rcond=1e-8)
             c_lat, residuals, rank, s = np.linalg.lstsq(
-                A(X,Y).T, lats, rcond=1e-8)
+                A(X, Y).T, lats, rcond=1e-8)
 
             x = np.arange(self.im1.shape[1])/self.im1.shape[1]
             y = np.arange(self.im1.shape[0])/self.im1.shape[0]
@@ -500,7 +514,7 @@ class Menu(ttk.Frame):
             self.base_dir, self.sub_dir, self.master,
             self.LON, self.LAT, self.zoom_factor)
 
-        self.bmp_label.config(fg = '#000000')
+        self.bmp_label.config(fg='#000000')
         self.svg_label_text.set('KML file saved.')
         self.enable_buttons()
 
@@ -525,14 +539,13 @@ class Menu(ttk.Frame):
             self.base_dir, self.sub_dir, self.leg_names, self.im_leg,
             self.LON, self.LAT, self.pb_tl, self.pb_br)
 
-
         self.remaining_pages.remove(self.page_num)
         np.savetxt(
             self.dir + "/remaining_pages.csv",
             self.remaining_pages, delimiter=",")
 
         self.b_bmp['state'] = tk.NORMAL
-        self.bmp_label.config(fg = '#000000')
+        self.bmp_label.config(fg='#000000')
         self.bmp_label_text.set('KML file saved.')
 
         self.enable_buttons()

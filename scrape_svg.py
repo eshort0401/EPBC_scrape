@@ -18,8 +18,6 @@ from colormath.color_diff import delta_e_cie2000
 
 from matplotlib.colors import to_hex
 from matplotlib.colors import to_rgb
-from matplotlib.colors import rgb_to_hsv
-import matplotlib.pyplot as plt
 
 import simplekml
 
@@ -28,6 +26,7 @@ def hex_to_kml_hex(hex_col, with_hash=True, alpha='ff'):
         kml_hex = hex_col[1:]
     kml_hex = alpha + kml_hex[6:] + kml_hex[4:6] + kml_hex[2:4] + kml_hex[0:2]
     return kml_hex
+
 
 def gen_poly_coords(coords, LON, LAT):
     poly_coords = [
@@ -39,11 +38,12 @@ def gen_poly_coords(coords, LON, LAT):
         for i in range(len(coords))]
     return poly_coords
 
+
 def scrape_svg(
         file_path, page_num, im1, base_dir, sub_dir,
         master, LON, LAT, zoom_factor):
 
-    thresh =  1e-20
+    thresh = 1e-20
     min_path = 2
     tol = 5e-4
     min_leg_path = 3
@@ -65,7 +65,6 @@ def scrape_svg(
         [('legend' in block[4].lower()) for block in blocks]
     )
     [x1, y1, x2, y2] = np.array(blocks[leg_txt_box_ind][:4])*zoom_factor
-    leg_txt_coords = [(x1+x2)/2, (y1+y2)/2]
 
     svg = page.get_svg_image(text_as_path=False)
     svg_tap = page.get_svg_image(text_as_path=True)
@@ -82,14 +81,15 @@ def scrape_svg(
     choose_legend_win.attributes('-zoomed', True)
     leg_app = gui.Get_Legend_Box(
         choose_legend_win, im1,
-        'Right click to select top left and bottom right corners of legend box.'
+        'Right click to select top left and bottom '
+        + 'right corners of legend box.'
     )
     master.wait_window(choose_legend_win)
 
     lb_tl = np.array(leg_app.p1).astype(int)
     lb_br = np.array(leg_app.p2).astype(int)
 
-    im_leg = im1[lb_tl[1]:lb_br[1],lb_tl[0]:lb_br[0],:]
+    im_leg = im1[lb_tl[1]:lb_br[1], lb_tl[0]:lb_br[0], :]
 
     choose_content_win = tk.Toplevel(master)
     choose_content_win.attributes('-zoomed', True)
@@ -105,9 +105,11 @@ def scrape_svg(
 
     paths = soup.svg.find_all('path')
     long_paths = [
-        p for p in paths if len(re.split('l|c|v|h',p['d'].lower()))>=min_path]
+        p for p in paths
+        if len(re.split('l|c|v|h', p['d'].lower())) >= min_path]
     long_clippaths = [
-        p for p in paths if len(re.split('l|c|v|h',p['d'].lower()))>=min_path]
+        p for p in paths
+        if len(re.split('l|c|v|h', p['d'].lower())) >= min_path]
 
     long_paths = [
         p for p in long_paths if 'stroke' in p.attrs.keys()
@@ -145,19 +147,19 @@ def scrape_svg(
 
     [svg_in_poly_box, cp_in_poly_box, use_in_poly_box] = [
         [
-            np.all(pb_tl[0]-2 <= c[:,0,0])
-            *np.all(c[:,0,0] <= pb_br[0]+2)
-            *np.all(pb_tl[1]-2 <= c[:,0,1])
-            *np.all(c[:,0,1] < pb_br[1]+2)
+            np.all(pb_tl[0]-2 <= c[:, 0, 0])
+            * np.all(c[:, 0, 0] <= pb_br[0] + 2)
+            * np.all(pb_tl[1] - 2 <= c[:, 0, 1])
+            * np.all(c[:, 0, 1] < pb_br[1] + 2)
             for c in cds]
         for cds in [svg_coords, cp_coords, use_coords]]
 
     [use_in_leg_box, cp_in_leg_box, svg_in_leg_box] = [
         [
-            np.all(lb_tl[0]-2 <= c[:,0,0])
-            *np.all(c[:,0,0] <= lb_br[0]+2)
-            *np.all(lb_tl[1]-2 <= c[:,0,1])
-            *np.all(c[:,0,1] < lb_br[1]+2)
+            np.all(lb_tl[0]-2 <= c[:, 0, 0])
+            * np.all(c[:, 0, 0] <= lb_br[0] + 2)
+            * np.all(lb_tl[1] - 2 <= c[:, 0, 1])
+            * np.all(c[:, 0, 1] < lb_br[1] + 2)
             for c in coords]
         for coords in [use_coords, cp_coords, svg_coords]]
 
@@ -173,13 +175,18 @@ def scrape_svg(
 
     best_leg_match = []
     if use_obj_coords and use_leg_coords:
-        leg_match = [np.argwhere(f == np.array(use_leg_fill)) for f in use_obj_fill]
+        leg_match = [
+            np.argwhere(f == np.array(use_leg_fill)) for f in use_obj_fill]
         best_leg_match = []
         for i in range(len(use_obj_coords)):
             obj = use_obj_coords[i]
             leg_objs = [use_leg_coords[j] for j in leg_match[i].flatten()]
             try:
-                ind = np.argmin([cv.matchShapes(obj, leg_obj,1,0) for leg_obj in leg_objs])
+                ind = np.argmin(
+                    [
+                        cv.matchShapes(obj, leg_obj, 1, 0)
+                        for leg_obj in leg_objs]
+                )
                 best_leg_match.append(leg_match[i].flatten()[ind])
             except:
                 best_leg_match.append(0)
@@ -744,7 +751,6 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
         new_coords = crop_coords(new_coords, shape)
         new_coords = new_coords.reshape(
             [new_coords.shape[0],1,new_coords.shape[1]])
-        area = cv.contourArea(new_coords)
 
         use_coords.append(new_coords)
         obj_list.append(use_list[i])

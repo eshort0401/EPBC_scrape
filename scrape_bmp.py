@@ -2,10 +2,9 @@ import gui
 from scrape_svg import convert_transform, gen_poly_coords
 
 import numpy as np
-from skimage import data, segmentation, feature, future
+from skimage import segmentation, feature, future
 from skimage.io import imread
 from skimage.morphology import remove_small_objects
-from skimage import feature
 from skimage.filters import median
 from sklearn.ensemble import RandomForestClassifier
 from scipy import ndimage as ndi
@@ -40,8 +39,8 @@ def scrape_bmp(
     for s in small_soup('image'):
         try:
             transform = convert_transform(s.parent.parent['transform'])
-            img_width = abs(float(s['width'])*transform[0,0])
-            img_height = abs(float(s['height'])*transform[1,1])
+            img_width = abs(float(s['width'])*transform[0, 0])
+            img_height = abs(float(s['height'])*transform[1, 1])
             if img_width > 0.6*p_width:
                 continue
             elif img_height > 0.6*p_height:
