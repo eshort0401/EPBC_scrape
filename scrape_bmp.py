@@ -158,8 +158,7 @@ def scrape_bmp(
         label_objects = label_objects.astype(np.uint8)
 
         obj_contours, hierarchy = cv.findContours(
-            label_objects, cv.RETR_CCOMP, cv.CHAIN_APPROX_TC89_L1
-        )
+            label_objects, cv.RETR_CCOMP, cv.CHAIN_APPROX_TC89_L1)
 
         smooth_obj_contours = []
         for cnt in obj_contours:

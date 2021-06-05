@@ -303,7 +303,20 @@ class Name_Polygons(Zoom_Scroll):
     ):
         Zoom_Scroll.__init__(self, mainframe, image, title=title)
         self.text_list = copy.deepcopy(text_list)
+        # Convert line coords into thin poly coords
         self.coords = copy.deepcopy(coords)
+        for i in range(len(self.coords)):
+            if not np.all(self.coords[i][0] == self.coords[i][-1]):
+                thick_im = np.zeros(image.shape[:2]).astype(np.uint8)
+                for j in range(len(self.coords[i])-1):
+                    thick_im += cv.line(
+                        thick_im, tuple(np.squeeze(self.coords[i][j])),
+                        tuple(np.squeeze(self.coords[i][j+1])), 1, 2)
+                thick_im = (thick_im > 0).astype(np.uint8)
+                thick_line = cv.findContours(
+                    thick_im, cv.RETR_CCOMP, cv.CHAIN_APPROX_TC89_L1)[0][0]
+                self.coords[i] = thick_line
+
         self.com = []
         self.raw_image = copy.deepcopy(image)
         for i in range(len(self.coords)):
@@ -344,8 +357,8 @@ class Name_Polygons(Zoom_Scroll):
         for i in range(len(self.coords)):
             if self.com[i]:
                 self.names_r[i] = self.canvas.create_text(
-                    self.com[i][0]+5*np.cos(self.names_offset[i]),
-                    self.com[i][1]+5*np.sin(self.names_offset[i]),
+                    self.com[i][0] + 5 * np.cos(self.names_offset[i]),
+                    self.com[i][1] + 5 * np.sin(self.names_offset[i]),
                     anchor='w', text=self.names[i], fill='red',
                     font=('Arial', 14, 'bold')
                 )
@@ -388,7 +401,6 @@ class Name_Polygons(Zoom_Scroll):
                 fill=fill, font=font
             )
 
-
         self.image = Image.fromarray(self.contour_image.astype(np.uint8))
         self.show_image()
 
@@ -412,8 +424,6 @@ class Name_Polygons(Zoom_Scroll):
                 anchor='w', text=self.names[i],
                 fill=fill, font=font
             )
-
-
 
         self.image = Image.fromarray(self.contour_image.astype(np.uint8))
         self.show_image()
@@ -484,8 +494,8 @@ class Name_Polygons(Zoom_Scroll):
                         fill = '#0f0'
                         font = ('Arial', 14)
                     self.names_r[i] = self.canvas.create_text(
-                        com_x_plot+5*np.cos(self.names_offset[i])*self.imscale,
-                        com_y_plot+5*np.sin(self.names_offset[i])*self.imscale,
+                        com_x_plot + 5 * np.cos(self.names_offset[i]) * self.imscale,
+                        com_y_plot + 5 * np.sin(self.names_offset[i]) * self.imscale,
                         anchor='w', text=self.names[i],
                         fill=fill, font=font
                     )

@@ -583,6 +583,8 @@ def convert_path_coords(path_list, shape, thresh):
     stroke = []
     fill = []
     for p in path_list:
+        # if 'L -1.439 19.679 L -.96 22.319 L' in p['d']:
+        #     import pdb; pdb.set_trace()
         coords = interp_bezier(p['d'])
         has_z = re.search('(z\s*)$', coords.lower())
         coords = re.split('[a-zA-Z]', coords)
