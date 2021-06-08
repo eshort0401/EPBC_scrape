@@ -10,7 +10,7 @@ def scrape_iframe_page(
         driver, files_dir, table, row_number, page_number,
         folder_name, num_files, file_names, file_links):
 
-    table.at[row_number, 'Attachments'] = 'Yes'
+    table.at[row_number, 'PDF Attachments'] = 'Yes'
     num_files.append(len(file_links))
 
     table.at[row_number, 'Download Folder'] = folder_name
@@ -20,6 +20,7 @@ def scrape_iframe_page(
     # in file_count == len(file_links) never being satisfied
     unique_file_links = []
     unique_file_links_html = []
+    table.at[row_number, 'Non PDF Attachments'] = 'No'
     for k in range(len(file_links)):
         link_text = file_links[k].get_attribute('innerHTML')
         if re.search('.pdf', link_text, re.IGNORECASE):
@@ -30,6 +31,7 @@ def scrape_iframe_page(
         else:
             print('Non pdf files found on page ' + str(page_number)
                   + ', row ' + str(row_number+1) + '. Check manually.')
+            table.at[row_number, 'Non PDF Attachments'] = 'Yes'
     file_links = unique_file_links
 
     successful = False
@@ -52,8 +54,7 @@ def scrape_iframe_page(
             file_count = 0
             iterations = 0
             while file_count < len(file_links):
-                if iterations > 240:
-                    import pdb; pdb.set_trace()
+                if iterations > 480:
                     attempts += 1
                     raise RuntimeError('Download timed out.')
                 time.sleep(1)
@@ -97,10 +98,27 @@ def scrape_page(
         next_button = driver.find_elements_by_xpath(
             '//a[@href="#" and @data-page="' + str(page_number) + '"]')[0]
 
-    # Iterate over the 30 entries in the table on current page checking for files
     for i in range(30):
         if exist[i]:
             continue
+
+        subprocess.run('rm ' + files_dir +'/*.pdf', shell=True)
+        ref_num = table['Reference Number'].iloc[i].replace('/','')
+        date = table['Date of notice'].iloc[i].strftime('%d%m%Y')
+        org = table['Title of referral'].iloc[i].split('/')[0]
+        org = org.translate(str.maketrans('', '', string.punctuation))
+        org = org.replace(' ', '_')
+        ref_type = table['Notification from EPBC Act'].iloc[i]
+        ref_type = ref_type.replace('/', ' ').replace('-', ' ')
+        ref_type = ref_type.translate(
+            str.maketrans('', '', string.punctuation))
+        ref_type = ref_type.replace(' ', '_')
+        ref_type = ref_type.replace('__', '_')
+
+        folder_name = ref_num + '_' + date + '_' + org + '_' + ref_type
+        folder_name = folder_name.lower()
+        folder_path = files_dir + '/' + folder_name
+
         if i < 29:
             # Move to element i+1, as i may be blocked by Chrome download bar!
             ActionChains(driver).move_to_element(details_buttons[i+1]).perform()
@@ -119,63 +137,71 @@ def scrape_page(
         iframe = driver.find_elements_by_xpath(
             '//section[@class="modal fade modal-form modal-form-details in"]'
             + '/div/div/div/iframe')
-
-        # NOTE need to check if bash shells exist on windows 10.
-        subprocess.run('rm ' + files_dir +'/*.pdf', shell=True)
-        ref_num = table['Reference Number'].iloc[i].replace('/','')
-        date = table['Date of notice'].iloc[i].strftime('%d%m%Y')
-        org = table['Title of referral'].iloc[i].split('/')[0]
-        org = org.translate(str.maketrans('', '', string.punctuation))
-        org = org.replace(' ', '_')
-        ref_type = table['Notification from EPBC Act'].iloc[i]
-        ref_type = ref_type.translate(
-            str.maketrans('', '', string.punctuation))
-        ref_type = ref_type.replace(' ', '_')
-
-        folder_name = ref_num + '_' + date + '_' + org + '_' + ref_type
-        folder_name = folder_name.lower()
-        folder_path = files_dir + '/' + folder_name
-
         driver.switch_to.frame(iframe[0])
+
         file_links = driver.find_elements_by_xpath(
             "//a[contains(@href, '/_entity/annotation/')]")
-        if len(file_links) >= 17:
-            import pdb; pdb.set_trace()
+
         [num_files, file_names] = [[], []]
-        iframe_page_num = 0
+        iframe_page_num = 1
+        more_iframe_pages = True
         if not file_links:
             num_files.append(0)
             file_names.append('')
-            table.at[i, 'Attachments'] = 'No'
-            table.at[i, 'Download'] = 'NA'
-            table.at[i, 'Download Folder'] = 'NA'
+            table.at[i, 'PDF Attachments'] = 'No'
+            table.at[i, 'Non PDF Attachments'] = 'No'
+            table.at[i, 'Download'] = 'Not Applicable'
+            table.at[i, 'Download Folder'] = 'Not Applicable'
+            table.at[i, 'PDFs Combined'] = 'Not Applicable'
         else:
-            scrape_iframe_page(
-                driver, files_dir, table, i, page_number, folder_name,
-                num_files, file_names, file_links)
-            iframe_next_button = driver.find_elements_by_xpath(
-                '//a[@href="#" and @data-page="'
-                + str(iframe_page_num) + '"]')[0]
+            while more_iframe_pages:
+                scrape_iframe_page(
+                    driver, files_dir, table, i, page_number, folder_name,
+                    num_files, file_names, file_links)
+                iframe_next_buttons = driver.find_elements_by_xpath(
+                    '//a[@href="#" and @data-page="'
+                    + str(iframe_page_num+1) + '"]')
+                if len(iframe_next_buttons) > 1:
+                    ActionChains(driver).move_to_element(
+                        iframe_next_buttons[0]).perform()
+                    iframe_next_buttons[0].click()
+                    time.sleep(1.5)
+                    print('Downloading from next page of iframe.')
+                    file_links = driver.find_elements_by_xpath(
+                        "//a[contains(@href, '/_entity/annotation/')]")
+                    iframe_page_num += 1
+                elif len(iframe_next_buttons) <= 1:
+                    more_iframe_pages = False
 
+            # After files downloaded, move them to appropriate folder
+            subprocess.run(['mkdir', folder_path])
+            shell_cmd = 'mv ' + files_dir + '/*.pdf ' + folder_path
+            subprocess.run(shell_cmd, shell=True)
 
+            # Record the filenames
+            shell_cmd = 'find ' + folder_path + '/*.pdf -maxdepth 1 -type f '
+            shell_cmd += '-printf "%f\n" > ' + folder_path + '/file_names.txt'
+            subprocess.run(shell_cmd, shell=True)
+            with open(folder_path + '/file_names.txt') as f:
+                lines = f.readlines()
+            file_names.append(', '.join(lines).replace('\n',''))
+            subprocess.run('rm ' + folder_path + '/file_names.txt', shell=True)
 
-        # After files downloaded, move them to appropriate folder
-        subprocess.run(['mkdir', folder_path])
-        shell_cmd = 'mv ' + files_dir + '/*.pdf ' + folder_path
-        subprocess.run(shell_cmd, shell=True)
-
-        # Record the filenames
-        shell_cmd = 'find ' + folder_path + '/*.pdf -maxdepth 1 -type f '
-        shell_cmd += '-printf "%f\n" > ' + folder_path + '/file_names.txt'
-        subprocess.run(shell_cmd, shell=True)
-        with open(folder_path + '/file_names.txt') as f:
-            lines = f.readlines()
-        file_names.append(', '.join(lines).replace('\n',''))
-        subprocess.run('rm ' + folder_path + '/file_names.txt', shell=True)
-
-        shell_cmd = 'pdfunite ' + folder_path + '/*.pdf ' + folder_path
-        shell_cmd += '/' + folder_name + '_combined.pdf'
-        subprocess.run(shell_cmd, shell=True)
+            shell_cmd = 'pdfunite ' + folder_path + '/*.pdf ' + folder_path
+            shell_cmd += '/' + folder_name + '_combined.pdf'
+            combined_code = subprocess.run(shell_cmd, shell=True).returncode
+            if combined_code == 0:
+                table.at[i, 'PDFs Combined'] = 'Yes'
+            else:
+                import pdb; pdb.set_trace()
+                shell_cmd = 'gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
+                shell_cmd += '-sOutputFile=' + folder_path + '/' + folder_name
+                shell_cmd += '_combined_pdf ' + folder_path + '/*.pdf'
+                combined_code = subprocess.run(shell_cmd, shell=True).returncode
+            if combined_code == 0:
+                table.at[i, 'PDFs Combined'] = 'Yes'
+            else:
+                table.at[i, 'PDFs Combined'] = 'No'
 
         driver.switch_to.default_content()
         xpath = '//section[@class="modal fade modal-form '
