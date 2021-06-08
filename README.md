@@ -1,3 +1,5 @@
+Copyright Ewan Short. All rights reserved.
+
 # ECBP Scraper
 Note that selenium chromedriver must be of same version as chrome for code to
 work.
