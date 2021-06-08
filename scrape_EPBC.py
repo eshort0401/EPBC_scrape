@@ -193,10 +193,9 @@ def scrape_page(
             if combined_code == 0:
                 table.at[i, 'PDFs Combined'] = 'Yes'
             else:
-                import pdb; pdb.set_trace()
                 shell_cmd = 'gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
                 shell_cmd += '-sOutputFile=' + folder_path + '/' + folder_name
-                shell_cmd += '_combined_pdf ' + folder_path + '/*.pdf'
+                shell_cmd += '_combined.pdf ' + folder_path + '/*.pdf'
                 combined_code = subprocess.run(shell_cmd, shell=True).returncode
             if combined_code == 0:
                 table.at[i, 'PDFs Combined'] = 'Yes'
