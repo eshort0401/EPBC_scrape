@@ -1,8 +1,8 @@
+# Copyright Ewan Short. All rights reserved.
 import copy
 
 import tkinter as tk
 from tkinter import ttk
-from tkinter.simpledialog import askstring
 
 from PIL import Image, ImageTk
 

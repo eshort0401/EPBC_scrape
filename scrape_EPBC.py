@@ -1,3 +1,4 @@
+# Copyright Ewan Short. All rights reserved. 
 import numpy as np # Handles maths
 import pandas as pd # Good for tables of data
 from selenium.webdriver.common.action_chains import ActionChains

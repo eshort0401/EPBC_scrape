@@ -1,3 +1,4 @@
+# Copyright Ewan Short. All rights reserved.
 import tkinter as tk
 from tkinter import ttk
 from tkinter import filedialog

@@ -1,3 +1,4 @@
+# Copyright Ewan Short. All rights reserved.
 import numpy as np
 import tkinter as tk
 import matplotlib.pyplot as plt

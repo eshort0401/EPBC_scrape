@@ -1,3 +1,4 @@
+# Copyright Ewan Short. All rights reserved.
 import gui
 from scrape_svg import convert_transform, gen_poly_coords
 
