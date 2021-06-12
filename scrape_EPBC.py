@@ -1,4 +1,4 @@
-# Copyright Ewan Short. All rights reserved. 
+# Copyright Ewan Short. All rights reserved.
 import numpy as np # Handles maths
 import pandas as pd # Good for tables of data
 from selenium.webdriver.common.action_chains import ActionChains
@@ -6,6 +6,8 @@ import time
 import subprocess
 import re
 import string
+
+from shell_tools import run_powershell_cmd
 
 def scrape_iframe_page(
         driver, files_dir, table, row_number, page_number,
@@ -15,7 +17,13 @@ def scrape_iframe_page(
     num_files.append(len(file_links))
 
     table.at[row_number, 'Download Folder'] = folder_name
-    subprocess.run('rm ' + files_dir + '/folder_count.txt', shell=True)
+    if os.name == 'nt':
+        shell_cmd = 'rm ' + files_dir + '\\folder_count.txt'
+        run_powershell_cmd(shell_cmd, files_dir)
+    else:
+        shell_cmd = 'rm ' + files_dir + '/folder_count.txt'
+        return subprocess.run(shell_cmd, shell=True)
+
     # Remove duplicate links - otherwise download code below breaks
     # when the same file downloads and overwrites itself, resulting
     # in file_count == len(file_links) never being satisfied
@@ -45,7 +53,6 @@ def scrape_iframe_page(
                   + ' timed out too many times.')
             table.at[row_number, 'Download'] = 'Fail'
             break
-
         try:
             for j in range(len(file_links)):
                 file_links[j].click()
@@ -59,19 +66,32 @@ def scrape_iframe_page(
                     attempts += 1
                     raise RuntimeError('Download timed out.')
                 time.sleep(1)
-                shell_cmd = '''find ''' + files_dir + '/*.PDF '
-                shell_cmd += '''-maxdepth 1 -exec sh -c 'mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
-                subprocess.run(shell_cmd, shell=True)
-                shell_cmd = 'find ' + files_dir + '/*.pdf '
-                shell_cmd += '-type f -print | wc -l > '
-                shell_cmd += files_dir + '/num_files.txt'
-                subprocess.run(shell_cmd, shell=True)
+                if os.name == 'nt':
+                    shell_cmd = 'gci -r -fi {}\\*.pdf | '.format(files_dir)
+                    shell_cmd += 'measure-object -line | '
+                    shell_cmd += 'select-object -expand Lines '
+                    shell_cmd += '> {}\\num_files.txt'.format(files_dir)
+                    run_powershell_cmd(shell_cmd, files_dir)
+                else:
+                    shell_cmd = '''find ''' + files_dir + '/*.PDF '
+                    shell_cmd += '''-maxdepth 1 -exec sh -c 'mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
+                    subprocess.run(shell_cmd, shell=True)
+                    shell_cmd = 'find ' + files_dir + '/*.pdf '
+                    shell_cmd += '-type f -print | wc -l > '
+                    shell_cmd += files_dir + '/num_files.txt'
+                    subprocess.run(shell_cmd, shell=True)
+
                 file_count = int(np.loadtxt(
                     files_dir + '/num_files.txt'))
                 iterations += 1
                 time.sleep(.5)
                 print('Still Downloading. Please Wait.')
-            subprocess.run('rm ' + files_dir + '/num_files.txt', shell=True)
+            if os.name == 'nt':
+                shell_cmd = 'rm ' + files_dir + '\\num_files.txt'
+                run_powershell_cmd(shell_cmd, files_dir)
+            else:
+                shell_cmd = 'rm ' + files_dir + '/num_files.txt'
+                return subprocess.run(shell_cmd, shell=True)
             successful = True
             time.sleep(1)
         except:
@@ -103,7 +123,13 @@ def scrape_page(
         if exist[i]:
             continue
 
-        subprocess.run('rm ' + files_dir +'/*.pdf', shell=True)
+        if os.name == 'nt':
+            shell_cmd = 'rm ' + files_dir + '\\*.pdf'
+            run_powershell_cmd(shell_cmd, files_dir)
+        else:
+            shell_cmd = 'rm ' + files_dir +'/*.pdf'
+            return subprocess.run(shell_cmd, shell=True)
+
         ref_num = table['Reference Number'].iloc[i].replace('/','')
         date = table['Date of notice'].iloc[i].strftime('%d%m%Y')
         org = table['Title of referral'].iloc[i].split('/')[0]
@@ -175,7 +201,7 @@ def scrape_page(
                     more_iframe_pages = False
 
             # After files downloaded, move them to appropriate folder
-            subprocess.run(['mkdir', folder_path])
+            subprocess.run('mkdir ' + folder_path, shell=True)
             shell_cmd = 'mv ' + files_dir + '/*.pdf ' + folder_path
             subprocess.run(shell_cmd, shell=True)
 

@@ -1,0 +1,1 @@
+find C:\Users\eshor\Documents\ACF_consulting\files_test/*.PDF -maxdepth 1 -exec sh -c 'mv "$1" "${1%.PDF}.pdf"' _ {} \;
