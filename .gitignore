@@ -1,4 +1,5 @@
 files
+files_test
 tmp
 proposal
 *.csv
@@ -12,5 +13,4 @@ proposal
 *.qgs
 *.json
 *.lst
-*.ps1
 git_token.txt
