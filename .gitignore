@@ -11,4 +11,6 @@ proposal
 *.png
 *.qgs
 *.json
+*.lst
+*.ps1
 git_token.txt
