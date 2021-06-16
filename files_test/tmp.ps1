@@ -1,0 +1,1 @@
+rm C:\Users\eshor\Documents\ACF_consulting\files_test\num_files.txt

@@ -1,7 +1,7 @@
 # Copyright Ewan Short. All rights reserved.
 import tkinter as tk
 from tkinter import ttk
-from tkinter import filedialog
+from tkinter import filedialog, simpledialog
 import fitz
 import subprocess
 import numpy as np
@@ -10,17 +10,19 @@ from skimage.io import imread
 import json
 import geojson
 import glob
+import os
 
 import gui
 import coordinates
 import scrape_svg
 import scrape_bmp
-
+import pdf_analysis
+from shell_tools import run_common_cmd, run_powershell_cmd
 
 class Menu(ttk.Frame):
     def __init__(
             self, mainframe, filename=None,
-            title='pymscrape version 0.1',
+            title='pymscrape version 0.1 Copyright Ewan Short All Rights Reserved',
             base_dir=('/home/student.unimelb.edu.au/shorte1/'
                       + 'Documents/ACF_consulting'),
             search_terms=['legend'], page_num=None, map_page_num=None,
@@ -32,6 +34,8 @@ class Menu(ttk.Frame):
         self.title = title
         self.file_path = filename
         self.base_dir = base_dir
+        if (self.base_dir[-1] == '/' or self.base_dir[-1] == '\\'):
+            self.base_dir = self.base_dir[:-1]
 
         self.search_terms = search_terms
         self.zoom_factor = 1
@@ -214,9 +218,7 @@ class Menu(ttk.Frame):
             'Click button to scrape SVG data.')
         self.b_bmp['state'] = tk.DISABLED
         self.bmp_label.config(fg='#AAAAAA')
-        self.bmp_label_text.set(
-            'Click button to scrape BMP data.')
-
+        self.bmp_label_text.set('Click button to scrape BMP data.')
         return
 
     def check_saved_pages(self, event=None):
@@ -225,12 +227,10 @@ class Menu(ttk.Frame):
         self.dir = self.base_dir + self.sub_dir
 
         try:
-            self.saved_pages = np.genfromtxt(
-                self.dir + '/saved_pages.csv')
+            self.saved_pages = np.genfromtxt(self.dir + '/saved_pages.csv')
             self.saved_pages = self.saved_pages.astype(int).tolist()
         except:
             self.saved_pages = None
-
         try:
             self.remaining_pages = np.genfromtxt(
                 self.dir + '/remaining_pages.csv')
@@ -239,75 +239,87 @@ class Menu(ttk.Frame):
             self.remaining_pages = copy.deepcopy(self.saved_pages)
 
     def search(self, event=None):
-        search_terms = tk.simpledialog.askstring(
-            self.title, 'Input search terms as comma separated list.')
-        self.search_terms += search_terms.split(',')
 
-        subprocess.run('mkdir ' + self.dir, shell=True)
-        subprocess.run('mkdir ' + self.dir + '/pages', shell=True)
+        self.search_label_var.set('Searching for maps. Please Wait.')
+        self.b_search['state'] = tk.DISABLED
+        self.fn_label.config(fg='#AAAAAA')
+        self.b_file['state'] = tk.DISABLED
+        self.b_page['state'] = tk.DISABLED
+        self.page_label.config(fg='#AAAAAA')
+
+        search_terms = simpledialog.askstring(
+            self.title, 'Input search terms as comma separated list.',
+            parent=self.master)
+        self.search_terms += search_terms.split(',')
+        self.search_terms = [
+            t.strip() for t in self.search_terms if t != '' and t != ' ']
+
+        run_common_cmd('mkdir ' + self.dir, self.base_dir)
+        run_common_cmd('mkdir ' + self.dir + '/pages', self.base_dir)
+        # try:
+        # Can seperate this as a function
+        self.saved_pages = []
+        pdf_file = fitz.open(self.file_path)
+        for page_index in range(len(pdf_file)):
+            page = pdf_file[page_index]
+            large_image, has_text, text_matches = pdf_analysis.detect_map(
+                page, self.search_terms)
+            if np.all(text_matches) and large_image:
+                self.saved_pages.append(page.number)
+                mat = fitz.Matrix(self.zoom_factor, self.zoom_factor)
+                pix = page.get_pixmap(matrix=mat)
+                pix.writePNG(
+                    self.dir + '/pages/page-%i.png' % page.number)
+                self.console.insert(
+                    self.linenumber,
+                    'Map found on page {}.'.format(page.number))
+                self.linenumber += 1
+
+        np.savetxt(
+            self.dir + "/saved_pages.csv",
+            self.saved_pages, delimiter=",")
 
         try:
-            # Can seperate this as a function
-            self.saved_pages = []
-            pdf_file = fitz.open(self.file_path)
-            for page_index in range(len(pdf_file)):
-                page = pdf_file[page_index]
-                save_page_image = [
-                    t.strip() in page.getText().lower()
-                    for t in self.search_terms]
-                save_page_image = np.all(np.array(save_page_image))
-                if save_page_image:
-                    self.saved_pages.append(page.number)
-                    mat = fitz.Matrix(self.zoom_factor, self.zoom_factor)
-                    pix = page.get_pixmap(matrix=mat)
-                    pix.writePNG(
-                        self.dir + '/pages/page-%i.png' % page.number)
-                    self.console.insert(
-                        self.linenumber,
-                        'Map found on page {}.'.format(page.number))
-                    self.linenumber += 1
-
-            self.search_label_var.set(
-                '{} pages with matching maps.'.format(
-                    str(len(self.saved_pages))))
-            np.savetxt(
-                self.dir + "/saved_pages.csv",
-                self.saved_pages, delimiter=",")
-            self.b_page['state'] = tk.NORMAL
-            self.page_label.config(fg='#000000')
-            self.page_label_text.set('Click button to choose page.')
-
-            try:
-                self.remaining_pages = np.genfromtxt(
-                    self.dir + '/remaining_pages.csv')
-                self.remaining_pages = self.remaining_pages.astype(int)
-                self.remaining_pages = self.remaining_pages.tolist()
-            except:
-                self.remaining_pages = copy.deepcopy(self.saved_pages)
-
+            self.remaining_pages = np.genfromtxt(
+                self.dir + '/remaining_pages.csv')
+            self.remaining_pages = self.remaining_pages.astype(int)
+            self.remaining_pages = self.remaining_pages.tolist()
         except:
-            self.console.insert(self.linenumber, 'Could not open file.')
-            self.linenumber += 1
+            self.remaining_pages = copy.deepcopy(self.saved_pages)
+
+        self.search_label_var.set(
+            '{} pages with matching maps.'.format(
+                str(len(self.saved_pages))))
+        self.b_search['state'] = tk.NORMAL
+        self.b_page['state'] = tk.NORMAL
+        self.page_label.config(fg='#000000')
+        self.page_label_text.set('Click button to choose page.')
+        self.fn_label.config(fg='#000000')
+        self.b_file['state'] = tk.NORMAL
+        # except:
+        #     self.console.insert(self.linenumber, 'Could not open file.')
+        #     self.linenumber += 1
 
     def choose_page(self, event=None):
         choose_page_win = tk.Toplevel(self.master)
-        choose_page_win.attributes('-zoomed', True)
+        if os.name == 'nt':
+            choose_page_win.state('zoomed')
+            choose_page_win.lift()
+        else:
+            choose_page_win.attributes('-zoomed', True)
         choose_page_app = gui.Choose_Map(
             choose_page_win, self.remaining_pages,
-            self.dir + '/pages/',
-            title='Choose Map to Scrape')
+            self.dir + '/pages/', title='Choose Map to Scrape')
         self.master.wait_window(choose_page_win)
         self.master.focus_set()
         self.page_num = self.remaining_pages[choose_page_app.v.get()]
         self.page_label_text.set('Page {} chosen.'.format(self.page_num))
         self.console.insert(
-                self.linenumber,
-                'Page {} chosen.'.format(self.page_num))
+            self.linenumber, 'Page {} chosen.'.format(self.page_num))
         self.linenumber += 1
 
-        subprocess.run(
-            'mkdir ' + self.dir + '/' + str(self.page_num),
-            shell=True)
+        run_common_cmd(
+            'mkdir ' + self.dir + '/' + str(self.page_num), self.base_dir)
         file_name = 'page-' + str(self.page_num) + '.png'
         self.im1 = imread(self.dir + '/pages/' + file_name)
 
@@ -326,7 +338,6 @@ class Menu(ttk.Frame):
             'Click button to scrape BMP data.')
 
     def get_coords(self, event=None):
-
         try:
             with open(self.dir + '/coord_dict.json', 'r') as f:
                 coord_dict = json.load(f)
@@ -335,7 +346,11 @@ class Menu(ttk.Frame):
         map_templates = [int(n) for n in list(coord_dict.keys())]
 
         get_coords_win = tk.Toplevel(self.master)
-        get_coords_win.attributes('-zoomed', True)
+        if os.name == 'nt':
+            get_coords_win.state('zoomed')
+            get_coords_win.lift()
+        else:
+            get_coords_win.attributes('-zoomed', True)
         get_coords_app = gui.Choose_Map_Template(
             get_coords_win, map_templates, self.page_num,
             self.dir + '/pages/', title='Choose a map template')
@@ -379,7 +394,11 @@ class Menu(ttk.Frame):
             path = self.dir + '/pages/' + self.filename.get()
 
             choose_points_win = tk.Toplevel(self.master)
-            choose_points_win.attributes('-zoomed', True)
+            if os.name == 'nt':
+                choose_points_win.state('zoomed')
+                choose_points_win.lift()
+            else:
+                choose_points_win.attributes('-zoomed', True)
             choose_points_app = gui.Choose_Points(
                 choose_points_win, self.im1, text_list=json_names)
             self.master.wait_window(choose_points_win)
@@ -424,9 +443,9 @@ class Menu(ttk.Frame):
                                 json_features[i], sort_keys=True, indent=4))
                         f.close()
 
-                subprocess.run(
-                    'cp ' + self.base_dir + '/reference.qgs ' + self.base_dir
-                    + self.sub_dir + '/reference.qgs', shell=True)
+                run_common_cmd(
+                    'cp ' + self.base_dir + '/reference.qgs ' + self.dir
+                    + '/reference.qgs', self.base_dir)
 
                 cmd = (
                     'qgis --project ' + self.dir
@@ -436,12 +455,16 @@ class Menu(ttk.Frame):
                     approx_lon, approx_lat+np.sign(approx_lat)*approx_spread,
                     approx_lon+approx_spread,
                     approx_lat-np.sign(approx_lat)*approx_spread)
-                subprocess.run(cmd, shell=True)
+                run_common_cmd(cmd, self.base_dir)
 
-                subprocess.run(
-                    'mv ' + self.dir + '/JSON/raw/*json '
-                    + self.dir + '/JSON/edited/',
-                    shell=True)
+                if os.name == 'nt':
+                    cmd = 'move-item -path {}/JSON/raw/*json '.format(self.dir)
+                    cmd += '-destination {}/JSON/edited/'.format(self.dir)
+                    run_powershell_cmd(cmd, self.dir)
+                else:
+                    subprocess.run(
+                        'mv ' + self.dir + '/JSON/raw/*json '
+                        + self.dir + '/JSON/edited/', shell=True)
 
             coords = []
             for i in range(len(points)):

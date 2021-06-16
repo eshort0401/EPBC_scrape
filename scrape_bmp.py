@@ -1,6 +1,7 @@
 # Copyright Ewan Short. All rights reserved.
 import gui
 from scrape_svg import convert_transform, gen_poly_coords
+from shell_tools import run_powershell_cmd, run_common_cmd
 
 import numpy as np
 from skimage import segmentation, feature, future
@@ -61,13 +62,12 @@ def scrape_bmp(
     f.write(small_soup.svg.prettify())
     f.close()
 
-    cmd = (
-        'inkscape {} --export-filename={} '
-        + '--export-background=FFFFFFFF --export-area=0:0:{}:{}')
+    cmd = 'inkscape {} --export-filename={} '
+    cmd += '--export-background=FFFFFFFF --export-area=0:0:{}:{}'
     cmd = cmd.format(
         fname, dir + '/' + str(page_num) + '/no_overlays.png',
         np.ceil(p_width).astype(int), np.ceil(p_height).astype(int))
-    subprocess.run(cmd, shell=True)
+    run_common_cmd(cmd, base_dir)
 
     im2 = imread(dir + '/' + str(page_num) + '/no_overlays.png')
 
@@ -85,13 +85,13 @@ def scrape_bmp(
 
     sigma_min = 1
     sigma_max = 2
-    features_func = partial(feature.multiscale_basic_features,
-                            intensity=True, edges=False, texture=True,
-                            sigma_min=sigma_min, sigma_max=sigma_max,
-                            multichannel=True)
+    features_func = partial(
+        feature.multiscale_basic_features, intensity=True, edges=False,
+        texture=True, sigma_min=sigma_min, sigma_max=sigma_max,
+        multichannel=True)
     features = features_func(im2)
-    clf = RandomForestClassifier(n_estimators=50, n_jobs=-1,
-                                 max_depth=10, max_samples=0.05)
+    clf = RandomForestClassifier(
+        n_estimators=50, n_jobs=-1, max_depth=10, max_samples=0.05)
     clf = future.fit_segmenter(training_labels, features, clf)
     result = future.predict_segmenter(features, clf)
 
@@ -102,7 +102,7 @@ def scrape_bmp(
     ax[0].set_title('Image, mask and segmentation boundaries')
 
     poly_box = np.zeros(im2.shape[:2])
-    poly_box[pb_tl[1]:pb_br[1], pb_tl[0]:pb_br[0]]=1
+    poly_box[pb_tl[1]:pb_br[1], pb_tl[0]:pb_br[0]] = 1
     poly_box = poly_box.astype(bool)
     poly_box = np.logical_not(poly_box)
     result[poly_box] = 1
@@ -197,15 +197,11 @@ def scrape_bmp(
                 poly.style = styles[i]
     kml.save(dir + '/' + str(page_num) + '/image.kml')
 
-    subprocess.run(
-        'cp ' + base_dir + '/reference.qgs ' + base_dir
-        + sub_dir + '/reference.qgs', shell=True
-    )
+    run_common_cmd(
+        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs', base_dir)
 
-    cmd=(
-        'qgis --project ' + dir + '/reference.qgs '
-        + dir + '/' + str(page_num)
-        + '/image.kml --extent {},{},{},{}'
-    ).format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
+    cmd = 'qgis --project ' + dir + '/reference.qgs ' + dir + '/'
+    cmd += str(page_num) + '/image.kml --extent {},{},{},{}'
+    cmd = cmd.format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
 
-    subprocess.run(cmd, shell=True)
+    run_common_cmd(cmd, shell=True)

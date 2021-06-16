@@ -49,9 +49,7 @@ def scrape_svg(
     min_leg_path = 3
 
     dir = base_dir + sub_dir
-
-    subprocess.run(
-        'mkdir ' + dir + '/' + str(page_num), shell=True)
+    run_common_cmd('mkdir ' + dir + '/' + str(page_num), base_dir)
 
     pdf_file = fitz.open(file_path)
     page = pdf_file[page_num]
@@ -62,8 +60,7 @@ def scrape_svg(
     blocks = page.getTextBlocks()
 
     leg_txt_box_ind = np.argmax(
-        [('legend' in block[4].lower()) for block in blocks]
-    )
+        [('legend' in block[4].lower()) for block in blocks])
     [x1, y1, x2, y2] = np.array(blocks[leg_txt_box_ind][:4])*zoom_factor
 
     svg = page.get_svg_image(text_as_path=False)
@@ -476,12 +473,8 @@ def scrape_svg(
             poly_fill.append('80ff0000')
             poly_fill.append('ffff0000')
 
-    subprocess.run(
-        'mkdir ' + dir + '/' + str(page_num),
-        shell=True)
-    subprocess.run(
-        'rm ' + dir + '/' + str(page_num)
-        + '/svg.kml', shell=True)
+    run_common_cmd('mkdir ' + dir + '/' + str(page_num), base_dir)
+    run_common_cmd('rm ' + dir + '/' + str(page_num) + '/svg.kml', base_dir)
 
     kml = simplekml.Kml()
     kml.document.name = str(page_num) + '_svg'
@@ -559,22 +552,16 @@ def scrape_svg(
                         coords = poly_coords[poly_inds[j]],
                         altitudemode='relativetoground')
                 poly.style = styles[name]
-    kml.save(
-        dir + '/'
-        + str(page_num) + '/svg.kml')
+    kml.save(dir + '/' + str(page_num) + '/svg.kml')
 
-    subprocess.run(
-        'cp ' + base_dir + '/reference.qgs ' + base_dir
-        + sub_dir + '/reference.qgs', shell=True)
+    run_common_cmd(
+        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs', base_dir)
 
-    cmd=(
-        'qgis --project ' + dir + '/reference.qgs '
-        + dir + '/' + str(page_num)
-        + '/svg.kml --extent {},{},{},{}'
-    ).format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
-
+    cmd = 'qgis --project ' + dir + '/reference.qgs ' + dir + '/'
+    cmd += str(page_num) + '/svg.kml --extent {},{},{},{}'
+    cmd = cmd.format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
     if (svg_coords+cp_coords):
-        subprocess.run(cmd, shell=True)
+        run_common_cmd(cmd, base_dir)
 
     return leg_text_all_corrected + cp_names, im_leg, pb_tl, pb_br
 

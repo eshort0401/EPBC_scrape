@@ -1,14 +1,12 @@
 # Copyright Ewan Short. All rights reserved.
 import copy
-
 import tkinter as tk
 from tkinter import ttk
-
 from PIL import Image, ImageTk
-
 import numpy as np
 import cv2 as cv
 import random
+import os
 
 # Base tkinter scroll/zoom class based on
 # https://stackoverflow.com/questions/41656176/tkinter-canvas-zoom-move-pan

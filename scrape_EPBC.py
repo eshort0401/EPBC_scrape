@@ -314,7 +314,6 @@ def scrape_page(
                     '//a[@href="#" and @data-page="'
                     + str(iframe_page_num+1) + '"]')
                 if len(iframe_next_buttons) > 1:
-                    import pdb; pdb.set_trace()
                     # ActionChains(driver).move_to_element(
                     #     iframe_next_buttons[0]).perform()
                     iframe_next_buttons[0].click()
