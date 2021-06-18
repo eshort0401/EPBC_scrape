@@ -2,8 +2,10 @@
 import numpy as np
 import tkinter as tk
 import matplotlib.pyplot as plt
-import subprocess
 import copy
+
+from shell_tools import run_common_cmd
+
 
 def evaluate_paraboloid(x, y, A, coeff):
     c = copy.deepcopy(coeff)
@@ -11,7 +13,8 @@ def evaluate_paraboloid(x, y, A, coeff):
     y = np.array(y)
     for i in range(len(x.shape)):
         c = np.expand_dims(c, axis=1)
-    return (c*A(x,y)).sum(axis=0)
+    return (c*A(x, y)).sum(axis=0)
+
 
 def scale_points(im1, points):
     approx_lon = tk.simpledialog.askstring(
@@ -38,8 +41,9 @@ def scale_points(im1, points):
         for x in points]
     return scaled_points, approx_lon, approx_lat, approx_spread
 
+
 def save_reference_image(path, im1, points, names):
-    fig, ax = plt.subplots(1, figsize=(20,20))
+    fig, ax = plt.subplots(1, figsize=(20, 20))
     ax.imshow(im1)
     for i in range(len(points)):
         ax.plot(points[i][0], points[i][1], '.r', markersize=10)
@@ -51,7 +55,8 @@ def save_reference_image(path, im1, points, names):
             labelbottom=False, labelleft=False)
     fig.savefig(path)
 
-def create_JSON_dirs(base_dir, sub_dir):
-    subprocess.run('rm -r ' + base_dir + sub_dir + '/JSON/raw', shell=True)
-    subprocess.run('mkdir -p ' + base_dir + sub_dir + '/JSON/raw', shell=True)
-    subprocess.run('mkdir -p ' + base_dir + sub_dir + '/JSON/edited', shell=True)
+
+def create_JSON_dirs(path):
+    run_common_cmd('rm -r ' + path + '/JSON/raw', path)
+    run_common_cmd('mkdir -p ' + path + '/JSON/raw', path)
+    run_common_cmd('mkdir -p ' + path + '/JSON/edited', path)

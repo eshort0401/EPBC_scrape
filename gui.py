@@ -8,11 +8,13 @@ import cv2 as cv
 import random
 import os
 
+
 # Base tkinter scroll/zoom class based on
 # https://stackoverflow.com/questions/41656176/tkinter-canvas-zoom-move-pan
 class AutoScrollbar(ttk.Scrollbar):
     ''' A scrollbar that hides itself if it's not needed.
         Works only if you use the grid geometry manager '''
+
     def set(self, lo, hi):
         if float(lo) <= 0.0 and float(hi) >= 1.0:
             self.grid_remove()
@@ -26,16 +28,14 @@ class AutoScrollbar(ttk.Scrollbar):
     def place(self, **kw):
         raise tk.TclError('Cannot use place with this widget')
 
+
 class Zoom_Scroll(ttk.Frame):
-    ''' Advanced zoom of the image '''
     def __init__(self, mainframe, image, title='Zoom and Scroll'):
-        ''' Initialize the main Frame '''
         ttk.Frame.__init__(self, master=mainframe)
         self.master.title(title)
         # Buttons
         b_done = tk.Button(
-            self.master, text="Done (Enter)", command=self.quit
-        )
+            self.master, text="Done (Enter)", command=self.quit)
         b_done.grid(row=0, column=0, sticky='w')
         c = 10
         # Vertical and horizontal scrollbars for canvas
@@ -59,9 +59,9 @@ class Zoom_Scroll(ttk.Frame):
         self.canvas.bind('<Configure>', self.show_image)  # canvas is resized
         self.canvas.bind('<ButtonPress-1>', self.move_from)
         self.canvas.bind('<B1-Motion>',     self.move_to)
-        self.canvas.bind('<MouseWheel>', self.wheel)  # with Windows and MacOS, but not Linux
-        self.canvas.bind('<Button-5>',   self.wheel)  # only with Linux, wheel scroll down
-        self.canvas.bind('<Button-4>',   self.wheel)  # only with Linux, wheel scroll up
+        self.canvas.bind('<MouseWheel>', self.wheel)  # with Windows and MacOS
+        self.canvas.bind('<Button-5>',   self.wheel)  # only with Linux
+        self.canvas.bind('<Button-4>',   self.wheel)  # only with Linux
         self.canvas.bind('<Return>', self.quit)
         self.canvas.focus_set()
 
@@ -69,8 +69,9 @@ class Zoom_Scroll(ttk.Frame):
         self.width, self.height = self.image.size
         self.imscale = 1.0  # scale for the canvaas image
         self.delta = 1.3  # zoom magnitude
-        # Put image into container rectangle and use it to set proper coordinates to the image
-        self.container = self.canvas.create_rectangle(0, 0, self.width, self.height, width=0)
+        # Put image into rectangle, use to set proper coordinates to the image
+        self.container = self.canvas.create_rectangle(
+            0, 0, self.width, self.height, width=0)
         self.show_image()
 
     def quit(self, event=None):
@@ -100,21 +101,25 @@ class Zoom_Scroll(ttk.Frame):
         x = self.canvas.canvasx(event.x)
         y = self.canvas.canvasy(event.y)
         bbox = self.canvas.bbox(self.container)  # get image area
-        if bbox[0] < x < bbox[2] and bbox[1] < y < bbox[3]: pass  # Ok! Inside the image
-        else: return  # zoom only inside image area
+        if bbox[0] < x < bbox[2] and bbox[1] < y < bbox[3]:
+            pass
+        else:
+            return  # zoom only inside image area
         scale = 1.0
         # Respond to Linux (event.num) or Windows (event.delta) wheel event
         if event.num == 5 or event.delta == -120:  # scroll down
             i = min(self.width, self.height)
-            if int(i * self.imscale) < 30: return  # image is less than 30 pixels
+            if int(i * self.imscale) < 30:
+                return  # image is less than 30 pixels
             self.imscale /= self.delta
-            scale        /= self.delta
+            scale /= self.delta
         if event.num == 4 or event.delta == 120:  # scroll up
             i = min(self.canvas.winfo_width(), self.canvas.winfo_height())
-            if i < self.imscale: return  # 1 pixel is bigger than the visible area
+            if i < self.imscale:
+                return  # 1 pixel is bigger than the visible area
             self.imscale *= self.delta
-            scale        *= self.delta
-        self.canvas.scale('all', x, y, scale, scale)  # rescale all canvas objects
+            scale *= self.delta
+        self.canvas.scale('all', x, y, scale, scale)  # rescale all objects
         self.show_image()
 
     def get_coords(self, x, y):
@@ -140,28 +145,32 @@ class Zoom_Scroll(ttk.Frame):
                  self.canvas.canvasy(0),
                  self.canvas.canvasx(self.canvas.winfo_width()),
                  self.canvas.canvasy(self.canvas.winfo_height()))
-        bbox = [min(bbox1[0], bbox2[0]), min(bbox1[1], bbox2[1]),  # get scroll region box
+        bbox = [min(bbox1[0], bbox2[0]), min(bbox1[1], bbox2[1]),
                 max(bbox1[2], bbox2[2]), max(bbox1[3], bbox2[3])]
-        if bbox[0] == bbox2[0] and bbox[2] == bbox2[2]:  # whole image in the visible area
+        if bbox[0] == bbox2[0] and bbox[2] == bbox2[2]:
             bbox[0] = bbox1[0]
             bbox[2] = bbox1[2]
-        if bbox[1] == bbox2[1] and bbox[3] == bbox2[3]:  # whole image in the visible area
+        if bbox[1] == bbox2[1] and bbox[3] == bbox2[3]:
             bbox[1] = bbox1[1]
             bbox[3] = bbox1[3]
         self.canvas.configure(scrollregion=bbox)  # set scroll region
-        x1 = max(bbox2[0] - bbox1[0], 0)  # get coordinates (x1,y1,x2,y2) of the image tile
+        x1 = max(bbox2[0] - bbox1[0], 0)
         y1 = max(bbox2[1] - bbox1[1], 0)
         x2 = min(bbox2[2], bbox1[2]) - bbox1[0]
         y2 = min(bbox2[3], bbox1[3]) - bbox1[1]
-        if int(x2 - x1) > 0 and int(y2 - y1) > 0:  # show image if it in the visible area
-            x = min(int(x2 / self.imscale), self.width)   # sometimes it is larger on 1 pixel...
-            y = min(int(y2 / self.imscale), self.height)  # ...and sometimes not
-            image = self.image.crop((int(x1 / self.imscale), int(y1 / self.imscale), x, y))
-            imagetk = ImageTk.PhotoImage(image.resize((int(x2 - x1), int(y2 - y1))))
-            imageid = self.canvas.create_image(max(bbox2[0], bbox1[0]), max(bbox2[1], bbox1[1]),
-                                               anchor='nw', image=imagetk)
-            self.canvas.lower(imageid)  # set image into background
-            self.canvas.imagetk = imagetk  # keep an extra reference to prevent garbage-collection
+        if int(x2 - x1) > 0 and int(y2 - y1) > 0:
+            x = min(int(x2 / self.imscale), self.width)
+            y = min(int(y2 / self.imscale), self.height)
+            image = self.image.crop(
+                (int(x1 / self.imscale), int(y1 / self.imscale), x, y))
+            imagetk = ImageTk.PhotoImage(
+                image.resize((int(x2 - x1), int(y2 - y1))))
+            imageid = self.canvas.create_image(
+                max(bbox2[0], bbox1[0]), max(bbox2[1], bbox1[1]),
+                anchor='nw', image=imagetk)
+            self.canvas.lower(imageid)
+            self.canvas.imagetk = imagetk
+
 
 class Get_Legend_Box(Zoom_Scroll):
     def __init__(
@@ -230,6 +239,7 @@ class Get_Legend_Box(Zoom_Scroll):
             self.p2 = None
             self.box_r = None
 
+
 class Choose_Points(Zoom_Scroll):
     def __init__(
         self, mainframe, image, text_list, title='Right click to record point.'
@@ -242,8 +252,8 @@ class Choose_Points(Zoom_Scroll):
         self.text_list = copy.deepcopy(text_list)
 
         b_delete = tk.Button(
-            self.master, text="Delete Last Point (d)", command=self.delete_last_point
-        )
+            self.master, text="Delete Last Point (d)",
+            command=self.delete_last_point)
         b_delete.grid(row=0, column=1)
 
         self.canvas.bind('<ButtonPress-3>', self.record_point)
@@ -260,23 +270,22 @@ class Choose_Points(Zoom_Scroll):
             self.points_r.pop()
 
     def record_point(self, event):
-
         ''' Show image on the Canvas '''
         x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
-        on_image = (0<=x<=self.image.size[0])*(0<=y<=self.image.size[1])
+        on_image = (
+            0 <= x <= self.image.size[0]) * (0 <= y <= self.image.size[1])
 
         if on_image:
             r = self.canvas.create_rectangle(
                 x_plot-2*self.imscale, y_plot-2*self.imscale,
                 x_plot+2*self.imscale, y_plot+2*self.imscale,
-                width=1, fill='red', outline='red'
-            )
+                width=1, fill='red', outline='red')
             self.points_r.append(r)
 
             self.new_window = tk.Toplevel(self.master)
+            self.new_window.lift()
             self.app = Name_Polygons_Popup(
-                self.new_window, self.text_list
-            )
+                self.new_window, self.text_list)
             self.master.wait_window(self.new_window)
             self.canvas.focus_set()
 
@@ -287,18 +296,17 @@ class Choose_Points(Zoom_Scroll):
 
             r = self.canvas.create_text(
                 x_plot+10*self.imscale, y_plot, anchor='w',
-                text='({}, {}) '.format(round(x,4), round(y,4)) + name,
-                fill='red', font=('Arial', 14, 'bold')
-            )
+                text='({}, {}) '.format(round(x, 4), round(y, 4)) + name,
+                fill='red', font=('Arial', 14, 'bold'))
             self.names_r.append(r)
             self.points.append((x, y))
             self.names.append(name)
 
+
 class Name_Polygons(Zoom_Scroll):
     def __init__(
-        self, mainframe, image, coords, text_list,
-        names = None, title='Confirm Object Names'
-    ):
+            self, mainframe, image, coords, text_list,
+            names=None, title='Confirm Object Names'):
         Zoom_Scroll.__init__(self, mainframe, image, title=title)
         self.text_list = copy.deepcopy(text_list)
         # Convert line coords into thin poly coords
@@ -340,15 +348,14 @@ class Name_Polygons(Zoom_Scroll):
             contour = cv.drawContours(
                 np.zeros(image.shape[:2]), self.coords, i, 1, -1
             )
-            sets = self.label_set[contour>0]
+            sets = self.label_set[contour > 0]
             sets = [s.union({i}) for s in sets]
-            self.label_set[contour>0] = sets
+            self.label_set[contour > 0] = sets
 
         self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
         for i in np.argwhere(self.highlighted == True).flatten():
             self.contour_image = cv.drawContours(
-                self.contour_image, self.coords, i, (255,0,0), 2
-            )
+                self.contour_image, self.coords, i, (255, 0, 0), 2)
 
         self.image = Image.fromarray(self.contour_image)
 
@@ -358,18 +365,15 @@ class Name_Polygons(Zoom_Scroll):
                     self.com[i][0] + 5 * np.cos(self.names_offset[i]),
                     self.com[i][1] + 5 * np.sin(self.names_offset[i]),
                     anchor='w', text=self.names[i], fill='red',
-                    font=('Arial', 14, 'bold')
-                )
+                    font=('Arial', 14, 'bold'))
 
         b_all = tk.Button(
             self.master, text="Highlight All (a)",
-            command=self.highlight_all
-        )
+            command=self.highlight_all)
         b_all.grid(row=0, column=2)
         b_none = tk.Button(
             self.master, text="Highlight None (n)",
-            command=self.highlight_none
-        )
+            command=self.highlight_none)
         b_none.grid(row=0, column=1)
 
         self.canvas.bind("<Button 3>", self.highlight_poly)
@@ -384,8 +388,7 @@ class Name_Polygons(Zoom_Scroll):
         self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
         for i in np.argwhere(self.highlighted == True).flatten():
             self.contour_image = cv.drawContours(
-                self.contour_image, self.coords, i, (255,0,0), 2
-            )
+                self.contour_image, self.coords, i, (255, 0, 0), 2)
             self.canvas.delete(self.names_r[i])
             com_x_plot, com_y_plot = self.get_plot_coords(
                 self.com[i][0], self.com[i][1]
@@ -407,12 +410,10 @@ class Name_Polygons(Zoom_Scroll):
         self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
         for i in np.argwhere(self.highlighted == False).flatten():
             self.contour_image = cv.drawContours(
-                self.contour_image, self.coords, i, (0,255,0), 1
-            )
+                self.contour_image, self.coords, i, (0, 255, 0), 1)
             self.canvas.delete(self.names_r[i])
             com_x_plot, com_y_plot = self.get_plot_coords(
-                self.com[i][0], self.com[i][1]
-            )
+                self.com[i][0], self.com[i][1])
 
             fill = '#0f0'
             font = ('Arial', 14)
@@ -420,31 +421,28 @@ class Name_Polygons(Zoom_Scroll):
                 com_x_plot+5*np.cos(self.names_offset[i])*self.imscale,
                 com_y_plot+5*np.sin(self.names_offset[i])*self.imscale,
                 anchor='w', text=self.names[i],
-                fill=fill, font=font
-            )
+                fill=fill, font=font)
 
         self.image = Image.fromarray(self.contour_image.astype(np.uint8))
         self.show_image()
 
     def highlight_poly(self, event):
-
         x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
-        inds = self.label_set[round(y),round(x)]
+        inds = self.label_set[round(y), round(x)]
 
         if len(inds) > 0:
             if len(inds) == 1:
                 ind = list(inds)[0]
             else:
                 self.new_window = tk.Toplevel(self.master)
+                self.new_window.lift()
                 self.app = Name_Polygons_Popup(
                     self.new_window,
                     [
                         str(i+1) + ' ' + self.names[i]
                         + ' (' + (not self.highlighted[i])*'Not '
-                        + 'Highlighted)' for i in inds
-                    ],
-                    title = 'Choose object.'
-                )
+                        + 'Highlighted)' for i in inds],
+                    title='Choose object.')
                 self.app.e.destroy()
                 self.app.rb[-1].destroy()
                 self.master.wait_window(self.new_window)
@@ -455,21 +453,20 @@ class Name_Polygons(Zoom_Scroll):
             self.contour_image = copy.deepcopy(self.raw_image).astype(np.uint8)
             for i in np.argwhere(self.highlighted == False).flatten():
                 self.contour_image = cv.drawContours(
-                    self.contour_image, self.coords, i, (0,255,0), 1
-                )
+                    self.contour_image, self.coords, i, (0, 255, 0), 1)
             for i in np.argwhere(self.highlighted == True).flatten():
                 self.contour_image = cv.drawContours(
-                    self.contour_image, self.coords, i, (255,0,0), 2
-                )
+                    self.contour_image, self.coords, i, (255, 0, 0), 2)
 
             self.image = Image.fromarray(self.contour_image.astype(np.uint8))
             self.show_image()
 
             if self.highlighted[ind]:
                 self.new_window = tk.Toplevel(self.master)
+
+                self.new_window.lift()
                 self.app = Name_Polygons_Popup(
-                    self.new_window, self.text_list
-                )
+                    self.new_window, self.text_list)
                 self.master.wait_window(self.new_window)
                 self.canvas.focus_set()
 
@@ -483,26 +480,26 @@ class Name_Polygons(Zoom_Scroll):
                 if self.com[i]:
                     self.canvas.delete(self.names_r[i])
                     com_x_plot, com_y_plot = self.get_plot_coords(
-                        self.com[i][0], self.com[i][1]
-                    )
+                        self.com[i][0], self.com[i][1])
                     if self.highlighted[i]:
                         fill = 'red'
                         font = ('Arial', 14, 'bold')
                     else:
                         fill = '#0f0'
                         font = ('Arial', 14)
+                    text_x = com_x_plot
+                    text_x += 5 * np.cos(self.names_offset[i]) * self.imscale
+                    text_y = com_y_plot
+                    text_y += 5 * np.sin(self.names_offset[i]) * self.imscale,
                     self.names_r[i] = self.canvas.create_text(
-                        com_x_plot + 5 * np.cos(self.names_offset[i]) * self.imscale,
-                        com_y_plot + 5 * np.sin(self.names_offset[i]) * self.imscale,
-                        anchor='w', text=self.names[i],
-                        fill=fill, font=font
-                    )
+                        text_x, text_y, anchor='w', text=self.names[i],
+                        fill=fill, font=font)
+
 
 class Name_Polygons_Popup():
     def __init__(
-        self, master, text_list,
-        title='Choose a legend entry for this polygon.'
-    ):
+            self, master, text_list,
+            title='Choose a legend entry for this polygon.'):
         self.master = master
         self.frame = tk.Frame(self.master)
         self.master.title(title)
@@ -512,8 +509,8 @@ class Name_Polygons_Popup():
         self.rb = []
 
         button = tk.Button(
-            self.frame, text="Done (Enter)", state=tk.DISABLED, command=self.master.destroy
-        )
+            self.frame, text="Done (Enter)", state=tk.DISABLED,
+            command=self.master.destroy)
 
         def activate_button():
             button['state'] = tk.NORMAL
@@ -522,24 +519,22 @@ class Name_Polygons_Popup():
             rb = tk.Radiobutton(
                 self.frame,
                 text=str(i+1) + '. ' + text_list[i],
-                padx = 20,
+                padx=20,
                 variable=self.v,
                 value=i,
-                justify = tk.LEFT,
-                command = activate_button
-            )
+                justify=tk.LEFT,
+                command=activate_button)
             self.rb.append(rb)
             rb.grid(row=i)
 
         rb = tk.Radiobutton(
             self.frame,
             text=str(len(text_list)+1) + '. Add New',
-            padx = 20,
+            padx=20,
             variable=self.v,
             value=-1,
-            justify = tk.LEFT,
-            command = activate_button
-        )
+            justify=tk.LEFT,
+            command=activate_button)
         self.rb.append(rb)
         rb.grid(row=len(text_list))
 
@@ -552,18 +547,17 @@ class Name_Polygons_Popup():
         self.master.bind('<Return>', lambda e: button.invoke())
 
         e = tk.Entry(
-            self.frame, textvariable = self.n
-        )
+            self.frame, textvariable=self.n)
         self.e = e
         e.grid(row=len(text_list)+1)
         button.grid(row=len(text_list)+2)
         self.frame.pack()
 
+
 class Confirm_Names(ttk.Frame):
     def __init__(
-        self, master, text_list,
-        title='Confirm Legend Entries'
-    ):
+            self, master, text_list,
+            title='Confirm Legend Entries'):
         self.master = master
         self.master.title(title)
         self.frame = tk.Frame(self.master)
@@ -577,7 +571,7 @@ class Confirm_Names(ttk.Frame):
             label_text.set(str(i+1) + '.')
             label = tk.Label(self.master, textvariable=label_text)
             label.grid(row=i, column=0)
-            e = tk.Entry(self.master, textvariable = self.n[i], width=50)
+            e = tk.Entry(self.master, textvariable=self.n[i], width=50)
             self.e.append(e)
             e.grid(row=i, column=1)
 
@@ -587,6 +581,7 @@ class Confirm_Names(ttk.Frame):
         button.grid(row=len(text_list), column=1, columnspan=2)
 
         self.master.bind('<Return>', lambda e: button.invoke())
+
 
 class Define_Training_Regions(Zoom_Scroll):
     def __init__(
@@ -603,7 +598,7 @@ class Define_Training_Regions(Zoom_Scroll):
 
         self.p1 = None
         self.p2 = None
-        self.boxes = [np.array([[]]).reshape([0,5]).astype(int)]
+        self.boxes = [np.array([[]]).reshape([0, 5]).astype(int)]
         self.p1_r = None
         self.p2_r = None
 
@@ -619,50 +614,47 @@ class Define_Training_Regions(Zoom_Scroll):
         except:
             shape = [0]
 
-        if len(shape) in [2,3]:
+        if len(shape) in [2, 3]:
             self.new_window = tk.Toplevel(self.master)
+            self.new_window.title('Legend Provided for Reference')
+            self.new_window.lift()
             self.new_window.canvas = tk.Canvas(
-                self.new_window, width=legend.shape[1], height=legend.shape[0], cursor='tcross'
-            )
+                self.new_window, width=legend.shape[1],
+                height=legend.shape[0], cursor='tcross')
             self.new_window.canvas.update()  # wait till canvas is created
-            self.new_window.canvas.pack(expand = 'yes', fill = 'both')
+            self.new_window.canvas.pack(expand='yes', fill='both')
             im = Image.fromarray(legend)
             ph = ImageTk.PhotoImage(image=im)
             self.new_window.canvas.ph = ph
-            self.new_window.canvas.create_image(0, 0, image = ph, anchor = 'nw')
+            self.new_window.canvas.create_image(0, 0, image=ph, anchor='nw')
             self.new_window.canvas.ph = ph
 
         b_next = tk.Button(
             self.master, text="Next Category (Right Arrow)",
-            command=self.next_label
-        )
+            command=self.next_label)
         b_next.grid(row=0, column=2)
         b_previous = tk.Button(
             self.master, text="Previous Category (Left Arrow)",
-            command=self.previous_label
-        )
+            command=self.previous_label)
         b_previous.grid(row=0, column=1)
         self.canvas.focus_set()
 
     def draw_box(self, event):
-        # import pdb; pdb.set_trace()
         boxes = self.boxes[self.label]
         x, y, x_plot, y_plot = self.get_coords(event.x, event.y)
         if boxes.size > 0:
-            x_cond = np.logical_and(boxes[:,0]<=x, x<=boxes[:,2])
-            y_cond = np.logical_and(boxes[:,1]<=y, y<=boxes[:,3])
+            x_cond = np.logical_and(boxes[:, 0] <= x, x <= boxes[:, 2])
+            y_cond = np.logical_and(boxes[:, 1] <= y, y <= boxes[:, 3])
             in_boxes = np.argwhere(
-                np.logical_and(x_cond, y_cond)
-            ).flatten()
+                np.logical_and(x_cond, y_cond)).flatten()
         else:
             in_boxes = np.array([])
 
         if in_boxes.size > 0:
             for box_num in in_boxes:
-                self.canvas.delete(boxes[box_num,4])
+                self.canvas.delete(boxes[box_num, 4])
             self.boxes[self.label] = np.delete(
-                self.boxes[self.label], in_boxes.tolist(), 0
-            )
+                self.boxes[self.label], in_boxes.tolist(), 0)
             self.p1 = None
             self.p2 = None
             self.canvas.delete(self.p1_r)
@@ -675,8 +667,7 @@ class Define_Training_Regions(Zoom_Scroll):
                 self.p1_r = self.canvas.create_rectangle(
                     x_plot-2*self.imscale, y_plot-2*self.imscale,
                     x_plot+2*self.imscale, y_plot+2*self.imscale,
-                    width=1, fill='red', outline='red'
-                )
+                    width=1, fill='red', outline='red')
             elif not self.p2:
                 if (x > self.p1[0]) and (y > self.p1[1]):
                     self.canvas.delete(self.p2_r)
@@ -684,21 +675,18 @@ class Define_Training_Regions(Zoom_Scroll):
                     self.p2_r = self.canvas.create_rectangle(
                         x_plot-2*self.imscale, y_plot-2*self.imscale,
                         x_plot+2*self.imscale, y_plot+2*self.imscale,
-                        width=1, fill='red', outline='red'
-                    )
+                        width=1, fill='red', outline='red')
                     p1_x_plot, p1_y_plot = self.get_plot_coords(
-                        self.p1[0], self.p1[1]
-                    )
+                        self.p1[0], self.p1[1])
                     r = self.canvas.create_rectangle(
                         p1_x_plot, p1_y_plot, x_plot, y_plot,
-                        width=2, outline='red'
-                    )
+                        width=2, outline='red')
                     self.boxes[self.label] = np.append(
                         self.boxes[self.label], [
-                            [self.p1[0], self.p1[1], self.p2[0], self.p2[1], r]
-                        ],
-                        axis=0
-                    ).astype(int)
+                            [
+                                self.p1[0], self.p1[1],
+                                self.p2[0], self.p2[1], r]],
+                        axis=0).astype(int)
             else:
                 self.canvas.delete(self.p1_r)
                 self.canvas.delete(self.p2_r)
@@ -706,8 +694,7 @@ class Define_Training_Regions(Zoom_Scroll):
                 self.p1_r = self.canvas.create_rectangle(
                     x_plot-2*self.imscale, y_plot-2*self.imscale,
                     x_plot+2*self.imscale, y_plot+2*self.imscale,
-                    width=2, outline='red', fill='red'
-                )
+                    width=2, outline='red', fill='red')
                 self.p2 = None
 
     def next_label(self, event=None):
@@ -722,13 +709,12 @@ class Define_Training_Regions(Zoom_Scroll):
 
             if self.label == len(self.boxes)-1:
 
-                self.boxes.append(np.array([[]]).reshape([0,5]).astype(int))
+                self.boxes.append(np.array([[]]).reshape([0, 5]).astype(int))
                 self.new_window = tk.Toplevel(self.master)
-
+                self.new_window.lift()
                 self.app = Name_Polygons_Popup(
                     self.new_window, self.text_list,
-                    'Select name for new group of training boxes.'
-                )
+                    'Select name for new group of training boxes.')
                 self.master.wait_window(self.new_window)
                 self.canvas.focus_set()
 
@@ -741,16 +727,15 @@ class Define_Training_Regions(Zoom_Scroll):
             self.label += 1
 
             self.master.title(
-                'Choose training regions for {}'.format(self.names[self.label])
-            )
+                'Choose training regions for {}'.format(
+                    self.names[self.label]))
 
             for box in self.boxes[self.label]:
                 p1_x_plot, p1_y_plot = self.get_plot_coords(box[0], box[1])
                 p2_x_plot, p2_y_plot = self.get_plot_coords(box[2], box[3])
                 r = self.canvas.create_rectangle(
                     p1_x_plot, p1_y_plot, p2_x_plot, p2_y_plot,
-                    width=2, outline='red'
-                )
+                    width=2, outline='red')
                 box[4] = r
 
     def previous_label(self, event=None):
@@ -771,14 +756,14 @@ class Define_Training_Regions(Zoom_Scroll):
                 )
                 box[4] = r
             self.master.title(
-                'Choose training regions for {}'.format(self.names[self.label])
-            )
+                'Choose training regions for {}'.format(
+                    self.names[self.label]))
+
 
 class Choose_Kept_Categories():
     def __init__(
-        self, master, text_list,
-        title='Choose the recovered polygon classes to keep.'
-    ):
+            self, master, text_list,
+            title='Choose the recovered polygon classes to keep.'):
         self.master = master
         self.frame = tk.Frame(self.master)
         self.master.title(title)
@@ -786,31 +771,25 @@ class Choose_Kept_Categories():
 
         button = tk.Button(
             self.frame, text="Done", state=tk.DISABLED,
-            command=self.master.destroy
-        )
+            command=self.master.destroy)
 
         def activate_button():
             button['state'] = tk.NORMAL
 
         for i in range(len(text_list)):
             tk.Checkbutton(
-                self.frame,
-                text=text_list[i],
-                padx = 20,
-                variable=self.v[i],
-                justify = tk.LEFT,
-                command = activate_button
-            ).grid(row=i)
-
+                self.frame, text=text_list[i], padx=20,
+                variable=self.v[i], justify=tk.LEFT,
+                command=activate_button).grid(row=i)
         button.grid(row=len(text_list))
 
         self.frame.pack()
 
+
 class Choose_Map():
     def __init__(
-        self, master, page_nums, dir,
-        title='Choose a map to scrape.'
-    ):
+            self, master, page_nums, dir,
+            title='Choose a map to scrape.'):
         self.master = master
         self.master.title(title)
         self.container = ttk.Frame(self.master)
@@ -846,25 +825,20 @@ class Choose_Map():
             file_name = 'page-' + str(page_nums[i]) + '.png'
             self.fn.append(file_name)
             img = Image.open(dir + file_name)
-            img.thumbnail([256,256],Image.ANTIALIAS)
+            img.thumbnail([256, 256], Image.ANTIALIAS)
             self.ph.append(ImageTk.PhotoImage(img))
         for i in range(len(page_nums)):
             self.n[i].set('Page ' + str(page_nums[i]))
-            l = tk.Label(
-                self.scrollable_frame, textvariable=self.n[i],
-            )
+            page_label = tk.Label(
+                self.scrollable_frame, textvariable=self.n[i],)
             row = i // 3
             col = i-3*row
-            l.grid(row=row, column=2*col+1)
+            page_label.grid(row=row, column=2*col+1)
 
             rb = tk.Radiobutton(
-                self.scrollable_frame,
-                variable=self.v,
-                value=i,
-                image=self.ph[i],
-                command=activate_button,
-                height=220,
-            )
+                self.scrollable_frame, variable=self.v,
+                value=i, image=self.ph[i],
+                command=activate_button, height=220)
             self.rb.append(rb)
             rb.grid(row=row, column=2*col)
         self.button.pack()
@@ -885,6 +859,7 @@ class Choose_Map():
 
     def on_mousewheel(self, event):
         self.canvas.yview_scroll(event.delta, "units")
+
 
 class Choose_Map_Template(Choose_Map):
     def __init__(
@@ -909,11 +884,11 @@ class Choose_Map_Template(Choose_Map):
         file_name = 'page-' + str(current_page) + '.png'
         self.fn.append(file_name)
         img = Image.open(dir + file_name)
-        img.thumbnail([256,256],Image.ANTIALIAS)
+        img.thumbnail([256, 256], Image.ANTIALIAS)
         self.ph_new = ImageTk.PhotoImage(img)
 
         rb = tk.Radiobutton(
-            self.scrollable_frame, variable=self.v, value=-1, image=self.ph_new,
-            command=activate_button, height=220)
+            self.scrollable_frame, variable=self.v, value=-1,
+            image=self.ph_new, command=activate_button, height=220)
         self.rb.append(rb)
         rb.grid(row=row, column=2*col)

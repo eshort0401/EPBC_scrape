@@ -1,5 +1,4 @@
-# Copyright Ewan Short. All rights reserved.
-import sys
+# Copyright Australian Conservation Foundation. All rights reserved.
 import argparse
 import scrape_EPBC
 
@@ -14,7 +13,7 @@ parser.add_argument(
     "-s", "--show-chrome", default=False, action='store_true', required=False,
     help='show Chrome window')
 parser.add_argument(
-    "-l", "--last-page", type=int, choices=range(1,168),
+    "-l", "--last-page", type=int, choices=range(1, 168),
     metavar="[1-167]", default=10, required=False,
     help='The page [1-167] of the EPBC website to stop scraping at')
 

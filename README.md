@@ -49,5 +49,9 @@ $BEZIER_NO_EXTENSION=$true
 python -m C:\Users\<username>\miniconda3\envs\<environment name>\Scripts\pip3 install --upgrade bezier --no-binary=bezier
 ```
 
-Download the QGIS Standalone Installer Version 3.18 64 bit (https://www.qgis.org/en/site/forusers/download.html#).
-Install QGIS. 
+Download the QGIS Standalone Installer Version 3.18 64 bit (https://www.qgis.org/en/site/forusers/download.html).
+Install QGIS.
+Add the QGIS bin folder (Windows default is `C:\Program Files\QGIS 3.16\bin`) to PATH environment variable.
+
+Download Inkscape. You probably want the 64 bit version (https://inkscape.org/release/1.1/windows/64-bit/), with the installer exe.
+Default installer options should be fine. When prompted about whether to add Inkscape to the system path, choose the "for all users" option. 

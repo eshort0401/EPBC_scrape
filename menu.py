@@ -19,10 +19,11 @@ import scrape_bmp
 import pdf_analysis
 from shell_tools import run_common_cmd, run_powershell_cmd
 
+
 class Menu(ttk.Frame):
     def __init__(
             self, mainframe, filename=None,
-            title='pymscrape version 0.1 Copyright Ewan Short All Rights Reserved',
+            title='pymscrape v 0.1 Copyright Ewan Short All Rights Reserved',
             base_dir=('/home/student.unimelb.edu.au/shorte1/'
                       + 'Documents/ACF_consulting'),
             search_terms=['legend'], page_num=None, map_page_num=None,
@@ -31,6 +32,7 @@ class Menu(ttk.Frame):
 
         ttk.Frame.__init__(self, master=mainframe)
         self.master.title(title)
+        self.master.lift()
         self.title = title
         self.file_path = filename
         self.base_dir = base_dir
@@ -129,6 +131,9 @@ class Menu(ttk.Frame):
         if self.page_num is None:
             self.b_coords['state'] = tk.DISABLED
             self.coords_label.config(fg='#AAAAAA')
+        else:
+            self.im1 = imread(
+                self.dir + '/pages/' + 'page-' + str(self.page_num) + '.png')
 
         self.b_svg = tk.Button(
             self.master, text="5. Scrape SVG Data (s)", command=self.get_svg,
@@ -390,8 +395,9 @@ class Menu(ttk.Frame):
             self.map_page_num = self.page_num
             json_files = glob.glob(
                 self.dir + '/JSON/edited/*.json')
-            json_names = [j.split('/')[-1].split('.')[0] for j in json_files]
-            path = self.dir + '/pages/' + self.filename.get()
+            json_names = [
+                j.split('/')[-1].split('\\')[-1].split('.')[0]
+                for j in json_files]
 
             choose_points_win = tk.Toplevel(self.master)
             if os.name == 'nt':
@@ -406,6 +412,7 @@ class Menu(ttk.Frame):
 
             points = choose_points_app.points
             names = choose_points_app.names
+            names = [n.replace(' ', '_') for n in names]
 
             ref_img_path = (
                 self.dir + '/' + str(self.page_num)
@@ -422,7 +429,7 @@ class Menu(ttk.Frame):
                     scaled_points, approx_lon,
                     approx_lat, approx_spread) = coordinates.scale_points(
                         self.im1, points)
-            coordinates.create_JSON_dirs(self.base_dir, self.sub_dir)
+            coordinates.create_JSON_dirs(self.dir)
 
             if np.any([n not in json_names for n in names]) or not json_names:
                 json_features = []
@@ -436,32 +443,44 @@ class Menu(ttk.Frame):
                 for i in range(len(json_features)):
                     if names[i] not in json_names:
                         f = open(
-                            self.dir + '/JSON/raw/'
-                            + names[i] + '.json', 'w')
-                        f.write(
-                            geojson.dumps(
-                                json_features[i], sort_keys=True, indent=4))
+                            self.dir + '/JSON/raw/' + names[i] + '.json', 'w')
+                        f.write(geojson.dumps(
+                            json_features[i], sort_keys=True, indent=4))
                         f.close()
 
                 run_common_cmd(
                     'cp ' + self.base_dir + '/reference.qgs ' + self.dir
                     + '/reference.qgs', self.base_dir)
 
-                cmd = (
-                    'qgis --project ' + self.dir
-                    + '/reference.qgs ' + self.dir
-                    + '/JSON/raw/*.json ' + '--extent {},{},{},{}')
-                cmd = cmd.format(
-                    approx_lon, approx_lat+np.sign(approx_lat)*approx_spread,
-                    approx_lon+approx_spread,
-                    approx_lat-np.sign(approx_lat)*approx_spread)
-                run_common_cmd(cmd, self.base_dir)
-
                 if os.name == 'nt':
+                    cmd = 'qgis-ltr-bin-g7 --project ' + self.dir
+                    cmd += '/reference.qgs '
+                    for name in names:
+                        if name not in json_names:
+                            cmd += self.dir + '/JSON/raw/{}.json '.format(name)
+                    cmd += '--extent {},{},{},{}'
+                    cmd = cmd.format(
+                        approx_lon,
+                        approx_lat+np.sign(approx_lat)*approx_spread,
+                        approx_lon+approx_spread,
+                        approx_lat-np.sign(approx_lat)*approx_spread)
+                    subprocess.run(cmd, shell=True)
+
                     cmd = 'move-item -path {}/JSON/raw/*json '.format(self.dir)
                     cmd += '-destination {}/JSON/edited/'.format(self.dir)
-                    run_powershell_cmd(cmd, self.dir)
+                    run_powershell_cmd(cmd, self.base_dir)
                 else:
+                    cmd = (
+                        'qgis --project ' + self.dir
+                        + '/reference.qgs ' + self.dir
+                        + '/JSON/raw/*.json ' + '--extent {},{},{},{}')
+                    cmd = cmd.format(
+                        approx_lon,
+                        approx_lat+np.sign(approx_lat)*approx_spread,
+                        approx_lon+approx_spread,
+                        approx_lat-np.sign(approx_lat)*approx_spread)
+                    run_common_cmd(cmd, self.base_dir)
+
                     subprocess.run(
                         'mv ' + self.dir + '/JSON/raw/*json '
                         + self.dir + '/JSON/edited/', shell=True)
@@ -527,7 +546,9 @@ class Menu(ttk.Frame):
 
     def get_svg(self, event=None):
 
-        self.console.insert(self.linenumber, 'Scraping SVG data. Please Wait.')
+        self.console.insert(
+            self.linenumber,
+            'Scraping SVG data. This may take a few minutes. Please Wait.')
         self.linenumber += 1
 
         self.svg_label_text.set('Working. Please Wait.')

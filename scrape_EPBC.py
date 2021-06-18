@@ -1,4 +1,7 @@
-# Copyright Ewan Short. All rights reserved.
+# Copyright Australian Conservation Foundation. All rights reserved.
+# Developed by Ewan Short 2021
+# eshort0401@gmail.com, https://github.com/eshort0401
+
 import numpy as np
 import pandas as pd
 from bs4 import BeautifulSoup
@@ -12,11 +15,13 @@ import string
 
 from shell_tools import run_powershell_cmd, run_common_cmd
 
+
 def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
 
     if not base_dir:
         if os.name == 'nt':
-            base_dir = 'C:\\Users\\eshor\\Documents\\ACF_consulting\\'
+            base_dir = 'C:/Users/{}'.format(os.getlogin())
+            base_dir += '/Documents/ACF_consulting/'
         else:
             base_dir = '/home/student.unimelb.edu.au/shorte1/Documents/'
             base_dir += 'ACF_consulting/'
@@ -38,25 +43,28 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
 
     sub_dir = 'files_test'
     files_dir = base_dir + sub_dir
+    if os.name == 'nt':
+        files_dir_sys = files_dir.replace('/', '\\')
+    else:
+        files_dir_sys = files_dir
 
     options.add_experimental_option(
         "prefs", {
             "plugins.plugins_list": [{"enabled": False,
                                       "name": "Chrome PDF Viewer"}],
-            "download.default_directory": files_dir,
+            "download.default_directory": files_dir_sys,
             "download.prompt_for_download": False,
             "download.directory_upgrade": True,
             "safebrowsing.enabled": True,
             "plugins.always_open_pdf_externally": True,
-            "profile.default_content_setting_values.automatic_downloads": 1
-        })
+            "profile.default_content_setting_values.automatic_downloads": 1})
 
     driver = webdriver.Chrome(cd_path, options=options)
     driver.get(url)
     time.sleep(4)
 
-    subprocess.run('mkdir ' + files_dir, shell=True)
-    for i in range(1,end_page):
+    run_common_cmd('mkdir ' + files_dir, base_dir)
+    for i in range(1, end_page):
 
         loading = True
         attempts = 0
@@ -122,6 +130,7 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
 
     driver.quit()
 
+
 def clean_columns(table):
     name_dict = {}
     clean_str = '  . Activate to sort in descending order'
@@ -129,6 +138,13 @@ def clean_columns(table):
         name_dict[table.columns[col]] = table.columns[col].replace(
             clean_str, '')
     return table.rename(name_dict, axis='columns')
+
+
+def get_first_letter(string):
+    words = string.split()
+    letters = [word[0] for word in words]
+    return''.join(letters)
+
 
 def scrape_iframe_page(
         driver, files_dir, table, row_number, page_number,
@@ -138,16 +154,8 @@ def scrape_iframe_page(
     num_files.append(len(file_links))
 
     table.at[row_number, 'Download Folder'] = folder_name
-    if os.name == 'nt':
-        shell_cmd = 'rm ' + files_dir + '\\folder_count.txt'
-        run_powershell_cmd(shell_cmd, files_dir)
-    else:
-        shell_cmd = 'rm ' + files_dir + '/folder_count.txt'
-        return subprocess.run(shell_cmd, shell=True)
+    run_common_cmd('rm ' + files_dir + '/folder_count.txt', files_dir)
 
-    # Remove duplicate links - otherwise download code below breaks
-    # when the same file downloads and overwrites itself, resulting
-    # in file_count == len(file_links) never being satisfied
     unique_file_links = []
     unique_file_links_html = []
     table.at[row_number, 'Non PDF Attachments'] = 'No'
@@ -179,7 +187,6 @@ def scrape_iframe_page(
                 file_links[j].click()
                 time.sleep(0.25)
 
-            # Wait for files to download
             file_count = 0
             iterations = 0
             while file_count < len(file_links):
@@ -188,18 +195,19 @@ def scrape_iframe_page(
                     raise RuntimeError('Download timed out.')
                 time.sleep(1)
                 if os.name == 'nt':
-                    shell_cmd = 'gci -path {}\\*.pdf | '.format(files_dir)
+                    shell_cmd = 'gci -path {}/*.pdf | '.format(files_dir)
                     shell_cmd += 'measure-object -line | '
                     shell_cmd += 'select-object -expand Lines '
-                    shell_cmd += '> {}\\num_files.txt'.format(files_dir)
+                    shell_cmd += '> {}/num_files.txt'.format(files_dir)
                     run_powershell_cmd(shell_cmd, files_dir)
                     file_count = int(
                         np.loadtxt(
-                            files_dir + '\\num_files.txt',
+                            files_dir + '/num_files.txt',
                             encoding='utf16'))
                 else:
-                    shell_cmd = '''find ''' + files_dir + '/*.PDF '
-                    shell_cmd += '''-maxdepth 1 -exec sh -c 'mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
+                    shell_cmd = r'''find ''' + files_dir + '/*.PDF '
+                    shell_cmd += r'-maxdepth 1 -exec sh -c '
+                    shell_cmd += r'''mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
                     subprocess.run(shell_cmd, shell=True)
                     shell_cmd = 'find ' + files_dir + '/*.pdf '
                     shell_cmd += '-type f -print | wc -l > '
@@ -211,18 +219,15 @@ def scrape_iframe_page(
                 iterations += 1
                 time.sleep(.5)
                 print('Downloading files. Please Wait.')
-            if os.name == 'nt':
-                shell_cmd = 'rm ' + files_dir + '\\num_files.txt'
-                run_powershell_cmd(shell_cmd, files_dir)
-            else:
-                shell_cmd = 'rm ' + files_dir + '/num_files.txt'
-                return subprocess.run(shell_cmd, shell=True)
+
+            run_common_cmd('rm ' + files_dir + '/num_files.txt', files_dir)
             successful = True
             time.sleep(1)
         except:
             attempts += 1
             time.sleep(1)
             print('Download failed.')
+
 
 def scrape_page(
         driver, page_number, table, stored_table,
@@ -248,36 +253,33 @@ def scrape_page(
         if exist[i]:
             continue
         print('Scraping page {}, row {}.'.format(page_number, i+1))
-        if os.name == 'nt':
-            shell_cmd = 'rm ' + files_dir + '\\*.pdf'
-            run_powershell_cmd(shell_cmd, files_dir)
-        else:
-            shell_cmd = 'rm ' + files_dir +'/*.pdf'
-            return subprocess.run(shell_cmd, shell=True)
+        run_common_cmd('rm ' + files_dir + '/*.pdf', base_dir)
 
-        ref_num = table['Reference Number'].iloc[i].replace('/','')
+        ref_num = table['Reference Number'].iloc[i].replace('/', '')
         date = table['Date of notice'].iloc[i].strftime('%d%m%Y')
+        org = table['Title of referral'].iloc[i]
+        org = org.split('/')[0]
+        org = org.translate(str.maketrans('', '', string.punctuation))
+        org = get_first_letter(org)
         ref_type = table['Notification from EPBC Act'].iloc[i]
         ref_type = ref_type.replace('/', ' ').replace('-', ' ')
+        ref_type = ref_type.replace('  ', ' ')
         ref_type = ref_type.translate(
             str.maketrans('', '', string.punctuation))
-        ref_type = ref_type.replace(' ', '_')
-        ref_type = ref_type.replace('__', '_')
+        ref_type = get_first_letter(ref_type)
 
-        folder_name = ref_num + '_' + date + '_' + ref_type
+        folder_name = ref_num + '_' + date + '_' + org + '_' + ref_type
         folder_name = folder_name.lower()
-        if os.name == 'nt':
-            folder_path = files_dir + '\\' + folder_name
-        else:
-            folder_path = files_dir + '/' + folder_name
+        folder_path = files_dir + '/' + folder_name
 
         if i < 29:
             # Move to element i+1, as i may be blocked by Chrome download bar!
-            ActionChains(driver).move_to_element(details_buttons[i+1]).perform()
+            ActionChains(driver).move_to_element(
+                details_buttons[i+1]).perform()
             details_buttons[i].click()
             time.sleep(.5)
         else:
-            # Move to navigation bar, as i may be blocked by Chrome download bar!
+            # Move to navigation bar, as i may be blocked by download bar!
             ActionChains(driver).move_to_element(next_button).perform()
             details_buttons[i].click()
             time.sleep(.5)
@@ -327,25 +329,26 @@ def scrape_page(
                     more_iframe_pages = False
 
             # After files downloaded, move them to appropriate folder
-            subprocess.run('mkdir ' + folder_path, shell=True)
+            run_common_cmd('mkdir ' + folder_path, base_dir)
 
             if os.name == 'nt':
-                shell_cmd = 'move-item -path {}\\*.pdf '.format(files_dir)
+                shell_cmd = 'move-item -path {}/*.pdf '.format(files_dir)
                 shell_cmd += '-destination {}'.format(folder_path)
                 run_powershell_cmd(shell_cmd, files_dir)
 
-                shell_cmd = 'for %s in ({}\\*.pdf) '.format(folder_path)
+                shell_cmd = 'for %s in ({}/*.pdf) '.format(folder_path)
                 shell_cmd += 'do ECHO "%s" '
-                shell_cmd += '>> {}\\filename.lst'.format(folder_path)
+                shell_cmd += '>> {}/filename.lst'.format(folder_path)
                 subprocess.run(shell_cmd, shell=True)
 
                 print('Creating combined PDF file.')
                 print('This may take a few minutes.')
                 shell_cmd = 'gswin64c -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
-                shell_cmd += '-sOutputFile=' + folder_path + '\\' + folder_name
+                shell_cmd += '-sOutputFile=' + folder_path + '/' + folder_name
                 shell_cmd += '_combined.pdf '
-                shell_cmd += '@{}\\filename.lst'.format(folder_path)
-                combined_code = subprocess.run(shell_cmd, shell=True).returncode
+                shell_cmd += '@{}/filename.lst'.format(folder_path)
+                combined_code = subprocess.run(
+                    shell_cmd, shell=True).returncode
                 if combined_code == 0:
                     table.at[i, 'PDFs Combined'] = 'Yes'
                 else:
@@ -356,26 +359,32 @@ def scrape_page(
                 subprocess.run(shell_cmd, shell=True)
 
                 # Record the filenames
-                shell_cmd = 'find ' + folder_path + '/*.pdf -maxdepth 1 -type f '
-                shell_cmd += '-printf "%f\n" > ' + folder_path + '/file_names.txt'
+                shell_cmd = 'find ' + folder_path
+                shell_cmd += '/*.pdf -maxdepth 1 -type f '
+                shell_cmd += '-printf "%f\n" > '
+                shell_cmd += folder_path + '/file_names.txt'
                 subprocess.run(shell_cmd, shell=True)
                 with open(folder_path + '/file_names.txt') as f:
                     lines = f.readlines()
-                file_names.append(', '.join(lines).replace('\n',''))
-                subprocess.run('rm ' + folder_path + '/file_names.txt', shell=True)
+                file_names.append(', '.join(lines).replace('\n', ''))
+                subprocess.run(
+                    'rm ' + folder_path + '/file_names.txt', shell=True)
 
                 print('Creating combined PDF file.')
                 print('This may take a few minutes.')
                 shell_cmd = 'pdfunite ' + folder_path + '/*.pdf ' + folder_path
                 shell_cmd += '/' + folder_name + '_combined.pdf'
-                combined_code = subprocess.run(shell_cmd, shell=True).returncode
+                combined_code = subprocess.run(
+                    shell_cmd, shell=True).returncode
                 if combined_code == 0:
                     table.at[i, 'PDFs Combined'] = 'Yes'
                 else:
                     shell_cmd = 'gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
-                    shell_cmd += '-sOutputFile=' + folder_path + '/' + folder_name
+                    shell_cmd += '-sOutputFile=' + folder_path
+                    shell_cmd += '/' + folder_name
                     shell_cmd += '_combined.pdf ' + folder_path + '/*.pdf'
-                    combined_code = subprocess.run(shell_cmd, shell=True).returncode
+                    combined_code = subprocess.run(
+                        shell_cmd, shell=True).returncode
                 if combined_code == 0:
                     table.at[i, 'PDFs Combined'] = 'Yes'
                 else:
@@ -392,7 +401,7 @@ def scrape_page(
         row = table.iloc[i]
         stored_table = stored_table.append(row, ignore_index=True)
         stored_table = stored_table.sort_values(
-            by='Date of notice', axis = 0,
+            by='Date of notice', axis=0,
             ascending=False)
         stored_table = stored_table.reset_index(drop=True)
         stored_table['Date of notice'] = stored_table['Date of notice'].apply(

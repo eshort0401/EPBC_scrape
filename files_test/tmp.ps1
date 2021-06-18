@@ -1,1 +1,1 @@
-rm C:\Users\eshor\Documents\ACF_consulting\files_test\num_files.txt
+move-item -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf -destination C:/Users/eshor/Documents/ACF_consulting/files_test/20218875_28052021_bcpl_dwanaar

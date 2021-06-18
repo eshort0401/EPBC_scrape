@@ -1,7 +1,7 @@
 # Copyright Ewan Short. All rights reserved.
 import gui
 from scrape_svg import convert_transform, gen_poly_coords
-from shell_tools import run_powershell_cmd, run_common_cmd
+from shell_tools import run_common_cmd
 
 import numpy as np
 from skimage import segmentation, feature, future
@@ -20,6 +20,8 @@ from matplotlib.colors import to_hex
 import cv2 as cv
 import tkinter as tk
 import copy
+import os
+
 
 def scrape_bmp(
         master, file_path, page_num, base_dir, sub_dir, leg_names, im_leg,
@@ -68,7 +70,6 @@ def scrape_bmp(
         fname, dir + '/' + str(page_num) + '/no_overlays.png',
         np.ceil(p_width).astype(int), np.ceil(p_height).astype(int))
     run_common_cmd(cmd, base_dir)
-
     im2 = imread(dir + '/' + str(page_num) + '/no_overlays.png')
 
     training_win = tk.Toplevel(master)
@@ -113,19 +114,22 @@ def scrape_bmp(
     plt.savefig(dir + '/' + str(page_num) + '/segmentation.png')
 
     choose_win = tk.Toplevel(master)
+    choose_win.title()
+    choose_win.lift()
     choose_app = gui.Choose_Kept_Categories(
-        choose_win, training_app.names)
+        choose_win, training_app.names,
+        title='Choose image polygon categories to keep.')
     master.wait_window(choose_win)
 
-    result = median(result, selem=np.ones([2,2]))
+    result = median(result, selem=np.ones([2, 2]))
 
     inds = (np.where([v.get() for v in choose_app.v])[0]+1).tolist()
     poly_colours = []
     line_colours = []
-    alpha='80'
+    alpha = '80'
     for i in inds:
         try:
-            cp = im2[result==i].mean(axis=0)/255
+            cp = im2[result == i].mean(axis=0)/255
             cp = to_hex(cp, keep_alpha=True)[1:]
             cp = cp[6:]+cp[4:6]+cp[2:4]+cp[0:2]
             line_colours.append(cp)
@@ -149,10 +153,10 @@ def scrape_bmp(
 
     for i in range(len(inds)):
     #     filled = ndi.binary_fill_holes(result==inds[i])
-        filled = (result==inds[i])
+        filled = (result == inds[i])
         obj_size_ratio = 5e-10
         min_size = int(obj_size_ratio*im2.shape[0]*im2.shape[1])
-        filled = remove_small_objects(filled, min_size = min_size)
+        filled = remove_small_objects(filled, min_size=min_size)
     #     filled = ndi.binary_fill_holes(filled)
 
         label_objects, nb_labels = ndi.label(filled)
@@ -163,45 +167,43 @@ def scrape_bmp(
 
         smooth_obj_contours = []
         for cnt in obj_contours:
-            epsilon = 0.0001*cv.arcLength(cnt,True)
+            epsilon = 0.0001*cv.arcLength(cnt, True)
             smooth_obj_contours.append(
-                cv.approxPolyDP(cnt,epsilon,True)
-            )
+                cv.approxPolyDP(cnt, epsilon, True))
 
         poly_coords = gen_poly_coords(smooth_obj_contours, LON, LAT)
 
         if poly_coords:
             fol = kml.newfolder(name=training_app.names[inds[i]-1])
-            parents = np.argwhere(hierarchy[0][:,3]==-1).flatten()
+            parents = np.argwhere(hierarchy[0][:, 3] == -1).flatten()
             for j in range(len(parents)):
                 poly = fol.newpolygon(
-                    name = training_app.names[inds[i]-1] + ' ' + str(j+1),
-                    outerboundaryis = (
+                    name=training_app.names[inds[i]-1] + ' ' + str(j+1),
+                    outerboundaryis=(
                         poly_coords[parents[j]]
-                        + [poly_coords[parents[j]][0]]
-                    ),
-                    altitudemode='relativetoground',
-                )
+                        + [poly_coords[parents[j]][0]]),
+                    altitudemode='relativetoground')
                 children = np.argwhere(
-                    hierarchy[0][:,3]==parents[j]
-                ).flatten()
+                    hierarchy[0][:, 3] == parents[j]).flatten()
                 if len(children) > 0:
                     inner_boundaries = []
                     for k in range(len(children)):
                         if len(poly_coords[children[k]]) > 3:
                             inner_boundaries.append(
                                 poly_coords[children[k]]
-                                + [poly_coords[children[k]][0]]
-                            )
+                                + [poly_coords[children[k]][0]])
                     poly.innerboundaryis = inner_boundaries
                 poly.style = styles[i]
     kml.save(dir + '/' + str(page_num) + '/image.kml')
 
     run_common_cmd(
-        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs', base_dir)
+        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs',
+        base_dir)
 
-    cmd = 'qgis --project ' + dir + '/reference.qgs ' + dir + '/'
-    cmd += str(page_num) + '/image.kml --extent {},{},{},{}'
+    if os.name == 'nt':
+        cmd = 'qgis-ltr-bin-g7 --project ' + dir + '/reference.qgs '
+    else:
+        cmd = 'qgis --project ' + dir + '/reference.qgs '
+    cmd += dir + '/' + str(page_num) + '/image.kml --extent {},{},{},{}'
     cmd = cmd.format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
-
-    run_common_cmd(cmd, shell=True)
+    subprocess.run(cmd, shell=True)

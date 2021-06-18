@@ -9,17 +9,17 @@ import tkinter as tk
 import subprocess
 import fitz
 import pylab
-
-import gui
-
+import os
 from colormath.color_objects import sRGBColor, LabColor
 from colormath.color_conversions import convert_color
 from colormath.color_diff import delta_e_cie2000
-
 from matplotlib.colors import to_hex
 from matplotlib.colors import to_rgb
-
 import simplekml
+
+import gui
+from shell_tools import run_common_cmd, run_powershell_cmd
+
 
 def hex_to_kml_hex(hex_col, with_hash=True, alpha='ff'):
     if with_hash:
@@ -44,7 +44,7 @@ def scrape_svg(
         master, LON, LAT, zoom_factor):
 
     thresh = 1e-20
-    min_path = 2
+    min_path = 10
     tol = 5e-4
     min_leg_path = 3
 
@@ -75,12 +75,15 @@ def scrape_svg(
     f.close()
 
     choose_legend_win = tk.Toplevel(master)
-    choose_legend_win.attributes('-zoomed', True)
+    if os.name == 'nt':
+        choose_legend_win.state('zoomed')
+        choose_legend_win.lift()
+    else:
+        choose_legend_win.attributes('-zoomed', True)
     leg_app = gui.Get_Legend_Box(
         choose_legend_win, im1,
         'Right click to select top left and bottom '
-        + 'right corners of legend box.'
-    )
+        + 'right corners of legend box.')
     master.wait_window(choose_legend_win)
 
     lb_tl = np.array(leg_app.p1).astype(int)
@@ -89,12 +92,15 @@ def scrape_svg(
     im_leg = im1[lb_tl[1]:lb_br[1], lb_tl[0]:lb_br[0], :]
 
     choose_content_win = tk.Toplevel(master)
-    choose_content_win.attributes('-zoomed', True)
+    if os.name == 'nt':
+        choose_content_win.state('zoomed')
+        choose_content_win.lift()
+    else:
+        choose_content_win.attributes('-zoomed', True)
     content_app = gui.Get_Legend_Box(
         choose_content_win, im1,
         'Right click to select top left and bottom right corners of '
-        + 'region containing items of interest.'
-    )
+        + 'region containing items of interest.')
     master.wait_window(choose_content_win)
 
     pb_tl = np.array(content_app.p1).astype(int)
@@ -182,8 +188,7 @@ def scrape_svg(
                 ind = np.argmin(
                     [
                         cv.matchShapes(obj, leg_obj, 1, 0)
-                        for leg_obj in leg_objs]
-                )
+                        for leg_obj in leg_objs])
                 best_leg_match.append(leg_match[i].flatten()[ind])
             except:
                 best_leg_match.append(0)
@@ -363,7 +368,6 @@ def scrape_svg(
         else:
             leg_text_all.append(s.get_text())
 
-    # import pdb; pdb.set_trace()
     leg_text_all = [
         re.sub('(\n)|!|\^|\N{PLUS-MINUS SIGN}', ' ', t) for t in leg_text_all]
     leg_text_all = [re.sub('[ ]{2,}', ' ', t) for t in leg_text_all]
@@ -377,6 +381,7 @@ def scrape_svg(
     leg_text_all = list(set(leg_text_all))
 
     confirm_names_win = tk.Toplevel(master)
+    confirm_names_win.lift()
     names_app = gui.Confirm_Names(confirm_names_win, leg_text_all)
     master.wait_window(confirm_names_win)
 
@@ -402,7 +407,11 @@ def scrape_svg(
 
     # Check polylabels
     name_poly_win = tk.Toplevel(master)
-    name_poly_win.attributes('-zoomed', True)
+    if os.name == 'nt':
+        name_poly_win.state('zoomed')
+        name_poly_win.lift()
+    else:
+        name_poly_win.attributes('-zoomed', True)
     poly_app = gui.Name_Polygons(
         name_poly_win, im1, svg_coords,
         leg_text_all_corrected, names = names)
@@ -426,10 +435,14 @@ def scrape_svg(
 
         # Check polylabels
         name_use_win = tk.Toplevel(master)
-        name_use_win.attributes('-zoomed', True)
+        if os.name == 'nt':
+            name_use_win.state('zoomed')
+            name_use_win.lift()
+        else:
+            name_use_win.attributes('-zoomed', True)
         name_use_app = gui.Name_Polygons(
-            name_use_win, im1, use_obj_coords, leg_text_all_corrected, names = use_names
-        )
+            name_use_win, im1, use_obj_coords, leg_text_all_corrected,
+            names = use_names)
         master.wait_window(name_use_win)
         use_names = name_use_app.names
 
@@ -446,7 +459,11 @@ def scrape_svg(
 
     if cp_coords:
         name_cp_win = tk.Toplevel(master)
-        name_cp_win.attributes('-zoomed', True)
+        if os.name == 'nt':
+            name_cp_win.state('zoomed')
+            name_cp_win.lift()
+        else:
+            name_cp_win.attributes('-zoomed', True)
         cp_app = gui.Name_Polygons(
             name_cp_win, im1, cp_coords, leg_text_all_corrected)
         master.wait_window(name_cp_win)
@@ -491,24 +508,24 @@ def scrape_svg(
 
     for name in set(poly_names):
         fol = kml.newfolder(name=name)
-        poly_inds = np.where(np.array(poly_names)==name)[0].tolist()
+        poly_inds = np.where(np.array(poly_names) == name)[0].tolist()
         for j in range(len(poly_inds)):
             if poly_coords[poly_inds[j]][0] == poly_coords[poly_inds[j]][-1]:
                 poly = fol.newpolygon(
-                    name = name + ' ' + str(j+1),
-                    outerboundaryis = poly_coords[poly_inds[j]],
+                    name=name + ' ' + str(j+1),
+                    outerboundaryis=poly_coords[poly_inds[j]],
                     altitudemode='relativetoground')
             else:
-                poly = fol.newlinestring(
-                    name = name + ' ' + str(j+1),
-                    coords = poly_coords[poly_inds[j]],
+                poly=fol.newlinestring(
+                    name=name + ' ' + str(j+1),
+                    coords=poly_coords[poly_inds[j]],
                     altitudemode='relativetoground')
             poly.style = styles[poly_inds[j]]
 
     if cp_coords:
         unique_cp_names = list(set(cp_names))
         num_colours = len(unique_cp_names)
-        alpha=0.75
+        alpha = 0.75
         cm = pylab.get_cmap('Set1')
         poly_colours = []
         line_colours = []
@@ -533,45 +550,48 @@ def scrape_svg(
             sty.linestyle.width = 2
             sty.linestyle.color = poly_colours[i]
             sty.polystyle.color = line_colours[i]
-            styles[unique_cp_names[i]]= sty
+            styles[unique_cp_names[i]] = sty
 
         poly_coords = gen_poly_coords(cp_coords, LON, LAT)
 
         for name in unique_cp_names:
             fol = kml.newfolder(name=name)
-            poly_inds = np.where(np.array(cp_names)==name)[0].tolist()
+            poly_inds = np.where(np.array(cp_names) == name)[0].tolist()
             for j in range(len(poly_inds)):
                 if poly_coords[poly_inds[j]][0] == poly_coords[poly_inds[j]][-1]:
                     poly = fol.newpolygon(
-                        name = name + ' ' + str(j+1),
-                        outerboundaryis = poly_coords[poly_inds[j]],
+                        name=name + ' ' + str(j+1),
+                        outerboundaryis=poly_coords[poly_inds[j]],
                         altitudemode='relativetoground')
                 else:
                     poly = fol.newlinestring(
-                        name = name + ' ' + str(j+1),
-                        coords = poly_coords[poly_inds[j]],
+                        name=name + ' ' + str(j+1),
+                        coords=poly_coords[poly_inds[j]],
                         altitudemode='relativetoground')
                 poly.style = styles[name]
     kml.save(dir + '/' + str(page_num) + '/svg.kml')
 
     run_common_cmd(
-        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs', base_dir)
+        'cp ' + base_dir + '/reference.qgs ' + dir + '/reference.qgs',
+        base_dir)
 
-    cmd = 'qgis --project ' + dir + '/reference.qgs ' + dir + '/'
-    cmd += str(page_num) + '/svg.kml --extent {},{},{},{}'
-    cmd = cmd.format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
     if (svg_coords+cp_coords):
-        run_common_cmd(cmd, base_dir)
+        if os.name == 'nt':
+            cmd = 'qgis-ltr-bin-g7 --project ' + dir + '/reference.qgs '
+        else:
+            cmd = 'qgis --project ' + dir + '/reference.qgs '
+        cmd += dir + '/' + str(page_num) + '/svg.kml --extent {},{},{},{}'
+        cmd = cmd.format(np.min(LON), np.min(LAT), np.max(LON), np.max(LAT))
+        subprocess.run(cmd, shell=True)
 
     return leg_text_all_corrected + cp_names, im_leg, pb_tl, pb_br
+
 
 def convert_path_coords(path_list, shape, thresh):
     path_coords = []
     stroke = []
     fill = []
     for p in path_list:
-        # if 'L -1.439 19.679 L -.96 22.319 L' in p['d']:
-        #     import pdb; pdb.set_trace()
         coords = interp_bezier(p['d'])
         has_z = re.search('(z\s*)$', coords.lower())
         coords = re.split('[a-zA-Z]', coords)
@@ -580,26 +600,26 @@ def convert_path_coords(path_list, shape, thresh):
         coords = [c for c in coords if not regex.fullmatch(c)]
         coords = [
             re.sub(
-                '(-*[0-9]*\.*[0-9]+)( )(-*[0-9]*\.*[0-9]+)', r'\1,\3', t
-            ).split(',') for t in coords]
+                '(-*[0-9]*\.*[0-9]+)( )(-*[0-9]*\.*[0-9]+)',
+                r'\1,\3', t).split(',') for t in coords]
         if has_z:
             coords += [coords[0]]
         coords = np.array(coords).astype(float)
 
         coords = np.append(
-            coords, values=np.ones([len(coords),1]), axis=1
+            coords, values=np.ones([len(coords), 1]), axis=1
         )
 
         if 'transform' in p.attrs.keys():
             transform = convert_transform(p['transform'])
-            new_coords = (np.matmul(transform,coords.T)[0:2]).T
+            new_coords = (np.matmul(transform, coords.T)[0:2]).T
         else:
             new_coords = coords[0:2]
 
         new_coords = np.around(new_coords).astype(int)
         new_coords = crop_coords(new_coords, shape)
         new_coords = new_coords.reshape(
-            [new_coords.shape[0],1,new_coords.shape[1]]
+            [new_coords.shape[0], 1, new_coords.shape[1]]
         )
         # Remove duplicate points
         new_coords = np.array(
@@ -611,7 +631,7 @@ def convert_path_coords(path_list, shape, thresh):
         # Split coords into seperate coords if repeated point
         split_coords = []
         start = 0
-        for i in range(1,len(new_coords)):
+        for i in range(1, len(new_coords)):
             previous = new_coords[start:i]
             m = np.argwhere(
                 np.all(previous == new_coords[i], axis=2).flatten()
@@ -647,6 +667,7 @@ def convert_path_coords(path_list, shape, thresh):
 
     return path_coords, stroke, fill
 
+
 def match_bezier(d):
     c_matches = re.finditer(
         '([a-zA-Z] +)*(-*[0-9]*\.*[0-9]+) (-*[0-9]*\.*[0-9]+) +'
@@ -661,16 +682,18 @@ def match_bezier(d):
     match_list = match_list[::-1]
     return match_list
 
+
 def interp_bezier(d):
     match_list = match_bezier(d)
-    while len(match_list)>0:
+    while len(match_list) > 0:
         for c in match_list:
-            n = c.group(0).replace(' c', '').replace('l', '')
-            n = np.array(n.replace('m', '').split())
+            n = c.group(0).replace(' c', '').replace('l', '').replace('z', '')
+            n = n.replace('m', '')
+            n = np.array(n.split())
             n = n.astype(float)
-            n = n.reshape([len(n)//2,2]).T
+            n = n.reshape([len(n)//2, 2]).T
             curve = bezier.curve.Curve.from_nodes(n)
-            interp = np.round(curve.evaluate_multi(np.linspace(0,1,9)),4)
+            interp = np.round(curve.evaluate_multi(np.linspace(0, 1, 9)), 4)
             interp = interp.astype(str).T
             repl = ['l {} {} '.format(coord[0], coord[1]) for coord in interp]
             repl = ''.join(repl)
@@ -679,21 +702,23 @@ def interp_bezier(d):
         match_list = match_bezier(d)
     return d
 
+
 def crop_coords(coords, shape):
-    coords[:,0][coords[:,0] >= shape[1]] = shape[1]-1
-    coords[:,0][coords[:,0] < 0] = 0
-    coords[:,1][coords[:,1] >= shape[0]] = shape[0]-1
-    coords[:,1][coords[:,1] < 0] = 0
+    coords[:, 0][coords[:, 0] >= shape[1]] = shape[1]-1
+    coords[:, 0][coords[:, 0] < 0] = 0
+    coords[:, 1][coords[:, 1] >= shape[0]] = shape[0]-1
+    coords[:, 1][coords[:, 1] < 0] = 0
     return coords
+
 
 def convert_tspan_coords(tspan_list, shape):
     tspan_coords = []
     [x, y] = [[t[c].split(' ') for t in tspan_list] for c in ['x', 'y']]
     for i in range(len(x)):
-        if len(x[i])==1:
-            x[i] = x[i]*len(y[i])
-        if len(y[i])==1:
-            y[i] = y[i]*len(x[i])
+        if len(x[i]) == 1:
+            x[i] = x[i] * len(y[i])
+        if len(y[i]) == 1:
+            y[i] = y[i] * len(x[i])
 
     coords = [
         np.array(
@@ -703,15 +728,15 @@ def convert_tspan_coords(tspan_list, shape):
     for i in range(len(tspan_list)):
         p = tspan_list[i].parent
         transform = convert_transform(p['transform'])
-        new_coords = (np.matmul(transform,coords[i])[0:2]).T
+        new_coords = (np.matmul(transform, coords[i])[0:2]).T
         new_coords = np.around(new_coords).astype(int)
         new_coords = crop_coords(new_coords, shape)
         tspan_coords.append(
-            new_coords.reshape([new_coords.shape[0],1,new_coords.shape[1]]))
+            new_coords.reshape([new_coords.shape[0], 1, new_coords.shape[1]]))
     return tspan_coords
 
-def convert_use_coords(use_list, soup_tap, shape, thresh):
 
+def convert_use_coords(use_list, soup_tap, shape, thresh):
     use_coords = []
     stroke = []
     fill = []
@@ -728,18 +753,18 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
         coords = [c for c in coords if not regex.fullmatch(c)]
         coords = [
             re.sub(
-                '(-*[0-9]*\.*[0-9]+)( )(-*[0-9]*\.*[0-9]+)', r'\1,\3', t
-            ).split(',') for t in coords]
+                '(-*[0-9]*\.*[0-9]+)( )(-*[0-9]*\.*[0-9]+)',
+                r'\1,\3', t).split(',') for t in coords]
         if has_z:
             coords += [coords[0]]
         coords = np.array(coords).astype(float)
         coords = np.append(
-            coords, values=np.ones([len(coords),1]), axis=1)
-        new_coords = (np.matmul(transform,coords.T)[0:2]).T
+            coords, values=np.ones([len(coords), 1]), axis=1)
+        new_coords = (np.matmul(transform, coords.T)[0:2]).T
         new_coords = np.around(new_coords).astype(int)
         new_coords = crop_coords(new_coords, shape)
         new_coords = new_coords.reshape(
-            [new_coords.shape[0],1,new_coords.shape[1]])
+            [new_coords.shape[0], 1, new_coords.shape[1]])
 
         use_coords.append(new_coords)
         obj_list.append(use_list[i])
@@ -760,25 +785,26 @@ def convert_use_coords(use_list, soup_tap, shape, thresh):
 
     return use_coords, stroke, fill, obj_list
 
+
 def convert_transform(transform_string):
     transform = np.array(
         re.split(
             ',| ',
             transform_string.replace('matrix(', '').replace(')', '')))
     transform = transform.astype(float)
-    transform = transform.reshape([3,2]).T
+    transform = transform.reshape([3, 2]).T
     transform = transform.tolist()
-    transform.append([0,0,1])
+    transform.append([0, 0, 1])
     transform = np.array(transform)
     return transform
+
 
 def get_nearest_text(leg_coords, lt_coords):
     closest_t = []
     for lc in leg_coords:
-        # import pdb; pdb.set_trace()
-        distances=[]
+        distances = []
         for tc in lt_coords:
-        # Assume text likely beside icon, so penalise vertical distances
+            # Assume text likely beside icon, so penalise vertical distances
             distances.append(
                 np.min(
                     cdist(
@@ -786,6 +812,7 @@ def get_nearest_text(leg_coords, lt_coords):
                         'euclidean', w=[1, 4])))
         closest_t.append(np.argmin(np.array(distances)))
     return closest_t
+
 
 def remove_duplicates(coords, stroke, fill):
     i = 0
@@ -803,6 +830,7 @@ def remove_duplicates(coords, stroke, fill):
             j += 1
         i += 1
     return coords, stroke, fill
+
 
 def join_coords(coords, stroke, fill):
     i = 0
@@ -836,6 +864,7 @@ def join_coords(coords, stroke, fill):
             i += 1
 
     return coords, stroke, fill
+
 
 def check_areas(coords, stroke, fill, thresh=1, node_thresh=2):
     areas = [
