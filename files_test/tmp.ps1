@@ -1,1 +1,1 @@
-gci -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf | measure-object -line | select-object -expand Lines > C:/Users/eshor/Documents/ACF_consulting/files_test/num_files.txt
+move-item -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf -destination C:/Users/eshor/Documents/ACF_consulting/files_test/20052270_29042021_bbodcpl_novta
