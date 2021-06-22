@@ -1,1 +1,1 @@
-move-item -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf -destination C:/Users/eshor/Documents/ACF_consulting/files_test/20218875_28052021_bcpl_dwanaar
+gci -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf | measure-object -line | select-object -expand Lines > C:/Users/eshor/Documents/ACF_consulting/files_test/num_files.txt

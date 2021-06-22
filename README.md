@@ -23,7 +23,7 @@ conda install pip
 conda install jupyter
 conda install -c conda-forge jupyter_contrib_nbextensions
 jupyter contrib nbextension install --user
-conda install matplotlib, numpy, pandas, selenium, bs4
+conda install matplotlib, numpy, pandas, selenium, bs4, rapidfuzz
 ```
 
 Create a folder called bin in C:
@@ -54,4 +54,4 @@ Install QGIS.
 Add the QGIS bin folder (Windows default is `C:\Program Files\QGIS 3.16\bin`) to PATH environment variable.
 
 Download Inkscape. You probably want the 64 bit version (https://inkscape.org/release/1.1/windows/64-bit/), with the installer exe.
-Default installer options should be fine. When prompted about whether to add Inkscape to the system path, choose the "for all users" option. 
+Default installer options should be fine. When prompted about whether to add Inkscape to the system path, choose the "for all users" option.

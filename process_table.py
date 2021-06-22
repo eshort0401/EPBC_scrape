@@ -2,11 +2,63 @@ from selenium import webdriver
 import time
 import os
 import glob
+import pandas as pd
+import re
+import numpy as np
+from rapidfuzz import fuzz, process, utils
 
 from shell_tools import run_powershell_cmd, run_common_cmd
 
 
+def get_new_rows(base_dir):
+    table = pd.read_csv(
+        base_dir + 'EPBC_notices_test_copy.csv', dtype=str).drop_duplicates()
+    try:
+        f_table = pd.read_csv(
+            base_dir + 'revised_table_test.csv', dtype=str)
+    except:
+        f_table = table.iloc[0:0]
+    table = table.reset_index(drop=True)
+    f_table = f_table.reset_index(drop=True)
+
+    table['Title of referral'] = table['Title of referral'].apply(
+        lambda x: re.sub(r'([0-9])\/([0-9])', r'\g<1>-\g<2>', x))
+
+    label_list = [
+        'Reference Number', 'Title of referral', 'Notification from EPBC Act',
+        'Date of notice']
+    shared = pd.merge(
+        table, f_table[label_list].drop_duplicates(),
+        how='left', indicator='Exist')
+    shared['Exist'] = np.where(shared.Exist == 'both', True, False)
+    exist = shared['Exist']
+    return table[np.logical_not(exist)], f_table
+
+
+def format_title(base_dir, table):
+    num_slash = table['Title of referral'].apply(lambda x: x.count('/'))
+
+    table['Title of referral'] = table['Title of referral'].apply(
+        lambda x: re.sub(r'([0-9])\/([0-9])', r'\g<1>-\g<2>', x))
+
+    fields = [
+        'Approval Holder', 'Industry', 'Holder Address',
+        'State', 'Description']
+    for i in range(len(fields)):
+        table[fields[i]] = ''
+        table[fields[i]].loc[num_slash == 4] = table['Title of referral'].loc[
+            num_slash == 4].apply(lambda x: x.split('/')[i])
+        bad_title = 'Improperly formatted Title of referral - '
+        bad_title += 'input this field manually.'
+        table[fields[i]].loc[num_slash != 4] = bad_title
+
+    return table
+
+
 def get_company_databases(base_dir, cd_path=None):
+
+    run_common_cmd('rm {}ASIC_register.csv'.format(base_dir), base_dir)
+    run_common_cmd('rm {}ACNC_register.xlsx'.format(base_dir), base_dir)
 
     if cd_path is None:
         if os.name == 'nt':
@@ -45,14 +97,14 @@ def get_company_databases(base_dir, cd_path=None):
 
     driver = webdriver.Chrome(cd_path, options=options)
     driver.get(url)
-    time.sleep(10)
+    time.sleep(15)
 
     if os.name == 'nt':
         shell_cmd = 'expand-archive {}company_*.zip {}'.format(
             base_dir, base_dir)
         run_powershell_cmd(shell_cmd, base_dir)
-        time.sleep(1)
-        csv_path = glob.glob(base_dir + 'company_*.csv')[0]
+        time.sleep(10)
+        csv_path = glob.glob(base_dir + 'COMPANY_*.csv')[0]
         shell_cmd = 'ren ' + csv_path + ' ASIC_register.csv'
         run_powershell_cmd(shell_cmd, base_dir)
 
@@ -71,3 +123,103 @@ def get_company_databases(base_dir, cd_path=None):
         run_powershell_cmd(shell_cmd, base_dir)
 
     driver.quit()
+
+
+def lookup_ASIC_data(base_dir, table):
+    ASIC_register = pd.read_csv(
+        base_dir + '/ASIC_register.csv', sep='\t',
+        encoding="ISO-8859-1", dtype=str)
+
+    ASIC_register['Company Name'] = ASIC_register['Company Name'].apply(
+        lambda x: re.sub(r'\s+$', '', x))
+    ASIC_comp_name = ASIC_register['Company Name']
+    ASIC_comp_name = ASIC_comp_name.apply(
+        lambda x:
+        x.lower().replace('proprietary', 'pty').replace('limited', 'ltd'))
+    ASIC_comp_name = ASIC_comp_name.values
+
+    holder_name = table['Approval Holder'].apply(
+        lambda x:
+        x.lower().replace('proprietary', 'pty').replace('limited', 'ltd'))
+    holder_name = holder_name.values
+
+    ASIC_types = {
+        'APTY': 'Australian Proprietary Company',
+        'APUB': 'Australian Public Company',
+        'ASSN': 'Association',
+        'BUSN': 'Business Name',
+        'CHAR': 'Charity',
+        'COMP': 'Community Purpose',
+        'COOP': 'Co-Operative Society',
+        'FNOS': 'Foreign Company (Overseas)',
+        'LTDP': 'Limited Partnership',
+        'MISM': 'Managed Investment Scheme',
+        'NONC': 'Non Company',
+        'NRET': 'Non Registered Entity',
+        'RACN': 'Registered Australian Body',
+        'REBD': 'Religious Body',
+        'RSVN': 'Name Reservation',
+        'SOLS': 'Solicitor Corporation',
+        'TRST': 'Trust'}
+
+    [com_type, ABN, ACN, ASIC_name] = [
+        ['Fill manually.' for j in range(len(table))] for i in range(4)]
+
+    print('Preprocessing text match tokens. Please wait.')
+    processed_holder_names = [
+        utils.default_process(holder) for holder in holder_name]
+    processed_companies = [
+        utils.default_process(company) for company in ASIC_comp_name]
+
+    print('Performing fuzzy text match on ASIC database. Please wait')
+    for (i, processed_query) in enumerate(processed_holder_names):
+        ratio = process.extractOne(
+            processed_query,
+            processed_companies,
+            scorer=fuzz.token_sort_ratio,
+            processor=None,
+            score_cutoff=90)
+        if ratio:
+            if ratio[1] >= 95:
+                com_type[i] = ASIC_types[
+                    ASIC_register['Type'].values[ratio[2]]]
+                [ASIC_name[i], ABN[i], ACN[i]] = [
+                    ASIC_register[col].values[ratio[2]]
+                    for col in ['Company Name', 'ABN', 'ACN']]
+            elif ratio[1] >= 90:
+                com_type[i] = ASIC_types[
+                    ASIC_register['Type'].values[ratio[2]]]
+                [ASIC_name[i], ABN[i], ACN[i]] = [
+                    ASIC_register[col].values[ratio[2]]
+                    for col in ['Company Name', 'ABN', 'ACN']]
+                [com_type[i], ASIC_name[i], ABN[i], ACN[i]] = [
+                    col + ' (Confirm manually.)'
+                    for col in [com_type[i], ASIC_name[i], ABN[i], ACN[i]]]
+
+    table.insert(7, 'Registered Name', ASIC_name)
+    table.insert(8, 'Type', com_type)
+    table.insert(9, 'ABN', ABN)
+    table.insert(10, 'ACN', ACN)
+    table.ABN.loc[table['ABN'] == '0'] = 'Not Applicable'
+
+    try:
+        f_table = pd.read_csv(
+            base_dir + 'revised_table_test.csv', dtype=str)
+    except:
+        f_table = table.iloc[0:0]
+    table['Date of notice'] = pd.to_datetime(
+        table['Date of notice'], dayfirst=True)
+    f_table['Date of notice'] = pd.to_datetime(
+        f_table['Date of notice'], dayfirst=True)
+    f_table = f_table.append(table, ignore_index=True)
+    f_table = f_table.sort_values(by='Date of notice', axis=0, ascending=False)
+    f_table = f_table.reset_index(drop=True)
+    f_table['Date of notice'] = f_table['Date of notice'].apply(
+        lambda x: x.strftime('%d/%m/%Y'))
+    f_table.to_csv(
+        base_dir + 'revised_table_test_test.csv', index=False)
+    return table
+
+
+def add_com_path(base_dir, table):
+    print('test')

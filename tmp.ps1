@@ -1,1 +1,1 @@
-ren C:/Users/eshor/Documents/ACF_consulting/datadotgov_main.xlsx ACNC_register.xlsx
+rm C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf

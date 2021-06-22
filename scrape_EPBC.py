@@ -101,7 +101,7 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
                 'Download', 'Download Folder', 'PDFs Combined']
             shared = pd.merge(
                 table.drop(labels=label_list, axis=1),
-                stored_table.drop(labels=label_list, axis=1),
+                stored_table.drop(labels=label_list, axis=1).drop_duplicates(),
                 how='left', indicator='Exist')
             shared['Exist'] = np.where(shared.Exist == 'both', True, False)
             exist = shared['Exist']
@@ -339,7 +339,7 @@ def scrape_page(
                 shell_cmd = 'for %s in ({}/*.pdf) '.format(folder_path)
                 shell_cmd += 'do ECHO "%s" '
                 shell_cmd += '>> {}/filename.lst'.format(folder_path)
-                subprocess.run(shell_cmd, shell=True)
+                subprocess.run(shell_cmd.replace('/', '\\'), shell=True)
 
                 print('Creating combined PDF file.')
                 print('This may take a few minutes.')
