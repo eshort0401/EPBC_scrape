@@ -1,6 +1,8 @@
 # Copyright Australian Conservation Foundation. All rights reserved.
 import argparse
+
 import scrape_EPBC
+import process_table
 
 parser = argparse.ArgumentParser()
 dir_help = 'base directory to store spreadsheet and downloaded PDF files.'

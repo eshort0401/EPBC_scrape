@@ -41,7 +41,7 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
     options.add_argument('--incognito')
     options.add_argument("--start-maximized")
 
-    sub_dir = 'files_test'
+    sub_dir = 'files'
     files_dir = base_dir + sub_dir
     if os.name == 'nt':
         files_dir_sys = files_dir.replace('/', '\\')
@@ -93,7 +93,7 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
         table.drop(labels='Actions', axis=1, inplace=True)
 
         try:
-            stored_table = pd.read_csv(base_dir + '/EPBC_notices_test.csv')
+            stored_table = pd.read_csv(base_dir + '/EPBC_notices.csv')
             stored_table['Date of notice'] = pd.to_datetime(
                 stored_table['Date of notice'], dayfirst=True)
             label_list = [
@@ -407,6 +407,6 @@ def scrape_page(
         stored_table['Date of notice'] = stored_table['Date of notice'].apply(
             lambda x: x.strftime('%d/%m/%Y'))
         stored_table.to_csv(
-            base_dir + '/EPBC_notices_test.csv', index=False, header=True)
+            base_dir + '/EPBC_notices.csv', index=False, header=True)
         stored_table['Date of notice'] = pd.to_datetime(
             stored_table['Date of notice'], dayfirst=True)

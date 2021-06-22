@@ -1,1 +1,0 @@
-move-item -path C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf -destination C:/Users/eshor/Documents/ACF_consulting/files_test/20052270_29042021_bbodcpl_novta

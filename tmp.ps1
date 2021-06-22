@@ -1,1 +1,1 @@
-rm C:/Users/eshor/Documents/ACF_consulting/files_test/*.pdf
+mkdir C:/Users/eshor/Documents/ACF_consulting/files_test/20208838_09122020_vegapl_ifpcor

@@ -10,9 +10,19 @@ from rapidfuzz import fuzz, process, utils
 from shell_tools import run_powershell_cmd, run_common_cmd
 
 
+def process_table(base_dir, update_public_db=False):
+    table = get_new_rows(base_dir)
+    table = format_title(base_dir, table)
+    if update_public_db:
+        get_company_databases(base_dir)
+    table = lookup_ASIC_data(base_dir, table)
+    update_revised_table(base_dir, table)
+
+
 def get_new_rows(base_dir):
+    print('Determining new rows.')
     table = pd.read_csv(
-        base_dir + 'EPBC_notices_test_copy.csv', dtype=str).drop_duplicates()
+        base_dir + 'EPBC_notices_copy.csv', dtype=str).drop_duplicates()
     try:
         f_table = pd.read_csv(
             base_dir + 'revised_table_test.csv', dtype=str)
@@ -32,10 +42,13 @@ def get_new_rows(base_dir):
         how='left', indicator='Exist')
     shared['Exist'] = np.where(shared.Exist == 'both', True, False)
     exist = shared['Exist']
-    return table[np.logical_not(exist)], f_table
+    table = table[np.logical_not(exist)]
+    print('{} new entries to process.'.format(len(table)))
+    return table
 
 
 def format_title(base_dir, table):
+    print('Formatting title.')
     num_slash = table['Title of referral'].apply(lambda x: x.count('/'))
 
     table['Title of referral'] = table['Title of referral'].apply(
@@ -202,6 +215,25 @@ def lookup_ASIC_data(base_dir, table):
     table.insert(10, 'ACN', ACN)
     table.ABN.loc[table['ABN'] == '0'] = 'Not Applicable'
 
+    return table
+
+
+def add_comb_path(base_dir, table):
+    folder_names = table['Download Folder'].values
+    comb_file_paths = base_dir + 'files/' + folder_names
+    comb_file_paths += '/' + folder_names + '_combined.pdf'
+    cond = (table['Download Folder'].values == 'Not Applicable')
+    comb_file_paths[cond] = 'Not Applicable'
+    excel_links = '=HYPERLINK("' + comb_file_paths + '", '
+    excel_links += '"' + comb_file_paths + '")'
+    excel_links[cond] = 'Not Applicable'
+
+    table['Combined PDF Path'] = comb_file_paths
+    table['Excel Link'] = excel_links
+    return table
+
+
+def update_revised_table(base_dir, table):
     try:
         f_table = pd.read_csv(
             base_dir + 'revised_table_test.csv', dtype=str)
@@ -218,8 +250,3 @@ def lookup_ASIC_data(base_dir, table):
         lambda x: x.strftime('%d/%m/%Y'))
     f_table.to_csv(
         base_dir + 'revised_table_test_test.csv', index=False)
-    return table
-
-
-def add_com_path(base_dir, table):
-    print('test')
