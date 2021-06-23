@@ -1,7 +1,7 @@
-Copyright Australian Conservation Foundation (ACF). All rights reserved.
-Concept by Kim Garratt, Annica Schoor and the ACF.
-Software developed by Ewan Short 2021
-<eshort0401@gmail.com>, <https://github.com/eshort0401>
+Copyright Australian Conservation Foundation (ACF). All rights reserved.<br>
+Concept by Kim Garratt, Annica Schoor and the ACF.<br>
+Software developed by Ewan Short 2021 <br>
+<eshort0401@gmail.com>, <https://github.com/eshort0401> <br>
 
 # Introduction
 This repository contains python software for downloading and processing data
