@@ -7,7 +7,7 @@ Software developed by Ewan Short 2021
 This repository contains python software for downloading and processing data
 from the Australian Environment Protection and Biodiversity Conservation Act (EPBC)
 [public notices website](http://epbcnotices.environment.gov.au/publicnoticesreferrals/).
-The software carries out the following steps.
+The does the following.
 1. Download the tabulated data from the website and save it on local disk
 as `EPBC_notices.csv`.
 1. Download any PDF files attached to each public notice and organise them into folders on local disk.
