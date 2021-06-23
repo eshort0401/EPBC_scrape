@@ -1,5 +1,5 @@
 Copyright Australian Conservation Foundation (ACF). All rights reserved.
-Concept by Kim Garratt, Annica Schoor and ACF.
+Concept by Kim Garratt, Annica Schoor and the ACF.
 Software developed by Ewan Short 2021
 <eshort0401@gmail.com>, <https://github.com/eshort0401>
 

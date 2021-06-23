@@ -1,8 +1,8 @@
 files
-files_test
 tmp
 proposal
-*.csv
+ASIC_register.csv
+ACNC_register.csv
 *.pdf
 *.xlsx
 *.gz
