@@ -64,7 +64,7 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
     time.sleep(4)
 
     run_common_cmd('mkdir ' + files_dir, base_dir)
-    for i in range(1, end_page):
+    for i in range(1, end_page+1):
 
         loading = True
         attempts = 0

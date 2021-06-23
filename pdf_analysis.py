@@ -1,15 +1,18 @@
-import fitz
+# Copyright Australian Conservation Foundation. All rights reserved.
+# Developed by Ewan Short 2021
+# eshort0401@gmail.com, https://github.com/eshort0401
 import re
+
 
 def detect_map(page, re_pttns, im_ratio=0.6):
     page_area = page.MediaBox[2] * page.MediaBox[3]
-    page_area = page_area / 72 / 72 #inches squared
+    page_area = page_area / 72 / 72  # inches squared
     total_img_area = 0
     bboxes = [info['bbox'] for info in page.get_image_info()]
     bboxes = list(set(bboxes))
     for box in bboxes:
         img_area = (box[2] - box[0]) * (box[3] - box[1])
-        img_area = img_area / 72 / 72 #inches squared
+        img_area = img_area / 72 / 72  # inches squared
         total_img_area += img_area
     large_image = total_img_area > im_ratio * page_area
     text_matches = []

@@ -1,5 +1,10 @@
+# Copyright Australian Conservation Foundation. All rights reserved.
+# Developed by Ewan Short 2021
+# eshort0401@gmail.com, https://github.com/eshort0401
+
 import subprocess
 import os
+
 
 def run_powershell_cmd(shell_cmd, power_script_dir):
     with open(power_script_dir + "/tmp.ps1", "w") as f:
@@ -7,6 +12,7 @@ def run_powershell_cmd(shell_cmd, power_script_dir):
     return subprocess.run(
         'powershell.exe {}/tmp.ps1'.format(power_script_dir),
         shell=True)
+
 
 def run_common_cmd(shell_cmd, power_script_dir):
     if os.name == 'nt':

@@ -1,55 +1,104 @@
 Copyright Australian Conservation Foundation (ACF). All rights reserved.
-Developed by Ewan Short 2021
-eshort0401@gmail.com
+Concept by Kim Garratt, Annica Schoor and ACF.
+Software developed by Ewan Short 2021
+<eshort0401@gmail.com>, <https://github.com/eshort0401>
 
-# Supported Systems
-Unix based systems (Linux and Mac)
-Windows 10. Currently operating system calls on Windows use the powershell,
+# Introduction
+This repository contains python software for downloading and processing data
+from the Australian Environment Protection and Biodiversity Conservation Act (EPBC)
+[public notices website](http://epbcnotices.environment.gov.au/publicnoticesreferrals/).
+The software carries out the following steps.
+1. Download the tabulated data from the website and save it on local disk
+as `EPBC_notices.csv`.
+1. Download any PDF files attached to each public notice and organise them into folders on local disk.
+Folder names are chosen by referral number, date, referral holder
+and referral type.
+1. Combine the PDFs associated with each referral into a single PDF.
+1. Reformat the data in `EPBC_notices.csv`, and lookup relevant data from the
+PDF files to create a comprehensive database `EPBC_database.csv`. Currently supports
+the following.
+  - Reformat the "Title of referral" field.
+  - Look up data on each referral holder from the ASIC company register.
+
+# Installation
+
+## Supported Systems
+- Unix based systems (i.e. Linux and Mac).
+- Windows 10. (Currently, operating system calls on Windows use powershell,
 which only ships by default with Windows 10. Future versions will support
-older versions of Windows.
+older versions of Windows.)
 
-# Operation
-To download the database, first open the terminal (UNIX) or powershell
-(Windows 10). Activate your conda environment by typing
+## Setup
+1. Download the [miniconda](https://docs.conda.io/en/latest/miniconda.html) or
+[Anaconda](https://www.anaconda.com/products/individual-b) installer.
+  - You most likely want the most recent, 64 bit version for your system.
+  - Run the installer. All the default installation settings are most likely fine.
+  - Anaconda/miniconda includes python itself, and makes it *much* easier to
+  manage open source python packages.
+1. Open the terminal (UNIX) or the Anaconda Powershell Prompt (Windows 10) and type
+the following.  
 ```
+conda create -n <env name>
 conda activate <env name>
-```
-
-# Windows
-
-# ECBP Scraper
-Note that selenium chromedriver must be of same version as chrome for code to
-work.
-
-## Requirements
-chromedriver (https://chromedriver.chromium.org/downloads)
-chrome
-Note versions of chrome and chromedriver must match.
-
-
-# Installation Notes
-
-Install miniconda (https://docs.conda.io/en/latest/miniconda.html) or Anaconda (https://www.anaconda.com/products/individual-b).
-
-Open Anaconda/miniconda Windows powershell from the start menu.
-
-```
-conda create -n acf
-conda activate acf
 conda install jupyter
 conda install -c conda-forge jupyter_contrib_nbextensions
 jupyter contrib nbextension install --user
 conda install matplotlib, numpy, pandas, selenium, bs4, rapidfuzz
 ```
+This will download other necessary python packages, and put them into an
+"environment" called <env name> (replace <env name> with a simple name of your choice, like "acf".)
+1. Download the latest version of Chrome for your system.
+  - Open Chrome, go to settings, and disable the “ask permission for download” option.
+  - Go to settings, privacy and security, additional permissions, and disable “ask for permission...”
+  - Disable auto-updates of Chrome (if possible).
+1. Download [chromedriver](https://chromedriver.chromium.org/downloads). This is the Chrome
+Application Programming Interface (API) we will use (how we run Chrome "hands-free".)
+  - The base version numbers for Chrome and chromedriver need to match. For now,
+  just download the latest versions of each.
+  - Extract the ZIP file, and save the resulting file into `C:/bin` (Windows 10)
+  or `/usr/bin` (UNIX). On Windows, you may need to create the directory `C:/bin`
+  if it doesn't already exist.
+  - On Windows, go to advanced settings in control panel, and add `C:/bin`
+  to your `PATH` variable. You can also find this settings window by searching
+  "env" in start search bar. This tells Windows where to find chromedriver.
+  - On UNIX systems, `/usr/bin` should already be in the `PATH` variable.
+1. On Windows, download the [ghostscript](https://www.ghostscript.com/download/gsdnld.html) installer.
+This is what combines the PDF files. Note ghostscript is included by default
+on UNIX systems.    
+  - You most likely want the latest 64 bit version for your system.
+  - Run the ghostscript installer.
+  - On Windows, add the location of `gswin64c.exe` to the `PATH` environment variable as before. The
+  default installation location is `C:\Program Files\gs\gs9.54.0\bin`.
+1. Finally, download this repository as a ZIP file! (Advanced users should use GIT.)
+  - Extract the ZIP file. You should end up with a folder called `ACF_consulting`.
+  - If you have been provided with copies of the `files` directory, and `EPBC_notices.csv`
+  and `EPBC_database.csv` files, put them into the `ACF_consulting` folder. This
+  will save you having to download and process the database from scratch, which takes 20 hours
+  for the full database!  
 
-Create a folder called bin in C:
-Download chrome
-Open chrome, go to settings, and disable the “ask permission for download” option.
-Go to settings, privacy and security, additional permissions, disable “ask for permission etc”.
-Download chromedriver (https://chromedriver.chromium.org/downloads), extract,
-and save the resulting file to C:/bin. You can create the directory C:/bin if it doesn't already exist.
-Go to advanced settings in control panel, and add C:/bin to your path variable. Can also find this settings window by searching env in start seach bar.
-
-Download ghostscript 64 bit for windows (https://www.ghostscript.com/download/gsdnld.html).
-Install ghostscript.
-Add the location of gswin64c.exe to the `PATH` environment variable. Default installation location is `C:\Program Files\gs\gs9.54.0\bin`.
+# Operation
+1. Open the terminal (UNIX) or Anaconda Powershell Prompt (Windows 10).
+1. Activate your conda environment by typing
+```
+conda activate <env name>
+```
+1. To update the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files,
+type
+```
+python <base_directory>\scrape_EPBC_script.py <base_directory>
+```
+where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
+containing the python scripts, and current versions of the `files` directory,
+`EPBC_notices.csv` and `EPBC_database.csv` files.
+  - By default, this script will check the first 10 pages of the EPBC website for new
+  public notices.
+  - You can specify a different page to check up to by using the `-l` (long version `--last-page`)
+  flag. For example
+  ```
+  python <base_directory>\scrape_EPBC_script.py <base_directory> -l 100
+  ```
+  will check the first 100 pages for new notices. You can call
+  ```
+  python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
+  ```
+  download and process the entire database from scratch (~20 hours on a modern system.)

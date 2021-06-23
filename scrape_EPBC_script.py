@@ -1,4 +1,6 @@
 # Copyright Australian Conservation Foundation. All rights reserved.
+# Developed by Ewan Short 2021
+# eshort0401@gmail.com, https://github.com/eshort0401
 import argparse
 
 import scrape_EPBC
@@ -18,10 +20,27 @@ parser.add_argument(
     "-l", "--last-page", type=int, choices=range(1, 168),
     metavar="[1-167]", default=10, required=False,
     help='The page [1-167] of the EPBC website to stop scraping at')
+parser.add_argument(
+    "-u", "--update-pub-db", default=False, required=False,
+    help='Download the latest versions of the ASIC and ACNC registers.')
 
 args = parser.parse_args()
 headless = not args.show_chrome
 
+base_dir = args.base_dir
+if (base_dir[-1] not in ['/', '\\']):
+    base_dir += '/'
+
+print('Scraping to page {}.'.format(args.last_page))
+intervals = args.last_page // 5
+for i in range(intervals):
+    print('Scraping pages {} to {}.'.format(i*5, (i+1)*5-1))
+    scrape_EPBC.scrape_website(
+        base_dir, cd_path=args.chromedriver_path,
+        headless=headless, end_page=(i+1)*5-1)
+
 scrape_EPBC.scrape_website(
-    args.base_dir, cd_path=args.chromedriver_path,
+    base_dir, cd_path=args.chromedriver_path,
     headless=headless, end_page=args.last_page)
+
+process_table.process_table(args.base_dir, update_public_db=args.update_pub_db)

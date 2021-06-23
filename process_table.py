@@ -1,3 +1,7 @@
+# Copyright Australian Conservation Foundation. All rights reserved.
+# Developed by Ewan Short 2021
+# eshort0401@gmail.com, https://github.com/eshort0401
+
 from selenium import webdriver
 import time
 import os
@@ -22,10 +26,10 @@ def process_table(base_dir, update_public_db=False):
 def get_new_rows(base_dir):
     print('Determining new rows.')
     table = pd.read_csv(
-        base_dir + 'EPBC_notices_copy.csv', dtype=str).drop_duplicates()
+        base_dir + 'EPBC_notices.csv', dtype=str).drop_duplicates()
     try:
         f_table = pd.read_csv(
-            base_dir + 'revised_table_test.csv', dtype=str)
+            base_dir + 'EPBC_database.csv', dtype=str)
     except:
         f_table = table.iloc[0:0]
     table = table.reset_index(drop=True)
@@ -236,7 +240,7 @@ def add_comb_path(base_dir, table):
 def update_revised_table(base_dir, table):
     try:
         f_table = pd.read_csv(
-            base_dir + 'revised_table_test.csv', dtype=str)
+            base_dir + 'EPBC_database.csv', dtype=str)
     except:
         f_table = table.iloc[0:0]
     table['Date of notice'] = pd.to_datetime(
@@ -249,4 +253,4 @@ def update_revised_table(base_dir, table):
     f_table['Date of notice'] = f_table['Date of notice'].apply(
         lambda x: x.strftime('%d/%m/%Y'))
     f_table.to_csv(
-        base_dir + 'revised_table_test_test.csv', index=False)
+        base_dir + 'EPBC_database.csv', index=False)
