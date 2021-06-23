@@ -35,15 +35,15 @@ older versions of Windows.)
     1. Anaconda/miniconda includes python itself, and makes it *much* easier to
   manage open source python packages.
 1. Open the terminal (UNIX) or the Anaconda Powershell Prompt (Windows 10) and type
-the following.  
-```
-conda create -n <env name>
-conda activate <env name>
-conda install jupyter
-conda install -c conda-forge jupyter_contrib_nbextensions
-jupyter contrib nbextension install --user
-conda install matplotlib, numpy, pandas, selenium, bs4, rapidfuzz
-```
+the following.
+
+    conda create -n <env name>
+    conda activate <env name>
+    conda install jupyter
+    conda install -c conda-forge jupyter_contrib_nbextensions
+    jupyter contrib nbextension install --user
+    conda install matplotlib, numpy, pandas, selenium, bs4, rapidfuzz
+
 This will download other necessary python packages, and put them into an
 "environment" called <env name> (replace <env name> with a simple name of your choice, like "acf".)
 1. Download the latest version of Chrome for your system.
@@ -78,14 +78,14 @@ on UNIX systems.
 # Operation
 1. Open the terminal (UNIX) or Anaconda Powershell Prompt (Windows 10).
 1. Activate your conda environment by typing
-```
-conda activate <env name>
-```
+
+    conda activate <env name>
+
 1. To update the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files,
 type
-```
-python <base_directory>\scrape_EPBC_script.py <base_directory>
-```
+
+    python <base_directory>\scrape_EPBC_script.py <base_directory>
+
 where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
 containing the python scripts, and current versions of the `files` directory,
 `EPBC_notices.csv` and `EPBC_database.csv` files.
@@ -93,11 +93,11 @@ containing the python scripts, and current versions of the `files` directory,
     public notices.
     1. You can specify a different page to check up to by using the `-l` (long version `--last-page`)
     flag. For example
-    ```
-    python <base_directory>\scrape_EPBC_script.py <base_directory> -l 100
-    ```
+
+        python <base_directory>\scrape_EPBC_script.py <base_directory> -l 100
+
     will check the first 100 pages for new notices. You can call
-    ```
-    python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
-    ```
+
+        python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
+    
     download and process the entire database from scratch (~20 hours on a modern system.)
