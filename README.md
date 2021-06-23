@@ -80,18 +80,34 @@ on UNIX systems.
 # Operation
 1. Open the terminal (UNIX) or Anaconda Powershell Prompt (Windows 10).
 1. Activate your conda environment by typing
+
+        ```
         conda activate <env name>
+        ```
+
 1. To update the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files,
 type
+
+        ```
         python <base_directory>\scrape_EPBC_script.py <base_directory>
+        ```
+
 where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
 containing the python scripts, and current versions of the `files` directory,
 `EPBC_notices.csv` and `EPBC_database.csv` files.
     1. By default, this script will check the first 10 pages of the EPBC website for new
     public notices.
-    1. You can specify a different page to check up to by using the `-l` (long version `--last-page`)
-    flag. For example
+    1. You can specify a different page to check up to by using the `-l`
+    (long version `--last-page`) option. For example
+
+            ```
             python <base_directory>\scrape_EPBC_script.py <base_directory> -l 100
-    will check the first 100 pages for new notices. You can call
+            ```
+
+            will check the first 100 pages for new notices. You can call
+
+            ```
             python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
-    to download and process the entire database from scratch (~20 hours on a modern system.)
+            ```
+
+            to download and process the entire database from scratch (~20 hours on a modern system.)
