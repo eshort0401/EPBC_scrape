@@ -1,6 +1,6 @@
 Copyright Australian Conservation Foundation (ACF). All rights reserved.<br>
 Concept by Kim Garratt, Annica Schoor and the ACF.<br>
-Software developed by Ewan Short 2021 <br>
+Software developed by Ewan Short 2021. <br>
 <eshort0401@gmail.com>, <https://github.com/eshort0401> <br>
 
 # Introduction
@@ -36,16 +36,14 @@ older versions of Windows.)
   manage open source python packages.
 1. Open the terminal (UNIX) or the Anaconda Powershell Prompt (Windows 10) and type
 the following.
-        ```
-        conda create -n <env name>
-        conda activate <env name>
+        conda create -n env_name
+        conda activate env_name
         conda install jupyter
         conda install -c conda-forge jupyter_contrib_nbextensions
         jupyter contrib nbextension install --user
         conda install matplotlib, numpy, pandas, selenium, bs4, rapidfuzz
-        ```
 This will download other necessary python packages, and put them into an
-"environment" called <env name> (replace <env name> with a simple name of your choice, like "acf".)
+"environment" called env_name (replace env_name with a simple name of your choice, like "acf".)
 1. Download the latest version of Chrome for your system.
     1. Open Chrome, go to settings, and disable the “ask permission for download” option.
     1. Go to settings, privacy and security, additional permissions, and disable “ask for permission...”
@@ -78,14 +76,10 @@ on UNIX systems.
 # Operation
 1. Open the terminal (UNIX) or Anaconda Powershell Prompt (Windows 10).
 1. Activate your conda environment by typing
-        ```
         conda activate <env name>
-        ```
 1. To update the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files,
 type
-        ```
         python <base_directory>\scrape_EPBC_script.py <base_directory>
-        ```
 where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
 containing the python scripts, and current versions of the `files` directory,
 `EPBC_notices.csv` and `EPBC_database.csv` files.
@@ -93,11 +87,7 @@ containing the python scripts, and current versions of the `files` directory,
     public notices.
     1. You can specify a different page to check up to by using the `-l` (long version `--last-page`)
     flag. For example
-            ```
             python <base_directory>\scrape_EPBC_script.py <base_directory> -l 100
-            ```
     will check the first 100 pages for new notices. You can call
-        ```
-        python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
-        ```
-    download and process the entire database from scratch (~20 hours on a modern system.)
+            python <base_directory>\scrape_EPBC_script.py <base_directory> -l 167
+    to download and process the entire database from scratch (~20 hours on a modern system.)

@@ -3,8 +3,7 @@ __pycache__
 files
 tmp
 proposal
-ASIC_register.csv
-ACNC_register.csv
+*.csv
 *.pdf
 *.xlsx
 *.gz
