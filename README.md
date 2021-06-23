@@ -29,9 +29,9 @@ older versions of Windows.)
 
 ## Setup
 1. Click the green "Code" button above, then "Download ZIP". (Advanced users should use GIT.)
-    1. Extract the ZIP file. You should end up with a folder called `ACF_consulting`.
-    On windows, the recommended location for this directory is `C:\Users\<username>\Documents\ACF_consulting`, replacing `<username>` with your own Windows user name.
-    1. If you have been provided with copies of the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files, put them into the `ACF_consulting` folder. This will save you having to download and process the database from scratch, which takes ~20 hours for the full database!  
+    1. Extract the ZIP file. You should end up with a folder called `EPBC_scrape`.
+    On windows, the recommended location for this directory is `C:\Users\<username>\Documents\EPBC_scrape`, replacing `<username>` with your own Windows user name.
+    1. If you have been provided with copies of the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files, put them into the `EPBC_scrape` folder. This will save you having to download and process the database from scratch, which takes ~20 hours for the full database!  
 1. Download the [miniconda](https://docs.conda.io/en/latest/miniconda.html) or
 [Anaconda](https://www.anaconda.com/products/individual-b) installer.
     1. You most likely want the most recent, 64 bit version for your system.
@@ -39,7 +39,7 @@ older versions of Windows.)
     1. Anaconda/miniconda includes python itself, and makes it *much* easier to
   manage open source python packages.
 1. Open the terminal (UNIX) or the Anaconda Powershell Prompt (Windows 10) and navigate
-to the `ACF_consulting` directory by typing `cd <base_dir>`, where `<base_dir>` is the full path to the `ACF_consulting` folder. Then type
+to the `EPBC_scrape` directory by typing `cd <base_dir>`, where `<base_dir>` is the full path to the `EPBC_scrape` folder. Then type
 
     ```
     conda env create -f epbc.yml
@@ -88,11 +88,10 @@ type
     python <base_dir>\scrape_EPBC_script.py <base_dir> -e
     ```
 
-    where `<base_dir>` is the full path to the `ACF_consulting` directory, i.e. the directory containing the python scripts, and current versions of the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files (e.g.
-    `C:\Users\kgarr\Documents\ACF_consulting`.)
+    where `<base_dir>` is the full path to the `EPBC_scrape` directory, i.e. the directory containing the python scripts, and current versions of the `files` directory, `EPBC_notices.csv` and `EPBC_database.csv` files (e.g.
+    `C:\Users\kgarr\Documents\EPBC_scrape`.)
     1. This script will also create `EPBC_database_links.csv`, which includes additional columns containing the full
-    paths to each combined PDF file, and a column of Excel hyperlinks which can be clicked on in Excel to open the files. The Excel hyperlink column can be ommited
-    by dropping the `-e` option from the above.
+    paths to each combined PDF file, and a column of Excel hyperlinks which can be clicked on in Excel to open the files. The Excel hyperlink column can be omitted by dropping the `-e` option from the above.
     1. By default, this script will check the first 10 pages of the EPBC website for new
     public notices. You can specify a different final page by using the `-l`
     (long version `--last-page`) option. For example

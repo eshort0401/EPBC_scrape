@@ -21,10 +21,10 @@ def scrape_website(base_dir, cd_path=None, headless=True, end_page=50):
     if not base_dir:
         if os.name == 'nt':
             base_dir = 'C:/Users/{}'.format(os.getlogin())
-            base_dir += '/Documents/ACF_consulting/'
+            base_dir += '/Documents/EPBC_scrape/'
         else:
             base_dir = '/home/student.unimelb.edu.au/shorte1/Documents/'
-            base_dir += 'ACF_consulting/'
+            base_dir += 'EPBC_scrape/'
     if not cd_path:
         if os.name == 'nt':
             cd_path = 'C:/bin/chromedriver'
