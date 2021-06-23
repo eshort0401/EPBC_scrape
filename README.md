@@ -47,7 +47,8 @@ the following.
     ```
 
     This will download other necessary python packages, and put them into an
-    "environment" called `<env_name>` (replace `<env_name>` with a simple name of your choice, like `acf`.)
+    conda environment called `<env_name>` (replace `<env_name>` with a simple name of your choice, like `acf`.) Environments essentially make it possible to run
+    different versions of python with different combinations of packages, on the same system.
 1. Download the latest version of Chrome for your system.
     1. Open Chrome, go to settings, and disable the “ask permission for download” option.
     1. Go to settings, privacy and security, additional permissions, and disable “ask for permission...”
