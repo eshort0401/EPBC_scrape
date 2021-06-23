@@ -92,9 +92,9 @@ type
         python <base_directory>\scrape_EPBC_script.py <base_directory>
         ```
 
-where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
-containing the python scripts, and current versions of the `files` directory,
-`EPBC_notices.csv` and `EPBC_database.csv` files.
+    where `<base_dir>` is the path to the `ACF_consulting` directory, i.e. the directory
+    containing the python scripts, and current versions of the `files` directory,
+    `EPBC_notices.csv` and `EPBC_database.csv` files.
     1. By default, this script will check the first 10 pages of the EPBC website for new
     public notices.
     1. You can specify a different page to check up to by using the `-l`
