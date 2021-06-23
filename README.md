@@ -15,16 +15,15 @@ Folder names are chosen by referral number, date, referral holder
 and referral type.
 1. Combine the PDFs associated with each referral into a single PDF.
 1. Reformat the data in `EPBC_notices.csv`, and lookup relevant data from the
-PDF files to create a comprehensive database `EPBC_database.csv`. Currently supports
-the following.
-  - Reformat the "Title of referral" field.
-  - Look up data on each referral holder from the ASIC company register.
+PDF files to create a comprehensive database `EPBC_database.csv`.
+    - Reformat the "Title of referral" field.
+    - Look up data on each referral holder from the ASIC company register, such as ABN.
 
 # Installation
 
 ## Supported Systems
-- Unix based systems (i.e. Linux and Mac).
-- Windows 10. (Currently, operating system calls on Windows use powershell,
+- Unix systems (i.e. Linux and Mac).
+- Windows 10. (Currently, operating system calls on Windows use the Windows Powershell,
 which only ships by default with Windows 10. Future versions will support
 older versions of Windows.)
 
