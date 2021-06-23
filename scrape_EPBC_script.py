@@ -2,6 +2,7 @@
 # Developed by Ewan Short 2021
 # eshort0401@gmail.com, https://github.com/eshort0401
 import argparse
+import os
 
 import scrape_EPBC
 import process_table
@@ -22,7 +23,11 @@ parser.add_argument(
     help='The page [1-167] of the EPBC website to stop scraping at')
 parser.add_argument(
     "-u", "--update-pub-db", default=False, required=False,
+    action='store_true',
     help='Download the latest versions of the ASIC and ACNC registers.')
+parser.add_argument(
+    "-e", "--excel-link", required=False, action='store_true',
+    help='add a column of excel hyperlinks to each combined PDF')
 
 args = parser.parse_args()
 headless = not args.show_chrome
@@ -31,16 +36,21 @@ base_dir = args.base_dir
 if (base_dir[-1] not in ['/', '\\']):
     base_dir += '/'
 
-print('Scraping to page {}.'.format(args.last_page))
-intervals = args.last_page // 5
-for i in range(intervals):
-    print('Scraping pages {} to {}.'.format(i*5, (i+1)*5-1))
-    scrape_EPBC.scrape_website(
-        base_dir, cd_path=args.chromedriver_path,
-        headless=headless, end_page=(i+1)*5-1)
+cd_path = args.chromedriver_path
+if cd_path is None:
+    if os.name == 'nt':
+        cd_path = 'C:/bin/chromedriver'
+    else:
+        cd_path = '/usr/bin/chromedriver'
 
+if args.update_pub_db:
+    print('Updating public company databases.')
+    process_table.get_company_databases(base_dir, cd_path=cd_path)
+
+print('Scraping to page {}.'.format(args.last_page))
 scrape_EPBC.scrape_website(
     base_dir, cd_path=args.chromedriver_path,
     headless=headless, end_page=args.last_page)
 
-process_table.process_table(args.base_dir, update_public_db=args.update_pub_db)
+process_table.process_table(base_dir, update_public_db=args.update_pub_db)
+process_table.add_comb_paths(base_dir, excel_links=args.excel_link)
