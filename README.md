@@ -16,8 +16,8 @@ and referral type.
 1. Combine the PDFs associated with each referral into a single PDF.
 1. Reformat the data in `EPBC_notices.csv`, and lookup relevant data from the
 PDF files to create a comprehensive database `EPBC_database.csv`.
-    - Reformat the "Title of referral" field.
-    - Look up data on each referral holder from the ASIC company register, such as ABN.
+    1. Reformat the "Title of referral" field.
+    1. Look up data on each referral holder from the ASIC company register, such as ABN.
 
 # Installation
 
