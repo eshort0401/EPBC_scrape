@@ -38,8 +38,8 @@ older versions of Windows.)
 the following.
 
     ```
-    conda create -n env_name
-    conda activate env_name
+    conda create -n <env_name>
+    conda activate <env_name>
     conda install jupyter
     conda install -c conda-forge jupyter_contrib_nbextensions
     jupyter contrib nbextension install --user
@@ -47,7 +47,7 @@ the following.
     ```
 
     This will download other necessary python packages, and put them into an
-    "environment" called env_name (replace env_name with a simple name of your choice, like "acf".)
+    "environment" called `<env_name>` (replace `<env_name>` with a simple name of your choice, like `acf`.)
 1. Download the latest version of Chrome for your system.
     1. Open Chrome, go to settings, and disable the “ask permission for download” option.
     1. Go to settings, privacy and security, additional permissions, and disable “ask for permission...”
