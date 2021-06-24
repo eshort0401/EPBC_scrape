@@ -347,9 +347,12 @@ def scrape_page(
                 shell_cmd += '-sOutputFile=' + folder_path + '/' + folder_name
                 shell_cmd += '_combined.pdf '
                 shell_cmd += '@{}/filename.lst'.format(folder_path)
-                combined_code = subprocess.run(
-                    shell_cmd.replace('/', '\\'), shell=True,
-                    timeout=600).returncode
+                try:
+                    combined_code = subprocess.run(
+                        shell_cmd.replace('/', '\\'), shell=True,
+                        timeout=600).returncode
+                except:
+                    combined_code = 1
                 if combined_code == 0:
                     table.at[i, 'PDFs Combined'] = 'Yes'
                 else:
