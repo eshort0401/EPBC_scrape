@@ -205,14 +205,17 @@ def scrape_iframe_page(
                             files_dir + '/num_files.txt',
                             encoding='utf16'))
                 else:
-                    shell_cmd = r'''find ''' + files_dir + '/*.PDF '
-                    shell_cmd += r'-maxdepth 1 -exec sh -c '
-                    shell_cmd += r'''mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
-                    subprocess.run(shell_cmd, shell=True)
+                    shell_cmd = 'find ' + files_dir + '/*.PDF '
+                    shell_cmd += '''-maxdepth 1 -exec sh -c 'mv "$1" "${1%.PDF}.pdf"' _ {} \;'''
+                    subprocess.run(
+                        shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL)
                     shell_cmd = 'find ' + files_dir + '/*.pdf '
                     shell_cmd += '-type f -print | wc -l > '
                     shell_cmd += files_dir + '/num_files.txt'
-                    subprocess.run(shell_cmd, shell=True)
+                    subprocess.run(
+                        shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL)
                     file_count = int(np.loadtxt(
                         files_dir + '/num_files.txt'))
 
@@ -339,7 +342,9 @@ def scrape_page(
                 shell_cmd = 'for %s in ({}/*.pdf) '.format(folder_path)
                 shell_cmd += 'do ECHO "%s" '
                 shell_cmd += '>> {}/filename.lst'.format(folder_path)
-                subprocess.run(shell_cmd.replace('/', '\\'), shell=True)
+                subprocess.run(
+                    shell_cmd.replace('/', '\\'), shell=True,
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
                 print('Creating combined PDF file.')
                 print('This may take a few minutes.')
@@ -360,35 +365,40 @@ def scrape_page(
 
             else:
                 shell_cmd = 'mv ' + files_dir + '/*.pdf ' + folder_path
-                subprocess.run(shell_cmd, shell=True)
+                subprocess.run(
+                    shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL)
 
                 # Record the filenames
                 shell_cmd = 'find ' + folder_path
                 shell_cmd += '/*.pdf -maxdepth 1 -type f '
                 shell_cmd += '-printf "%f\n" > '
                 shell_cmd += folder_path + '/file_names.txt'
-                subprocess.run(shell_cmd, shell=True)
+                subprocess.run(
+                    shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL)
                 with open(folder_path + '/file_names.txt') as f:
                     lines = f.readlines()
                 file_names.append(', '.join(lines).replace('\n', ''))
                 subprocess.run(
-                    'rm ' + folder_path + '/file_names.txt', shell=True)
+                    'rm ' + folder_path + '/file_names.txt', shell=True,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL)
 
                 print('Creating combined PDF file.')
                 print('This may take a few minutes.')
-                shell_cmd = 'pdfunite ' + folder_path + '/*.pdf ' + folder_path
-                shell_cmd += '/' + folder_name + '_combined.pdf'
-                combined_code = subprocess.run(
-                    shell_cmd, shell=True).returncode
-                if combined_code == 0:
-                    table.at[i, 'PDFs Combined'] = 'Yes'
-                else:
-                    shell_cmd = 'gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
-                    shell_cmd += '-sOutputFile=' + folder_path
-                    shell_cmd += '/' + folder_name
-                    shell_cmd += '_combined.pdf ' + folder_path + '/*.pdf'
+
+                shell_cmd = 'gs -dBATCH -dNOPAUSE -q -sDEVICE=pdfwrite '
+                shell_cmd += '-sOutputFile=' + folder_path
+                shell_cmd += '/' + folder_name
+                shell_cmd += '_combined.pdf ' + folder_path + '/*.pdf'
+
+                try:
                     combined_code = subprocess.run(
-                        shell_cmd, shell=True).returncode
+                        shell_cmd, shell=True, timeout=600).returncode
+                except:
+                    combined_code = 1
+
                 if combined_code == 0:
                     table.at[i, 'PDFs Combined'] = 'Yes'
                 else:

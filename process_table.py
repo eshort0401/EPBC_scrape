@@ -10,6 +10,7 @@ import pandas as pd
 import re
 import numpy as np
 from rapidfuzz import fuzz, process, utils
+import subprocess
 
 from shell_tools import run_powershell_cmd, run_common_cmd
 
@@ -74,6 +75,7 @@ def format_title(base_dir, table):
 
 def get_company_databases(base_dir, cd_path=None):
 
+    print('Downloading public company registers. Please wait.')
     run_common_cmd('rm {}ASIC_register.csv'.format(base_dir), base_dir)
     run_common_cmd('rm {}ACNC_register.xlsx'.format(base_dir), base_dir)
 
@@ -124,6 +126,13 @@ def get_company_databases(base_dir, cd_path=None):
         csv_path = glob.glob(base_dir + 'COMPANY_*.csv')[0]
         shell_cmd = 'ren ' + csv_path + ' ASIC_register.csv'
         run_powershell_cmd(shell_cmd, base_dir)
+    else:
+        subprocess.run(
+            'unzip {}company_*.zip'.format(base_dir), shell=True,
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        subprocess.run(
+            'mv {}COMPANY_*.csv {}ASIC_register.csv'.format(base_dir, base_dir),
+            shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     run_common_cmd('rm {}company_*.zip'.format(base_dir), base_dir)
 
@@ -138,6 +147,11 @@ def get_company_databases(base_dir, cd_path=None):
         shell_cmd = 'ren {}'.format(base_dir)
         shell_cmd += 'datadotgov_main.xlsx ACNC_register.xlsx'
         run_powershell_cmd(shell_cmd, base_dir)
+    else:
+        shell_cmd = 'mv {}datadotgov_main.xlsx {}ACNC_register.xlsx'
+        subprocess.run(
+            shell_cmd.format(base_dir, base_dir), shell=True,
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
     driver.quit()
 

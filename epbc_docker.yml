@@ -3,43 +3,55 @@ channels:
   - conda-forge
   - defaults
 dependencies:
+  - _libgcc_mutex=0.1=conda_forge
+  - _openmp_mutex=4.5=1_gnu
   - beautifulsoup4=4.9.3=pyhb0f4dca_0
-  - brotlipy=0.7.0=py39hb82d6ee_1001
+  - brotlipy=0.7.0=py39h3811e60_1001
   - bs4=4.9.3=0
-  - ca-certificates=2021.5.30=h5b45459_0
-  - certifi=2021.5.30=py39hcbf5309_0
-  - cffi=1.14.5=py39h0878f49_0
-  - cryptography=3.4.7=py39hd8d06c1_0
+  - ca-certificates=2021.5.30=ha878542_0
+  - certifi=2021.5.30=py39hf3d152e_0
+  - cffi=1.14.5=py39he32792d_0
+  - cryptography=3.4.7=py39hbca0aa6_0
+  - icu=68.1=h58526e2_0
   - idna=3.1=pyhd3deb0d_0
-  - intel-openmp=2021.2.0=h57928b3_616
-  - libblas=3.9.0=9_mkl
-  - libcblas=3.9.0=9_mkl
-  - liblapack=3.9.0=9_mkl
-  - mkl=2021.2.0=hb70f87d_389
-  - numpy=1.21.0=py39h6635163_0
-  - openssl=1.1.1k=h8ffe710_0
-  - pandas=1.2.5=py39h2e25243_0
+  - ld_impl_linux-64=2.35.1=hea4e1c9_2
+  - libblas=3.9.0=9_openblas
+  - libcblas=3.9.0=9_openblas
+  - libffi=3.3=h58526e2_2
+  - libgcc-ng=9.3.0=h2828fa1_19
+  - libgfortran-ng=9.3.0=hff62375_19
+  - libgfortran5=9.3.0=hff62375_19
+  - libgomp=9.3.0=h2828fa1_19
+  - libiconv=1.16=h516909a_0
+  - liblapack=3.9.0=9_openblas
+  - libopenblas=0.3.15=pthreads_h8fe5266_1
+  - libstdcxx-ng=9.3.0=h6de172a_19
+  - libxml2=2.9.12=h72842e0_0
+  - libxslt=1.1.33=h15afd5d_2
+  - lxml=4.6.3=py39h107f48f_0
+  - ncurses=6.2=h58526e2_4
+  - numpy=1.21.0=py39hdbf815f_0
+  - openssl=1.1.1k=h7f98852_0
+  - pandas=1.2.5=py39hde0f152_0
   - pip=21.1.2=pyhd8ed1ab_0
   - pycparser=2.20=pyh9f0ad1d_2
   - pyopenssl=20.0.1=pyhd8ed1ab_0
-  - pysocks=1.7.1=py39hcbf5309_3
-  - python=3.9.5=h7840368_0_cpython
+  - pysocks=1.7.1=py39hf3d152e_3
+  - python=3.9.5=h49503c6_0_cpython
   - python-dateutil=2.8.1=py_0
   - python_abi=3.9=2_cp39
   - pytz=2021.1=pyhd8ed1ab_0
-  - rapidfuzz=1.4.1=py39h690af90_0
-  - selenium=3.141.0=py39hb82d6ee_1002
-  - setuptools=49.6.0=py39hcbf5309_3
+  - rapidfuzz=1.4.1=py39he80948d_0
+  - readline=8.1=h46c0cb4_0
+  - selenium=3.141.0=py39h3811e60_1002
+  - setuptools=49.6.0=py39hf3d152e_3
   - six=1.16.0=pyh6c4a22f_0
   - soupsieve=2.0.1=py_1
-  - sqlite=3.36.0=h8ffe710_0
-  - tbb=2021.2.0=h2d74725_0
+  - sqlite=3.36.0=h9cd32fc_0
+  - tk=8.6.10=h21135ba_1
   - tzdata=2021a=he74cb21_0
-  - ucrt=10.0.20348.0=h57928b3_0
   - urllib3=1.26.5=pyhd8ed1ab_0
-  - vc=14.2=hb210afc_5
-  - vs2015_runtime=14.29.30037=h902a5da_5
   - wheel=0.36.2=pyhd3deb0d_0
-  - win_inet_pton=1.1.0=py39hcbf5309_2
-  - wincertstore=0.2=py39hcbf5309_1006
-prefix: C:\Users\eshor\miniconda3\envs\epbc_docker
+  - xz=5.2.5=h516909a_1
+  - zlib=1.2.11=h516909a_1010
+prefix: /home/student.unimelb.edu.au/shorte1/anaconda3/envs/epbc_docker

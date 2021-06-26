@@ -1,0 +1,11 @@
+files
+.git
+__pycache__
+ACNC_register.xlsx
+ASIC_register.csv
+EPBC_notices.csv
+EPBC_database.csv
+EPBC_database_links.csv
+git_script
+git_script.ps1
+*.ipynb

@@ -22,7 +22,7 @@ parser.add_argument(
     metavar="[1-167]", default=10, required=False,
     help='The page [1-167] of the EPBC website to stop scraping at')
 parser.add_argument(
-    "-u", "--update-pub-db", default=False, required=False,
+    "-u", "--update-pub-db", default=True, required=False,
     action='store_true',
     help='Download the latest versions of the ASIC and ACNC registers.')
 parser.add_argument(
@@ -42,10 +42,6 @@ if cd_path is None:
         cd_path = 'C:/bin/chromedriver'
     else:
         cd_path = '/usr/bin/chromedriver'
-
-if args.update_pub_db:
-    print('Updating public company databases.')
-    process_table.get_company_databases(base_dir, cd_path=cd_path)
 
 print('Scraping to page {}.'.format(args.last_page))
 scrape_EPBC.scrape_website(
