@@ -23,6 +23,13 @@ RUN unzip /tmp/chromedriver_linux64.zip -d /usr/bin
 # Install Ghostscript
 RUN apt-get install -y ghostscript-x
 
+# Setup user for container
+# ARG USER_ID
+# ARG GROUP_ID
+# RUN addgroup --gid $GROUP_ID user
+# RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
+# USER user
+
 # Code to run when container initialised
 COPY entrypoint.sh /EPBC_scrape/entrypoint.sh
 ENTRYPOINT ["/EPBC_scrape/entrypoint.sh"]

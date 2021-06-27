@@ -89,34 +89,38 @@ def get_company_databases(base_dir, cd_path=None):
     url += '7b8656f9-606d-4337-af29-66b89b2eeefb/resource/'
     url += 'cb7e4eb5-ed46-4c6c-97a0-4532f4479b7d/download/company_202106.zip'
 
-    options = webdriver.ChromeOptions()
-
-    options.add_argument('--headless')
-    options.add_argument('--disable-gpu')
-    options.add_argument('--no-sandbox')
-    options.add_argument('--ignore-certificate-errors')
-    options.add_argument('--incognito')
-    options.add_argument("--start-maximized")
-
     if os.name == 'nt':
+
+        options = webdriver.ChromeOptions()
+
+        options.add_argument('--headless')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--no-sandbox')
+        options.add_argument('--ignore-certificate-errors')
+        options.add_argument('--incognito')
+        options.add_argument("--start-maximized")
+
         base_dir_sys = base_dir.replace('/', '\\')
+
+        options.add_experimental_option(
+            "prefs", {
+                "plugins.plugins_list": [{"enabled": False,
+                                          "name": "Chrome PDF Viewer"}],
+                "download.default_directory": base_dir_sys,
+                "download.prompt_for_download": False,
+                "download.directory_upgrade": True,
+                "safebrowsing.enabled": True,
+                "plugins.always_open_pdf_externally": True,
+                "profile.default_content_setting_values.automatic_downloads": 1})
+
+        driver = webdriver.Chrome(cd_path, options=options)
+        driver.get(url)
+        time.sleep(15)
     else:
-        base_dir_sys = base_dir
-
-    options.add_experimental_option(
-        "prefs", {
-            "plugins.plugins_list": [{"enabled": False,
-                                      "name": "Chrome PDF Viewer"}],
-            "download.default_directory": base_dir_sys,
-            "download.prompt_for_download": False,
-            "download.directory_upgrade": True,
-            "safebrowsing.enabled": True,
-            "plugins.always_open_pdf_externally": True,
-            "profile.default_content_setting_values.automatic_downloads": 1})
-
-    driver = webdriver.Chrome(cd_path, options=options)
-    driver.get(url)
-    time.sleep(15)
+        shell_cmd = 'wget -P {} {}'.format(base_dir, url)
+        subprocess.run(
+            shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL)
 
     if os.name == 'nt':
         shell_cmd = 'expand-archive {}company_*.zip {}'.format(
@@ -128,8 +132,8 @@ def get_company_databases(base_dir, cd_path=None):
         run_powershell_cmd(shell_cmd, base_dir)
     else:
         subprocess.run(
-            'unzip {}company_*.zip'.format(base_dir), shell=True,
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            'unzip {}company_*.zip -d {}'.format(base_dir, base_dir),
+            shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         subprocess.run(
             'mv {}COMPANY_*.csv {}ASIC_register.csv'.format(base_dir, base_dir),
             shell=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
@@ -140,25 +144,31 @@ def get_company_databases(base_dir, cd_path=None):
     url += 'b050b242-4487-4306-abf5-07ca073e5594/resource/'
     url += 'eb1e6be4-5b13-4feb-b28e-388bf7c26f93/download/datadotgov_main.xlsx'
 
-    driver.get(url)
-    time.sleep(5)
+    if os.name == 'nt':
+        driver.get(url)
+        time.sleep(5)
+    else:
+        shell_cmd = 'wget -P {} {}'.format(base_dir, url)
+        subprocess.run(
+            shell_cmd, shell=True, stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL)
 
     if os.name == 'nt':
         shell_cmd = 'ren {}'.format(base_dir)
         shell_cmd += 'datadotgov_main.xlsx ACNC_register.xlsx'
         run_powershell_cmd(shell_cmd, base_dir)
+        driver.quit()
     else:
         shell_cmd = 'mv {}datadotgov_main.xlsx {}ACNC_register.xlsx'
         subprocess.run(
             shell_cmd.format(base_dir, base_dir), shell=True,
             stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
-    driver.quit()
 
 
 def lookup_ASIC_data(base_dir, table):
     ASIC_register = pd.read_csv(
-        base_dir + '/ASIC_register.csv', sep='\t',
+        base_dir + 'ASIC_register.csv', sep='\t',
         encoding="ISO-8859-1", dtype=str)
 
     ASIC_register['Company Name'] = ASIC_register['Company Name'].apply(
