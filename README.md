@@ -38,11 +38,11 @@ for your system.
 repository directory  by typing
 
     ```
-    cd <parent_dir>/EPBC_scrape`
+    cd <parent_dir>/EPBC_scrape
     ```
 
-    4. Type the following command into the terminal/Powershell to build the Docker
-    image.
+4. Type the following command into the terminal/Powershell to build the Docker
+image.
 
     ```
     docker build -t epbc:1.0 --build-arg USER_ID=<user_id> --build-arg GROUP_ID=<group_id> .
