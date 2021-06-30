@@ -31,21 +31,28 @@ older versions of Windows.)
 `EPBC_scrape` may be run through [Docker](https://www.docker.com/), a convenient
 tool for isolating the configuration needed to run the software from the rest of your
 system.
-1. Download and install [Docker Desktop]((https://www.docker.com/products/docker-desktop)
+1. Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop)
 for your system.
 2. Download or clone the EPBC_scrape repository.
 3. Open the terminal (UNIX) or Powershell (Windows) and navigate to the
-repositories directory  by typing `cd <parent_dir>/EPBC_scrape`.
-4. Type the following command into the terminal/Powershell to build the Docker
-image,
+repository directory  by typing
+
+    ```
+    cd <parent_dir>/EPBC_scrape`
+    ```
+
+    4. Type the following command into the terminal/Powershell to build the Docker
+    image.
 
     ```
     docker build -t epbc:1.0 --build-arg USER_ID=<user_id> --build-arg GROUP_ID=<group_id> .
     ```
 
-    replacing `<user_id>` and `<group_id>` with the required user and group
-    ID numbers. If building on a UNIX machine, these can be replaced with   
-    `$(id -u)` and `$(id -g)` for the active user's ID numbers. On Windows
+    The full stop at the end of the command is essential. Replace `<user_id>`
+    and `<group_id>` with your required user and group ID numbers.
+    For instance, if building on a UNIX machine, use   
+    `$(id -u)` and `$(id -g)` for the active user's user and group ID numbers respectively.
+    On Windows
 
 ## Native Setup
 1. Click the green "Code" button above, then "Download ZIP". (Advanced users should use GIT.)
