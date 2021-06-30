@@ -27,7 +27,27 @@ PDF files to create a comprehensive database `EPBC_database.csv`.
 which only ships by default with Windows 10. Future versions will support
 older versions of Windows.)
 
-## Setup
+## Docker Setup
+`EPBC_scrape` may be run through [Docker](https://www.docker.com/), a convenient
+tool for isolating the configuration needed to run the software from the rest of your
+system.
+1. Download and install [Docker Desktop]((https://www.docker.com/products/docker-desktop)
+for your system.
+2. Download or clone the EPBC_scrape repository.
+3. Open the terminal (UNIX) or Powershell (Windows) and navigate to the
+repositories directory  by typing `cd <parent_dir>/EPBC_scrape`.
+4. Type the following command into the terminal/Powershell to build the Docker
+image,
+
+    ```
+    docker build -t epbc:1.0 --build-arg USER_ID=<user_id> --build-arg GROUP_ID=<group_id> .
+    ```
+
+    replacing `<user_id>` and `<group_id>` with the required user and group
+    ID numbers. If building on a UNIX machine, these can be replaced with   
+    `$(id -u)` and `$(id -g)` for the active user's ID numbers. On Windows
+
+## Native Setup
 1. Click the green "Code" button above, then "Download ZIP". (Advanced users should use GIT.)
     1. Extract the ZIP file. You should end up with a folder called `EPBC_scrape`.
     On windows, the recommended location for this directory is

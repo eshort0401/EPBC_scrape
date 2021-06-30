@@ -1,9 +1,12 @@
 # Specify base image
 FROM continuumio/miniconda3
 
+# Specify image location of volume to store PDF and CSV files
+VOLUME ["/EPBC_files"]
+
 # Setup conda
-COPY ./epbc_docker.yml /EPBC_scrape/epbc_docker.yml
-RUN conda env create -f /EPBC_scrape/epbc_docker.yml
+COPY . /EPBC_src/
+RUN conda env create -f /EPBC_src/epbc_docker.yml
 RUN echo "conda activate epbc_docker" >> ~/.bashrc
 SHELL ["/bin/bash", "--login", "-c"]
 
@@ -24,12 +27,11 @@ RUN unzip /tmp/chromedriver_linux64.zip -d /usr/bin
 RUN apt-get install -y ghostscript-x
 
 # Setup user for container
-# ARG USER_ID
-# ARG GROUP_ID
-# RUN addgroup --gid $GROUP_ID user
-# RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID user
-# USER user
+ARG USER_ID
+ARG GROUP_ID
+RUN groupadd -r -g $GROUP_ID EPBC_scrape
+RUN useradd --no-log-init -r -g EPBC_scrape -u $GROUP_ID EPBC_scrape
+USER EPBC_scrape
 
 # Code to run when container initialised
-COPY entrypoint.sh /EPBC_scrape/entrypoint.sh
-ENTRYPOINT ["/EPBC_scrape/entrypoint.sh"]
+ENTRYPOINT ["/EPBC_src/entrypoint.sh"]

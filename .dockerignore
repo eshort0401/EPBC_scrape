@@ -1,4 +1,5 @@
 files
+Dockerfile
 .git
 __pycache__
 ACNC_register.xlsx
