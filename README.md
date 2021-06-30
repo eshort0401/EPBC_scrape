@@ -19,6 +19,16 @@ PDF files to create a comprehensive database `EPBC_database.csv`.
     1. Reformat the "Title of referral" field.
     1. Look up data on each referral holder from the ASIC company register, such as ABN.
 
+## Known Issues
+1. When downloading the entire database at once, or scraping many pages at once,
+the `scrape_EPBC_script.py` may occasionally hang as it attempts to download
+files. When this happens, the script should automatically skip the frozen download, but occasionally
+it will continue to hang. I suspect this may be because the EPBC website itself
+has been updated while the script is running, and this is confusing chromedriver.
+This can be fixed by simply stopping the script (e.g. `ctl + c`) and restarting.
+It should also be easy to simply hard code a restart of the script when it hangs,
+but haven't had time to do this yet!
+
 # Docker Setup
 `EPBC_scrape` may be run through [Docker](https://www.docker.com/). Docker is a convenient
 tool for isolating the configuration needed to run a piece of software from the rest of your
