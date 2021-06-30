@@ -19,41 +19,67 @@ PDF files to create a comprehensive database `EPBC_database.csv`.
     1. Reformat the "Title of referral" field.
     1. Look up data on each referral holder from the ASIC company register, such as ABN.
 
-# Installation
+# Docker Setup
+`EPBC_scrape` may be run through [Docker](https://www.docker.com/). Docker is a convenient
+tool for isolating the configuration needed to run a piece of software from the rest of your
+system. Note that the running the `EPBC_scrape` code through Docker is currently only supported for
+UNIX systems, as the Docker containers are themselves UNIX based. (In principle it
+is possible to also run these containers from Docker on Windows using WSL2,
+but this is not yet working.)
 
-## Supported Systems
-- Unix systems (i.e. Linux and Mac).
-- Windows 10. (Currently, operating system calls on Windows use the Windows Powershell,
-which only ships by default with Windows 10. Future versions will support
-older versions of Windows.)
+If not using Docker, skip to the Normal Setup section below.
 
-## Docker Setup
-`EPBC_scrape` may be run through [Docker](https://www.docker.com/), a convenient
-tool for isolating the configuration needed to run the software from the rest of your
-system.
-1. Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop)
-for your system.
-2. Download or clone the EPBC_scrape repository.
-3. Open the terminal (UNIX) or Powershell (Windows) and navigate to the
-repository directory  by typing
+## Installation
+1. Download and install [Docker Desktop](https://www.docker.com/products/docker-desktop).
+2. Download or clone the `EPBC_scrape` repository.
+3. Open the terminal and navigate to the repository directory  by typing
 
     ```
     cd <parent_dir>/EPBC_scrape
     ```
 
-4. Type the following command into the terminal/Powershell to build the Docker
+    where `<parent_dir>` is the full path to the directory containing the
+    `EPBC_scrape` folder.
+4. Type the following command into the terminal to build the Docker
 image.
 
     ```
-    docker build -t epbc:1.0 --build-arg USER_ID=<user_id> --build-arg GROUP_ID=<group_id> .
+    docker build -t epbc:1.0 --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .
     ```
 
-    Replace `<user_id>` and `<group_id>` with your required user and group ID numbers.
-    For instance, if building on a UNIX machine, use   
-    `$(id -u)` and `$(id -g)` for the active user's user and group ID numbers respectively.
-    On Windows
+5. Perform a test run of the software by calling
 
-## Native Setup
+    ```
+    docker run -it --rm --mount "type=bind,src=<files_dir>,dst=/EPBC_files" epbc:1.0
+    ```
+
+    replacing `<files_dir>` with the full path to the location you wish to download
+    the EPBC Website data to. This should download the first page of the EPBC website to the directory
+    specified by `<>`.
+
+## Operation
+1. Ensure you have completed the installation steps above.
+1. In the `<files_dir>` you specified during the test run above, you should see
+a file named `page_number.txt`. If you open this file it should contain just the number
+"1". This is the page number of the EPBC website the scraper will stop checking for new entries.
+To scrape the first X pages of the EPBC website, where 1 < X <= 167, change this number to X then run the same
+`docker run ...` command given above.
+1. Example usage might be to first run the container to scrape the full database
+by setting the contents of `page_number.txt` to 167 and running `docker run ...`
+then setting the contents of `page_number.txt` to 10 and running `docker run ...`
+periodically to just check the most recent pages of the EPBC website for new data.
+
+# Normal Setup
+EPBC_scrape can also be run without Docker, but additional dependencies must be
+downloaded and installed.
+
+## Supported Systems
+- Unix systems (i.e. Linux and Mac).
+- Windows 10. (Currently, operating system calls on Windows use the Windows Powershell,
+which only ships by default with Windows 10. Future versions may support
+older versions of Windows.)
+
+## Docker Setup
 1. Click the green "Code" button above, then "Download ZIP". (Advanced users should use GIT.)
     1. Extract the ZIP file. You should end up with a folder called `EPBC_scrape`.
     On windows, the recommended location for this directory is
