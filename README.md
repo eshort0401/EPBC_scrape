@@ -48,8 +48,7 @@ image.
     docker build -t epbc:1.0 --build-arg USER_ID=<user_id> --build-arg GROUP_ID=<group_id> .
     ```
 
-    The full stop at the end of the command is essential. Replace `<user_id>`
-    and `<group_id>` with your required user and group ID numbers.
+    Replace `<user_id>` and `<group_id>` with your required user and group ID numbers.
     For instance, if building on a UNIX machine, use   
     `$(id -u)` and `$(id -g)` for the active user's user and group ID numbers respectively.
     On Windows

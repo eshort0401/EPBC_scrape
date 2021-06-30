@@ -16,4 +16,3 @@ chmod a=rwx /EPBC_files/EPBC_notices.csv
 chmod a=rwx /EPBC_files/EPBC_database.csv
 chmod a=rwx /EPBC_files/EPBC_database_links.csv
 chmod a=rwx /EPBC_files/files
-/bin/bash
