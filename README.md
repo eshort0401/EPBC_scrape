@@ -25,7 +25,7 @@ the `scrape_EPBC_script.py` may occasionally hang as it attempts to download
 files. When this happens, the script should automatically skip the frozen download, but occasionally
 it will continue to hang. I suspect this may be because the EPBC website itself
 has been updated while the script is running, and this is confusing chromedriver.
-This can be fixed by simply stopping the script (e.g. `ctl + c`) and restarting.
+This can be fixed by simply stopping the script (e.g. `ctl + c`) and restarting it.
 It should also be easy to simply hard code a restart of the script when it hangs,
 but haven't had time to do this yet!
 
@@ -65,11 +65,11 @@ image.
 
     replacing `<files_dir>` with the full path to the location you wish to download
     the EPBC Website data to. This should download the first page of the EPBC website to the directory
-    specified by `<>`.
+    specified by `<files_dir>`.
 
 ## Operation
 1. Ensure you have completed the installation steps above.
-1. In the `<files_dir>` you specified during the test run above, you should see
+1. In the `<files_dir>` folder you specified during the test run above, you should see
 a file named `page_number.txt`. If you open this file it should contain just the number
 "1". This is the page number of the EPBC website the scraper will stop checking for new entries.
 To scrape the first X pages of the EPBC website, where 1 < X <= 167, change this number to X then run the same
