@@ -79,7 +79,7 @@ downloaded and installed.
 which only ships by default with Windows 10. Future versions may support
 older versions of Windows.)
 
-## Docker Setup
+## Installation
 1. Click the green "Code" button above, then "Download ZIP". (Advanced users should use GIT.)
     1. Extract the ZIP file. You should end up with a folder called `EPBC_scrape`.
     On windows, the recommended location for this directory is
