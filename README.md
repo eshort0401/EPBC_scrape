@@ -18,8 +18,9 @@ and referral type.
 PDF files to create a comprehensive database `EPBC_database.csv`.
     1. Reformat the "Title of referral" field.
     1. Look up data on each referral holder from the ASIC company register, such as ABN.
-1. Create columns in the database specifying the paths of the downloaded and combined PDF files,
-and clickable links to these files which work in Microsoft Excel or LibreOffice Calc.  
+1. Create a column in the database specifying the paths of the downloaded and combined PDF files,
+and a column of clickable links to these files which work in Microsoft Excel or LibreOffice Calc.
+The amended database is saved as `EPBC_database_links.csv`.
 
 ## Known Issues
 1. When downloading the entire database at once, or scraping many pages at once,
