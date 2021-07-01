@@ -8,7 +8,7 @@ import scrape_EPBC
 import process_table
 
 parser = argparse.ArgumentParser()
-dir_help = 'base directory to store spreadsheet and downloaded PDF files.'
+dir_help = 'full path to base directory to store spreadsheet and downloaded PDF files.'
 parser.add_argument(
     "base_dir", type=str, help=dir_help)
 parser.add_argument(
@@ -28,6 +28,9 @@ parser.add_argument(
 parser.add_argument(
     "-e", "--excel-link", required=False, action='store_true',
     help='add a column of excel hyperlinks to each combined PDF')
+parser.add_argument(
+    "-f", "--files-dir", required=False, default=None, type=str,
+    help='full path to files for links columns of database if different to base_dir')
 
 args = parser.parse_args()
 headless = not args.show_chrome
@@ -36,6 +39,11 @@ base_dir = args.base_dir
 if (base_dir[-1] not in ['/', '\\']):
     base_dir += '/'
 
+files_dir = args.files_dir
+if files_dir is None:
+    files_dir = base_dir
+elif (files_dir[-1] not in ['/', '\\']):
+    files_dir += '/'
 cd_path = args.chromedriver_path
 if cd_path is None:
     if os.name == 'nt':
@@ -49,4 +57,4 @@ scrape_EPBC.scrape_website(
     headless=headless, end_page=args.last_page)
 
 process_table.process_table(base_dir, update_public_db=args.update_pub_db)
-process_table.add_comb_paths(base_dir, excel_links=args.excel_link)
+process_table.add_comb_paths(base_dir, excel_links=args.excel_link, files_dir=files_dir)

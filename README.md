@@ -28,6 +28,12 @@ has been updated while the script is running, and this is confusing chromedriver
 This can be fixed by simply stopping the script (e.g. `ctl + c`) and restarting it.
 It should also be easy to simply hard code a restart of the script when it hangs,
 but haven't had time to do this yet!
+2. Sometimes downloading the ASIC company register from `data.gov.au` is very slow.
+This is not an issue with the script, as it also occurs when using a browser: I assume it
+is just that `data.gov.au` sometimes gets very high traffic, particularly at the start
+of each month when a new register is released. Note the script uses the June 2021 register:
+this can be changed by modifying the url specified in the `get_company_databases` function
+defined in `process_table.py`. 
 
 # Docker Setup
 `EPBC_scrape` may be run through [Docker](https://www.docker.com/). Docker is a convenient
@@ -57,6 +63,17 @@ image.
     docker build -t epbc:1.0 --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .
     ```
 
+    1. Note that `$(id -u)` and `$(id -g)` will tell `EPBC_scrape` to  
+    create new files using the current user's user and group ID numbers: these
+    can be changed to other user ID numbers if required.
+    1. By default, `EPBC_scrape`
+    will give read, write and execute rights for created files to everyone.
+    These permissions can be changed by altering the `chmod ...` lines in
+    `entrypoint.sh`.
+    1. The lines `RUN apt-get update` and `RUN apt update` are likely slowing down
+    image build times, and making the image larger than it needs to be. These lines
+    can probably be removed, or replaced with more efficient methods of ensuring
+    the container has access to the UNIX repositories it needs.   
 5. Perform a test run of the software by calling
 
     ```
@@ -70,14 +87,26 @@ image.
 ## Operation
 1. Ensure you have completed the installation steps above.
 1. In the `<files_dir>` folder you specified during the test run above, you should see
-a file named `page_number.txt`. If you open this file it should contain just the number
-"1". This is the page number of the EPBC website the scraper will stop checking for new entries.
-To scrape the first X pages of the EPBC website, where 1 < X <= 167, change this number to X then run the same
-`docker run ...` command given above.
-1. Example usage might be to first run the container to scrape the full database
-by setting the contents of `page_number.txt` to 167 and running `docker run ...`
-then setting the contents of `page_number.txt` to 10 and running `docker run ...`
-periodically to just check the most recent pages of the EPBC website for new data.
+a file named `page_number.txt`.
+    1. If you open this file it should contain just the number
+    "1". This is the page number of the EPBC website the scraper will stop checking for new entries.
+    To scrape the first X pages of the EPBC website, where 1 < X <= 167, change this number to X then run the same
+    `docker run ...` command given above.
+    1. Example usage might be to first run the container to scrape the full database
+    by setting the contents of `page_number.txt` to 167 and running `docker run ...`,
+    then setting the contents of `page_number.txt` to 10 and running `docker run ...`
+    periodically to just check the most recent pages of the EPBC website for new data.
+1. In the `<files_dir>` folder you specified during the test run above, you
+should see a file named `host_file_path.txt`.
+    1. Open it, and you should see the text
+    `/EPBC_files/`. This is the path used to create the path and link columns in the
+    `EPBC_database_links.csv` table.
+    1. The test run initialises this to
+    `/EPBC_files/`, which is the location of the files in the
+    UNIX Docker container.
+    1. If you change this text to match `<files_dir>`, then the
+    next time you run the container the paths and links in `EPBC_database_links.csv`
+    should update to those on the host machine, not those of the container.   
 
 # Normal Setup
 EPBC_scrape can also be run without Docker, but additional dependencies must be

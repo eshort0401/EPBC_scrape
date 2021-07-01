@@ -246,18 +246,20 @@ def lookup_ASIC_data(base_dir, table):
     return table
 
 
-def add_comb_paths(base_dir, excel_links=False):
+def add_comb_paths(base_dir, excel_links=False, files_dir=None):
     print('Adding paths to combined PDF files.')
     table = pd.read_csv(base_dir + 'EPBC_database.csv', dtype=str)
     folder_names = table['Download Folder'].values
-    comb_file_paths = base_dir + 'files/' + folder_names
+    if files_dir is None:
+        files_dir = base_dir
+    comb_file_paths = files_dir + 'files/' + folder_names
     comb_file_paths += '/' + folder_names + '_combined.pdf'
     cond = (table['Download Folder'].values == 'Not Applicable')
     comb_file_paths[cond] = 'Not Applicable'
     table['Combined PDF Path'] = comb_file_paths
 
     if excel_links:
-        excel_links = '=HYPERLINK("' + comb_file_paths + '", '
+        excel_links = '=HYPERLINK("file:' + comb_file_paths + '", '
         excel_links += '"Link to File")'
         excel_links[cond] = 'Not Applicable'
         table['Excel Link'] = excel_links

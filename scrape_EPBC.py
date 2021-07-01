@@ -355,7 +355,9 @@ def scrape_page(
                 try:
                     combined_code = subprocess.run(
                         shell_cmd.replace('/', '\\'), shell=True,
-                        timeout=600).returncode
+                        timeout=600,
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL).returncode
                 except:
                     combined_code = 1
                 if combined_code == 0:
@@ -395,7 +397,9 @@ def scrape_page(
 
                 try:
                     combined_code = subprocess.run(
-                        shell_cmd, shell=True, timeout=600).returncode
+                        shell_cmd, shell=True, timeout=600,
+                        stdout=subprocess.DEVNULL,
+                        stderr=subprocess.DEVNULL).returncode
                 except:
                     combined_code = 1
 
