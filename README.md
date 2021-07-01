@@ -18,6 +18,8 @@ and referral type.
 PDF files to create a comprehensive database `EPBC_database.csv`.
     1. Reformat the "Title of referral" field.
     1. Look up data on each referral holder from the ASIC company register, such as ABN.
+1. Create columns in the database specifying the paths of the downloaded and combined PDF files,
+and clickable links to these files which work in Microsoft Excel or LibreOffice Calc.  
 
 ## Known Issues
 1. When downloading the entire database at once, or scraping many pages at once,
@@ -33,7 +35,7 @@ This is not an issue with the script, as it also occurs when using a browser: I 
 is just that `data.gov.au` sometimes gets very high traffic, particularly at the start
 of each month when a new register is released. Note the script uses the June 2021 register:
 this can be changed by modifying the url specified in the `get_company_databases` function
-defined in `process_table.py`. 
+defined in `process_table.py`.
 
 # Docker Setup
 `EPBC_scrape` may be run through [Docker](https://www.docker.com/). Docker is a convenient
