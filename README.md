@@ -31,7 +31,7 @@ has been updated while the script is running, and this is confusing chromedriver
 This can be fixed by simply stopping the script (e.g. `ctl + c`) and restarting it.
 It should also be easy to simply hard code a restart of the script when it hangs,
 but haven't had time to do this yet!
-2. Sometimes downloading the ASIC company register from `data.gov.au` is very slow.
+1. Sometimes downloading the ASIC company register from `data.gov.au` is very slow.
 This is not an issue with the script, as it also occurs when using a browser: I assume it
 is just that `data.gov.au` sometimes gets very high traffic, particularly at the start
 of each month when a new register is released. Note the script uses the June 2021 register:
@@ -66,17 +66,15 @@ image.
     docker build -t epbc:1.0 --build-arg USER_ID=$(id -u) --build-arg GROUP_ID=$(id -g) .
     ```
 
-    1. Note that `$(id -u)` and `$(id -g)` will tell `EPBC_scrape` to  
-    create new files using the current user's user and group ID numbers: these
-    can be changed to other user ID numbers if required.
+    1. Note that `$(id -u)` and `$(id -g)` tell `EPBC_scrape` to use the host user's
+    ID numbers for the user created in the UNIX container. This ensures any new files
+    created by `EPBC_scrape` are owned by the host user. Note that these ID numbers can
+    can be changed to those of other users or groups if required.
     1. By default, `EPBC_scrape`
-    will give read, write and execute rights for created files to everyone.
-    These permissions can be changed by altering the `chmod ...` lines in
-    `entrypoint.sh`.
-    1. The lines `RUN apt-get update` and `RUN apt update` are likely slowing down
-    image build times, and making the image larger than it needs to be. These lines
-    can probably be removed, or replaced with more efficient methods of ensuring
-    the container has access to the UNIX repositories it needs.   
+    will give read, write and execute rights for any created files to everyone after
+    the website data has been downloaded. These permissions can be changed by
+    altering the `chmod ...` lines in `entrypoint.sh` to, for instance, only give write access
+    to the host user.
 5. Perform a test run of the software by calling
 
     ```
