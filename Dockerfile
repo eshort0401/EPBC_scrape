@@ -30,7 +30,7 @@ RUN apt-get install -y ghostscript-x
 ARG USER_ID
 ARG GROUP_ID
 RUN groupadd -r -g $GROUP_ID EPBC_scrape
-RUN useradd --no-log-init -r -g EPBC_scrape -u $GROUP_ID EPBC_scrape
+RUN useradd --no-log-init -r -g EPBC_scrape -u $USER_ID EPBC_scrape
 USER EPBC_scrape
 
 # Code to run when container initialised
